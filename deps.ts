@@ -42,3 +42,5 @@ export type {
   DocNodeVariable,
   DocOptions,
 } from "https://raw.githubusercontent.com/kitsonk/deno_doc/3365bb0ea3035161c4803a861fec2f84433cc1fe/mod.ts";
+
+export type { LoadResponse } from "https://deno.land/x/deno_graph@0.1.0/mod.ts";

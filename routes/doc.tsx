@@ -2,9 +2,50 @@
 import { Body } from "../components/body.tsx";
 import { DocPrinter } from "../components/doc.tsx";
 import { doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
-import type { DocNode, RouterContext, RouterMiddleware } from "../deps.ts";
+import type {
+  DocNode,
+  LoadResponse,
+  RouterContext,
+  RouterMiddleware,
+} from "../deps.ts";
 import { sheet } from "../shared.ts";
 import { getBody } from "../util.ts";
+
+async function load(
+  specifier: string,
+): Promise<LoadResponse | undefined> {
+  const url = new URL(specifier);
+  console.log(`load("${specifier}")`);
+  try {
+    switch (url.protocol) {
+      case "file:": {
+        console.error(`local specifier requested: ${specifier}`);
+        return undefined;
+      }
+      case "http:":
+      case "https:": {
+        const response = await fetch(String(url), { redirect: "follow" });
+        if (response.status !== 200) {
+          return undefined;
+        }
+        const content = await response.text();
+        const headers: Record<string, string> = {};
+        for (const [key, value] of response.headers) {
+          headers[key.toLowerCase()] = value;
+        }
+        return {
+          specifier: response.url,
+          headers,
+          content,
+        };
+      }
+      default:
+        return undefined;
+    }
+  } catch {
+    return undefined;
+  }
+}
 
 export const docGetPost: RouterMiddleware = async (ctx: RouterContext) => {
   sheet.reset();
@@ -44,7 +85,7 @@ export const docGetPost: RouterMiddleware = async (ctx: RouterContext) => {
 
   let entries: DocNode[];
   try {
-    entries = await doc(root);
+    entries = await doc(root, { load });
   } catch (e) {
     if (e instanceof Error) {
       if (e.message.includes("Unable to load specifier")) {
