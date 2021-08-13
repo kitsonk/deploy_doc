@@ -25,14 +25,17 @@ async function load(
       case "http:":
       case "https:": {
         const response = await fetch(String(url), { redirect: "follow" });
+        console.log("  response.status", response.status);
         if (response.status !== 200) {
           return undefined;
         }
         const content = await response.text();
+        console.log("  content length", content.length);
         const headers: Record<string, string> = {};
         for (const [key, value] of response.headers) {
           headers[key.toLowerCase()] = value;
         }
+        console.log("  header entries", Object.keys(headers).length);
         return {
           specifier: response.url,
           headers,
