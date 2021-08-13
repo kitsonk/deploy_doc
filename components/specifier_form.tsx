@@ -28,7 +28,7 @@ export class SpecifierForm extends Component {
   render() {
     return (
       <form
-        action="/graph"
+        action="/doc"
         method="post"
         class={tw`w-full bg-gray-200 rounded-lg`}
       >
