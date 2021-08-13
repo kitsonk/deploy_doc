@@ -50,7 +50,7 @@ export class SpecifierForm extends Component {
             examples:
             <DocLinks
               links={[
-                "https://deno.land/std/fmt@v0.104.0/colors.ts",
+                "https://deno.land/std@0.104.0/fmt/colors.ts",
                 "https://deno.land/x/oak@v8.0.0/mod.ts",
               ]}
             />
