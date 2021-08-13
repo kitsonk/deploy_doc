@@ -11,11 +11,12 @@ import type {
 import { sheet } from "../shared.ts";
 import { getBody } from "../util.ts";
 
+let id = 0;
+
 async function load(
   specifier: string,
 ): Promise<LoadResponse | undefined> {
   const url = new URL(specifier);
-  console.log(`load("${specifier}")`);
   try {
     switch (url.protocol) {
       case "file:": {
@@ -24,18 +25,20 @@ async function load(
       }
       case "http:":
       case "https:": {
+        id++;
+        const idStr = id.toString(10).padStart(4, "0");
+        console.log(`[${idStr}]: ${String(url)}`);
         const response = await fetch(String(url), { redirect: "follow" });
-        console.log("  response.status", response.status);
+        console.log(`[${idStr}]: status: ${response.status}`);
         if (response.status !== 200) {
           return undefined;
         }
         const content = await response.text();
-        console.log("  content length", content.length);
+        console.log(`[${idStr}]: length: ${content.length}`);
         const headers: Record<string, string> = {};
         for (const [key, value] of response.headers) {
           headers[key.toLowerCase()] = value;
         }
-        console.log("  header entries", Object.keys(headers).length);
         return {
           specifier: response.url,
           headers,
