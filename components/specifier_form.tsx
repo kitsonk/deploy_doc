@@ -29,7 +29,7 @@ export class SpecifierForm extends Component {
     return (
       <form
         action="/doc"
-        method="post"
+        method="get"
         class={tw`w-full bg-gray-200 rounded-lg`}
       >
         <div class={tw`w-full my-2 px-12 pt-12 space-y-6`}>
@@ -52,6 +52,7 @@ export class SpecifierForm extends Component {
               links={[
                 "https://deno.land/std/fmt/colors.ts",
                 "https://deno.land/x/oak/mod.ts",
+                "https://deno.land/x/zod/mod.ts",
               ]}
             />
           </p>

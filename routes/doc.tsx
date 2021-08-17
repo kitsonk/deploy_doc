@@ -1,9 +1,10 @@
 /** @jsx h */
 import { Body } from "../components/body.tsx";
-import { DocPrinter } from "../components/doc.tsx";
+import { DocEntry, DocPrinter } from "../components/doc.tsx";
 import { doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
 import type {
   DocNode,
+  DocNodeKind,
   LoadResponse,
   RouterContext,
   RouterMiddleware,
@@ -11,9 +12,10 @@ import type {
 import { sheet } from "../shared.ts";
 import { assert, getBody } from "../util.ts";
 
-const MAX_CACHE_SIZE = 50_000_000;
+const MAX_CACHE_SIZE = 25_000_000;
 const cachedSpecifiers = new Set<string>();
 const cachedResources = new Map<string, LoadResponse>();
+const cachedEntries = new Map<string, DocNode[]>();
 let cacheSize = 0;
 
 function checkCache() {
@@ -31,6 +33,7 @@ function checkCache() {
     for (const evict of toEvict) {
       cachedResources.delete(evict);
       cachedSpecifiers.delete(evict);
+      cachedEntries.delete(evict);
     }
   }
 }
@@ -82,64 +85,50 @@ async function load(
   }
 }
 
-export const docGetPost: RouterMiddleware = async (ctx: RouterContext) => {
+export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
   sheet.reset();
-  ctx.assert(ctx.request.method === "GET" || ctx.request.method === "POST");
-  let root: string;
-  if (ctx.request.hasBody) {
-    const body = ctx.request.body();
-    ctx.assert(
-      body.type === "form" || body.type === "form-data",
-      Status.BadRequest,
-      "Only form or form-data bodies supported.",
-    );
-    switch (body.type) {
-      case "form": {
-        const bodyValue = await body.value;
-        const url = bodyValue.get("url");
-        ctx.assert(url, Status.BadRequest, `Missing "url" property in form.`);
-        root = url;
-        break;
-      }
-      case "form-data": {
-        const bodyValue = await body.value.read();
-        const url = bodyValue.fields["url"];
-        ctx.assert(
-          url,
-          Status.BadRequest,
-          `Missing "url" property in form-data.`,
-        );
-        root = url;
-      }
-    }
-  } else {
-    const url = ctx.request.url.searchParams.get("url");
-    ctx.assert(url, Status.BadRequest, `Missing "url" query.`);
-    root = url;
-  }
+  ctx.assert(ctx.request.method === "GET");
+  const url = ctx.request.url.searchParams.get("url");
+  ctx.assert(url, Status.BadRequest, `Missing "url" query.`);
 
   let entries: DocNode[];
-  try {
-    entries = await doc(root, { load });
-  } catch (e) {
-    if (e instanceof Error) {
-      if (e.message.includes("Unable to load specifier")) {
-        ctx.throw(Status.NotFound, `The module "${root}" cannot be found.`);
+  if (cachedEntries.has(url)) {
+    entries = cachedEntries.get(url)!;
+  } else {
+    try {
+      entries = await doc(url, { load });
+      cachedEntries.set(url, entries);
+    } catch (e) {
+      if (e instanceof Error) {
+        if (e.message.includes("Unable to load specifier")) {
+          ctx.throw(Status.NotFound, `The module "${url}" cannot be found.`);
+        } else {
+          ctx.throw(Status.BadRequest, `Bad request: ${e.message}`);
+        }
       } else {
-        ctx.throw(Status.BadRequest, `Bad request: ${e.message}`);
+        ctx.throw(Status.InternalServerError, "Unexpected object.");
       }
-    } else {
-      ctx.throw(Status.InternalServerError, "Unexpected object.");
     }
   }
+  const name = ctx.request.url.searchParams.get("name");
+  const kind = ctx.request.url.searchParams.get("kind");
   ctx.response.body = getBody(
     renderSSR(
-      <Body title="Deploy Doc" subtitle={root}>
-        <DocPrinter entries={entries} />
+      <Body title="Deploy Doc" subtitle={url}>
+        {name && kind
+          ? (
+            <DocEntry
+              entries={entries}
+              name={name}
+              kind={kind as DocNodeKind}
+              url={url}
+            />
+          )
+          : <DocPrinter entries={entries} url={url} />}
       </Body>,
     ),
     getStyleTag(sheet),
-    root,
+    url,
   );
   ctx.response.type = "html";
 };

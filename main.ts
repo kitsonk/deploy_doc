@@ -2,14 +2,13 @@ import { Application, colors, HttpError, Router } from "./deps.ts";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
-import { docGetPost } from "./routes/doc.tsx";
+import { docGet } from "./routes/doc.tsx";
 import { indexGet } from "./routes/index.tsx";
 
 const router = new Router();
 
 router.get("/", indexGet);
-router.get("/doc", docGetPost);
-router.post("/doc", docGetPost);
+router.get("/doc", docGet);
 
 const app = new Application();
 
