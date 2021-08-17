@@ -1,7 +1,7 @@
 /** @jsx h */
 import { Body } from "../components/body.tsx";
 import { DocEntry, DocPrinter } from "../components/doc.tsx";
-import { doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
+import { colors, doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
 import type {
   DocNode,
   DocNodeKind,
@@ -37,6 +37,8 @@ function checkCache() {
     }
   }
 }
+
+let lastLoad = Date.now();
 
 async function load(
   specifier: string,
@@ -75,6 +77,7 @@ async function load(
         cachedSpecifiers.add(specifier);
         cacheSize += content.length;
         queueMicrotask(checkCache);
+        lastLoad = Date.now();
         return loadResponse;
       }
       default:
@@ -96,7 +99,17 @@ export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
     entries = cachedEntries.get(url)!;
   } else {
     try {
+      const start = Date.now();
       entries = await doc(url, { load });
+      const end = Date.now();
+      console.log(
+        ` ${colors.yellow("graph time")}: ${
+          colors.bold(`${lastLoad - start}ms`)
+        }`,
+      );
+      console.log(
+        ` ${colors.yellow("doc time")}: ${colors.bold(`${end - lastLoad}ms`)}`,
+      );
       cachedEntries.set(url, entries);
     } catch (e) {
       if (e instanceof Error) {
