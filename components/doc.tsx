@@ -286,7 +286,15 @@ interface DocEntryParams extends DocPrinterParams {
 function ClassEntry({ entry }: { entry: DocNodeClass; url: string }) {
   return (
     <div class={tw`${mainBox}`}>
-      <h1 class={tw`${entryTitle}`}>class {entry.name}</h1>
+      <h1 class={tw`${entryTitle}`}>Class {entry.name}</h1>
+    </div>
+  );
+}
+
+function NamespaceEntry({ entry }: { entry: DocNodeNamespace; url: string }) {
+  return (
+    <div class={tw`${mainBox}`}>
+      <h1 class={tw`${entryTitle}`}>Namespace {entry.name}</h1>
     </div>
   );
 }
@@ -306,6 +314,8 @@ export class DocEntry extends Component<DocEntryParams> {
     switch (entry.kind) {
       case "class":
         return <ClassEntry entry={entry} url={url} />;
+      case "namespace":
+        return <NamespaceEntry entry={entry} url={url} />;
       default:
         return (
           <ErrorMessage title="Not Supported">
