@@ -44,8 +44,8 @@ export function getBody(
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@denoland" />
   <meta name="twitter:creator" content="@kitsonk" />
-  <meta name="twitter:image:alt" content="Deno Graph Visualizer logo" />
-  <meta property="og:title" content="Deno Graph Visualizer" />
+  <meta name="twitter:image:alt" content="Deploy Doc logo" />
+  <meta property="og:title" content="Deploy Doc" />
   <meta property="og:description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
   `
     : "";
