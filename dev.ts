@@ -1,4 +1,6 @@
-import { createWorker } from "https://deno.land/x/dectyl@0.9.1/mod.ts";
+#!/usr/bin/env -S deno run --unstable --allow-read --allow-net --no-check
+
+import { createWorker } from "https://deno.land/x/dectyl@0.10.4/mod.ts";
 
 await Deno.permissions.request({ name: "read" });
 await Deno.permissions.request({ name: "net" });

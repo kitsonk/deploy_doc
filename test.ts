@@ -1,4 +1,4 @@
-import { createWorker } from "https://deno.land/x/dectyl@0.9.1/mod.ts";
+import { createWorker } from "https://deno.land/x/dectyl@0.10.4/mod.ts";
 
 Deno.test({
   name: "route - /",

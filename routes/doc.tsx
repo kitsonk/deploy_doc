@@ -9,9 +9,31 @@ import type {
   RouterMiddleware,
 } from "../deps.ts";
 import { sheet } from "../shared.ts";
-import { getBody } from "../util.ts";
+import { assert, getBody } from "../util.ts";
 
-let id = 0;
+const MAX_CACHE_SIZE = 50_000_000;
+const cachedSpecifiers = new Set<string>();
+const cachedResources = new Map<string, LoadResponse>();
+let cacheSize = 0;
+
+function checkCache() {
+  if (cacheSize > MAX_CACHE_SIZE) {
+    const toEvict: string[] = [];
+    for (const specifier of cachedSpecifiers) {
+      const loadResponse = cachedResources.get(specifier);
+      assert(loadResponse);
+      toEvict.push(specifier);
+      cacheSize -= loadResponse.content.length;
+      if (cacheSize <= MAX_CACHE_SIZE) {
+        break;
+      }
+    }
+    for (const evict of toEvict) {
+      cachedResources.delete(evict);
+      cachedSpecifiers.delete(evict);
+    }
+  }
+}
 
 async function load(
   specifier: string,
@@ -25,25 +47,32 @@ async function load(
       }
       case "http:":
       case "https:": {
-        id++;
-        const idStr = id.toString(10).padStart(4, "0");
-        console.log(`[${idStr}]: ${String(url)}`);
+        if (cachedResources.has(specifier)) {
+          cachedSpecifiers.delete(specifier);
+          cachedSpecifiers.add(specifier);
+          return cachedResources.get(specifier);
+        }
         const response = await fetch(String(url), { redirect: "follow" });
-        console.log(`[${idStr}]: status: ${response.status}`);
         if (response.status !== 200) {
+          // ensure that resources are not leaked
+          await response.arrayBuffer();
           return undefined;
         }
         const content = await response.text();
-        console.log(`[${idStr}]: length: ${content.length}`);
         const headers: Record<string, string> = {};
         for (const [key, value] of response.headers) {
           headers[key.toLowerCase()] = value;
         }
-        return {
+        const loadResponse: LoadResponse = {
           specifier: response.url,
           headers,
           content,
         };
+        cachedResources.set(specifier, loadResponse);
+        cachedSpecifiers.add(specifier);
+        cacheSize += content.length;
+        queueMicrotask(checkCache);
+        return loadResponse;
       }
       default:
         return undefined;

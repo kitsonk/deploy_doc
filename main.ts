@@ -46,4 +46,4 @@ app.addEventListener("error", (evt) => {
   console.error(msg);
 });
 
-addEventListener("fetch", app.fetchEventHandler());
+app.listen({ port: 8080 });
