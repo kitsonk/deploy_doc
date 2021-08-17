@@ -29,7 +29,7 @@ import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
 
 export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/e34c3183ef06bb1ff06dc47dfc7dd95061a7fbc2/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/38479e8b30370a42514fee6f127d261dd9a836ca/mod.ts";
 export type {
   DocNode,
   DocNodeClass,
@@ -43,4 +43,4 @@ export type {
   DocNodeVariable,
   DocOptions,
   LoadResponse,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/e34c3183ef06bb1ff06dc47dfc7dd95061a7fbc2/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/38479e8b30370a42514fee6f127d261dd9a836ca/mod.ts";
