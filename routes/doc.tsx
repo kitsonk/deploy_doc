@@ -9,7 +9,7 @@ import type {
   RouterContext,
   RouterMiddleware,
 } from "../deps.ts";
-import { sheet } from "../shared.ts";
+import { sheet, store } from "../shared.ts";
 import { assert, getBody } from "../util.ts";
 
 const MAX_CACHE_SIZE = 25_000_000;
@@ -124,24 +124,18 @@ export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
     }
   }
   const name = ctx.request.url.searchParams.get("name");
-  const kind = ctx.request.url.searchParams.get("kind");
+  const kind = ctx.request.url.searchParams.get("kind") as
+    | DocNodeKind
+    | undefined;
+  store.setState({ entries, url });
   ctx.response.body = getBody(
     renderSSR(
       <Body title="Deploy Doc" subtitle={url}>
-        {name && kind
-          ? (
-            <DocEntry
-              entries={entries}
-              name={name}
-              kind={kind as DocNodeKind}
-              url={url}
-            />
-          )
-          : <DocPrinter entries={entries} url={url} />}
+        {name && kind ? <DocEntry name={name} kind={kind} /> : <DocPrinter />}
       </Body>,
     ),
     getStyleTag(sheet),
-    url,
+    name && kind ? `${url} — ${name}` : url,
   );
   ctx.response.type = "html";
 };

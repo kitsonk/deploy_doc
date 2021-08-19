@@ -20,16 +20,23 @@ export {
   getStyleTag,
   virtualSheet,
 } from "https://cdn.skypack.dev/twind@0.16.16/sheets";
+// @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/colors/colors.d.ts
+export * as twColors from "https://cdn.skypack.dev/twind@0.16.16/colors";
 
 export { Component } from "https://deno.land/x/nano_jsx@v0.0.20/component.ts";
 export { h } from "https://deno.land/x/nano_jsx@v0.0.20/core.ts";
 export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.20/fragment.ts";
 export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.20/ssr.ts";
+export { Store } from "https://deno.land/x/nano_jsx@v0.0.20/store.ts";
 import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
 
 export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/aa93afd64f4dafa8801db3ae072f178ff79d09fa/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/9b7618ee7c47caa7224fae915c48d3e043c3423d/mod.ts";
+export type {
+  DocOptions,
+  LoadResponse,
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/9b7618ee7c47caa7224fae915c48d3e043c3423d/mod.ts";
 export type {
   DocNode,
   DocNodeClass,
@@ -41,6 +48,38 @@ export type {
   DocNodeNamespace,
   DocNodeTypeAlias,
   DocNodeVariable,
-  DocOptions,
-  LoadResponse,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/aa93afd64f4dafa8801db3ae072f178ff79d09fa/mod.ts";
+  InterfaceCallSignatureDef,
+  InterfaceIndexSignatureDef,
+  InterfaceMethodDef,
+  InterfacePropertyDef,
+  LiteralCallSignatureDef,
+  LiteralIndexSignatureDef,
+  LiteralMethodDef,
+  LiteralPropertyDef,
+  ParamArrayDef,
+  ParamAssignDef,
+  ParamDef,
+  ParamIdentifierDef,
+  ParamObjectDef,
+  ParamRestDef,
+  TsTypeArrayDef,
+  TsTypeConditionalDef,
+  TsTypeDef,
+  TsTypeDefLiteral,
+  TsTypeFnOrConstructorDef,
+  TsTypeIndexedAccessDef,
+  TsTypeIntersectionDef,
+  TsTypeKeywordDef,
+  TsTypeOptionalDef,
+  TsTypeParamDef,
+  TsTypeParenthesizedDef,
+  TsTypeQueryDef,
+  TsTypeRestDef,
+  TsTypeThisDef,
+  TsTypeTupleDef,
+  TsTypeTypeLiteralDef,
+  TsTypeTypeOperatorDef,
+  TsTypeTypePredicateDef,
+  TsTypeTypeRefDef,
+  TsTypeUnionDef,
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/9b7618ee7c47caa7224fae915c48d3e043c3423d/lib/types.d.ts";
