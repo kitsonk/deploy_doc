@@ -14,7 +14,7 @@ const builtInDoc = await doc("https://doc-proxy.deno.dev/builtin/stable");
 console.log(
   `${colors.bold(colors.green("Saving"))} Deno CLI built-ins...`,
 );
-await Deno.writeTextFile("./static/namespace.json", JSON.stringify(builtInDoc));
+await Deno.writeTextFile("./static/stable.json", JSON.stringify(builtInDoc));
 
 console.log(
   `${colors.bold(colors.green("Documenting"))} Deno CLI unstable built-ins...`,
