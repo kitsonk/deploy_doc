@@ -19,6 +19,7 @@ export class Body extends Component<Props> {
             <img
               src="https://deno.land/images/deno_logo_4.gif"
               class={tw`h-16 mr-4 float-left`}
+              alt="Deno, a cute sauropod dinosaur, with animated rain."
             />
             <h1 class={tw`h-10 text-3xl font-bold`}>{this.props.title}</h1>
             <h2 class={tw`h-6 text-xl font-semibold`}>{this.props.subtitle}</h2>

@@ -2,12 +2,20 @@ import { Application, colors, HttpError, Router } from "./deps.ts";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
-import { docGet } from "./routes/doc.tsx";
+import { docGet, pathGetHead } from "./routes/doc.tsx";
 import { indexGet } from "./routes/index.tsx";
 
 const router = new Router();
 
 router.get("/", indexGet);
+router.get("/:proto(http|https)/:host/:path*/~/:item+", pathGetHead);
+router.get("/:proto(http|https)/:host/:path*", pathGetHead);
+router.head("/:proto(http|https)/:host/:path*/~/:item+", pathGetHead);
+router.head("/:proto(http|https)/:host/:path*", pathGetHead);
+router.get("/:proto(deno)/:host", pathGetHead);
+router.get("/:proto(deno)/:host/~/:item+", pathGetHead);
+router.head("/:proto(deno)/:host", pathGetHead);
+router.head("/:proto(deno)/:host/~/:item+", pathGetHead);
 router.get("/doc", docGet);
 
 const app = new Application();

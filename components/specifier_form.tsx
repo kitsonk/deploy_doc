@@ -13,7 +13,7 @@ class DocLinks extends Component<DocLinksProps> {
         <li>
           <a
             class={tw`hover:text-blue-800`}
-            href={`/doc?url=${encodeURIComponent(child)}`}
+            href={`/${child.replace("://", "/")}`}
           >
             <code>{child}</code>
           </a>

@@ -4,8 +4,10 @@ import { DocEntry, DocPrinter } from "../components/doc.tsx";
 import { colors, doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
 import type {
   DocNode,
-  DocNodeKind,
+  DocNodeInterface,
+  DocNodeNamespace,
   LoadResponse,
+  RouteParams,
   RouterContext,
   RouterMiddleware,
 } from "../deps.ts";
@@ -88,12 +90,60 @@ async function load(
   }
 }
 
-export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
-  sheet.reset();
-  ctx.assert(ctx.request.method === "GET");
-  const url = ctx.request.url.searchParams.get("url");
-  ctx.assert(url, Status.BadRequest, `Missing "url" query.`);
+function mergeEntries(entries: DocNode[]) {
+  const merged: DocNode[] = [];
+  const namespaces = new Map<string, DocNodeNamespace>();
+  const interfaces = new Map<string, DocNodeInterface>();
+  for (const node of entries) {
+    if (node.kind === "namespace") {
+      const namespace = namespaces.get(node.name);
+      if (namespace) {
+        namespace.namespaceDef.elements.concat(node.namespaceDef.elements);
+        if (!namespace.jsDoc) {
+          namespace.jsDoc = node.jsDoc;
+        }
+      } else {
+        namespaces.set(node.name, node);
+        merged.push(node);
+      }
+    } else if (node.kind === "interface") {
+      const int = interfaces.get(node.name);
+      if (int) {
+        int.interfaceDef.callSignatures.concat(
+          node.interfaceDef.callSignatures,
+        );
+        int.interfaceDef.indexSignatures.concat(
+          node.interfaceDef.indexSignatures,
+        );
+        int.interfaceDef.methods.concat(node.interfaceDef.methods);
+        int.interfaceDef.properties.concat(node.interfaceDef.properties);
+        if (!int.jsDoc) {
+          int.jsDoc = node.jsDoc;
+        }
+      } else {
+        interfaces.set(node.name, node);
+        merged.push(node);
+      }
+    } else {
+      merged.push(node);
+    }
+  }
+  return merged;
+}
 
+interface PathRouteParams extends RouteParams {
+  proto: string;
+  host: string;
+  path?: string;
+  item?: string;
+}
+
+async function process(
+  // deno-lint-ignore no-explicit-any
+  ctx: RouterContext<any>,
+  url: string,
+  item?: string | null,
+) {
   let entries: DocNode[];
   if (cachedEntries.has(url)) {
     entries = cachedEntries.get(url)!;
@@ -110,6 +160,7 @@ export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
       console.log(
         ` ${colors.yellow("doc time")}: ${colors.bold(`${end - lastLoad}ms`)}`,
       );
+      entries = mergeEntries(entries);
       cachedEntries.set(url, entries);
     } catch (e) {
       if (e instanceof Error) {
@@ -123,19 +174,41 @@ export const docGet: RouterMiddleware = async (ctx: RouterContext) => {
       }
     }
   }
-  const name = ctx.request.url.searchParams.get("name");
-  const kind = ctx.request.url.searchParams.get("kind") as
-    | DocNodeKind
-    | undefined;
+
   store.setState({ entries, url });
+  sheet.reset();
   ctx.response.body = getBody(
     renderSSR(
       <Body title="Deploy Doc" subtitle={url}>
-        {name && kind ? <DocEntry name={name} kind={kind} /> : <DocPrinter />}
+        {item ? <DocEntry item={item} /> : <DocPrinter />}
       </Body>,
     ),
     getStyleTag(sheet),
-    name && kind ? `${url} — ${name}` : url,
+    item ? `${url} — ${item}` : url,
   );
   ctx.response.type = "html";
+}
+
+export const pathGetHead: RouterMiddleware<PathRouteParams> = async (
+  ctx: RouterContext<PathRouteParams>,
+) => {
+  const url = `${ctx.params.proto}://${ctx.params.host}/${ctx.params.path ??
+    ""}`;
+  const item = ctx.params.item;
+  if (ctx.params.proto === "deno" && !cachedEntries.has(url)) {
+    const res = await fetch(
+      new URL(`../static/${ctx.params.host}.json`, import.meta.url),
+    );
+    if (res.status === 200) {
+      cachedEntries.set(url, mergeEntries(await res.json()));
+    }
+  }
+  return process(ctx, url, item);
+};
+
+export const docGet: RouterMiddleware = (ctx: RouterContext) => {
+  const url = ctx.request.url.searchParams.get("url");
+  ctx.assert(url, Status.BadRequest, "The query property `url` is missing.");
+  const item = ctx.request.url.searchParams.get("item");
+  return process(ctx, url, item);
 };
