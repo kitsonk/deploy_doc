@@ -25,6 +25,10 @@ export * as colors from "https://deno.land/std@0.106.0/fmt/colors.ts";
 export * as htmlEntities from "https://cdn.skypack.dev/html-entities@2.3.2?dts";
 
 export { apply, setup, tw } from "https://cdn.skypack.dev/twind@0.16.16?dts";
+export type {
+  CSSRules,
+  Directive,
+} from "https://cdn.skypack.dev/twind@0.16.16?dts";
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/sheets/sheets.d.ts
 export {
   getStyleTag,

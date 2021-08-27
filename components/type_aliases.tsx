@@ -1,0 +1,58 @@
+/** @jsx h */
+import { h, tw } from "../deps.ts";
+import type { DocNodeTypeAlias } from "../deps.ts";
+import {
+  byName,
+  code,
+  entryTitle,
+  getName,
+  keyword,
+  largeMarkdown,
+  mainBox,
+  Markdown,
+  Node,
+  NodeLink,
+  section,
+} from "./common.tsx";
+import type { NodeProps, NodesProps } from "./common.tsx";
+import { TypeDef, TypeParams } from "./types.tsx";
+
+class TypeAliasNode extends Node<DocNodeTypeAlias> {
+  render() {
+    const { node, path } = this.props;
+    return (
+      <li>
+        <h3 class={tw`text-yellow-600`}>
+          <NodeLink node={node} path={path} />
+        </h3>
+        <Markdown jsDoc={node.jsDoc} />
+      </li>
+    );
+  }
+}
+
+export function TypeAliases({ nodes, path }: NodesProps<DocNodeTypeAlias>) {
+  const items = nodes.sort(byName).map((node) =>
+    <TypeAliasNode node={node} path={path} />
+  );
+  return (
+    <div>
+      <h2 class={tw`${section}`}>Type Alias</h2>
+      <ul>{items}</ul>
+    </div>
+  );
+}
+
+export function TypeAliasEntry({ node, path }: NodeProps<DocNodeTypeAlias>) {
+  return (
+    <div class={tw`${mainBox}`}>
+      <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
+      <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
+      <div class={tw`${code}`}>
+        <span class={tw`${keyword}`}>type</span> {node.name}
+        <TypeParams params={node.typeAliasDef.typeParams} /> ={" "}
+        <TypeDef def={node.typeAliasDef.tsType} terminate />
+      </div>
+    </div>
+  );
+}

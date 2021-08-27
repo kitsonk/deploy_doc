@@ -3,7 +3,7 @@
 import {
   createWorker,
   handlers,
-} from "https://deno.land/x/dectyl@0.10.4/mod.ts";
+} from "https://deno.land/x/dectyl@0.10.5/mod.ts";
 
 await Deno.permissions.request({ name: "read" });
 await Deno.permissions.request({ name: "net" });
