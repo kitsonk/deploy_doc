@@ -14,7 +14,10 @@ const builtInDoc = await doc("https://doc-proxy.deno.dev/builtin/stable");
 console.log(
   `${colors.bold(colors.green("Saving"))} Deno CLI built-ins...`,
 );
-await Deno.writeTextFile("./static/stable.json", JSON.stringify(builtInDoc));
+await Deno.writeTextFile(
+  "./static/stable.json",
+  JSON.stringify(builtInDoc, undefined, "  "),
+);
 
 console.log(
   `${colors.bold(colors.green("Documenting"))} Deno CLI unstable built-ins...`,
@@ -27,7 +30,7 @@ console.log(
 );
 await Deno.writeTextFile(
   "./static/unstable.json",
-  JSON.stringify(unstableDoc),
+  JSON.stringify(unstableDoc, undefined, "  "),
 );
 
 console.log(`${colors.bold(colors.green("Documenting"))} lib esnext...`);
@@ -91,7 +94,7 @@ console.log(
 );
 await Deno.writeTextFile(
   "./static/esnext.json",
-  JSON.stringify(esnextDoc),
+  JSON.stringify(esnextDoc, undefined, "  "),
 );
 
 console.log(`${colors.bold(colors.green("Documenting"))} lib dom...`);
@@ -102,6 +105,9 @@ const domPromises = ["dom", "dom.iterable", "dom.asynciterable"].map((lib) =>
 );
 console.log(`${colors.bold(colors.green("Saving"))} lib dom...`);
 const domDoc = (await Promise.all(domPromises)).flat();
-await Deno.writeTextFile("./static/dom.json", JSON.stringify(domDoc));
+await Deno.writeTextFile(
+  "./static/dom.json",
+  JSON.stringify(domDoc, undefined, "  "),
+);
 
 console.log(colors.bold(colors.green("Done.")));
