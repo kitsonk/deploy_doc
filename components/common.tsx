@@ -9,9 +9,11 @@ import type {
   DocNodeFunction,
   DocNodeImport,
   DocNodeInterface,
+  DocNodeModuleDoc,
   DocNodeNamespace,
   DocNodeTypeAlias,
   DocNodeVariable,
+  JsDoc,
   Location,
 } from "../deps.ts";
 import { store } from "../shared.ts";
@@ -21,6 +23,7 @@ import { assert } from "../util.ts";
 export const TARGET_RE = /(\s|[\[\]])/g;
 
 export interface DocNodeCollection {
+  moduleDoc?: DocNodeModuleDoc[];
   import?: DocNodeImport[];
   namespace?: DocNodeNamespace[];
   class?: DocNodeClass[];
@@ -32,9 +35,8 @@ export interface DocNodeCollection {
 }
 
 interface MarkdownProps {
-  jsDoc?: string;
+  jsDoc?: JsDoc;
   style?: Directive<CSSRules>;
-  tags?: string[];
 }
 
 export interface NodesProps<N extends DocNode> {
@@ -122,19 +124,12 @@ export function BreadCrumbs(
 }
 
 export function Markdown(
-  { jsDoc, style = smallMarkdown, tags = [] }: MarkdownProps,
+  { jsDoc, style = smallMarkdown }: MarkdownProps,
 ) {
-  if (!jsDoc) {
+  if (!jsDoc || !jsDoc.doc) {
     return;
   }
-  const value = jsDoc.split("\n").filter((line) => {
-    if (line.startsWith("@")) {
-      tags.push(line);
-      return false;
-    }
-    return true;
-  }).join("\n");
-  const tokens = rustyMarkdown.tokens(value, {
+  const tokens = rustyMarkdown.tokens(jsDoc.doc, {
     tables: true,
     strikethrough: true,
     smartPunctuation: true,

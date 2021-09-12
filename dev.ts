@@ -20,8 +20,8 @@ const deployDoc = await createWorker("./main.ts", {
   }
 })();
 
-const listenOptions = { hostname: "localhost", port: 8080 };
+const listenOptions = { port: 8080 };
 await deployDoc.listen(listenOptions);
 console.log(
-  `Listening on: http://${listenOptions.hostname}:${listenOptions.port}/`,
+  `Listening on: http://0.0.0.0:${listenOptions.port}/`,
 );

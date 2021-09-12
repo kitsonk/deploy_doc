@@ -15,5 +15,8 @@
     "extensions": [
         "denoland.vscode-deno"
     ],
+    "forwardPorts": [
+        8080
+    ],
     "remoteUser": "vscode"
 }
