@@ -1,9 +1,10 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 import { Component, h, tw } from "../deps.ts";
-import type { DocNodeNamespace } from "../deps.ts";
+import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
+import { assert } from "../util.ts";
 import { ClassEntry, Classes } from "./classes.tsx";
 import { asCollection, mainBox } from "./common.tsx";
 import { EnumEntry, Enums } from "./enums.tsx";
@@ -18,6 +19,15 @@ type EmptyProps = Record<string, never>;
 
 interface DocEntryParams {
   item: string;
+}
+
+function assertAll<N extends DocNode>(
+  nodes: DocNode[],
+  kind: DocNode["kind"],
+): asserts nodes is N[] {
+  if (!nodes.every((n) => n.kind === kind)) {
+    throw new Error(`Not every node of kind "${kind}".`);
+  }
 }
 
 export class DocEntry extends Component<DocEntryParams> {
@@ -38,8 +48,8 @@ export class DocEntry extends Component<DocEntryParams> {
         }
       }
     }
-    const entry = entries.find((e) => e.name === name);
-    if (!entry) {
+    const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
+    if (!nodes.length) {
       return (
         <ErrorMessage title="Entry not found">
           The document entry named "{path ? [...path, name].join(".") : name}"
@@ -47,25 +57,32 @@ export class DocEntry extends Component<DocEntryParams> {
         </ErrorMessage>
       );
     }
-    switch (entry.kind) {
+    switch (nodes[0].kind) {
       case "class":
-        return <ClassEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <ClassEntry node={nodes[0]} path={path} />;
       case "enum":
-        return <EnumEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <EnumEntry node={nodes[0]} path={path} />;
       case "function":
-        return <FnEntry node={entry} path={path} />;
+        assertAll<DocNodeFunction>(nodes, "function");
+        return <FnEntry nodes={nodes} path={path} />;
       case "interface":
-        return <InterfaceEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <InterfaceEntry node={nodes[0]} path={path} />;
       case "namespace":
-        return <NamespaceEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <NamespaceEntry node={nodes[0]} path={path} />;
       case "typeAlias":
-        return <TypeAliasEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <TypeAliasEntry node={nodes[0]} path={path} />;
       case "variable":
-        return <VariableEntry node={entry} path={path} />;
+        assert(nodes.length === 1);
+        return <VariableEntry node={nodes[0]} path={path} />;
       default:
         return (
           <ErrorMessage title="Not Supported">
-            The kind of "{entry.kind}" is currently not supported.
+            The kind of "{nodes[0].kind}" is currently not supported.
           </ErrorMessage>
         );
     }

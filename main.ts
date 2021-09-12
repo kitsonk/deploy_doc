@@ -28,6 +28,14 @@ app.use(handleErrors);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+app.addEventListener("listen", (evt) => {
+  console.log(
+    `listening on ${
+      evt.secure ? "https" : "http"
+    }://${evt.hostname}:${evt.port}/`,
+  );
+});
+
 app.addEventListener("error", (evt) => {
   let msg = `[${colors.red("error")}] `;
   if (evt.error instanceof Error) {

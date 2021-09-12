@@ -12,7 +12,7 @@ import {
   Markdown,
   Node,
   NodeLink,
-  section,
+  Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
 import { TypeDef, TypeParams } from "./types.tsx";
@@ -22,7 +22,7 @@ class TypeAliasNode extends Node<DocNodeTypeAlias> {
     const { node, path } = this.props;
     return (
       <li>
-        <h3 class={tw`text-yellow-600`}>
+        <h3 class={tw`text-yellow-600 mx-2`}>
           <NodeLink node={node} path={path} />
         </h3>
         <Markdown jsDoc={node.jsDoc} />
@@ -37,7 +37,7 @@ export function TypeAliases({ nodes, path }: NodesProps<DocNodeTypeAlias>) {
   );
   return (
     <div>
-      <h2 class={tw`${section}`}>Type Alias</h2>
+      <Section>Type Aliases</Section>
       <ul>{items}</ul>
     </div>
   );

@@ -2,6 +2,8 @@
 /** @jsxFrag Fragment */
 import { Component, Fragment, h, htmlEntities, tw } from "../deps.ts";
 import type {
+  CSSRules,
+  Directive,
   TsTypeArrayDef,
   TsTypeConditionalDef,
   TsTypeDef,
@@ -37,7 +39,14 @@ interface TypeDefProps<T extends TsTypeDef> {
   def: T;
   inline?: boolean;
   terminate?: boolean;
+  styles?: Record<string, Directive<CSSRules>>;
 }
+
+const coloredStyles = {
+  keyword,
+};
+
+export const plainStyles = {};
 
 export function TypeArguments(
   { args }: { args: TsTypeDef[] | undefined | null },
@@ -64,12 +73,14 @@ function TypeDefArray({ def }: TypeDefProps<TsTypeArrayDef>) {
 }
 
 function TypeDefConditional(
-  { def: { conditionalType } }: TypeDefProps<TsTypeConditionalDef>,
+  { def: { conditionalType }, styles = coloredStyles }: TypeDefProps<
+    TsTypeConditionalDef
+  >,
 ) {
   return (
     <span>
       <TypeDef def={conditionalType.checkType} />{" "}
-      <span class={tw`${keyword}`}>extends</span>{" "}
+      <span class={tw`${styles.keyword}`}>extends</span>{" "}
       <TypeDef def={conditionalType.extendsType} /> ?{" "}
       <TypeDef def={conditionalType.trueType} /> :{" "}
       <TypeDef def={conditionalType.falseType} />

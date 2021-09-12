@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --unstable --allow-read --allow-net --no-check
+#!/usr/bin/env -S deno run --unstable --allow-read --allow-net
 
 import {
   createWorker,

@@ -24,7 +24,7 @@ import {
   Markdown,
   Node,
   NodeLink,
-  section,
+  Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
 import { Params } from "./params.tsx";
@@ -71,6 +71,37 @@ export function IndexSignatures(
   return <div class={tw`ml-4`}>{children}</div>;
 }
 
+export function IndexSignaturesDoc(
+  { items }: {
+    items: (
+      | LiteralIndexSignatureDef
+      | InterfaceIndexSignatureDef
+      | ClassIndexSignatureDef
+    )[];
+  },
+) {
+  if (!items.length) {
+    return;
+  }
+  const children = items.map((s) => (
+    <div>
+      {s.readonly
+        ? <span class={tw`font-bold`}>readonly{" "}</span>
+        : undefined}[<Params params={s.params} />]{s.tsType && (
+        <span>
+          : <TypeDef def={s.tsType} inline />
+        </span>
+      )};
+    </div>
+  ));
+  return (
+    <div>
+      <Section>Index Signatures</Section>
+      {children}
+    </div>
+  );
+}
+
 export function InterfaceEntry({ node, path }: NodeProps<DocNodeInterface>) {
   return (
     <div class={tw`${mainBox}`}>
@@ -109,7 +140,7 @@ class InterfaceNode extends Node<DocNodeInterface> {
     const { node, path } = this.props;
     return (
       <li>
-        <h3 class={tw`text-green-500`}>
+        <h3 class={tw`text-green-500 mx-2`}>
           <NodeLink node={node} path={path} />
         </h3>
         <Markdown jsDoc={node.jsDoc} />
@@ -124,7 +155,7 @@ export function Interfaces({ nodes, path }: NodesProps<DocNodeInterface>) {
   );
   return (
     <div>
-      <h2 class={tw`${section}`}>Interfaces</h2>
+      <Section>Interfaces</Section>
       <ul>{items}</ul>
     </div>
   );

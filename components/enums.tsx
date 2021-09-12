@@ -12,7 +12,7 @@ import {
   Markdown,
   Node,
   NodeLink,
-  section,
+  Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
 
@@ -21,7 +21,7 @@ class EnumNode extends Node<DocNodeEnum> {
     const { node, path } = this.props;
     return (
       <li>
-        <h3 class={tw`text-green-400`}>
+        <h3 class={tw`text-green-400 mx-2`}>
           <NodeLink node={node} path={path} />
         </h3>
         <Markdown jsDoc={node.jsDoc} />
@@ -36,7 +36,7 @@ export function Enums({ nodes, path }: NodesProps<DocNodeEnum>) {
   );
   return (
     <div>
-      <h2 class={tw`${section}`}>Enums</h2>
+      <Section>Enums</Section>
       <ul>{items}</ul>
     </div>
   );

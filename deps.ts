@@ -29,6 +29,8 @@ export type {
   CSSRules,
   Directive,
 } from "https://cdn.skypack.dev/twind@0.16.16?dts";
+// @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/css/css.d.ts
+export { css, theme } from "https://cdn.skypack.dev/twind@0.16.16/css";
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/sheets/sheets.d.ts
 export {
   getStyleTag,
@@ -46,11 +48,11 @@ import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
 
 export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/02a05ad8a2e1d9dee927a11de54d4de73fe8f692/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/02a05ad8a2e1d9dee927a11de54d4de73fe8f692/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -75,6 +77,11 @@ export type {
   LiteralIndexSignatureDef,
   LiteralMethodDef,
   LiteralPropertyDef,
+  Location,
+  ObjectPatPropAssignDef,
+  ObjectPatPropDef,
+  ObjectPatPropKeyValueDef,
+  ObjectPatPropRestDef,
   ParamArrayDef,
   ParamAssignDef,
   ParamDef,
@@ -100,4 +107,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/02a05ad8a2e1d9dee927a11de54d4de73fe8f692/lib/types.d.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/lib/types.d.ts";

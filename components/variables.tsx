@@ -12,7 +12,7 @@ import {
   Markdown,
   Node,
   NodeLink,
-  section,
+  Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
 import { TypeDef } from "./types.tsx";
@@ -22,7 +22,7 @@ class VariableNode extends Node<DocNodeVariable> {
     const { node, path } = this.props;
     return (
       <li>
-        <h3 class={tw`text-blue-600`}>
+        <h3 class={tw`text-blue-600 mx-2`}>
           <NodeLink node={node} path={path} />
         </h3>
         <Markdown jsDoc={node.jsDoc} />
@@ -37,7 +37,7 @@ export function Variables({ nodes, path }: NodesProps<DocNodeVariable>) {
   );
   return (
     <div>
-      <h2 class={tw`${section}`}>Variables</h2>
+      <Section>Variables</Section>
       <ul>{items}</ul>
     </div>
   );

@@ -1,6 +1,10 @@
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type {
+  ObjectPatPropAssignDef,
+  ObjectPatPropDef,
+  ObjectPatPropKeyValueDef,
+  ObjectPatPropRestDef,
   ParamArrayDef,
   ParamAssignDef,
   ParamDef,
@@ -11,31 +15,30 @@ import type {
 import { TypeDef } from "./types.tsx";
 
 interface ParamProps<P extends ParamDef> {
-  index?: string;
   item: P;
   optional?: boolean;
 }
 
-function Param({ item, optional, index }: ParamProps<ParamDef>) {
+function Param({ item, optional }: ParamProps<ParamDef>) {
   switch (item.kind) {
     case "array":
-      return <ParamArray item={item} optional={optional} index={index} />;
+      return <ParamArray item={item} optional={optional} />;
     case "assign":
-      return <ParamAssign item={item} index={index} />;
+      return <ParamAssign item={item} />;
     case "identifier":
-      return <ParamIdentifier item={item} optional={optional} index={index} />;
+      return <ParamIdentifier item={item} optional={optional} />;
     case "object":
-      return <ParamObject item={item} optional={optional} index={index} />;
+      return <ParamObject item={item} optional={optional} />;
     case "rest":
-      return <ParamRest item={item} index={index} />;
+      return <ParamRest item={item} />;
   }
 }
 
-function ParamArray({ item, optional, index }: ParamProps<ParamArrayDef>) {
+function ParamArray({ item, optional }: ParamProps<ParamArrayDef>) {
   return (
     <span>
       [{item.elements.map((e, i) =>
-        e && <Param item={e} index={`${index}${i}`} />
+        e && <Param item={e} />
       )}]{item.optional || optional ? "?" : ""}
       {item.tsType && (
         <span>
@@ -46,10 +49,10 @@ function ParamArray({ item, optional, index }: ParamProps<ParamArrayDef>) {
   );
 }
 
-function ParamAssign({ item, index }: ParamProps<ParamAssignDef>) {
+function ParamAssign({ item }: ParamProps<ParamAssignDef>) {
   return (
     <span>
-      <Param item={item.left} optional index={index} />
+      <Param item={item.left} optional />
       {item.tsType &&
         <TypeDef def={item.tsType} inline />}
     </span>
@@ -70,10 +73,59 @@ function ParamIdentifier({ item, optional }: ParamProps<ParamIdentifierDef>) {
   );
 }
 
-function ParamObject({ item, optional, index }: ParamProps<ParamObjectDef>) {
+interface ObjectPatProps<I extends ObjectPatPropDef> {
+  item: I;
+}
+
+function ObjectPat({ item }: ObjectPatProps<ObjectPatPropDef>) {
+  switch (item.kind) {
+    case "assign":
+      return <ObjectAssignPat item={item} />;
+    case "keyValue":
+      return <ObjectKeyValuePat item={item} />;
+    case "rest":
+      return <ObjectRestPat item={item} />;
+  }
+}
+
+function ObjectAssignPat({ item }: ObjectPatProps<ObjectPatPropAssignDef>) {
   return (
     <span>
-      {`param${index}`}
+      {item.key}
+      {item.value && item.value !== "<UNIMPLEMENTED>"
+        ? `: ${item.value}`
+        : undefined}
+    </span>
+  );
+}
+
+function ObjectKeyValuePat({ item }: ObjectPatProps<ObjectPatPropKeyValueDef>) {
+  return (
+    <span>
+      {item.key}: <Param item={item.value} />
+    </span>
+  );
+}
+
+function ObjectRestPat({ item }: ObjectPatProps<ObjectPatPropRestDef>) {
+  return (
+    <span>
+      ...<Param item={item.arg} />
+    </span>
+  );
+}
+
+function ParamObject({ item, optional }: ParamProps<ParamObjectDef>) {
+  const props = [];
+  for (let i = 0; i < item.props.length; i++) {
+    props.push(<ObjectPat item={item.props[i]} />);
+    if (i < item.props.length - 1) {
+      props.push(<span>,{" "}</span>);
+    }
+  }
+  return (
+    <span>
+      &#123; {props} &#125;
       {item.optional || optional ? "?" : ""}
       {item.tsType && (
         <span>
@@ -84,10 +136,10 @@ function ParamObject({ item, optional, index }: ParamProps<ParamObjectDef>) {
   );
 }
 
-function ParamRest({ item, index }: ParamProps<ParamRestDef>) {
+function ParamRest({ item }: ParamProps<ParamRestDef>) {
   return (
     <span>
-      ...<Param item={item.arg} index={index} />
+      ...<Param item={item.arg} />
       {item.tsType && (
         <span>
           : <TypeDef def={item.tsType} inline />
@@ -107,16 +159,16 @@ export function Params(
   if (params.length < 3 || inline) {
     const children = [];
     for (let i = 0; i < params.length; i++) {
-      children.push(<Param item={params[i]} index={String(i)} />);
+      children.push(<Param item={params[i]} />);
       if (i < params.length - 1) {
         children.push(<span>,{" "}</span>);
       }
     }
     return children;
   }
-  return params.map((p, i) => (
+  return params.map((p) => (
     <div class={tw`ml-4`}>
-      <Param item={p} index={String(i)} />
+      <Param item={p} />
     </div>
   ));
 }

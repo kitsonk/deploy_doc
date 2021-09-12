@@ -30,7 +30,7 @@ export class SpecifierForm extends Component {
       <form
         action="/doc"
         method="get"
-        class={tw`w-full bg-gray-200 rounded-lg`}
+        class={tw`w-full bg-gray-50 rounded-lg`}
       >
         <div class={tw`w-full my-2 px-12 pt-12 space-y-6`}>
           <p>
@@ -57,6 +57,32 @@ export class SpecifierForm extends Component {
             />
           </p>
           <p>
+            There are a few built-in libraries that you can get documentation
+            for:
+            <ul class={tw`text-sm list-disc list-inside ml-4`}>
+              <li>
+                <a class={tw`hover:text-blue-800`} href="/deno/stable">
+                  Deno Built-In Library
+                </a>
+              </li>
+              <li>
+                <a class={tw`hover:text-blue-800`} href="/deno/unstable">
+                  Deno Unstable Built-In Library
+                </a>
+              </li>
+              <li>
+                <a class={tw`hover:text-blue-800`} href="/deno/esnext">
+                  ESNext Library
+                </a>
+              </li>
+              <li>
+                <a class={tw`hover:text-blue-800`} href="/deno/dom">
+                  DOM Library
+                </a>
+              </li>
+            </ul>
+          </p>
+          <p>
             The source for this web application is available{" "}
             <a
               class={tw`text-blue-800`}
@@ -68,7 +94,7 @@ export class SpecifierForm extends Component {
             and you can{" "}
             <a
               class={tw
-                `bg-white text-sm text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-4 inline-flex items-center`}
+                `bg-white text-sm text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-4 inline-flex items-center focus:outline-none focus:ring-2 focus:ring-green-800 focus:ring-opacity-50`}
               href={`https://dash.deno.com/new?url=${
                 encodeURIComponent(
                   "https://raw.githubusercontent.com/kitsonk/deploy_doc/main/main.ts",
@@ -107,13 +133,13 @@ export class SpecifierForm extends Component {
               name="url"
               id="url"
               class={tw
-                `px-10 w-full border rounded py-2 text-gray-700 focus:outline-none`}
+                `px-10 w-full border rounded py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent`}
             />
           </div>
           <button
             type="submit"
             class={tw
-              `w-full py-2 rounded-full bg-green-600 text-gray-100 focus:outline-none`}
+              `w-full py-2 rounded-full bg-green-600 text-gray-100 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-800 focus:ring-opacity-50`}
           >
             Graph...
           </button>
