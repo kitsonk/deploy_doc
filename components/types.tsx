@@ -328,9 +328,9 @@ class TypeRefLink extends Component<TypeDefLinkProps> {
     }
     const ref = (link.kind === "import" ? link.importDef.src : url)
       .replace("://", "/");
-    const href = `/${ref}${
-      ref.endsWith("/") ? "" : "/"
-    }~/${link.name}${anchor && `#${anchor}`}`;
+    const href = `/${ref}${ref.endsWith("/") ? "" : "/"}~/${link.name}${
+      anchor && `#${anchor}`
+    }`;
     return <a href={href} class={tw`underline`}>{children}</a>;
   }
 }

@@ -42,9 +42,9 @@ export function Fns({ nodes, path }: NodesProps<DocNodeFunction>) {
       flattened.set(node.name, node);
     }
   }
-  const items = [...flattened.values()].sort(byName).map((node) =>
+  const items = [...flattened.values()].sort(byName).map((node) => (
     <FnNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Functions</Section>

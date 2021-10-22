@@ -92,8 +92,8 @@ function ObjectAssignPat({ item }: ObjectPatProps<ObjectPatPropAssignDef>) {
   return (
     <span>
       {item.key}
-      {item.value && item.value !== "<UNIMPLEMENTED>"
-        ? `: ${item.value}`
+      {item.value && item.value !== "[UNSUPPORTED]"
+        ? `= ${item.value}`
         : undefined}
     </span>
   );

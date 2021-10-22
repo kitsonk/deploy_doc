@@ -150,9 +150,9 @@ class InterfaceNode extends Node<DocNodeInterface> {
 }
 
 export function Interfaces({ nodes, path }: NodesProps<DocNodeInterface>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <InterfaceNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Interfaces</Section>

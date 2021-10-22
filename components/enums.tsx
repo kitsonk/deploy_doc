@@ -31,9 +31,9 @@ class EnumNode extends Node<DocNodeEnum> {
 }
 
 export function Enums({ nodes, path }: NodesProps<DocNodeEnum>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <EnumNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Enums</Section>

@@ -32,9 +32,9 @@ class VariableNode extends Node<DocNodeVariable> {
 }
 
 export function Variables({ nodes, path }: NodesProps<DocNodeVariable>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <VariableNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Variables</Section>

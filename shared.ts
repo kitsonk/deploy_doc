@@ -1,4 +1,12 @@
-import { setup, Store, twColors, virtualSheet } from "./deps.ts";
+import type { PrintTheme } from "./components/common.tsx";
+import {
+  getState as nanoGetSate,
+  setState as nanoSetState,
+  setup,
+  Store,
+  twColors,
+  virtualSheet,
+} from "./deps.ts";
 import type { DocNode } from "./deps.ts";
 
 export const store = new Store({
@@ -35,3 +43,21 @@ setup({
     },
   },
 });
+
+export const PRINT_THEME = "printer_styles";
+
+interface GetState {
+  (id: typeof PRINT_THEME): PrintTheme | undefined;
+  // deno-lint-ignore no-explicit-any
+  (id: string): any;
+}
+
+interface SetState {
+  // deno-lint-ignore no-explicit-any
+  (id: typeof PRINT_THEME, value: PrintTheme | undefined): Map<string, any>;
+  // deno-lint-ignore no-explicit-any
+  (id: string, value: any): Map<string, any>;
+}
+
+export const getState = nanoGetSate as GetState;
+export const setState = nanoSetState as SetState;

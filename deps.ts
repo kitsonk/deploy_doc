@@ -20,7 +20,7 @@ export type {
   RouterMiddleware,
 } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
-export * as colors from "https://deno.land/std@0.106.0/fmt/colors.ts";
+export * as colors from "https://deno.land/std@0.111.0/fmt/colors.ts";
 
 export * as htmlEntities from "https://cdn.skypack.dev/html-entities@2.3.2?dts";
 
@@ -45,14 +45,18 @@ export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.20/fragment.ts";
 export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.20/ssr.ts";
 export { Store } from "https://deno.land/x/nano_jsx@v0.0.20/store.ts";
 import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
+export {
+  getState,
+  setState,
+} from "https://deno.land/x/nano_jsx@v0.0.20/hooks/useState.ts";
 
 export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/mod.ts";
+export { doc } from "https://deno.land/x/deno_doc@v0.17.1/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/mod.ts";
+} from "https://deno.land/x/deno_doc@v0.17.1/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -109,4 +113,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/e5e1d3cc9e698c07c22cd7614554f06a4a4b0bd5/lib/types.d.ts";
+} from "https://deno.land/x/deno_doc@v0.17.1/lib/types.d.ts";

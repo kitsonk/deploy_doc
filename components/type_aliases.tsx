@@ -32,9 +32,9 @@ class TypeAliasNode extends Node<DocNodeTypeAlias> {
 }
 
 export function TypeAliases({ nodes, path }: NodesProps<DocNodeTypeAlias>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <TypeAliasNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Type Aliases</Section>

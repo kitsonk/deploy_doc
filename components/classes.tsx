@@ -8,11 +8,13 @@ import type {
   DocNodeClass,
   TsTypeDef,
 } from "../deps.ts";
+import { getState, PRINT_THEME, setState } from "../shared.ts";
 import { assert } from "../util.ts";
 import {
   Anchor,
   byName,
   code,
+  codeBlockPrintTheme,
   docItem,
   entryTitle,
   getName,
@@ -21,6 +23,7 @@ import {
   mainBox,
   Markdown,
   Node,
+  NodeItemsProps,
   NodeLink,
   Section,
   SourceLink,
@@ -396,15 +399,55 @@ class ClassNode extends Node<DocNodeClass> {
 }
 
 export function Classes({ nodes, path }: NodesProps<DocNodeClass>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <ClassNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Classes</Section>
       <ul>{items}</ul>
     </div>
   );
+}
+
+function ClassCodeBlock(
+  { node, items }: NodeItemsProps<
+    DocNodeClass,
+    ClassPropertyDef | ClassMethodDef
+  >,
+) {
+  const hasElements = !!(node.classDef.constructors.length ||
+    node.classDef.indexSignatures.length || items.length);
+  const prev = getState(PRINT_THEME);
+  setState(PRINT_THEME, codeBlockPrintTheme);
+  const codeBlock = (
+    <div class={tw`${code}`}>
+      <span class={tw`${codeBlockPrintTheme.keyword}`}>
+        {node.classDef.isAbstract ? "abstract " : ""}class
+      </span>{" "}
+      {node.name}
+      <TypeParams params={node.classDef.typeParams} />
+      {node.classDef.extends && (
+        <span>
+          {" "}extends {node.classDef.extends}
+          <TypeArguments args={node.classDef.superTypeParams} />
+        </span>
+      )}
+      <Implements types={node.classDef.implements} /> &#123;
+      {hasElements
+        ? (
+          <div class={tw`flex flex-col space-y-4`}>
+            <Constructors items={node.classDef.constructors} />
+            <IndexSignatures items={node.classDef.indexSignatures} />
+            <ClassItems items={items} />
+          </div>
+        )
+        : " "}
+      &#125;
+    </div>
+  );
+  setState(PRINT_THEME, prev);
+  return codeBlock;
 }
 
 export function ClassEntry({ node, path }: NodeProps<DocNodeClass>) {
@@ -430,36 +473,11 @@ export function ClassEntry({ node, path }: NodeProps<DocNodeClass>) {
       return isClassProperty(a) ? -1 : 1;
     },
   );
-  const hasElements = !!(node.classDef.constructors.length ||
-    node.classDef.indexSignatures.length || items.length);
   return (
     <div class={tw`${mainBox}`}>
       <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
       <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
-      <div class={tw`${code}`}>
-        <span class={tw`${keyword}`}>
-          {node.classDef.isAbstract ? "abstract " : ""}class
-        </span>{" "}
-        {node.name}
-        <TypeParams params={node.classDef.typeParams} />
-        {node.classDef.extends && (
-          <span>
-            {" "}extends {node.classDef.extends}
-            <TypeArguments args={node.classDef.superTypeParams} />
-          </span>
-        )}
-        <Implements types={node.classDef.implements} /> &#123;
-        {hasElements
-          ? (
-            <div class={tw`flex flex-col space-y-4`}>
-              <Constructors items={node.classDef.constructors} />
-              <IndexSignatures items={node.classDef.indexSignatures} />
-              <ClassItems items={items} />
-            </div>
-          )
-          : " "}
-        &#125;
-      </div>
+      <ClassCodeBlock node={node} items={items} />
       <div class={tw`mt-4`}>
         <ConstructorsDoc items={node.classDef.constructors} name={node.name} />
         <IndexSignaturesDoc items={node.classDef.indexSignatures} />

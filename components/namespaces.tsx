@@ -36,9 +36,9 @@ class NamespaceNode extends Node<DocNodeNamespace> {
 }
 
 export function Namespaces({ nodes, path }: NodesProps<DocNodeNamespace>) {
-  const items = nodes.sort(byName).map((node) =>
+  const items = nodes.sort(byName).map((node) => (
     <NamespaceNode node={node} path={path} />
-  );
+  ));
   return (
     <div>
       <Section>Namespaces</Section>

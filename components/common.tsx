@@ -49,6 +49,11 @@ export interface NodeProps<N extends DocNode> {
   path?: string[];
 }
 
+export interface NodeItemsProps<Node extends DocNode, Items> {
+  node: Node;
+  items: Items[];
+}
+
 export const code = apply`font-mono p-2 bg-gray-900 rounded text-white`;
 export const docItem = apply`group relative`;
 export const entryTitle = apply
@@ -78,6 +83,16 @@ const markdown = css({
 
 export const largeMarkdown = apply
   `mt-4 mb-8 mx-2 flex flex-col space-y-4 ${markdown}`;
+
+export const defaultPrintTheme = {
+  keyword: apply``,
+};
+
+export type PrintTheme = typeof defaultPrintTheme;
+
+export const codeBlockPrintTheme: PrintTheme = {
+  keyword,
+};
 
 export function asCollection(entries: DocNode[]): DocNodeCollection {
   const collection: DocNodeCollection = {};

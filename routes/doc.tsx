@@ -192,8 +192,10 @@ async function process(
 export const pathGetHead: RouterMiddleware<PathRouteParams> = async (
   ctx: RouterContext<PathRouteParams>,
 ) => {
-  const url = `${ctx.params.proto}://${ctx.params.host}/${ctx.params.path ??
-    ""}`;
+  const url = `${ctx.params.proto}://${ctx.params.host}/${
+    ctx.params.path ??
+      ""
+  }`;
   const item = ctx.params.item;
   if (ctx.params.proto === "deno" && !cachedEntries.has(url)) {
     const res = await fetch(
