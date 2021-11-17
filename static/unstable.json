@@ -495,11 +495,29 @@
                   "repr": "",
                   "kind": "array",
                   "array": {
-                    "repr": "NativeType",
-                    "kind": "typeRef",
-                    "typeRef": {
-                      "typeParams": null,
-                      "typeName": "NativeType"
+                    "repr": "",
+                    "kind": "parenthesized",
+                    "parenthesized": {
+                      "repr": "",
+                      "kind": "union",
+                      "union": [
+                        {
+                          "repr": "NativeType",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "NativeType"
+                          }
+                        },
+                        {
+                          "repr": "buffer",
+                          "kind": "literal",
+                          "literal": {
+                            "kind": "string",
+                            "string": "buffer"
+                          }
+                        }
+                      ]
                     }
                   }
                 },
@@ -524,6 +542,26 @@
                   }
                 },
                 "typeParams": []
+              },
+              {
+                "name": "nonblocking",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 127,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "When true, function calls will run on a dedicated blocking thread and will return a Promise resolving to the `result`."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                },
+                "typeParams": []
               }
             ],
             "callSignatures": [],
@@ -536,7 +574,7 @@
           "name": "DynamicLibrary",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 129,
+            "line": 131,
             "col": 2
           },
           "jsDoc": {
@@ -550,7 +588,7 @@
                 "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 133,
+                  "line": 135,
                   "col": 4
                 },
                 "optional": false,
@@ -568,7 +606,7 @@
                 "name": "symbols",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 131,
+                  "line": 133,
                   "col": 4
                 },
                 "jsDoc": {
@@ -673,7 +711,7 @@
           "name": "dlopen",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 140,
+            "line": 142,
             "col": 2
           },
           "jsDoc": {
@@ -772,7 +810,7 @@
           "name": "DiagnosticCategory",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 146,
+            "line": 148,
             "col": 2
           },
           "jsDoc": {
@@ -800,7 +838,7 @@
           "name": "DiagnosticMessageChain",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 153,
+            "line": 155,
             "col": 2
           },
           "interfaceDef": {
@@ -811,7 +849,7 @@
                 "name": "messageText",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 154,
+                  "line": 156,
                   "col": 4
                 },
                 "params": [],
@@ -828,7 +866,7 @@
                 "name": "category",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 155,
+                  "line": 157,
                   "col": 4
                 },
                 "params": [],
@@ -848,7 +886,7 @@
                 "name": "code",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 156,
+                  "line": 158,
                   "col": 4
                 },
                 "params": [],
@@ -865,7 +903,7 @@
                 "name": "next",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 157,
+                  "line": 159,
                   "col": 4
                 },
                 "params": [],
@@ -896,7 +934,7 @@
           "name": "Diagnostic",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 160,
+            "line": 162,
             "col": 2
           },
           "interfaceDef": {
@@ -907,7 +945,7 @@
                 "name": "messageText",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 162,
+                  "line": 164,
                   "col": 4
                 },
                 "jsDoc": {
@@ -927,7 +965,7 @@
                 "name": "messageChain",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 164,
+                  "line": 166,
                   "col": 4
                 },
                 "jsDoc": {
@@ -950,7 +988,7 @@
                 "name": "relatedInformation",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 167,
+                  "line": 169,
                   "col": 4
                 },
                 "jsDoc": {
@@ -977,7 +1015,7 @@
                 "name": "sourceLine",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 169,
+                  "line": 171,
                   "col": 4
                 },
                 "jsDoc": {
@@ -997,7 +1035,7 @@
                 "name": "source",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 170,
+                  "line": 172,
                   "col": 4
                 },
                 "params": [],
@@ -1014,7 +1052,7 @@
                 "name": "start",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 172,
+                  "line": 174,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1064,7 +1102,7 @@
                 "name": "end",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 177,
+                  "line": 179,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1114,7 +1152,7 @@
                 "name": "fileName",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 182,
+                  "line": 184,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1134,7 +1172,7 @@
                 "name": "category",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 184,
+                  "line": 186,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1157,7 +1195,7 @@
                 "name": "code",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 186,
+                  "line": 188,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1184,7 +1222,7 @@
           "name": "formatDiagnostics",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 204,
+            "line": 206,
             "col": 2
           },
           "jsDoc": {
@@ -1232,7 +1270,7 @@
           "name": "CompilerOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 210,
+            "line": 212,
             "col": 2
           },
           "jsDoc": {
@@ -1246,7 +1284,7 @@
                 "name": "allowJs",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 212,
+                  "line": 214,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1266,7 +1304,7 @@
                 "name": "allowSyntheticDefaultImports",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 215,
+                  "line": 217,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1286,7 +1324,7 @@
                 "name": "allowUmdGlobalAccess",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 217,
+                  "line": 219,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1306,7 +1344,7 @@
                 "name": "allowUnreachableCode",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 219,
+                  "line": 221,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1326,7 +1364,7 @@
                 "name": "allowUnusedLabels",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 221,
+                  "line": 223,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1346,7 +1384,7 @@
                 "name": "alwaysStrict",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 224,
+                  "line": 226,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1366,7 +1404,7 @@
                 "name": "baseUrl",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 227,
+                  "line": 229,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1386,7 +1424,7 @@
                 "name": "charset",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 229,
+                  "line": 231,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1406,7 +1444,7 @@
                 "name": "checkJs",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 232,
+                  "line": 234,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1426,7 +1464,7 @@
                 "name": "declaration",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 234,
+                  "line": 236,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1446,7 +1484,7 @@
                 "name": "declarationDir",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 236,
+                  "line": 238,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1466,7 +1504,7 @@
                 "name": "declarationMap",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 239,
+                  "line": 241,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1486,7 +1524,7 @@
                 "name": "downlevelIteration",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 242,
+                  "line": 244,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1506,7 +1544,7 @@
                 "name": "emitDeclarationOnly",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 244,
+                  "line": 246,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1526,7 +1564,7 @@
                 "name": "emitDecoratorMetadata",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 248,
+                  "line": 250,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1546,7 +1584,7 @@
                 "name": "esModuleInterop",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 252,
+                  "line": 254,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1566,7 +1604,7 @@
                 "name": "experimentalDecorators",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 254,
+                  "line": 256,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1586,7 +1624,7 @@
                 "name": "importHelpers",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 257,
+                  "line": 259,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1606,7 +1644,7 @@
                 "name": "importsNotUsedAsValues",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 271,
+                  "line": 273,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1651,7 +1689,7 @@
                 "name": "inlineSourceMap",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 274,
+                  "line": 276,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1671,7 +1709,7 @@
                 "name": "inlineSources",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 277,
+                  "line": 279,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1691,11 +1729,11 @@
                 "name": "jsx",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 280,
+                  "line": 283,
                   "col": 4
                 },
                 "jsDoc": {
-                  "doc": "Support JSX in `.tsx` files: `\"react\"`, `\"preserve\"`, `\"react-native\"`.\nDefaults to `\"react\"`."
+                  "doc": "Support JSX in `.tsx` files: `\"react\"`, `\"preserve\"`, `\"react-native\"`,\n`\"react-jsx\", `\"react-jsxdev\"`.\nDefaults to `\"react\"`."
                 },
                 "params": [],
                 "computed": false,
@@ -1727,6 +1765,22 @@
                         "kind": "string",
                         "string": "react-native"
                       }
+                    },
+                    {
+                      "repr": "react-jsx",
+                      "kind": "literal",
+                      "literal": {
+                        "kind": "string",
+                        "string": "react-jsx"
+                      }
+                    },
+                    {
+                      "repr": "react-jsx-dev",
+                      "kind": "literal",
+                      "literal": {
+                        "kind": "string",
+                        "string": "react-jsx-dev"
+                      }
                     }
                   ]
                 },
@@ -1736,7 +1790,7 @@
                 "name": "jsxFactory",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 283,
+                  "line": 286,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1756,7 +1810,7 @@
                 "name": "jsxFragmentFactory",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 286,
+                  "line": 289,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1773,10 +1827,30 @@
                 "typeParams": []
               },
               {
+                "name": "jsxImportSource",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 293,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Declares the module specifier to be used for importing the `jsx` and\n`jsxs` factory functions when using jsx as `\"react-jsx\"` or\n`\"react-jsxdev\"`. Defaults to `\"react\"`."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                "typeParams": []
+              },
+              {
                 "name": "keyofStringsOnly",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 289,
+                  "line": 296,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1796,7 +1870,7 @@
                 "name": "lib",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 292,
+                  "line": 299,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1820,7 +1894,7 @@
                 "name": "locale",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 294,
+                  "line": 301,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1840,7 +1914,7 @@
                 "name": "mapRoot",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 300,
+                  "line": 307,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1860,7 +1934,7 @@
                 "name": "module",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 303,
+                  "line": 310,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1953,7 +2027,7 @@
                 "name": "noEmitHelpers",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 315,
+                  "line": 322,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1973,7 +2047,7 @@
                 "name": "noFallthroughCasesInSwitch",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 318,
+                  "line": 325,
                   "col": 4
                 },
                 "jsDoc": {
@@ -1993,7 +2067,7 @@
                 "name": "noImplicitAny",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 321,
+                  "line": 328,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2013,7 +2087,7 @@
                 "name": "noImplicitReturns",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 324,
+                  "line": 331,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2033,7 +2107,7 @@
                 "name": "noImplicitThis",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 327,
+                  "line": 334,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2053,7 +2127,7 @@
                 "name": "noImplicitUseStrict",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 330,
+                  "line": 337,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2073,7 +2147,7 @@
                 "name": "noLib",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 333,
+                  "line": 340,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2093,7 +2167,7 @@
                 "name": "noResolve",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 336,
+                  "line": 343,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2113,7 +2187,7 @@
                 "name": "noStrictGenericChecks",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 339,
+                  "line": 346,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2133,7 +2207,7 @@
                 "name": "noUncheckedIndexedAccess",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 341,
+                  "line": 348,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2153,7 +2227,7 @@
                 "name": "noUnusedLocals",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 343,
+                  "line": 350,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2173,7 +2247,7 @@
                 "name": "noUnusedParameters",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 345,
+                  "line": 352,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2193,7 +2267,7 @@
                 "name": "paths",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 348,
+                  "line": 355,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2231,7 +2305,7 @@
                 "name": "preserveConstEnums",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 351,
+                  "line": 358,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2251,7 +2325,7 @@
                 "name": "removeComments",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 354,
+                  "line": 361,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2271,7 +2345,7 @@
                 "name": "rootDir",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 357,
+                  "line": 364,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2291,7 +2365,7 @@
                 "name": "rootDirs",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 360,
+                  "line": 367,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2315,7 +2389,7 @@
                 "name": "sourceMap",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 362,
+                  "line": 369,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2335,7 +2409,7 @@
                 "name": "sourceRoot",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 368,
+                  "line": 375,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2355,7 +2429,7 @@
                 "name": "skipLibCheck",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 370,
+                  "line": 377,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2375,7 +2449,7 @@
                 "name": "strict",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 375,
+                  "line": 382,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2395,7 +2469,7 @@
                 "name": "strictBindCallApply",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 378,
+                  "line": 385,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2415,7 +2489,7 @@
                 "name": "strictFunctionTypes",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 381,
+                  "line": 388,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2435,7 +2509,7 @@
                 "name": "strictPropertyInitialization",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 385,
+                  "line": 392,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2455,7 +2529,7 @@
                 "name": "strictNullChecks",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 389,
+                  "line": 396,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2475,7 +2549,7 @@
                 "name": "suppressExcessPropertyErrors",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 392,
+                  "line": 399,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2495,7 +2569,7 @@
                 "name": "suppressImplicitAnyIndexErrors",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 395,
+                  "line": 402,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2515,7 +2589,7 @@
                 "name": "target",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 397,
+                  "line": 404,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2616,7 +2690,7 @@
                 "name": "types",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 428,
+                  "line": 435,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2640,7 +2714,7 @@
                 "name": "useDefineForClassFields",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 431,
+                  "line": 438,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2667,7 +2741,7 @@
           "name": "EmitOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 444,
+            "line": 451,
             "col": 2
           },
           "jsDoc": {
@@ -2681,7 +2755,7 @@
                 "name": "bundle",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 449,
+                  "line": 456,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2718,7 +2792,7 @@
                 "name": "check",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 457,
+                  "line": 464,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2738,7 +2812,7 @@
                 "name": "compilerOptions",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 460,
+                  "line": 467,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2761,7 +2835,7 @@
                 "name": "importMap",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 463,
+                  "line": 470,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2784,7 +2858,7 @@
                 "name": "importMapPath",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 471,
+                  "line": 478,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2804,7 +2878,7 @@
                 "name": "sources",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 474,
+                  "line": 481,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2845,7 +2919,7 @@
           "name": "EmitResult",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 482,
+            "line": 489,
             "col": 2
           },
           "jsDoc": {
@@ -2859,7 +2933,7 @@
                 "name": "diagnostics",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 487,
+                  "line": 494,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2886,7 +2960,7 @@
                 "name": "files",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 491,
+                  "line": 498,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2920,7 +2994,7 @@
                 "name": "ignoredOptions",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 493,
+                  "line": 500,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2944,7 +3018,7 @@
                 "name": "stats",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 496,
+                  "line": 503,
                   "col": 4
                 },
                 "jsDoc": {
@@ -2991,7 +3065,7 @@
           "name": "emit",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 521,
+            "line": 528,
             "col": 2
           },
           "jsDoc": {
@@ -3080,7 +3154,7 @@
           "name": "applySourceMap",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 563,
+            "line": 570,
             "col": 2
           },
           "jsDoc": {
@@ -3116,650 +3190,21 @@
           }
         },
         {
-          "kind": "typeAlias",
-          "name": "Signal",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 565,
-            "col": 2
-          },
-          "typeAliasDef": {
-            "tsType": {
-              "repr": "",
-              "kind": "union",
-              "union": [
-                {
-                  "repr": "SIGABRT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGABRT"
-                  }
-                },
-                {
-                  "repr": "SIGALRM",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGALRM"
-                  }
-                },
-                {
-                  "repr": "SIGBUS",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGBUS"
-                  }
-                },
-                {
-                  "repr": "SIGCHLD",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGCHLD"
-                  }
-                },
-                {
-                  "repr": "SIGCONT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGCONT"
-                  }
-                },
-                {
-                  "repr": "SIGEMT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGEMT"
-                  }
-                },
-                {
-                  "repr": "SIGFPE",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGFPE"
-                  }
-                },
-                {
-                  "repr": "SIGHUP",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGHUP"
-                  }
-                },
-                {
-                  "repr": "SIGILL",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGILL"
-                  }
-                },
-                {
-                  "repr": "SIGINFO",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGINFO"
-                  }
-                },
-                {
-                  "repr": "SIGINT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGINT"
-                  }
-                },
-                {
-                  "repr": "SIGIO",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGIO"
-                  }
-                },
-                {
-                  "repr": "SIGKILL",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGKILL"
-                  }
-                },
-                {
-                  "repr": "SIGPIPE",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGPIPE"
-                  }
-                },
-                {
-                  "repr": "SIGPROF",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGPROF"
-                  }
-                },
-                {
-                  "repr": "SIGPWR",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGPWR"
-                  }
-                },
-                {
-                  "repr": "SIGQUIT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGQUIT"
-                  }
-                },
-                {
-                  "repr": "SIGSEGV",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGSEGV"
-                  }
-                },
-                {
-                  "repr": "SIGSTKFLT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGSTKFLT"
-                  }
-                },
-                {
-                  "repr": "SIGSTOP",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGSTOP"
-                  }
-                },
-                {
-                  "repr": "SIGSYS",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGSYS"
-                  }
-                },
-                {
-                  "repr": "SIGTERM",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGTERM"
-                  }
-                },
-                {
-                  "repr": "SIGTRAP",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGTRAP"
-                  }
-                },
-                {
-                  "repr": "SIGTSTP",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGTSTP"
-                  }
-                },
-                {
-                  "repr": "SIGTTIN",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGTTIN"
-                  }
-                },
-                {
-                  "repr": "SIGTTOU",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGTTOU"
-                  }
-                },
-                {
-                  "repr": "SIGURG",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGURG"
-                  }
-                },
-                {
-                  "repr": "SIGUSR1",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGUSR1"
-                  }
-                },
-                {
-                  "repr": "SIGUSR2",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGUSR2"
-                  }
-                },
-                {
-                  "repr": "SIGVTALRM",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGVTALRM"
-                  }
-                },
-                {
-                  "repr": "SIGWINCH",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGWINCH"
-                  }
-                },
-                {
-                  "repr": "SIGXCPU",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGXCPU"
-                  }
-                },
-                {
-                  "repr": "SIGXFSZ",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SIGXFSZ"
-                  }
-                }
-              ]
-            },
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "class",
-          "name": "SignalStream",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 604,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nRepresents the stream of signals, implements both `AsyncIterator` and\n`PromiseLike`."
-          },
-          "classDef": {
-            "isAbstract": false,
-            "constructors": [
-              {
-                "accessibility": null,
-                "name": "constructor",
-                "params": [
-                  {
-                    "kind": "identifier",
-                    "name": "signal",
-                    "optional": false,
-                    "tsType": {
-                      "repr": "Signal",
-                      "kind": "typeRef",
-                      "typeRef": {
-                        "typeParams": null,
-                        "typeName": "Signal"
-                      }
-                    }
-                  }
-                ],
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 606,
-                  "col": 4
-                }
-              }
-            ],
-            "properties": [],
-            "indexSignatures": [],
-            "methods": [
-              {
-                "accessibility": null,
-                "optional": false,
-                "isAbstract": false,
-                "isStatic": false,
-                "name": "then",
-                "kind": "method",
-                "functionDef": {
-                  "params": [
-                    {
-                      "kind": "identifier",
-                      "name": "f",
-                      "optional": false,
-                      "tsType": {
-                        "repr": "",
-                        "kind": "fnOrConstructor",
-                        "fnOrConstructor": {
-                          "constructor": false,
-                          "tsType": {
-                            "repr": "",
-                            "kind": "union",
-                            "union": [
-                              {
-                                "repr": "T",
-                                "kind": "typeRef",
-                                "typeRef": {
-                                  "typeParams": null,
-                                  "typeName": "T"
-                                }
-                              },
-                              {
-                                "repr": "Promise",
-                                "kind": "typeRef",
-                                "typeRef": {
-                                  "typeParams": [
-                                    {
-                                      "repr": "T",
-                                      "kind": "typeRef",
-                                      "typeRef": {
-                                        "typeParams": null,
-                                        "typeName": "T"
-                                      }
-                                    }
-                                  ],
-                                  "typeName": "Promise"
-                                }
-                              }
-                            ]
-                          },
-                          "params": [
-                            {
-                              "kind": "identifier",
-                              "name": "v",
-                              "optional": false,
-                              "tsType": {
-                                "repr": "void",
-                                "kind": "keyword",
-                                "keyword": "void"
-                              }
-                            }
-                          ],
-                          "typeParams": []
-                        }
-                      }
-                    },
-                    {
-                      "kind": "identifier",
-                      "name": "g",
-                      "optional": true,
-                      "tsType": {
-                        "repr": "",
-                        "kind": "fnOrConstructor",
-                        "fnOrConstructor": {
-                          "constructor": false,
-                          "tsType": {
-                            "repr": "",
-                            "kind": "union",
-                            "union": [
-                              {
-                                "repr": "S",
-                                "kind": "typeRef",
-                                "typeRef": {
-                                  "typeParams": null,
-                                  "typeName": "S"
-                                }
-                              },
-                              {
-                                "repr": "Promise",
-                                "kind": "typeRef",
-                                "typeRef": {
-                                  "typeParams": [
-                                    {
-                                      "repr": "S",
-                                      "kind": "typeRef",
-                                      "typeRef": {
-                                        "typeParams": null,
-                                        "typeName": "S"
-                                      }
-                                    }
-                                  ],
-                                  "typeName": "Promise"
-                                }
-                              }
-                            ]
-                          },
-                          "params": [
-                            {
-                              "kind": "identifier",
-                              "name": "v",
-                              "optional": false,
-                              "tsType": {
-                                "repr": "void",
-                                "kind": "keyword",
-                                "keyword": "void"
-                              }
-                            }
-                          ],
-                          "typeParams": []
-                        }
-                      }
-                    }
-                  ],
-                  "returnType": {
-                    "repr": "Promise",
-                    "kind": "typeRef",
-                    "typeRef": {
-                      "typeParams": [
-                        {
-                          "repr": "",
-                          "kind": "union",
-                          "union": [
-                            {
-                              "repr": "T",
-                              "kind": "typeRef",
-                              "typeRef": {
-                                "typeParams": null,
-                                "typeName": "T"
-                              }
-                            },
-                            {
-                              "repr": "S",
-                              "kind": "typeRef",
-                              "typeRef": {
-                                "typeParams": null,
-                                "typeName": "S"
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      "typeName": "Promise"
-                    }
-                  },
-                  "isAsync": false,
-                  "isGenerator": false,
-                  "typeParams": [
-                    {
-                      "name": "T"
-                    },
-                    {
-                      "name": "S"
-                    }
-                  ]
-                },
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 607,
-                  "col": 4
-                }
-              },
-              {
-                "accessibility": null,
-                "optional": false,
-                "isAbstract": false,
-                "isStatic": false,
-                "name": "next",
-                "kind": "method",
-                "functionDef": {
-                  "params": [],
-                  "returnType": {
-                    "repr": "Promise",
-                    "kind": "typeRef",
-                    "typeRef": {
-                      "typeParams": [
-                        {
-                          "repr": "IteratorResult",
-                          "kind": "typeRef",
-                          "typeRef": {
-                            "typeParams": [
-                              {
-                                "repr": "void",
-                                "kind": "keyword",
-                                "keyword": "void"
-                              }
-                            ],
-                            "typeName": "IteratorResult"
-                          }
-                        }
-                      ],
-                      "typeName": "Promise"
-                    }
-                  },
-                  "isAsync": false,
-                  "isGenerator": false,
-                  "typeParams": []
-                },
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 611,
-                  "col": 4
-                }
-              },
-              {
-                "accessibility": null,
-                "optional": false,
-                "isAbstract": false,
-                "isStatic": false,
-                "name": "[Symbol.asyncIterator]",
-                "kind": "method",
-                "functionDef": {
-                  "params": [],
-                  "returnType": {
-                    "repr": "AsyncIterableIterator",
-                    "kind": "typeRef",
-                    "typeRef": {
-                      "typeParams": [
-                        {
-                          "repr": "void",
-                          "kind": "keyword",
-                          "keyword": "void"
-                        }
-                      ],
-                      "typeName": "AsyncIterableIterator"
-                    }
-                  },
-                  "isAsync": false,
-                  "isGenerator": false,
-                  "typeParams": []
-                },
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 612,
-                  "col": 4
-                }
-              },
-              {
-                "accessibility": null,
-                "optional": false,
-                "isAbstract": false,
-                "isStatic": false,
-                "name": "dispose",
-                "kind": "method",
-                "functionDef": {
-                  "params": [],
-                  "returnType": {
-                    "repr": "void",
-                    "kind": "keyword",
-                    "keyword": "void"
-                  },
-                  "isAsync": false,
-                  "isGenerator": false,
-                  "typeParams": []
-                },
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 613,
-                  "col": 4
-                }
-              }
-            ],
-            "extends": null,
-            "implements": [
-              {
-                "repr": "AsyncIterableIterator",
-                "kind": "typeRef",
-                "typeRef": {
-                  "typeParams": [
-                    {
-                      "repr": "void",
-                      "kind": "keyword",
-                      "keyword": "void"
-                    }
-                  ],
-                  "typeName": "AsyncIterableIterator"
-                }
-              },
-              {
-                "repr": "PromiseLike",
-                "kind": "typeRef",
-                "typeRef": {
-                  "typeParams": [
-                    {
-                      "repr": "void",
-                      "kind": "keyword",
-                      "keyword": "void"
-                    }
-                  ],
-                  "typeName": "PromiseLike"
-                }
-              }
-            ],
-            "typeParams": [],
-            "superTypeParams": []
-          }
-        },
-        {
           "kind": "function",
-          "name": "signal",
+          "name": "addSignalListener",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 651,
+            "line": 584,
             "col": 2
           },
           "jsDoc": {
-            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nReturns the stream of the given signal number. You can use it as an async\niterator.\n\n```ts\nfor await (const _ of Deno.signal(\"SIGTERM\")) {\n  console.log(\"got SIGTERM!\");\n}\n```\n\nYou can also use it as a promise. In this case you can only receive the\nfirst one.\n\n```ts\nawait Deno.signal(\"SIGTERM\");\nconsole.log(\"SIGTERM received!\")\n```\n\nIf you want to stop receiving the signals, you can use `.dispose()` method\nof the signal stream object.\n\n```ts\nconst sig = Deno.signal(\"SIGTERM\");\nsetTimeout(() => { sig.dispose(); }, 5000);\nfor await (const _ of sig) {\n  console.log(\"SIGTERM!\")\n}\n```\n\nThe above for-await loop exits after 5 seconds when `sig.dispose()` is\ncalled.\n\nNOTE: This functionality is not yet implemented on Windows."
+            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nRegisters the given function as a listener of the given signal event.\n\n```ts\nDeno.addSignalListener(\"SIGTERM\", () => {\n  console.log(\"SIGTERM!\")\n});\n```\n\nNOTE: This functionality is not yet implemented on Windows."
           },
           "functionDef": {
             "params": [
               {
                 "kind": "identifier",
-                "name": "sig",
+                "name": "signal",
                 "optional": false,
                 "tsType": {
                   "repr": "Signal",
@@ -3769,15 +3214,87 @@
                     "typeName": "Signal"
                   }
                 }
+              },
+              {
+                "kind": "identifier",
+                "name": "handler",
+                "optional": false,
+                "tsType": {
+                  "repr": "",
+                  "kind": "fnOrConstructor",
+                  "fnOrConstructor": {
+                    "constructor": false,
+                    "tsType": {
+                      "repr": "void",
+                      "kind": "keyword",
+                      "keyword": "void"
+                    },
+                    "params": [],
+                    "typeParams": []
+                  }
+                }
               }
             ],
             "returnType": {
-              "repr": "SignalStream",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": null,
-                "typeName": "SignalStream"
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "function",
+          "name": "removeSignalListener",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 601,
+            "col": 2
+          },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nRemoves the given signal listener that has been registered with\nDeno.addSignalListener.\n\n```ts\nconst listener = () => {\n  console.log(\"SIGTERM!\")\n};\nDeno.addSignalListener(\"SIGTERM\", listener);\nDeno.removeSignalListener(\"SIGTERM\", listener);\n```\n\nNOTE: This functionality is not yet implemented on Windows."
+          },
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "signal",
+                "optional": false,
+                "tsType": {
+                  "repr": "Signal",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "Signal"
+                  }
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "handler",
+                "optional": false,
+                "tsType": {
+                  "repr": "",
+                  "kind": "fnOrConstructor",
+                  "fnOrConstructor": {
+                    "constructor": false,
+                    "tsType": {
+                      "repr": "void",
+                      "kind": "keyword",
+                      "keyword": "void"
+                    },
+                    "params": [],
+                    "typeParams": []
+                  }
+                }
               }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
             },
             "isAsync": false,
             "isGenerator": false,
@@ -3789,7 +3306,7 @@
           "name": "SetRawOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 653,
+            "line": 606,
             "col": 2
           },
           "typeAliasDef": {
@@ -3824,7 +3341,7 @@
           "name": "setRaw",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 673,
+            "line": 626,
             "col": 2
           },
           "jsDoc": {
@@ -3881,7 +3398,7 @@
           "name": "utimeSync",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 690,
+            "line": 643,
             "col": 2
           },
           "jsDoc": {
@@ -3977,7 +3494,7 @@
           "name": "utime",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 707,
+            "line": 660,
             "col": 2
           },
           "jsDoc": {
@@ -4082,7 +3599,7 @@
           "name": "run",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 713,
+            "line": 666,
             "col": 2
           },
           "functionDef": {
@@ -4152,6 +3669,30 @@
                               "keyword": "boolean"
                             },
                             "typeParams": []
+                          },
+                          {
+                            "name": "gid",
+                            "params": [],
+                            "computed": false,
+                            "optional": true,
+                            "tsType": {
+                              "repr": "number",
+                              "kind": "keyword",
+                              "keyword": "number"
+                            },
+                            "typeParams": []
+                          },
+                          {
+                            "name": "uid",
+                            "params": [],
+                            "computed": false,
+                            "optional": true,
+                            "tsType": {
+                              "repr": "number",
+                              "kind": "keyword",
+                              "keyword": "number"
+                            },
+                            "typeParams": []
                           }
                         ],
                         "callSignatures": [],
@@ -4189,6 +3730,30 @@
                               "keyword": "boolean"
                             },
                             "typeParams": []
+                          },
+                          {
+                            "name": "gid",
+                            "params": [],
+                            "computed": false,
+                            "optional": true,
+                            "tsType": {
+                              "repr": "number",
+                              "kind": "keyword",
+                              "keyword": "number"
+                            },
+                            "typeParams": []
+                          },
+                          {
+                            "name": "uid",
+                            "params": [],
+                            "computed": false,
+                            "optional": true,
+                            "tsType": {
+                              "repr": "number",
+                              "kind": "keyword",
+                              "keyword": "number"
+                            },
+                            "typeParams": []
                           }
                         ],
                         "callSignatures": [],
@@ -4203,57 +3768,10 @@
         },
         {
           "kind": "function",
-          "name": "kill",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 734,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "**UNSTABLE**: Send a signal to process under given `pid`. This\nfunctionality only works on Linux and Mac OS.\n\nIf `pid` is negative, the signal will be sent to the process group\nidentified by `pid`.\n\n     const p = Deno.run({\n       cmd: [\"sleep\", \"10000\"]\n     });\n\n     Deno.kill(p.pid, \"SIGINT\");\n\nRequires `allow-run` permission."
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "pid",
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "signo",
-                "optional": false,
-                "tsType": {
-                  "repr": "Signal",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "Signal"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "void",
-              "kind": "keyword",
-              "keyword": "void"
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
           "name": "hostname",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 747,
+            "line": 689,
             "col": 2
           },
           "jsDoc": {
@@ -4276,11 +3794,11 @@
           "name": "HttpClient",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 757,
+            "line": 700,
             "col": 2
           },
           "jsDoc": {
-            "doc": "**UNSTABLE**: New API, yet to be vetted.\nA custom HttpClient for use with `fetch`.\n\n```ts\nconst client = Deno.createHttpClient({ caData: await Deno.readTextFile(\"./ca.pem\") });\nconst req = await fetch(\"https://myserver.com\", { client });\n```"
+            "doc": "**UNSTABLE**: New API, yet to be vetted.\nA custom HttpClient for use with `fetch`.\n\n```ts\nconst caCert = await Deno.readTextFile(\"./ca.pem\");\nconst client = Deno.createHttpClient({ caCerts: [ caCert ] });\nconst req = await fetch(\"https://myserver.com\", { client });\n```"
           },
           "classDef": {
             "isAbstract": false,
@@ -4300,7 +3818,7 @@
                 "name": "rid",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 758,
+                  "line": 701,
                   "col": 4
                 }
               }
@@ -4327,7 +3845,7 @@
                 },
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 759,
+                  "line": 702,
                   "col": 4
                 }
               }
@@ -4343,7 +3861,7 @@
           "name": "CreateHttpClientOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 765,
+            "line": 708,
             "col": 2
           },
           "jsDoc": {
@@ -4354,22 +3872,26 @@
             "methods": [],
             "properties": [
               {
-                "name": "caData",
+                "name": "caCerts",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 768,
+                  "line": 713,
                   "col": 4
                 },
                 "jsDoc": {
-                  "doc": "A certificate authority to use when validating TLS certificates. Certificate data must be PEM encoded."
+                  "doc": "A list of root certificates that will be used in addition to the\ndefault root certificates to verify the peer's certificate.\n\nMust be in PEM format."
                 },
                 "params": [],
                 "computed": false,
                 "optional": true,
                 "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
+                  "repr": "",
+                  "kind": "array",
+                  "array": {
+                    "repr": "string",
+                    "kind": "keyword",
+                    "keyword": "string"
+                  }
                 },
                 "typeParams": []
               },
@@ -4377,8 +3899,11 @@
                 "name": "proxy",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 769,
+                  "line": 715,
                   "col": 4
+                },
+                "jsDoc": {
+                  "doc": "A HTTP proxy to use for new connections."
                 },
                 "params": [],
                 "computed": false,
@@ -4397,8 +3922,11 @@
                 "name": "certChain",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 770,
+                  "line": 717,
                   "col": 4
+                },
+                "jsDoc": {
+                  "doc": "PEM formatted client certificate chain."
                 },
                 "params": [],
                 "computed": false,
@@ -4414,8 +3942,11 @@
                 "name": "privateKey",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 771,
+                  "line": 719,
                   "col": 4
+                },
+                "jsDoc": {
+                  "doc": "PEM formatted (RSA or PKCS8) private key of client certificate."
                 },
                 "params": [],
                 "computed": false,
@@ -4438,7 +3969,7 @@
           "name": "Proxy",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 774,
+            "line": 722,
             "col": 2
           },
           "interfaceDef": {
@@ -4449,7 +3980,7 @@
                 "name": "url",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 775,
+                  "line": 723,
                   "col": 4
                 },
                 "params": [],
@@ -4466,7 +3997,7 @@
                 "name": "basicAuth",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 776,
+                  "line": 724,
                   "col": 4
                 },
                 "params": [],
@@ -4493,7 +4024,7 @@
           "name": "BasicAuth",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 779,
+            "line": 727,
             "col": 2
           },
           "interfaceDef": {
@@ -4504,7 +4035,7 @@
                 "name": "username",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 780,
+                  "line": 728,
                   "col": 4
                 },
                 "params": [],
@@ -4521,7 +4052,7 @@
                 "name": "password",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 781,
+                  "line": 729,
                   "col": 4
                 },
                 "params": [],
@@ -4545,11 +4076,11 @@
           "name": "createHttpClient",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 797,
+            "line": 746,
             "col": 2
           },
           "jsDoc": {
-            "doc": "**UNSTABLE**: New API, yet to be vetted.\nCreate a custom HttpClient for to use with `fetch`.\n\n```ts\nconst client = Deno.createHttpClient({ caData: await Deno.readTextFile(\"./ca.pem\") });\nconst response = await fetch(\"https://myserver.com\", { client });\n```\n\n```ts\nconst client = Deno.createHttpClient({ proxy: { url: \"http://myproxy.com:8080\" } });\nconst response = await fetch(\"https://myserver.com\", { client });\n```"
+            "doc": "**UNSTABLE**: New API, yet to be vetted.\nCreate a custom HttpClient for to use with `fetch`.\n\n```ts\nconst caCert = await Deno.readTextFile(\"./ca.pem\");\nconst client = Deno.createHttpClient({ caCerts: [ caCert ] });\nconst response = await fetch(\"https://myserver.com\", { client });\n```\n\n```ts\nconst client = Deno.createHttpClient({ proxy: { url: \"http://myproxy.com:8080\" } });\nconst response = await fetch(\"https://myserver.com\", { client });\n```"
           },
           "functionDef": {
             "params": [
@@ -4585,7 +4116,7 @@
           "name": "futimeSync",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 812,
+            "line": 761,
             "col": 2
           },
           "jsDoc": {
@@ -4667,7 +4198,7 @@
           "name": "futime",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 829,
+            "line": 778,
             "col": 2
           },
           "jsDoc": {
@@ -4758,7 +4289,7 @@
           "name": "sleepSync",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 844,
+            "line": 793,
             "col": 2
           },
           "jsDoc": {
@@ -4789,60 +4320,156 @@
         },
         {
           "kind": "interface",
-          "name": "Metrics",
+          "name": "TestContext",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 846,
+            "line": 796,
             "col": 2
           },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: New option, yet to be vetted."
+          },
           "interfaceDef": {
-            "extends": [
+            "extends": [],
+            "methods": [
               {
-                "repr": "OpMetrics",
-                "kind": "typeRef",
-                "typeRef": {
-                  "typeParams": null,
-                  "typeName": "OpMetrics"
-                }
-              }
-            ],
-            "methods": [],
-            "properties": [
-              {
-                "name": "ops",
+                "name": "step",
+                "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 847,
+                  "line": 802,
                   "col": 4
                 },
-                "params": [],
-                "computed": false,
+                "jsDoc": {
+                  "doc": "Run a sub step of the parent test with a given name. Returns a promise\nthat resolves to a boolean signifying if the step completed successfully.\nThe returned promise never rejects unless the arguments are invalid.\nIf the test was ignored, the promise returns `false`."
+                },
                 "optional": false,
-                "tsType": {
-                  "repr": "Record",
+                "params": [
+                  {
+                    "kind": "identifier",
+                    "name": "t",
+                    "optional": false,
+                    "tsType": {
+                      "repr": "TestStepDefinition",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "TestStepDefinition"
+                      }
+                    }
+                  }
+                ],
+                "returnType": {
+                  "repr": "Promise",
                   "kind": "typeRef",
                   "typeRef": {
                     "typeParams": [
                       {
-                        "repr": "string",
+                        "repr": "boolean",
                         "kind": "keyword",
-                        "keyword": "string"
-                      },
-                      {
-                        "repr": "OpMetrics",
-                        "kind": "typeRef",
-                        "typeRef": {
-                          "typeParams": null,
-                          "typeName": "OpMetrics"
-                        }
+                        "keyword": "boolean"
                       }
                     ],
-                    "typeName": "Record"
+                    "typeName": "Promise"
+                  }
+                },
+                "typeParams": []
+              },
+              {
+                "name": "step",
+                "kind": "method",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 809,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Run a sub step of the parent test with a given name. Returns a promise\nthat resolves to a boolean signifying if the step completed successfully.\nThe returned promise never rejects unless the arguments are invalid.\nIf the test was ignored, the promise returns `false`."
+                },
+                "optional": false,
+                "params": [
+                  {
+                    "kind": "identifier",
+                    "name": "name",
+                    "optional": false,
+                    "tsType": {
+                      "repr": "string",
+                      "kind": "keyword",
+                      "keyword": "string"
+                    }
+                  },
+                  {
+                    "kind": "identifier",
+                    "name": "fn",
+                    "optional": false,
+                    "tsType": {
+                      "repr": "",
+                      "kind": "fnOrConstructor",
+                      "fnOrConstructor": {
+                        "constructor": false,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "void",
+                              "kind": "keyword",
+                              "keyword": "void"
+                            },
+                            {
+                              "repr": "Promise",
+                              "kind": "typeRef",
+                              "typeRef": {
+                                "typeParams": [
+                                  {
+                                    "repr": "void",
+                                    "kind": "keyword",
+                                    "keyword": "void"
+                                  }
+                                ],
+                                "typeName": "Promise"
+                              }
+                            }
+                          ]
+                        },
+                        "params": [
+                          {
+                            "kind": "identifier",
+                            "name": "t",
+                            "optional": false,
+                            "tsType": {
+                              "repr": "TestContext",
+                              "kind": "typeRef",
+                              "typeRef": {
+                                "typeParams": null,
+                                "typeName": "TestContext"
+                              }
+                            }
+                          }
+                        ],
+                        "typeParams": []
+                      }
+                    }
+                  }
+                ],
+                "returnType": {
+                  "repr": "Promise",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "boolean",
+                        "kind": "keyword",
+                        "keyword": "boolean"
+                      }
+                    ],
+                    "typeName": "Promise"
                   }
                 },
                 "typeParams": []
               }
             ],
+            "properties": [],
             "callSignatures": [],
             "indexSignatures": [],
             "typeParams": []
@@ -4850,215 +4477,10 @@
         },
         {
           "kind": "interface",
-          "name": "OpMetrics",
+          "name": "TestStepDefinition",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 850,
-            "col": 2
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "opsDispatched",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 851,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsDispatchedSync",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 852,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsDispatchedAsync",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 853,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsDispatchedAsyncUnref",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 854,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsCompleted",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 855,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsCompletedSync",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 856,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsCompletedAsync",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 857,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "opsCompletedAsyncUnref",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 858,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "bytesSentControl",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 859,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "bytesSentData",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 860,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "bytesReceived",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 861,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "TestDefinition",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 865,
+            "line": 816,
             "col": 2
           },
           "jsDoc": {
@@ -5069,1227 +4491,162 @@
             "methods": [],
             "properties": [
               {
-                "name": "permissions",
+                "name": "fn",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 872,
+                  "line": 817,
                   "col": 4
-                },
-                "jsDoc": {
-                  "doc": "Specifies the permissions that should be used to run the test.\nSet this to \"inherit\" to keep the calling thread's permissions.\nSet this to \"none\" to revoke all permissions.\n\nDefaults to \"inherit\"."
                 },
                 "params": [],
                 "computed": false,
-                "optional": true,
+                "optional": false,
                 "tsType": {
                   "repr": "",
-                  "kind": "union",
-                  "union": [
-                    {
-                      "repr": "inherit",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "inherit"
-                      }
-                    },
-                    {
-                      "repr": "none",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "none"
-                      }
-                    },
-                    {
+                  "kind": "fnOrConstructor",
+                  "fnOrConstructor": {
+                    "constructor": false,
+                    "tsType": {
                       "repr": "",
-                      "kind": "typeLiteral",
-                      "typeLiteral": {
-                        "methods": [],
-                        "properties": [
-                          {
-                            "name": "env",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                },
-                                {
-                                  "repr": "",
-                                  "kind": "array",
-                                  "array": {
-                                    "repr": "string",
-                                    "kind": "keyword",
-                                    "keyword": "string"
-                                  }
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "hrtime",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "net",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                },
-                                {
-                                  "repr": "",
-                                  "kind": "array",
-                                  "array": {
-                                    "repr": "string",
-                                    "kind": "keyword",
-                                    "keyword": "string"
-                                  }
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "ffi",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "read",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                },
-                                {
-                                  "repr": "Array",
-                                  "kind": "typeRef",
-                                  "typeRef": {
-                                    "typeParams": [
-                                      {
-                                        "repr": "",
-                                        "kind": "union",
-                                        "union": [
-                                          {
-                                            "repr": "string",
-                                            "kind": "keyword",
-                                            "keyword": "string"
-                                          },
-                                          {
-                                            "repr": "URL",
-                                            "kind": "typeRef",
-                                            "typeRef": {
-                                              "typeParams": null,
-                                              "typeName": "URL"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ],
-                                    "typeName": "Array"
-                                  }
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "run",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                },
-                                {
-                                  "repr": "Array",
-                                  "kind": "typeRef",
-                                  "typeRef": {
-                                    "typeParams": [
-                                      {
-                                        "repr": "",
-                                        "kind": "union",
-                                        "union": [
-                                          {
-                                            "repr": "string",
-                                            "kind": "keyword",
-                                            "keyword": "string"
-                                          },
-                                          {
-                                            "repr": "URL",
-                                            "kind": "typeRef",
-                                            "typeRef": {
-                                              "typeParams": null,
-                                              "typeName": "URL"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ],
-                                    "typeName": "Array"
-                                  }
-                                }
-                              ]
-                            },
-                            "typeParams": []
-                          },
-                          {
-                            "name": "write",
-                            "params": [],
-                            "computed": false,
-                            "optional": true,
-                            "tsType": {
-                              "repr": "",
-                              "kind": "union",
-                              "union": [
-                                {
-                                  "repr": "inherit",
-                                  "kind": "literal",
-                                  "literal": {
-                                    "kind": "string",
-                                    "string": "inherit"
-                                  }
-                                },
-                                {
-                                  "repr": "boolean",
-                                  "kind": "keyword",
-                                  "keyword": "boolean"
-                                },
-                                {
-                                  "repr": "Array",
-                                  "kind": "typeRef",
-                                  "typeRef": {
-                                    "typeParams": [
-                                      {
-                                        "repr": "",
-                                        "kind": "union",
-                                        "union": [
-                                          {
-                                            "repr": "string",
-                                            "kind": "keyword",
-                                            "keyword": "string"
-                                          },
-                                          {
-                                            "repr": "URL",
-                                            "kind": "typeRef",
-                                            "typeRef": {
-                                              "typeParams": null,
-                                              "typeName": "URL"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ],
-                                    "typeName": "Array"
-                                  }
-                                }
-                              ]
-                            },
-                            "typeParams": []
+                      "kind": "union",
+                      "union": [
+                        {
+                          "repr": "void",
+                          "kind": "keyword",
+                          "keyword": "void"
+                        },
+                        {
+                          "repr": "Promise",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": [
+                              {
+                                "repr": "void",
+                                "kind": "keyword",
+                                "keyword": "void"
+                              }
+                            ],
+                            "typeName": "Promise"
                           }
-                        ],
-                        "callSignatures": [],
-                        "indexSignatures": []
-                      }
-                    }
-                  ]
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "WebSocketUpgrade",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1006,
-            "col": 2
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "response",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1007,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "Response",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "Response"
-                  }
-                },
-                "typeParams": []
-              },
-              {
-                "name": "socket",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1008,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "WebSocket",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "WebSocket"
-                  }
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "UpgradeWebSocketOptions",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1011,
-            "col": 2
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "protocol",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1012,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": true,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "upgradeWebSocket",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1048,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nUsed to upgrade an incoming HTTP request to a WebSocket.\n\nGiven a request, returns a pair of WebSocket and Response. The original\nrequest must be responded to with the returned response for the websocket\nupgrade to be successful.\n\n```ts\nconst conn = await Deno.connect({ port: 80, hostname: \"127.0.0.1\" });\nconst httpConn = Deno.serveHttp(conn);\nconst e = await httpConn.nextRequest();\nif (e) {\n  const { socket, response } = Deno.upgradeWebSocket(e.request);\n  socket.onopen = () => {\n    socket.send(\"Hello World!\");\n  };\n  socket.onmessage = (e) => {\n    console.log(e.data);\n    socket.close();\n  };\n  socket.onclose = () => console.log(\"WebSocket has been closed.\");\n  socket.onerror = (e) => console.error(\"WebSocket error:\", e);\n  e.respondWith(response);\n}\n```\n\nIf the request body is disturbed (read from) before the upgrade is\ncompleted, upgrading fails.\n\nThis operation does not yet consume the request or open the websocket. This\nonly happens once the returned response has been passed to `respondWith`."
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "request",
-                "optional": false,
-                "tsType": {
-                  "repr": "Request",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "Request"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "UpgradeWebSocketOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "UpgradeWebSocketOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "WebSocketUpgrade",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": null,
-                "typeName": "WebSocketUpgrade"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "typeAlias",
-          "name": "RecordType",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1055,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "The type of the resource record.\nOnly the listed types are supported currently."
-          },
-          "typeAliasDef": {
-            "tsType": {
-              "repr": "",
-              "kind": "union",
-              "union": [
-                {
-                  "repr": "A",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "A"
-                  }
-                },
-                {
-                  "repr": "AAAA",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "AAAA"
-                  }
-                },
-                {
-                  "repr": "ANAME",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "ANAME"
-                  }
-                },
-                {
-                  "repr": "CNAME",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "CNAME"
-                  }
-                },
-                {
-                  "repr": "MX",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "MX"
-                  }
-                },
-                {
-                  "repr": "PTR",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "PTR"
-                  }
-                },
-                {
-                  "repr": "SRV",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SRV"
-                  }
-                },
-                {
-                  "repr": "TXT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "TXT"
-                  }
-                }
-              ]
-            },
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "ResolveDnsOptions",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1065,
-            "col": 2
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "nameServer",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1068,
-                  "col": 4
-                },
-                "jsDoc": {
-                  "doc": "The name server to be used for lookups.\nIf not specified, defaults to the system configuration e.g. `/etc/resolv.conf` on Unix."
-                },
-                "params": [],
-                "computed": false,
-                "optional": true,
-                "tsType": {
-                  "repr": "",
-                  "kind": "typeLiteral",
-                  "typeLiteral": {
-                    "methods": [],
-                    "properties": [
+                        }
+                      ]
+                    },
+                    "params": [
                       {
-                        "name": "ipAddr",
-                        "params": [],
-                        "computed": false,
+                        "kind": "identifier",
+                        "name": "t",
                         "optional": false,
                         "tsType": {
-                          "repr": "string",
-                          "kind": "keyword",
-                          "keyword": "string"
-                        },
-                        "typeParams": []
-                      },
-                      {
-                        "name": "port",
-                        "params": [],
-                        "computed": false,
-                        "optional": true,
-                        "tsType": {
-                          "repr": "number",
-                          "kind": "keyword",
-                          "keyword": "number"
-                        },
-                        "typeParams": []
+                          "repr": "TestContext",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "TestContext"
+                          }
+                        }
                       }
                     ],
-                    "callSignatures": [],
-                    "indexSignatures": []
+                    "typeParams": []
                   }
+                },
+                "typeParams": []
+              },
+              {
+                "name": "name",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 818,
+                  "col": 4
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "ignore",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 819,
+                  "col": 4
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "sanitizeOps",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 822,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Check that the number of async completed ops after the test is the same\nas number of dispatched ops. Defaults to true."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "sanitizeResources",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 826,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Ensure the test case does not \"leak\" resources - ie. the resource table\nafter the test has exactly the same contents as before the test. Defaults\nto true."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "sanitizeExit",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 829,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Ensure the test case does not prematurely cause the process to exit,\nfor example via a call to `Deno.exit`. Defaults to true."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
                 },
                 "typeParams": []
               }
             ],
             "callSignatures": [],
             "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "MXRecord",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1078,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "If `resolveDns` is called with \"MX\" record type specified, it will return an array of this interface."
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "preference",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1079,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "exchange",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1080,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "SRVRecord",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1084,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "If `resolveDns` is called with \"SRV\" record type specified, it will return an array of this interface."
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "priority",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1085,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "weight",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1086,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "port",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1087,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "number",
-                  "kind": "keyword",
-                  "keyword": "number"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "target",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1088,
-                  "col": 4
-                },
-                "params": [],
-                "computed": false,
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "resolveDns",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1091,
-            "col": 2
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "query",
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "recordType",
-                "optional": false,
-                "tsType": {
-                  "repr": "",
-                  "kind": "union",
-                  "union": [
-                    {
-                      "repr": "A",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "A"
-                      }
-                    },
-                    {
-                      "repr": "AAAA",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "AAAA"
-                      }
-                    },
-                    {
-                      "repr": "ANAME",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "ANAME"
-                      }
-                    },
-                    {
-                      "repr": "CNAME",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "CNAME"
-                      }
-                    },
-                    {
-                      "repr": "PTR",
-                      "kind": "literal",
-                      "literal": {
-                        "kind": "string",
-                        "string": "PTR"
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "ResolveDnsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "ResolveDnsOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "",
-                    "kind": "array",
-                    "array": {
-                      "repr": "string",
-                      "kind": "keyword",
-                      "keyword": "string"
-                    }
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "resolveDns",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1097,
-            "col": 2
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "query",
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "recordType",
-                "optional": false,
-                "tsType": {
-                  "repr": "MX",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "MX"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "ResolveDnsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "ResolveDnsOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "",
-                    "kind": "array",
-                    "array": {
-                      "repr": "MXRecord",
-                      "kind": "typeRef",
-                      "typeRef": {
-                        "typeParams": null,
-                        "typeName": "MXRecord"
-                      }
-                    }
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "resolveDns",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1103,
-            "col": 2
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "query",
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "recordType",
-                "optional": false,
-                "tsType": {
-                  "repr": "SRV",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "SRV"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "ResolveDnsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "ResolveDnsOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "",
-                    "kind": "array",
-                    "array": {
-                      "repr": "SRVRecord",
-                      "kind": "typeRef",
-                      "typeRef": {
-                        "typeParams": null,
-                        "typeName": "SRVRecord"
-                      }
-                    }
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "resolveDns",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1109,
-            "col": 2
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "query",
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "recordType",
-                "optional": false,
-                "tsType": {
-                  "repr": "TXT",
-                  "kind": "literal",
-                  "literal": {
-                    "kind": "string",
-                    "string": "TXT"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "ResolveDnsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "ResolveDnsOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "",
-                    "kind": "array",
-                    "array": {
-                      "repr": "",
-                      "kind": "array",
-                      "array": {
-                        "repr": "string",
-                        "kind": "keyword",
-                        "keyword": "string"
-                      }
-                    }
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "resolveDns",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1133,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "** UNSTABLE**: new API, yet to be vetted.\n\nPerforms DNS resolution against the given query, returning resolved records.\nFails in the cases such as:\n- the query is in invalid format\n- the options have an invalid parameter, e.g. `nameServer.port` is beyond the range of 16-bit unsigned integer\n- timed out\n\n```ts\nconst a = await Deno.resolveDns(\"example.com\", \"A\");\n\nconst aaaa = await Deno.resolveDns(\"example.com\", \"AAAA\", {\n  nameServer: { ipAddr: \"8.8.8.8\", port: 1234 },\n});\n```\n\nRequires `allow-net` permission."
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "query",
-                "optional": false,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "recordType",
-                "optional": false,
-                "tsType": {
-                  "repr": "RecordType",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "RecordType"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "ResolveDnsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "ResolveDnsOptions"
-                  }
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "",
-                    "kind": "union",
-                    "union": [
-                      {
-                        "repr": "",
-                        "kind": "array",
-                        "array": {
-                          "repr": "string",
-                          "kind": "keyword",
-                          "keyword": "string"
-                        }
-                      },
-                      {
-                        "repr": "",
-                        "kind": "array",
-                        "array": {
-                          "repr": "MXRecord",
-                          "kind": "typeRef",
-                          "typeRef": {
-                            "typeParams": null,
-                            "typeName": "MXRecord"
-                          }
-                        }
-                      },
-                      {
-                        "repr": "",
-                        "kind": "array",
-                        "array": {
-                          "repr": "SRVRecord",
-                          "kind": "typeRef",
-                          "typeRef": {
-                            "typeParams": null,
-                            "typeName": "SRVRecord"
-                          }
-                        }
-                      },
-                      {
-                        "repr": "",
-                        "kind": "array",
-                        "array": {
-                          "repr": "",
-                          "kind": "array",
-                          "array": {
-                            "repr": "string",
-                            "kind": "keyword",
-                            "keyword": "string"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
             "typeParams": []
           }
         },
@@ -6298,7 +4655,7 @@
           "name": "DatagramConn",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1142,
+            "line": 835,
             "col": 2
           },
           "jsDoc": {
@@ -6344,7 +4701,7 @@
                 "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1146,
+                  "line": 839,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6404,7 +4761,7 @@
                 "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1150,
+                  "line": 843,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6460,7 +4817,7 @@
                 "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1155,
+                  "line": 848,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6480,7 +4837,7 @@
                 "kind": "method",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1158,
+                  "line": 851,
                   "col": 4
                 },
                 "optional": false,
@@ -6524,7 +4881,7 @@
                 "name": "addr",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1157,
+                  "line": 850,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6554,7 +4911,7 @@
           "name": "UnixListenOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1161,
+            "line": 854,
             "col": 2
           },
           "interfaceDef": {
@@ -6565,7 +4922,7 @@
                 "name": "path",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1163,
+                  "line": 856,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6592,7 +4949,7 @@
           "name": "listen",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1175,
+            "line": 868,
             "col": 2
           },
           "jsDoc": {
@@ -6664,7 +5021,7 @@
           "name": "listenDatagram",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1196,
+            "line": 889,
             "col": 2
           },
           "jsDoc": {
@@ -6736,7 +5093,7 @@
           "name": "listenDatagram",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1212,
+            "line": 905,
             "col": 2
           },
           "jsDoc": {
@@ -6808,7 +5165,7 @@
           "name": "UnixConnectOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1216,
+            "line": 909,
             "col": 2
           },
           "interfaceDef": {
@@ -6819,7 +5176,7 @@
                 "name": "transport",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1217,
+                  "line": 910,
                   "col": 4
                 },
                 "params": [],
@@ -6839,7 +5196,7 @@
                 "name": "path",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1218,
+                  "line": 911,
                   "col": 4
                 },
                 "params": [],
@@ -6863,7 +5220,7 @@
           "name": "connect",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1236,
+            "line": 929,
             "col": 2
           },
           "jsDoc": {
@@ -6923,10 +5280,10 @@
         },
         {
           "kind": "interface",
-          "name": "ConnectTlsClientCertOptions",
+          "name": "ConnectTlsOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1240,
+            "line": 933,
             "col": 2
           },
           "interfaceDef": {
@@ -6937,7 +5294,7 @@
                 "name": "certChain",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1242,
+                  "line": 935,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6945,7 +5302,7 @@
                 },
                 "params": [],
                 "computed": false,
-                "optional": false,
+                "optional": true,
                 "tsType": {
                   "repr": "string",
                   "kind": "keyword",
@@ -6957,7 +5314,7 @@
                 "name": "privateKey",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1244,
+                  "line": 937,
                   "col": 4
                 },
                 "jsDoc": {
@@ -6965,7 +5322,7 @@
                 },
                 "params": [],
                 "computed": false,
-                "optional": false,
+                "optional": true,
                 "tsType": {
                   "repr": "string",
                   "kind": "keyword",
@@ -6984,7 +5341,7 @@
           "name": "connectTls",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1262,
+            "line": 955,
             "col": 2
           },
           "jsDoc": {
@@ -6997,145 +5354,11 @@
                 "name": "options",
                 "optional": false,
                 "tsType": {
-                  "repr": "",
-                  "kind": "intersection",
-                  "intersection": [
-                    {
-                      "repr": "ConnectTlsOptions",
-                      "kind": "typeRef",
-                      "typeRef": {
-                        "typeParams": null,
-                        "typeName": "ConnectTlsOptions"
-                      }
-                    },
-                    {
-                      "repr": "ConnectTlsClientCertOptions",
-                      "kind": "typeRef",
-                      "typeRef": {
-                        "typeParams": null,
-                        "typeName": "ConnectTlsClientCertOptions"
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "returnType": {
-              "repr": "Promise",
-              "kind": "typeRef",
-              "typeRef": {
-                "typeParams": [
-                  {
-                    "repr": "Conn",
-                    "kind": "typeRef",
-                    "typeRef": {
-                      "typeParams": null,
-                      "typeName": "Conn"
-                    }
-                  }
-                ],
-                "typeName": "Promise"
-              }
-            },
-            "isAsync": false,
-            "isGenerator": false,
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "interface",
-          "name": "StartTlsOptions",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1266,
-            "col": 2
-          },
-          "interfaceDef": {
-            "extends": [],
-            "methods": [],
-            "properties": [
-              {
-                "name": "hostname",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1269,
-                  "col": 4
-                },
-                "jsDoc": {
-                  "doc": "A literal IP address or host name that can be resolved to an IP address.\nIf not specified, defaults to `127.0.0.1`."
-                },
-                "params": [],
-                "computed": false,
-                "optional": true,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                },
-                "typeParams": []
-              },
-              {
-                "name": "certFile",
-                "location": {
-                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1271,
-                  "col": 4
-                },
-                "jsDoc": {
-                  "doc": "Server certificate file."
-                },
-                "params": [],
-                "computed": false,
-                "optional": true,
-                "tsType": {
-                  "repr": "string",
-                  "kind": "keyword",
-                  "keyword": "string"
-                },
-                "typeParams": []
-              }
-            ],
-            "callSignatures": [],
-            "indexSignatures": [],
-            "typeParams": []
-          }
-        },
-        {
-          "kind": "function",
-          "name": "startTls",
-          "location": {
-            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1290,
-            "col": 2
-          },
-          "jsDoc": {
-            "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nStart TLS handshake from an existing connection using\nan optional cert file, hostname (default is \"127.0.0.1\").  The\ncert file is optional and if not included Mozilla's root certificates will\nbe used (see also https://github.com/ctz/webpki-roots for specifics)\nUsing this function requires that the other end of the connection is\nprepared for TLS handshake.\n\n```ts\nconst conn = await Deno.connect({ port: 80, hostname: \"127.0.0.1\" });\nconst tlsConn = await Deno.startTls(conn, { certFile: \"./certs/my_custom_root_CA.pem\", hostname: \"localhost\" });\n```\n\nRequires `allow-net` permission."
-          },
-          "functionDef": {
-            "params": [
-              {
-                "kind": "identifier",
-                "name": "conn",
-                "optional": false,
-                "tsType": {
-                  "repr": "Conn",
+                  "repr": "ConnectTlsOptions",
                   "kind": "typeRef",
                   "typeRef": {
                     "typeParams": null,
-                    "typeName": "Conn"
-                  }
-                }
-              },
-              {
-                "kind": "identifier",
-                "name": "options",
-                "optional": true,
-                "tsType": {
-                  "repr": "StartTlsOptions",
-                  "kind": "typeRef",
-                  "typeRef": {
-                    "typeParams": null,
-                    "typeName": "StartTlsOptions"
+                    "typeName": "ConnectTlsOptions"
                   }
                 }
               }
@@ -7146,11 +5369,11 @@
               "typeRef": {
                 "typeParams": [
                   {
-                    "repr": "Conn",
+                    "repr": "TlsConn",
                     "kind": "typeRef",
                     "typeRef": {
                       "typeParams": null,
-                      "typeName": "Conn"
+                      "typeName": "TlsConn"
                     }
                   }
                 ],
@@ -7167,7 +5390,7 @@
           "name": "ListenTlsOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1295,
+            "line": 957,
             "col": 2
           },
           "interfaceDef": {
@@ -7178,7 +5401,7 @@
                 "name": "alpnProtocols",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 1302,
+                  "line": 964,
                   "col": 4
                 },
                 "jsDoc": {
@@ -7203,6 +5426,180 @@
             "indexSignatures": [],
             "typeParams": []
           }
+        },
+        {
+          "kind": "function",
+          "name": "flock",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 972,
+            "col": 2
+          },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: New API should be tested first.\n\nAcquire an advisory file-system lock for the provided file. `exclusive`\ndefaults to `false`."
+          },
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "rid",
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "exclusive",
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "Promise",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "void",
+                    "kind": "keyword",
+                    "keyword": "void"
+                  }
+                ],
+                "typeName": "Promise"
+              }
+            },
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "function",
+          "name": "flockSync",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 979,
+            "col": 2
+          },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: New API should be tested first.\n\nAcquire an advisory file-system lock for the provided file. `exclusive`\ndefaults to `false`."
+          },
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "rid",
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                }
+              },
+              {
+                "kind": "identifier",
+                "name": "exclusive",
+                "optional": true,
+                "tsType": {
+                  "repr": "boolean",
+                  "kind": "keyword",
+                  "keyword": "boolean"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "function",
+          "name": "funlock",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 985,
+            "col": 2
+          },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: New API should be tested first.\n\nRelease an advisory file-system lock for the provided file."
+          },
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "rid",
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "Promise",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": [
+                  {
+                    "repr": "void",
+                    "kind": "keyword",
+                    "keyword": "void"
+                  }
+                ],
+                "typeName": "Promise"
+              }
+            },
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "function",
+          "name": "funlockSync",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 991,
+            "col": 2
+          },
+          "jsDoc": {
+            "doc": "**UNSTABLE**: New API should be tested first.\n\nRelease an advisory file-system lock for the provided file."
+          },
+          "functionDef": {
+            "params": [
+              {
+                "kind": "identifier",
+                "name": "rid",
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                }
+              }
+            ],
+            "returnType": {
+              "repr": "void",
+              "kind": "keyword",
+              "keyword": "void"
+            },
+            "isAsync": false,
+            "isGenerator": false,
+            "typeParams": []
+          }
         }
       ]
     }
@@ -7212,7 +5609,7 @@
     "name": "fetch",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1306,
+      "line": 994,
       "col": 0
     },
     "functionDef": {
@@ -7322,7 +5719,7 @@
     "name": "WorkerOptions",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1311,
+      "line": 999,
       "col": 0
     },
     "interfaceDef": {
@@ -7333,7 +5730,7 @@
           "name": "deno",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1345,
+            "line": 1033,
             "col": 2
           },
           "jsDoc": {
@@ -7517,6 +5914,34 @@
                                         "repr": "boolean",
                                         "kind": "keyword",
                                         "keyword": "boolean"
+                                      },
+                                      {
+                                        "repr": "Array",
+                                        "kind": "typeRef",
+                                        "typeRef": {
+                                          "typeParams": [
+                                            {
+                                              "repr": "",
+                                              "kind": "union",
+                                              "union": [
+                                                {
+                                                  "repr": "string",
+                                                  "kind": "keyword",
+                                                  "keyword": "string"
+                                                },
+                                                {
+                                                  "repr": "URL",
+                                                  "kind": "typeRef",
+                                                  "typeRef": {
+                                                    "typeParams": null,
+                                                    "typeName": "URL"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "typeName": "Array"
+                                        }
                                       }
                                     ]
                                   },
@@ -7713,7 +6138,7 @@
     "name": "WebSocketStreamOptions",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1365,
+      "line": 1053,
       "col": 0
     },
     "interfaceDef": {
@@ -7724,7 +6149,7 @@
           "name": "protocols",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1366,
+            "line": 1054,
             "col": 2
           },
           "params": [],
@@ -7745,7 +6170,7 @@
           "name": "signal",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1367,
+            "line": 1055,
             "col": 2
           },
           "params": [],
@@ -7772,7 +6197,7 @@
     "name": "WebSocketConnection",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1370,
+      "line": 1058,
       "col": 0
     },
     "interfaceDef": {
@@ -7783,7 +6208,7 @@
           "name": "readable",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1371,
+            "line": 1059,
             "col": 2
           },
           "params": [],
@@ -7823,7 +6248,7 @@
           "name": "writable",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1372,
+            "line": 1060,
             "col": 2
           },
           "params": [],
@@ -7863,7 +6288,7 @@
           "name": "extensions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1373,
+            "line": 1061,
             "col": 2
           },
           "params": [],
@@ -7880,7 +6305,7 @@
           "name": "protocol",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1374,
+            "line": 1062,
             "col": 2
           },
           "params": [],
@@ -7904,7 +6329,7 @@
     "name": "WebSocketCloseInfo",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1377,
+      "line": 1065,
       "col": 0
     },
     "interfaceDef": {
@@ -7915,7 +6340,7 @@
           "name": "code",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1378,
+            "line": 1066,
             "col": 2
           },
           "params": [],
@@ -7932,7 +6357,7 @@
           "name": "reason",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1379,
+            "line": 1067,
             "col": 2
           },
           "params": [],
@@ -7956,7 +6381,7 @@
     "name": "WebSocketStream",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1382,
+      "line": 1070,
       "col": 0
     },
     "classDef": {
@@ -7992,7 +6417,7 @@
           ],
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1383,
+            "line": 1071,
             "col": 2
           }
         }
@@ -8012,7 +6437,7 @@
           "name": "url",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1384,
+            "line": 1072,
             "col": 2
           }
         },
@@ -8042,7 +6467,7 @@
           "name": "connection",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1385,
+            "line": 1073,
             "col": 2
           }
         },
@@ -8072,7 +6497,7 @@
           "name": "closed",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1386,
+            "line": 1074,
             "col": 2
           }
         }
@@ -8113,7 +6538,7 @@
           },
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1387,
+            "line": 1075,
             "col": 2
           }
         }
