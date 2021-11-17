@@ -1,5 +1,5 @@
 /** @jsx h */
-import { apply, Component, css, h, rustyMarkdown, theme, tw } from "../deps.ts";
+import { apply, Component, comrak, css, h, theme, tw } from "../deps.ts";
 import type {
   CSSRules,
   Directive,
@@ -138,22 +138,24 @@ export function BreadCrumbs(
   );
 }
 
+await comrak.init();
+
 export function Markdown(
   { jsDoc, style = smallMarkdown }: MarkdownProps,
 ) {
   if (!jsDoc || !jsDoc.doc) {
     return;
   }
-  const tokens = rustyMarkdown.tokens(jsDoc.doc, {
-    tables: true,
-    strikethrough: true,
-    smartPunctuation: true,
+  const text = comrak.markdownToHTML(jsDoc.doc, {
+    extension: {
+      autolink: true,
+      descriptionLists: true,
+      strikethrough: true,
+      table: true,
+      tagfilter: true,
+    },
   });
-  return (
-    <div class={tw`${style}`}>
-      {rustyMarkdown.html(tokens)}
-    </div>
-  );
+  return <div class={tw`${style}`}>{text}</div>;
 }
 
 export class Node<N extends DocNode> extends Component<NodeProps<N>> {

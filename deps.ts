@@ -60,9 +60,7 @@ export {
 // Provide more structured JSX types than nano_jsx provides
 import type {} from "./types.d.ts";
 
-export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
-
-export * as goldmark from "https://deno.land/x/goldmark@v0.1.2/mod.ts";
+export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
 
 export { doc } from "https://deno.land/x/deno_doc@v0.21.0/mod.ts";
 export type {
