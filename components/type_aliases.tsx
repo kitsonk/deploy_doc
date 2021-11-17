@@ -6,15 +6,14 @@ import {
   code,
   entryTitle,
   getName,
-  keyword,
   largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeLink,
   Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeDef, TypeParams } from "./types.tsx";
 
 class TypeAliasNode extends Node<DocNodeTypeAlias> {
@@ -45,11 +44,11 @@ export function TypeAliases({ nodes, path }: NodesProps<DocNodeTypeAlias>) {
 
 export function TypeAliasEntry({ node, path }: NodeProps<DocNodeTypeAlias>) {
   return (
-    <div class={tw`${mainBox}`}>
+    <div class={tw`${getStyle("mainBox")}`}>
       <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
       <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
       <div class={tw`${code}`}>
-        <span class={tw`${keyword}`}>type</span> {node.name}
+        <span class={tw`${getStyle("keyword")}`}>type</span> {node.name}
         <TypeParams params={node.typeAliasDef.typeParams} /> ={" "}
         <TypeDef def={node.typeAliasDef.tsType} terminate />
       </div>

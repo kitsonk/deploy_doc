@@ -2,8 +2,6 @@
 /** @jsxFrag Fragment */
 import { Component, Fragment, h, htmlEntities, tw } from "../deps.ts";
 import type {
-  CSSRules,
-  Directive,
   TsTypeArrayDef,
   TsTypeConditionalDef,
   TsTypeDef,
@@ -25,8 +23,8 @@ import type {
   TsTypeUnionDef,
 } from "../deps.ts";
 import { store } from "../shared.ts";
-import { StoreState } from "../shared.ts";
-import { keyword } from "./common.tsx";
+import { getState, PRINT_THEME, StoreState } from "../shared.ts";
+import { defaultPrintTheme } from "./common.tsx";
 import {
   CallSignatures,
   IndexSignatures,
@@ -34,19 +32,13 @@ import {
   Properties,
 } from "./interfaces.tsx";
 import { Params } from "./params.tsx";
+import { getStyle } from "./styles.ts";
 
 interface TypeDefProps<T extends TsTypeDef> {
   def: T;
   inline?: boolean;
   terminate?: boolean;
-  styles?: Record<string, Directive<CSSRules>>;
 }
-
-const coloredStyles = {
-  keyword,
-};
-
-export const plainStyles = {};
 
 export function TypeArguments(
   { args }: { args: TsTypeDef[] | undefined | null },
@@ -73,14 +65,14 @@ function TypeDefArray({ def }: TypeDefProps<TsTypeArrayDef>) {
 }
 
 function TypeDefConditional(
-  { def: { conditionalType }, styles = coloredStyles }: TypeDefProps<
+  { def: { conditionalType } }: TypeDefProps<
     TsTypeConditionalDef
   >,
 ) {
   return (
     <span>
       <TypeDef def={conditionalType.checkType} />{" "}
-      <span class={tw`${styles.keyword}`}>extends</span>{" "}
+      <span class={tw`${getStyle("keyword")}`}>extends</span>{" "}
       <TypeDef def={conditionalType.extendsType} /> ?{" "}
       <TypeDef def={conditionalType.trueType} /> :{" "}
       <TypeDef def={conditionalType.falseType} />
@@ -94,7 +86,7 @@ function TypeDefFnOrConstructor(
   return (
     <span>
       {def.fnOrConstructor.constructor
-        ? <span class={tw`${keyword}`}>new{" "}</span>
+        ? <span class={tw`${getStyle("keyword")}`}>new{" "}</span>
         : ""}
       <TypeParams params={def.fnOrConstructor.typeParams} />(<Params
         params={def.fnOrConstructor.params}
@@ -157,7 +149,7 @@ function TypeDefPredicate(
   return (
     <span>
       {typePredicate.asserts
-        ? <span class={tw`${keyword}`}>asserts{" "}</span>
+        ? <span class={tw`${getStyle("keyword")}`}>asserts{" "}</span>
         : undefined}
       {typePredicate.param.type === "this" ? "this" : typePredicate.param.name}
       {typePredicate.type && (
@@ -462,13 +454,14 @@ export function TypeDef({ def, inline, terminate }: TypeDefProps<TsTypeDef>) {
 }
 
 function TypeParam({ param }: { param: TsTypeParamDef }) {
+  const theme = getState(PRINT_THEME) ?? defaultPrintTheme;
   return (
     <span>
       <span class={tw`text-blue-400`}>{param.name}</span>
       {param.constraint &&
         (
           <span>
-            <span class={tw`${keyword}`}>
+            <span class={tw`${theme.keyword}`}>
               {" "}extends{" "}
             </span>
             <TypeDef def={param.constraint} />

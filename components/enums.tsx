@@ -6,15 +6,14 @@ import {
   code,
   entryTitle,
   getName,
-  keyword,
   largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeLink,
   Section,
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
+import { getStyle } from "./styles.ts";
 
 class EnumNode extends Node<DocNodeEnum> {
   render() {
@@ -45,11 +44,12 @@ export function Enums({ nodes, path }: NodesProps<DocNodeEnum>) {
 export function EnumEntry({ node, path }: NodeProps<DocNodeEnum>) {
   const members = node.enumDef.members.map((item) => <div>{item.name},</div>);
   return (
-    <div class={tw`${mainBox}`}>
+    <div class={tw`${getStyle("mainBox")}`}>
       <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
       <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
       <div class={tw`${code}`}>
-        <span class={tw`${keyword}`}>enum</span> {node.name} &#123;{" "}
+        <span class={tw`${getStyle("keyword")}`}>enum</span> {node.name} &#123;
+        {" "}
         {members.length ? <div class={tw`ml-4`}>{members}</div> : undefined}
         {" "}
         &#125;

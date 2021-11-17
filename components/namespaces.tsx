@@ -5,10 +5,8 @@ import { Classes } from "./classes.tsx";
 import {
   asCollection,
   byName,
-  entryTitle,
+  EntryTitle,
   getName,
-  largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeLink,
@@ -18,6 +16,7 @@ import type { NodeProps, NodesProps } from "./common.tsx";
 import { Enums } from "./enums.tsx";
 import { Fns } from "./functions.tsx";
 import { Interfaces } from "./interfaces.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeAliases } from "./type_aliases.tsx";
 import { Variables } from "./variables.tsx";
 
@@ -53,9 +52,9 @@ export function NamespaceEntry(
   const collection = asCollection(node.namespaceDef.elements);
   const currentPath = [...path, node.name];
   return (
-    <div class={tw`${mainBox}`}>
-      <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
-      <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
+    <div class={tw`${getStyle("mainBox")}`}>
+      <EntryTitle>{getName(node, path)}</EntryTitle>
+      <Markdown jsDoc={node.jsDoc} style={getStyle("largeMarkdown")} />
       {collection.namespace &&
         <Namespaces nodes={collection.namespace} path={currentPath} />}
       {collection.class &&

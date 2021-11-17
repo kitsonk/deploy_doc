@@ -6,7 +6,7 @@ import type { RouterMiddleware } from "../deps.ts";
 import { sheet } from "../shared.ts";
 import { getBody } from "../util.ts";
 
-export const indexGet: RouterMiddleware = (ctx) => {
+export const indexGet: RouterMiddleware<"/"> = (ctx) => {
   sheet.reset();
   ctx.response.body = getBody(
     renderSSR(

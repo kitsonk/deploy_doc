@@ -6,9 +6,7 @@ import {
   code,
   entryTitle,
   getName,
-  keyword,
   largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeLink,
@@ -16,6 +14,7 @@ import {
 } from "./common.tsx";
 import type { NodesProps } from "./common.tsx";
 import { Params } from "./params.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeDef, TypeParams } from "./types.tsx";
 
 class FnNode extends Node<DocNodeFunction> {
@@ -68,7 +67,7 @@ export function FnEntry({ nodes, path }: FnEntryProps) {
   }
   const fns = nodes.map((node) => (
     <div>
-      <span class={tw`${keyword}`}>
+      <span class={tw`${getStyle("keyword")}`}>
         {node.functionDef.isAsync
           ? "async "
           : ""}function{node.functionDef.isGenerator ? "* " : " "}
@@ -85,7 +84,7 @@ export function FnEntry({ nodes, path }: FnEntryProps) {
   ));
 
   return (
-    <div class={tw`${mainBox}`}>
+    <div class={tw`${getStyle("mainBox")}`}>
       <h1 class={tw`${entryTitle}`}>{getName(nodes[0], path)}</h1>
       <Markdown jsDoc={jsDoc} style={largeMarkdown} />
       <div class={tw`${code}`}>{fns}</div>

@@ -16,11 +16,10 @@ import {
   code,
   codeBlockPrintTheme,
   docItem,
+  EntryTitle,
   entryTitle,
   getName,
-  keyword,
   largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeItemsProps,
@@ -32,6 +31,7 @@ import {
 import type { NodeProps, NodesProps } from "./common.tsx";
 import { Params } from "./params.tsx";
 import { IndexSignatures, IndexSignaturesDoc } from "./interfaces.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeArguments, TypeDef, TypeParams } from "./types.tsx";
 
 function compareAccessibility(
@@ -130,7 +130,9 @@ function getClassItemLabel(type: ClassItemType) {
 }
 
 function AccessibilityNode({ value }: { value?: Accessibility }) {
-  return value ? <span class={tw`${keyword}`}>{value}</span> : undefined;
+  return value
+    ? <span class={tw`${getStyle("keyword")}`}>{value}</span>
+    : undefined;
 }
 
 function Constructors({ items }: { items: ClassConstructorDef[] }) {
@@ -140,7 +142,7 @@ function Constructors({ items }: { items: ClassConstructorDef[] }) {
   const children = items.map((c) => (
     <div>
       <AccessibilityNode value={c.accessibility} />
-      <span class={tw`${keyword}`}>{c.name}</span>
+      <span class={tw`${getStyle("keyword")}`}>{c.name}</span>
       (<Params params={c.params} />);
     </div>
   ));
@@ -188,7 +190,7 @@ function ClassProperty({ item }: { item: ClassPropertyDef }) {
     <div>
       {item.isStatic || item.accessibility || item.isAbstract || item.readonly
         ? (
-          <span class={tw`${keyword}`}>
+          <span class={tw`${getStyle("keyword")}`}>
             {item.isStatic ? "static " : undefined}
             {item.accessibility && `${item.accessibility} `}
             {item.isAbstract ? "abstract " : ""}
@@ -230,7 +232,7 @@ function ClassMethod({ item }: { item: ClassMethodDef }) {
     <div>
       {item.isStatic || item.accessibility || item.isAbstract
         ? (
-          <span class={tw`${keyword}`}>
+          <span class={tw`${getStyle("keyword")}`}>
             {item.isStatic ? "static " : undefined}
             {item.accessibility && `${item.accessibility} `}
             {item.isAbstract ? "abstract " : ""}
@@ -240,7 +242,7 @@ function ClassMethod({ item }: { item: ClassMethodDef }) {
       {item.functionDef.isAsync || item.functionDef.isGenerator ||
           item.kind === "getter" || item.kind === "setter"
         ? (
-          <span class={tw`${keyword}`}>
+          <span class={tw`${getStyle("keyword")}`}>
             {item.functionDef.isAsync ? "async " : ""}
             {item.kind === "getter"
               ? "get "
@@ -474,9 +476,9 @@ export function ClassEntry({ node, path }: NodeProps<DocNodeClass>) {
     },
   );
   return (
-    <div class={tw`${mainBox}`}>
-      <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
-      <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
+    <div class={tw`${getStyle("mainBox")}`}>
+      <EntryTitle>{getName(node, path)}</EntryTitle>
+      <Markdown jsDoc={node.jsDoc} style={getStyle("largeMarkdown")} />
       <ClassCodeBlock node={node} items={items} />
       <div class={tw`mt-4`}>
         <ConstructorsDoc items={node.classDef.constructors} name={node.name} />

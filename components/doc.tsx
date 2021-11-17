@@ -6,12 +6,13 @@ import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
 import { assert } from "../util.ts";
 import { ClassEntry, Classes } from "./classes.tsx";
-import { asCollection, mainBox } from "./common.tsx";
+import { asCollection } from "./common.tsx";
 import { EnumEntry, Enums } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
 import { FnEntry, Fns } from "./functions.tsx";
 import { InterfaceEntry, Interfaces } from "./interfaces.tsx";
 import { NamespaceEntry, Namespaces } from "./namespaces.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeAliasEntry, TypeAliases } from "./type_aliases.tsx";
 import { VariableEntry, Variables } from "./variables.tsx";
 
@@ -96,7 +97,7 @@ export class DocPrinter extends Component<EmptyProps> {
     const { entries } = this.store.state as StoreState;
     const collection = asCollection(entries);
     return (
-      <div class={tw`${mainBox}`}>
+      <div class={tw`${getStyle("mainBox")}`}>
         {collection.namespace && <Namespaces nodes={collection.namespace} />}
         {collection.class && <Classes nodes={collection.class} />}
         {collection.enum && <Enums nodes={collection.enum} />}

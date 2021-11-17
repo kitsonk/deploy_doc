@@ -11,52 +11,64 @@ export {
   Router,
   Status,
   STATUS_TEXT,
-} from "https://deno.land/x/oak@v9.0.0/mod.ts";
+} from "https://deno.land/x/oak@v10.0.0/mod.ts";
 export type {
   Context,
   Middleware,
   RouteParams,
   RouterContext,
   RouterMiddleware,
-} from "https://deno.land/x/oak@v9.0.0/mod.ts";
+} from "https://deno.land/x/oak@v10.0.0/mod.ts";
 
-export * as colors from "https://deno.land/std@0.111.0/fmt/colors.ts";
+export * as colors from "https://deno.land/std@0.114.0/fmt/colors.ts";
 
 export * as htmlEntities from "https://cdn.skypack.dev/html-entities@2.3.2?dts";
 
-export { apply, setup, tw } from "https://cdn.skypack.dev/twind@0.16.16?dts";
+// @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/twind.d.ts
+export {
+  apply,
+  setup,
+  tw,
+} from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=imports/optimized/twind.js";
 export type {
   CSSRules,
   Directive,
-} from "https://cdn.skypack.dev/twind@0.16.16?dts";
+} from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/twind.d.ts";
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/css/css.d.ts
-export { css, theme } from "https://cdn.skypack.dev/twind@0.16.16/css";
+export {
+  css,
+  theme,
+} from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=imports/optimized/twind/css.js";
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/sheets/sheets.d.ts
 export {
   getStyleTag,
   virtualSheet,
-} from "https://cdn.skypack.dev/twind@0.16.16/sheets";
+} from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=imports/optimized/twind/sheets.js";
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/colors/colors.d.ts
-export * as twColors from "https://cdn.skypack.dev/twind@0.16.16/colors";
+export * as twColors from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=imports/optimized/twind/colors.js";
 
-export { Component } from "https://deno.land/x/nano_jsx@v0.0.20/component.ts";
-export { h } from "https://deno.land/x/nano_jsx@v0.0.20/core.ts";
-export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.20/fragment.ts";
-export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.20/ssr.ts";
-export { Store } from "https://deno.land/x/nano_jsx@v0.0.20/store.ts";
-import type {} from "https://deno.land/x/nano_jsx@v0.0.20/types.ts";
+export { Component } from "https://deno.land/x/nano_jsx@v0.0.21/component.ts";
+export { h } from "https://deno.land/x/nano_jsx@v0.0.21/core.ts";
+export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.21/fragment.ts";
+export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.21/ssr.ts";
+export { Store } from "https://deno.land/x/nano_jsx@v0.0.21/store.ts";
 export {
   getState,
   setState,
-} from "https://deno.land/x/nano_jsx@v0.0.20/hooks/useState.ts";
+} from "https://deno.land/x/nano_jsx@v0.0.21/hooks/useState.ts";
+
+// Provide more structured JSX types than nano_jsx provides
+import type {} from "./types.d.ts";
 
 export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts";
+
+export * as goldmark from "https://deno.land/x/goldmark@v0.1.2/mod.ts";
 
 export { doc } from "https://deno.land/x/deno_doc@v0.17.1/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://deno.land/x/deno_doc@v0.17.1/mod.ts";
+} from "https://deno.land/x/deno_doc@v0.20.0/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -113,4 +125,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://deno.land/x/deno_doc@v0.17.1/lib/types.d.ts";
+} from "https://deno.land/x/deno_doc@v0.20.0/lib/types.d.ts";

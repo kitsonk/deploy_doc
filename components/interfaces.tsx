@@ -18,9 +18,7 @@ import {
   code,
   entryTitle,
   getName,
-  keyword,
   largeMarkdown,
-  mainBox,
   Markdown,
   Node,
   NodeLink,
@@ -28,6 +26,7 @@ import {
 } from "./common.tsx";
 import type { NodeProps, NodesProps } from "./common.tsx";
 import { Params } from "./params.tsx";
+import { getStyle } from "./styles.ts";
 import { TypeDef, TypeParams } from "./types.tsx";
 
 export function CallSignatures(
@@ -60,7 +59,7 @@ export function IndexSignatures(
   const children = items.map((s) => (
     <div>
       {s.readonly
-        ? <span class={tw`${keyword}`}>readonly{" "}</span>
+        ? <span class={tw`${getStyle("keyword")}`}>readonly{" "}</span>
         : undefined}[<Params params={s.params} />]{s.tsType && (
         <span>
           : <TypeDef def={s.tsType} inline />
@@ -104,11 +103,11 @@ export function IndexSignaturesDoc(
 
 export function InterfaceEntry({ node, path }: NodeProps<DocNodeInterface>) {
   return (
-    <div class={tw`${mainBox}`}>
+    <div class={tw`${getStyle("mainBox")}`}>
       <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
       <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
       <div class={tw`${code}`}>
-        <span class={tw`${keyword}`}>interface</span> {node.name}
+        <span class={tw`${getStyle("keyword")}`}>interface</span> {node.name}
         <TypeParams params={node.interfaceDef.typeParams} />
         <InterfaceExtends types={node.interfaceDef.extends} /> &#123;
         <IndexSignatures items={node.interfaceDef.indexSignatures} />
@@ -168,7 +167,9 @@ export function Methods(
 ) {
   return items.map((m) => (
     <div class={tw`ml-4`}>
-      {m.name === "new" ? <span class={tw`${keyword}`}>new{" "}</span> : m.name}
+      {m.name === "new"
+        ? <span class={tw`${getStyle("keyword")}`}>new{" "}</span>
+        : m.name}
       {m.optional ? "?" : ""}
       <TypeParams params={m.typeParams} />(<Params
         params={m.params}

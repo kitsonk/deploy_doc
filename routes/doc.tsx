@@ -131,16 +131,8 @@ function mergeEntries(entries: DocNode[]) {
   return merged;
 }
 
-interface PathRouteParams extends RouteParams {
-  proto: string;
-  host: string;
-  path?: string;
-  item?: string;
-}
-
-async function process(
-  // deno-lint-ignore no-explicit-any
-  ctx: RouterContext<any>,
+async function process<R extends string>(
+  ctx: RouterContext<R>,
   url: string,
   item?: string | null,
 ) {
@@ -189,9 +181,7 @@ async function process(
   ctx.response.type = "html";
 }
 
-export const pathGetHead: RouterMiddleware<PathRouteParams> = async (
-  ctx: RouterContext<PathRouteParams>,
-) => {
+export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
   const url = `${ctx.params.proto}://${ctx.params.host}/${
     ctx.params.path ??
       ""
@@ -208,7 +198,7 @@ export const pathGetHead: RouterMiddleware<PathRouteParams> = async (
   return process(ctx, url, item);
 };
 
-export const docGet: RouterMiddleware = (ctx: RouterContext) => {
+export const docGet = (ctx: RouterContext<"/doc">) => {
   const url = ctx.request.url.searchParams.get("url");
   ctx.assert(url, Status.BadRequest, "The query property `url` is missing.");
   const item = ctx.request.url.searchParams.get("item");

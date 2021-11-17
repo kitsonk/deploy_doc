@@ -18,6 +18,7 @@ import type {
 } from "../deps.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
+import { getStyle } from "./styles.ts";
 import { assert } from "../util.ts";
 
 export const TARGET_RE = /(\s|[\[\]])/g;
@@ -58,8 +59,7 @@ export const code = apply`font-mono p-2 bg-gray-900 rounded text-white`;
 export const docItem = apply`group relative`;
 export const entryTitle = apply
   `text-3xl border-b border-gray-800 p-2 mt-2 mb-4`;
-export const keyword = apply`text-purple-500 font-medium`;
-export const mainBox = apply`w-full bg-gray-50 rounded-lg px-8 pt-4 pb-8`;
+const keyword = apply`text-purple-500 font-medium`;
 export const section = apply
   `group relative text-2xl border-b border-gray-400 p-2 mt-1 mb-3`;
 export const smallMarkdown = apply`ml-4 mr-2 py-2 text-sm`;
@@ -171,9 +171,17 @@ export class NodeLink extends Node<DocNode> {
   }
 }
 
-export function Section({ children }: { children?: [string] }) {
+// deno-lint-ignore no-explicit-any
+export function EntryTitle({ children }: { children: any }) {
+  return <h1 class={tw`${getStyle("entryTitle")}`}>{children}</h1>;
+}
+
+export function Section({ children }: { children?: string | string[] }) {
   assert(children);
-  const id = children[0].replaceAll(TARGET_RE, "_");
+  const id = (Array.isArray(children) ? children[0] : children).replaceAll(
+    TARGET_RE,
+    "_",
+  );
   return (
     <h2 class={tw`${section}`} id={id}>
       <Anchor name={id} />
