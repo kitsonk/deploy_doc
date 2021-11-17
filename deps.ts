@@ -64,11 +64,11 @@ export * as rustyMarkdown from "https://deno.land/x/rusty_markdown@v0.4.1/mod.ts
 
 export * as goldmark from "https://deno.land/x/goldmark@v0.1.2/mod.ts";
 
-export { doc } from "https://deno.land/x/deno_doc@v0.17.1/mod.ts";
+export { doc } from "https://deno.land/x/deno_doc@v0.21.0/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://deno.land/x/deno_doc@v0.20.0/mod.ts";
+} from "https://deno.land/x/deno_doc@v0.21.0/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -125,4 +125,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://deno.land/x/deno_doc@v0.20.0/lib/types.d.ts";
+} from "https://deno.land/x/deno_doc@v0.21.0/lib/types.d.ts";
