@@ -13,11 +13,11 @@ const baseStyles = {
   entryTitle: apply`text-3xl border-b border-gray-800 p-2 mt-2 mb-4`,
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
   keyword: apply``,
-  largeMarkdown: largeMarkdown,
+  largeMarkdown,
   logo: apply`h-16 mr-4 float-left`,
   main: apply`max-w-full md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto p-6`,
   mainBox: apply`w-full bg-gray-50 rounded-lg px-8 pt-4 pb-8`,
-  markdown: markdown,
+  markdown,
   subtitle: apply`h-6 text-xl font-semibold`,
   title: apply`h-10 text-3xl font-bold`,
 } as const;

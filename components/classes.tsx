@@ -17,7 +17,6 @@ import {
   codeBlockPrintTheme,
   docItem,
   EntryTitle,
-  entryTitle,
   getName,
   largeMarkdown,
   Markdown,

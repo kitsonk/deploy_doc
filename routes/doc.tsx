@@ -1,15 +1,13 @@
 /** @jsx h */
-import { Body } from "../components/body.tsx";
-import { DocEntry, DocPrinter } from "../components/doc.tsx";
+import { Body } from "../components_2/body.tsx";
+import { DocEntry, DocNodes } from "../components_2/doc.tsx";
 import { colors, doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
 import type {
   DocNode,
   DocNodeInterface,
   DocNodeNamespace,
   LoadResponse,
-  RouteParams,
   RouterContext,
-  RouterMiddleware,
 } from "../deps.ts";
 import { sheet, store } from "../shared.ts";
 import { assert, getBody } from "../util.ts";
@@ -172,7 +170,7 @@ async function process<R extends string>(
   ctx.response.body = getBody(
     renderSSR(
       <Body title="Deploy Doc" subtitle={url}>
-        {item ? <DocEntry item={item} /> : <DocPrinter />}
+        {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{entries}</DocNodes>}
       </Body>,
     ),
     getStyleTag(sheet),
