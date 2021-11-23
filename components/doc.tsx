@@ -5,13 +5,13 @@ import { store, StoreState } from "../shared.ts";
 import { assert, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassDoc } from "./classes.tsx";
-import { asCollection, Section } from "./common.tsx";
+import { asCollection, Markdown, Section } from "./common.tsx";
 import { EnumDoc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
 import { FnDoc } from "./functions.tsx";
 import { InterfaceDoc } from "./interfaces.tsx";
 import { NamespaceDoc } from "./namespaces.tsx";
-import { gtw } from "./styles.ts";
+import { gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeAliasDoc } from "./types.tsx";
 import { VariableDoc } from "./variables.tsx";
 
@@ -29,9 +29,13 @@ export function DocNodes(
 ) {
   const items = take(children, true);
   const collection = asCollection(items);
-  console.log("DocPrinter", children.length, collection.namespace?.length);
   return (
     <div class={gtw("mainBox")}>
+      {collection.moduleDoc && (
+        <Markdown style={largeMarkdownStyles}>
+          {collection.moduleDoc[0].jsDoc}
+        </Markdown>
+      )}
       {collection.namespace && (
         <Section title="Namespace" style="nodeNamespace">
           {collection.namespace}
