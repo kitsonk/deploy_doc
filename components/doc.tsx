@@ -1,26 +1,19 @@
 /** @jsx h */
-/** @jsxFrag Fragment */
-import { Component, h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
-import { store } from "../shared.ts";
-import type { StoreState } from "../shared.ts";
-import { assert } from "../util.ts";
-import { ClassEntry, Classes } from "./classes.tsx";
-import { asCollection } from "./common.tsx";
-import { EnumEntry, Enums } from "./enums.tsx";
+import { store, StoreState } from "../shared.ts";
+import { assert, take } from "../util.ts";
+import type { Child } from "../util.ts";
+import { ClassDoc } from "./classes.tsx";
+import { asCollection, Section } from "./common.tsx";
+import { EnumDoc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
-import { FnEntry, Fns } from "./functions.tsx";
-import { InterfaceEntry, Interfaces } from "./interfaces.tsx";
-import { NamespaceEntry, Namespaces } from "./namespaces.tsx";
-import { getStyle } from "./styles.ts";
-import { TypeAliasEntry, TypeAliases } from "./type_aliases.tsx";
-import { VariableEntry, Variables } from "./variables.tsx";
-
-type EmptyProps = Record<string, never>;
-
-interface DocEntryParams {
-  item: string;
-}
+import { FnDoc } from "./functions.tsx";
+import { InterfaceDoc } from "./interfaces.tsx";
+import { NamespaceDoc } from "./namespaces.tsx";
+import { gtw } from "./styles.ts";
+import { TypeAliasDoc } from "./types.tsx";
+import { VariableDoc } from "./variables.tsx";
 
 function assertAll<N extends DocNode>(
   nodes: DocNode[],
@@ -31,81 +24,104 @@ function assertAll<N extends DocNode>(
   }
 }
 
-export class DocEntry extends Component<DocEntryParams> {
-  store = store.use();
-
-  render() {
-    const { item } = this.props;
-    const path = item.split(".");
-    const name = path.pop()!;
-    let { entries, url } = this.store.state as StoreState;
-    if (path && path.length) {
-      for (const name of path) {
-        const namespace = entries.find((n) =>
-          n.kind === "namespace" && n.name === name
-        ) as DocNodeNamespace | undefined;
-        if (namespace) {
-          entries = namespace.namespaceDef.elements;
-        }
-      }
-    }
-    const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
-    if (!nodes.length) {
-      return (
-        <ErrorMessage title="Entry not found">
-          The document entry named "{path ? [...path, name].join(".") : name}"
-          was not found in specifier "{url}".
-        </ErrorMessage>
-      );
-    }
-    switch (nodes[0].kind) {
-      case "class":
-        assert(nodes.length === 1);
-        return <ClassEntry node={nodes[0]} path={path} />;
-      case "enum":
-        assert(nodes.length === 1);
-        return <EnumEntry node={nodes[0]} path={path} />;
-      case "function":
-        assertAll<DocNodeFunction>(nodes, "function");
-        return <FnEntry nodes={nodes} path={path} />;
-      case "interface":
-        assert(nodes.length === 1);
-        return <InterfaceEntry node={nodes[0]} path={path} />;
-      case "namespace":
-        assert(nodes.length === 1);
-        return <NamespaceEntry node={nodes[0]} path={path} />;
-      case "typeAlias":
-        assert(nodes.length === 1);
-        return <TypeAliasEntry node={nodes[0]} path={path} />;
-      case "variable":
-        assert(nodes.length === 1);
-        return <VariableEntry node={nodes[0]} path={path} />;
-      default:
-        return (
-          <ErrorMessage title="Not Supported">
-            The kind of "{nodes[0].kind}" is currently not supported.
-          </ErrorMessage>
-        );
-    }
-  }
+export function DocNodes(
+  { children }: { children: Child<DocNode[]> },
+) {
+  const items = take(children, true);
+  const collection = asCollection(items);
+  console.log("DocPrinter", children.length, collection.namespace?.length);
+  return (
+    <div class={gtw("mainBox")}>
+      {collection.namespace && (
+        <Section title="Namespace" style="nodeNamespace">
+          {collection.namespace}
+        </Section>
+      )}
+      {collection.class && (
+        <Section title="Classes" style="nodeClass">
+          {collection.class}
+        </Section>
+      )}
+      {collection.enum && (
+        <Section title="Enums" style="nodeEnum">
+          {collection.enum}
+        </Section>
+      )}
+      {collection.variable && (
+        <Section title="Variables" style="nodeVariable">
+          {collection.variable}
+        </Section>
+      )}
+      {collection.function && (
+        <Section title="Functions" style="nodeFunction">
+          {collection.function}
+        </Section>
+      )}
+      {collection.interface && (
+        <Section title="Interfaces" style="nodeInterface">
+          {collection.interface}
+        </Section>
+      )}
+      {collection.typeAlias && (
+        <Section title="Types" style="nodeTypeAlias">
+          {collection.typeAlias}
+        </Section>
+      )}
+    </div>
+  );
 }
 
-export class DocPrinter extends Component<EmptyProps> {
-  store = store.use();
-
-  render() {
-    const { entries } = this.store.state as StoreState;
-    const collection = asCollection(entries);
+export function DocEntry({ children }: { children: Child<string> }) {
+  const item = take(children);
+  const path = item.split(".");
+  const name = path.pop()!;
+  let { entries, url } = store.state as StoreState;
+  if (path && path.length) {
+    for (const name of path) {
+      const namespace = entries.find((n) =>
+        n.kind === "namespace" && n.name === name
+      ) as DocNodeNamespace | undefined;
+      if (namespace) {
+        entries = namespace.namespaceDef.elements;
+      }
+    }
+  }
+  const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
+  if (!nodes.length) {
     return (
-      <div class={tw`${getStyle("mainBox")}`}>
-        {collection.namespace && <Namespaces nodes={collection.namespace} />}
-        {collection.class && <Classes nodes={collection.class} />}
-        {collection.enum && <Enums nodes={collection.enum} />}
-        {collection.variable && <Variables nodes={collection.variable} />}
-        {collection.function && <Fns nodes={collection.function} />}
-        {collection.interface && <Interfaces nodes={collection.interface} />}
-        {collection.typeAlias && <TypeAliases nodes={collection.typeAlias} />}
-      </div>
+      <ErrorMessage title="Entry not found">
+        The document entry named "{path ? [...path, name].join(".") : name}" was
+        not found in specifier "{url}".
+      </ErrorMessage>
     );
+  }
+  switch (nodes[0].kind) {
+    case "class":
+      assert(nodes.length === 1);
+      return <ClassDoc path={path}>{nodes[0]}</ClassDoc>;
+    case "enum":
+      assert(nodes.length === 1);
+      return <EnumDoc path={path}>{nodes[0]}</EnumDoc>;
+    case "function":
+      assertAll<DocNodeFunction>(nodes, "function");
+      return <FnDoc path={path}>{nodes}</FnDoc>;
+    case "interface":
+      assert(nodes.length === 1);
+      return <InterfaceDoc path={path}>{nodes[0]}</InterfaceDoc>;
+    case "namespace":
+      assert(nodes.length === 1);
+      return <NamespaceDoc path={path}>{nodes[0]}</NamespaceDoc>;
+    case "typeAlias":
+      assert(nodes.length === 1);
+      return <TypeAliasDoc path={path}>{nodes[0]}</TypeAliasDoc>;
+    case "variable":
+      assert(nodes.length === 1);
+      return <VariableDoc path={path}>{nodes[0]}</VariableDoc>;
+    default:
+      return (
+        <ErrorMessage title="Not Supported">
+          The kind of "{nodes[0].kind}" is currently not supported.
+        </ErrorMessage>
+      );
   }
 }

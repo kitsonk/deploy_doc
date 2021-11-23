@@ -1,19 +1,17 @@
 /** @jsx h */
-import { Component, h, tw } from "../deps.ts";
-import { getStyle } from "./styles.ts";
+import { h } from "../deps.ts";
+import { gtw } from "./styles.ts";
 
-interface Props {
+interface ErrorMessageProps {
   title: string;
-  children?: unknown;
+  children: unknown;
 }
 
-export class ErrorMessage extends Component<Props> {
-  render() {
-    return (
-      <div class={tw`${getStyle("error")}`} role="alert">
-        <p class={tw`font-bold`}>{this.props.title}</p>
-        <p>{this.props.children}</p>
-      </div>
-    );
-  }
+export function ErrorMessage({ children, title }: ErrorMessageProps) {
+  return (
+    <div class={gtw("error")} role="alert">
+      <p class={gtw("bold")}>{title}</p>
+      <p>{children}</p>
+    </div>
+  );
 }

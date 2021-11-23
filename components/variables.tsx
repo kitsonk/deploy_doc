@@ -1,65 +1,47 @@
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type { DocNodeVariable } from "../deps.ts";
-import {
-  byName,
-  code,
-  entryTitle,
-  getName,
-  largeMarkdown,
-  Markdown,
-  Node,
-  NodeLink,
-  Section,
-} from "./common.tsx";
-import type { NodeProps, NodesProps } from "./common.tsx";
-import { getStyle } from "./styles.ts";
+import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
+import { DocTitle, Markdown } from "./common.tsx";
+import type { DocProps } from "./common.tsx";
+import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
+import { take } from "../util.ts";
+import type { Child } from "../util.ts";
 
-class VariableNode extends Node<DocNodeVariable> {
-  render() {
-    const { node, path } = this.props;
-    return (
-      <li>
-        <h3 class={tw`text-blue-600 mx-2`}>
-          <NodeLink node={node} path={path} />
-        </h3>
-        <Markdown jsDoc={node.jsDoc} />
-      </li>
-    );
-  }
-}
-
-export function Variables({ nodes, path }: NodesProps<DocNodeVariable>) {
-  const items = nodes.sort(byName).map((node) => (
-    <VariableNode node={node} path={path} />
-  ));
-  return (
-    <div>
-      <Section>Variables</Section>
-      <ul>{items}</ul>
+function VariableCodeBlock({ children }: { children: Child<DocNodeVariable> }) {
+  const {
+    name,
+    variableDef: { kind, tsType },
+  } = take(children);
+  const prev = getState(STYLE_OVERRIDE);
+  setState(STYLE_OVERRIDE, codeBlockStyles);
+  const keyword = gtw("keyword", codeBlockStyles);
+  const codeBlock = (
+    <div class={gtw("code")}>
+      <span class={keyword}>{kind}</span> {name}
+      {tsType
+        ? (
+          <span>
+            : <TypeDef terminate>{tsType}</TypeDef>
+          </span>
+        )
+        : ";"}
     </div>
   );
+  setState(STYLE_OVERRIDE, prev);
+  return codeBlock;
 }
 
-export function VariableEntry({ node, path }: NodeProps<DocNodeVariable>) {
+export function VariableDoc({ children, path }: DocProps<DocNodeVariable>) {
+  const node = take(children);
+  const { jsDoc } = node;
   return (
-    <div class={tw`${getStyle("mainBox")}`}>
-      <h1 class={tw`${entryTitle}`}>{getName(node, path)}</h1>
-      <Markdown jsDoc={node.jsDoc} style={largeMarkdown} />
-      <div class={tw`${code}`}>
-        <span class={tw`${getStyle("keyword")}`}>
-          {`${node.variableDef.kind} `}
-        </span>
-        <span>{node.name}</span>
-        {node.variableDef.tsType
-          ? (
-            <span>
-              : <TypeDef def={node.variableDef.tsType} />
-            </span>
-          )
-          : undefined};
-      </div>
+    <div class={gtw("mainBox")}>
+      <DocTitle path={path}>{node}</DocTitle>
+      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      <VariableCodeBlock>{node}</VariableCodeBlock>
+      <div class={gtw("docItems")}></div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /** @jsx h */
-import { Body } from "../components_2/body.tsx";
-import { SpecifierForm } from "../components_2/specifier_form.tsx";
+import { Body } from "../components/body.tsx";
+import { SpecifierForm } from "../components/specifier_form.tsx";
 import { getStyleTag, h, renderSSR } from "../deps.ts";
 import type { RouterMiddleware } from "../deps.ts";
 import { sheet } from "../shared.ts";

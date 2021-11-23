@@ -1,73 +1,57 @@
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type { DocNodeNamespace } from "../deps.ts";
-import { Classes } from "./classes.tsx";
-import {
-  asCollection,
-  byName,
-  EntryTitle,
-  getName,
-  Markdown,
-  Node,
-  NodeLink,
-  Section,
-} from "./common.tsx";
-import type { NodeProps, NodesProps } from "./common.tsx";
-import { Enums } from "./enums.tsx";
-import { Fns } from "./functions.tsx";
-import { Interfaces } from "./interfaces.tsx";
-import { getStyle } from "./styles.ts";
-import { TypeAliases } from "./type_aliases.tsx";
-import { Variables } from "./variables.tsx";
+import { take } from "../util.ts";
+import { asCollection, DocTitle, Markdown, Section } from "./common.tsx";
+import type { DocProps } from "./common.tsx";
+import { gtw, largeMarkdownStyles } from "./styles.ts";
 
-class NamespaceNode extends Node<DocNodeNamespace> {
-  render() {
-    const { node, path } = this.props;
-    return (
-      <li>
-        <h3 class={tw`text-yellow-700 mx-2`}>
-          <NodeLink node={node} path={path} />
-        </h3>
-        <Markdown jsDoc={node.jsDoc} />
-      </li>
-    );
-  }
-}
-
-export function Namespaces({ nodes, path }: NodesProps<DocNodeNamespace>) {
-  const items = nodes.sort(byName).map((node) => (
-    <NamespaceNode node={node} path={path} />
-  ));
-  return (
-    <div>
-      <Section>Namespaces</Section>
-      <ul>{items}</ul>
-    </div>
-  );
-}
-
-export function NamespaceEntry(
-  { node, path = [] }: NodeProps<DocNodeNamespace>,
+export function NamespaceDoc(
+  { children, path = [] }: DocProps<DocNodeNamespace>,
 ) {
-  const collection = asCollection(node.namespaceDef.elements);
-  const currentPath = [...path, node.name];
+  const node = take(children);
+  const { name, jsDoc, namespaceDef: { elements } } = node;
+  const collection = asCollection(elements);
+  const currentPath = [...path, name];
   return (
-    <div class={tw`${getStyle("mainBox")}`}>
-      <EntryTitle>{getName(node, path)}</EntryTitle>
-      <Markdown jsDoc={node.jsDoc} style={getStyle("largeMarkdown")} />
-      {collection.namespace &&
-        <Namespaces nodes={collection.namespace} path={currentPath} />}
-      {collection.class &&
-        <Classes nodes={collection.class} path={currentPath} />}
-      {collection.enum && <Enums nodes={collection.enum} path={currentPath} />}
-      {collection.variable &&
-        <Variables nodes={collection.variable} path={currentPath} />}
-      {collection.function &&
-        <Fns nodes={collection.function} path={currentPath} />}
-      {collection.interface &&
-        <Interfaces nodes={collection.interface} path={currentPath} />}
-      {collection.typeAlias &&
-        <TypeAliases nodes={collection.typeAlias} path={currentPath} />}
+    <div class={gtw("mainBox")}>
+      <DocTitle path={path}>{node}</DocTitle>
+      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      {collection.namespace && (
+        <Section title="Namespace" style="nodeNamespace" path={currentPath}>
+          {collection.namespace}
+        </Section>
+      )}
+      {collection.class && (
+        <Section title="Classes" style="nodeClass" path={currentPath}>
+          {collection.class}
+        </Section>
+      )}
+      {collection.enum && (
+        <Section title="Enums" style="nodeEnum" path={currentPath}>
+          {collection.enum}
+        </Section>
+      )}
+      {collection.variable && (
+        <Section title="Variables" style="nodeVariable" path={currentPath}>
+          {collection.variable}
+        </Section>
+      )}
+      {collection.function && (
+        <Section title="Functions" style="nodeFunction" path={currentPath}>
+          {collection.function}
+        </Section>
+      )}
+      {collection.interface && (
+        <Section title="Interfaces" style="nodeInterface" path={currentPath}>
+          {collection.interface}
+        </Section>
+      )}
+      {collection.typeAlias && (
+        <Section title="Types" style="nodeTypeAlias" path={currentPath}>
+          {collection.typeAlias}
+        </Section>
+      )}
     </div>
   );
 }

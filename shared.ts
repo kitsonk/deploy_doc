@@ -1,5 +1,4 @@
-import type { PrintTheme } from "./components/common.tsx";
-import type { StyleOverride } from "./components_2/styles.ts";
+import type { StyleOverride } from "./components/styles.ts";
 import {
   getState as nanoGetSate,
   setState as nanoSetState,
@@ -49,15 +48,12 @@ export const PRINT_THEME = "printer_styles";
 export const STYLE_OVERRIDE = "style_override";
 
 interface GetState {
-  (id: typeof PRINT_THEME): PrintTheme | undefined;
   (id: typeof STYLE_OVERRIDE): StyleOverride | undefined;
   // deno-lint-ignore no-explicit-any
   (id: string): any;
 }
 
 interface SetState {
-  // deno-lint-ignore no-explicit-any
-  (id: typeof PRINT_THEME, value: PrintTheme | undefined): Map<string, any>;
   (
     id: typeof STYLE_OVERRIDE,
     value: StyleOverride | undefined,

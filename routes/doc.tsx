@@ -1,6 +1,6 @@
 /** @jsx h */
-import { Body } from "../components_2/body.tsx";
-import { DocEntry, DocNodes } from "../components_2/doc.tsx";
+import { Body } from "../components/body.tsx";
+import { DocEntry, DocNodes } from "../components/doc.tsx";
 import { colors, doc, getStyleTag, h, renderSSR, Status } from "../deps.ts";
 import type {
   DocNode,

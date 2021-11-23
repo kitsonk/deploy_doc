@@ -1,30 +1,28 @@
 /** @jsx h */
-import { Component, h, tw } from "../deps.ts";
-import { getStyle } from "./styles.ts";
+import { h } from "../deps.ts";
+import { gtw } from "./styles.ts";
 
-interface Props {
+interface BodyProps {
   title: string;
   subtitle: string;
   children?: unknown;
 }
 
-export class Body extends Component<Props> {
-  render() {
-    return (
-      <body class={tw`bg-gray-300`}>
-        <div class={tw`${getStyle("main")}`}>
-          <div class={tw`clear-both mb-12`}>
-            <img
-              src="https://deno.land/images/deno_logo_4.gif"
-              class={tw`${getStyle("logo")}`}
-              alt="Deno, a cute sauropod dinosaur, with animated rain."
-            />
-            <h1 class={tw`${getStyle("title")}`}>{this.props.title}</h1>
-            <h2 class={tw`${getStyle("subtitle")}`}>{this.props.subtitle}</h2>
-          </div>
-          {this.props.children}
+export function Body({ title, subtitle, children }: BodyProps) {
+  return (
+    <body class={gtw("body")}>
+      <div class={gtw("main")}>
+        <div class={gtw("mainHeader")}>
+          <img
+            src="https://deno.land/images/deno_logo_4.gif"
+            class={gtw("logo")}
+            alt="Deno, a cute sauropod dinosaur, with animated rain."
+          />
+          <h1 class={gtw("title")}>{title}</h1>
+          <h2 class={gtw("subtitle")}>{subtitle}</h2>
         </div>
-      </body>
-    );
-  }
+        {children}
+      </div>
+    </body>
+  );
 }

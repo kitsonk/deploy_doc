@@ -1,8 +1,6 @@
 /** @jsx h */
-import { apply, Component, comrak, css, h, theme, tw } from "../deps.ts";
+import { comrak, h } from "../deps.ts";
 import type {
-  CSSRules,
-  Directive,
   DocNode,
   DocNodeClass,
   DocNodeEnum,
@@ -16,14 +14,14 @@ import type {
   JsDoc,
   Location,
 } from "../deps.ts";
+import { take } from "../util.ts";
+import type { Child } from "../util.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
-import { getStyle } from "./styles.ts";
-import { assert } from "../util.ts";
+import { gtw } from "./styles.ts";
+import type { BaseStyles, StyleOverride } from "./styles.ts";
 
-export const TARGET_RE = /(\s|[\[\]])/g;
-
-export interface DocNodeCollection {
+interface DocNodeCollection {
   moduleDoc?: DocNodeModuleDoc[];
   import?: DocNodeImport[];
   namespace?: DocNodeNamespace[];
@@ -35,114 +33,78 @@ export interface DocNodeCollection {
   typeAlias?: DocNodeTypeAlias[];
 }
 
-interface MarkdownProps {
-  jsDoc?: JsDoc;
-  style?: Directive<CSSRules>;
-}
-
-export interface NodesProps<N extends DocNode> {
-  nodes: N[];
+export interface DocProps<Node extends DocNode> {
+  children: Child<Node>;
   path?: string[];
 }
 
-export interface NodeProps<N extends DocNode> {
-  node: N;
+export interface NodeProps<Node extends DocNode> {
+  children: Child<Node>;
   path?: string[];
+  style: BaseStyles;
 }
 
-export interface NodeItemsProps<Node extends DocNode, Items> {
-  node: Node;
-  items: Items[];
+interface NodesProps<Node extends DocNode> {
+  children: Child<Node[]>;
+  path?: string[];
+  style: BaseStyles;
+  title: string;
 }
 
-export const code = apply`font-mono p-2 bg-gray-900 rounded text-white`;
-export const docItem = apply`group relative`;
-export const entryTitle = apply
-  `text-3xl border-b border-gray-800 p-2 mt-2 mb-4`;
-const keyword = apply`text-purple-500 font-medium`;
-export const section = apply
-  `group relative text-2xl border-b border-gray-400 p-2 mt-1 mb-3`;
-export const smallMarkdown = apply`ml-4 mr-2 py-2 text-sm`;
-
-const anchor = css({
-  ":global": {
-    ":target, :target > *": {
-      "background-color": theme("colors.gray.200"),
-    },
-  },
-  "color": theme("colors.gray.600"),
-  "background-color": "transparent",
-  "margin-left": "-1em",
-  "padding-right": "0.5em",
-});
-
-const markdown = css({
-  ":not(pre) > code": apply`text-sm p-1 rounded text-white bg-gray-700`,
-  pre: apply`text-sm m-2 p-2 rounded text-white bg-gray-700`,
-});
-
-export const largeMarkdown = apply
-  `mt-4 mb-8 mx-2 flex flex-col space-y-4 ${markdown}`;
-
-export const defaultPrintTheme = {
-  keyword: apply``,
-};
-
-export type PrintTheme = typeof defaultPrintTheme;
-
-export const codeBlockPrintTheme: PrintTheme = {
-  keyword,
-};
+export const TARGET_RE = /(\s|[\[\]])/g;
 
 export function asCollection(entries: DocNode[]): DocNodeCollection {
   const collection: DocNodeCollection = {};
   for (const entry of entries) {
-    if (!collection[entry.kind]) {
-      collection[entry.kind] = [];
-    }
-    // deno-lint-ignore no-explicit-any
-    collection[entry.kind]!.push(entry as any);
+    const docNodes: DocNode[] = collection[entry.kind] ??
+      (collection[entry.kind] = []);
+    docNodes.push(entry);
   }
   return collection;
 }
 
-export function byName(a: DocNode, b: DocNode) {
+function byName(a: DocNode, b: DocNode) {
   return a.name.localeCompare(b.name);
 }
 
-export function getName(node: DocNode, path?: string[]): string {
+function getName(node: DocNode, path?: string[]) {
   return path ? [...path, node.name].join(".") : node.name;
 }
 
-export function Anchor({ name }: { name: string }) {
-  return (
-    <a
-      href={`#${name}`}
-      class={tw`opacity-0 group-hover:opacity-100 absolute ${anchor}`}
-      aria-label="Anchor"
-    >
-      §
-    </a>
-  );
+export function Anchor({ children: name }: { children: string }) {
+  return <a href={`#${name}`} class={gtw("anchor")} aria-label="Anchor">§</a>;
 }
 
-export function BreadCrumbs(
-  { source, path, item }: { source: string; path: string[]; item: string },
+export function DocTitle(
+  { children, path }: { children: Child<DocNode>; path?: string[] },
 ) {
-  return (
-    <ol class={tw`flex`}>
-      <li>{source}</li>
-      {path.map((p) => <li>{p}</li>)}
-      <li>{item}</li>
-    </ol>
-  );
+  const node = take(children);
+  return <h1 class={gtw("docTitle")}>{getName(node, path)}</h1>;
 }
 
 await comrak.init();
 
-export function Markdown(
-  { jsDoc, style = smallMarkdown }: MarkdownProps,
+interface MarkdownProps {
+  children: Child<JsDoc | undefined>;
+  style?: StyleOverride;
+}
+
+function Entry<Node extends DocNode>(
+  { children, path, style }: NodeProps<Node>,
 ) {
+  const node = take(children);
+  return (
+    <li>
+      <h3 class={gtw(style)}>
+        <NodeLink path={path}>{node}</NodeLink>
+      </h3>
+      <Markdown>{node.jsDoc}</Markdown>
+    </li>
+  );
+}
+
+export function Markdown({ children, style }: MarkdownProps) {
+  const jsDoc = take(children);
   if (!jsDoc || !jsDoc.doc) {
     return;
   }
@@ -155,57 +117,63 @@ export function Markdown(
       tagfilter: true,
     },
   });
-  return <div class={tw`${style}`}>{text}</div>;
+  return <div class={gtw("markdown", style)}>{text}</div>;
 }
 
-export class Node<N extends DocNode> extends Component<NodeProps<N>> {
-  store = store.use();
+interface NodeLinkProps {
+  children: Child<DocNode>;
+  path?: string[];
 }
 
-export class NodeLink extends Node<DocNode> {
-  render() {
-    const { node, path } = this.props;
-    const { url } = this.store.state as StoreState;
-    const href = `/${url.replace("://", "/")}${url.endsWith("/") ? "" : "/"}~/${
-      [...path ?? [], node.name].join(".")
-    }`;
-    return <a href={href}>{node.name}</a>;
-  }
+export function NodeLink({ children, path }: NodeLinkProps) {
+  const node = take(children);
+  const { url } = store.state as StoreState;
+  const href = `/${url.replace("://", "/")}${url.endsWith("/") ? "" : "/"}~/${
+    [...path ?? [], node.name].join(".")
+  }`;
+  return <a href={href}>{node.name}</a>;
 }
 
-// deno-lint-ignore no-explicit-any
-export function EntryTitle({ children }: { children: any }) {
-  return <h1 class={tw`${getStyle("entryTitle")}`}>{children}</h1>;
-}
-
-export function Section({ children }: { children?: string | string[] }) {
-  assert(children);
-  const id = (Array.isArray(children) ? children[0] : children).replaceAll(
-    TARGET_RE,
-    "_",
-  );
+export function SectionTitle({ children }: { children: Child<string> }) {
+  const name = take(children);
+  const id = name.replaceAll(TARGET_RE, "_");
   return (
-    <h2 class={tw`${section}`} id={id}>
-      <Anchor name={id} />
-      {children}
+    <h2 class={gtw("section")} id={id}>
+      <Anchor>{id}</Anchor>
+      {name}
     </h2>
   );
 }
 
-export function SourceLink({ location }: { location?: Location }) {
-  if (!location) {
-    return;
-  }
+export function Section<Node extends DocNode>(
+  { children, path, style, title }: NodesProps<Node>,
+) {
+  const nodes = take(children);
+  const items = nodes.sort(byName).map((node) => (
+    <Entry path={path} style={style}>
+      {node}
+    </Entry>
+  ));
+  return (
+    <div>
+      <SectionTitle>{title}</SectionTitle>
+      <ul>{items}</ul>
+    </div>
+  );
+}
+
+export function SourceLink({ children }: { children: Child<Location> }) {
+  const { filename, line } = take(children);
   let href;
   try {
-    const url = new URL(location.filename);
-    url.hash = `L${location.line}`;
+    const url = new URL(filename);
+    url.hash = `L${line}`;
     href = url.toString();
   } catch {
     return;
   }
   return (
-    <div class={tw`absolute top-0 right-0`}>
+    <div class={gtw("sourceLink")}>
       <a href={href} target="_blank">[src]</a>
     </div>
   );

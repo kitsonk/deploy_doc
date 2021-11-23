@@ -1,37 +1,35 @@
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type {
-  Accessibility,
+  Accessibility as AccessibilityType,
   ClassConstructorDef,
   ClassMethodDef,
   ClassPropertyDef,
   DocNodeClass,
   TsTypeDef,
 } from "../deps.ts";
-import { getState, PRINT_THEME, setState } from "../shared.ts";
-import { assert } from "../util.ts";
+import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
+import { assert, take } from "../util.ts";
+import type { Child } from "../util.ts";
 import {
   Anchor,
-  byName,
-  code,
-  codeBlockPrintTheme,
-  docItem,
-  EntryTitle,
-  getName,
-  largeMarkdown,
+  DocTitle,
   Markdown,
-  Node,
-  NodeItemsProps,
-  NodeLink,
-  Section,
+  SectionTitle,
   SourceLink,
   TARGET_RE,
 } from "./common.tsx";
-import type { NodeProps, NodesProps } from "./common.tsx";
-import { Params } from "./params.tsx";
+import type { DocProps } from "./common.tsx";
 import { IndexSignatures, IndexSignaturesDoc } from "./interfaces.tsx";
-import { getStyle } from "./styles.ts";
+import { Params } from "./params.tsx";
+import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeArguments, TypeDef, TypeParams } from "./types.tsx";
+
+type ClassAccessorDef = ClassMethodDef & { kind: "getter" | "setter" };
+type ClassGetterDef = ClassMethodDef & { kind: "getter" };
+type ClassSetterDef = ClassMethodDef & { kind: "setter" };
+type ClassItemType = "prop" | "method" | "static_prop" | "static_method";
+type ClassItemDef = ClassMethodDef | ClassPropertyDef;
 
 function compareAccessibility(
   a: ClassPropertyDef | ClassMethodDef,
@@ -72,10 +70,6 @@ function isClassMethod(
   return "kind" in value && value.kind === "method";
 }
 
-type ClassAccessorDef = ClassMethodDef & { kind: "getter" | "setter" };
-type ClassGetterDef = ClassMethodDef & { kind: "getter" };
-type ClassSetterDef = ClassMethodDef & { kind: "setter" };
-
 function isClassAccessor(
   value: ClassPropertyDef | ClassMethodDef,
 ): value is ClassAccessorDef {
@@ -100,8 +94,6 @@ function isClassProperty(
 ): value is ClassPropertyDef {
   return "readonly" in value;
 }
-
-type ClassItemType = "prop" | "method" | "static_prop" | "static_method";
 
 function getClassItemType(
   item: ClassPropertyDef | ClassMethodDef,
@@ -128,81 +120,287 @@ function getClassItemLabel(type: ClassItemType) {
   }
 }
 
-function AccessibilityNode({ value }: { value?: Accessibility }) {
-  return value
-    ? <span class={tw`${getStyle("keyword")}`}>{value}</span>
-    : undefined;
-}
-
-function Constructors({ items }: { items: ClassConstructorDef[] }) {
-  if (!items || items.length === 0) {
-    return;
-  }
-  const children = items.map((c) => (
-    <div>
-      <AccessibilityNode value={c.accessibility} />
-      <span class={tw`${getStyle("keyword")}`}>{c.name}</span>
-      (<Params params={c.params} />);
-    </div>
-  ));
-  return <div class={tw`ml-4`}>{children}</div>;
-}
-
-function ConstructorsDoc(
-  { items, name }: { items: ClassConstructorDef[]; name: string },
+function Accessibility(
+  { children }: { children: Child<AccessibilityType | undefined> },
 ) {
-  if (!items || !items.length) {
-    return;
-  }
-  const children = items.map((c) => (
-    <div class={tw`relative px-2`}>
-      <SourceLink location={c.location} />
-      <span class={tw`font-bold`}>new</span>{" "}
-      {name}(<Params params={c.params} />);
-      <Markdown style={largeMarkdown} jsDoc={c.jsDoc} />
-    </div>
-  ));
+  const accessibility = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  return accessibility && (
+    <span class={gtw("keyword", so)}>{accessibility}</span>
+  );
+}
+
+function ClassAccessorDoc(
+  { get, set }: { get?: ClassGetterDef; set?: ClassSetterDef },
+) {
+  const name = (get ?? set)?.name;
+  assert(name);
+  const target = name.replaceAll(TARGET_RE, "_");
+  const tsType = get?.functionDef.returnType ??
+    (set?.functionDef.params[0])?.tsType;
+  const jsDoc = get?.jsDoc ?? set?.jsDoc;
+  const location = get?.location ?? set?.location;
+  assert(location);
   return (
-    <div>
-      <Section>Constructors</Section>
-      {children}
+    <div class={gtw("docItem")} id={target}>
+      <Anchor>{target}</Anchor>
+      <div class={gtw("docEntry")}>
+        <SourceLink>{location}</SourceLink>
+        {name}
+        {tsType && (
+          <span>
+            : <TypeDef inline>{tsType}</TypeDef>
+          </span>
+        )}
+        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      </div>
     </div>
   );
 }
 
-function Implements({ types }: { types: TsTypeDef[] }) {
-  if (!types.length) {
-    return;
-  }
-  const children = [];
-  for (let i = 0; i < types.length; i++) {
-    children.push(<TypeDef def={types[i]} />);
-    if (i < types.length - 1) {
-      children.push(<span>,{" "}</span>);
-    }
-  }
-  return <span>{" "}implements {children}</span>;
+function ClassCodeBlock(
+  { children, items }: {
+    children: Child<DocNodeClass>;
+    items: (ClassPropertyDef | ClassMethodDef)[];
+  },
+) {
+  const {
+    name,
+    classDef: {
+      isAbstract,
+      typeParams,
+      extends: ext,
+      superTypeParams,
+      implements: impl,
+      constructors,
+      indexSignatures,
+    },
+  } = take(children);
+  const hasElements =
+    !!(constructors.length || indexSignatures.length || items.length);
+  const prev = getState(STYLE_OVERRIDE);
+  setState(STYLE_OVERRIDE, codeBlockStyles);
+  const keyword = gtw("keyword", codeBlockStyles);
+  const codeBlock = (
+    <div class={gtw("code")}>
+      <span class={keyword}>
+        {isAbstract ? "abstract " : ""}class
+      </span>{" "}
+      {name}
+      <TypeParams>{typeParams}</TypeParams>
+      {ext && (
+        <span>
+          <span class={keyword}>{" "}extends{" "}</span>
+          {ext}
+          <TypeArguments>{superTypeParams}</TypeArguments>
+        </span>
+      )}
+      <Implements>{impl}</Implements> &#123;
+      {hasElements
+        ? (
+          <div class={gtw("classBody", codeBlockStyles)}>
+            <Constructors>{constructors}</Constructors>
+            <IndexSignatures>{indexSignatures}</IndexSignatures>
+            <ClassItems>{items}</ClassItems>
+          </div>
+        )
+        : " "}&#125;
+    </div>
+  );
+  setState(STYLE_OVERRIDE, prev);
+  return codeBlock;
 }
 
-function ClassProperty({ item }: { item: ClassPropertyDef }) {
+function ClassItems(
+  { children }: { children: Child<ClassItemDef[]> },
+) {
+  const defs = take(children, true);
+  if (!defs.length) {
+    return;
+  }
+  const items = [];
+  let prev: ClassItemType | undefined;
+  for (let i = 0; i < defs.length; i++) {
+    const def = defs[i];
+    const curr = getClassItemType(def);
+    if (prev && prev !== curr) {
+      items.push(<div>&nbsp;</div>);
+    }
+    prev = curr;
+    if (isClassMethod(def) || isClassAccessor(def)) {
+      items.push(<ClassMethod>{def}</ClassMethod>);
+    } else {
+      assert(isClassProperty(def));
+      items.push(<ClassProperty>{def}</ClassProperty>);
+    }
+  }
+  const so = getState(STYLE_OVERRIDE);
+  return <div class={gtw("indent", so)}>{items}</div>;
+}
+
+function ClassItemsDoc(
+  { children }: { children: Child<ClassItemDef[]> },
+) {
+  const defs = take(children);
+  if (!defs.length) {
+    return;
+  }
+  const items = [];
+  let prev: ClassItemType | undefined;
+  for (let i = 0; i < defs.length; i++) {
+    const def = defs[i];
+    const curr = getClassItemType(def);
+    if (curr !== prev) {
+      items.push(<SectionTitle>{getClassItemLabel(curr)}</SectionTitle>);
+    }
+    prev = curr;
+    if (isClassGetter(def)) {
+      const next = defs[i + 1];
+      if (next && isClassSetter(next) && def.name === next.name) {
+        i++;
+        items.push(<ClassAccessorDoc get={def} set={next} />);
+      } else {
+        items.push(<ClassAccessorDoc get={def} />);
+      }
+    } else if (isClassSetter(def)) {
+      items.push(<ClassAccessorDoc set={def} />);
+    } else if (isClassMethod(def)) {
+      const methods = [def];
+      let next;
+      while (
+        (next = items[i + 1]) && next && isClassMethod(next) &&
+        def.name === next.name
+      ) {
+        i++;
+        methods.push(next);
+      }
+      items.push(<ClassMethodDoc>{methods}</ClassMethodDoc>);
+    } else {
+      assert(isClassProperty(def));
+      items.push(<ClassPropertyDoc>{def}</ClassPropertyDoc>);
+    }
+  }
+  return items;
+}
+
+function ClassMethod(
+  { children }: { children: Child<ClassMethodDef> },
+) {
+  const {
+    accessibility,
+    isAbstract,
+    isStatic,
+    functionDef: { isAsync, isGenerator, typeParams, params, returnType },
+    kind,
+    name,
+    optional,
+  } = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  const keyword = gtw("keyword", so);
   return (
     <div>
-      {item.isStatic || item.accessibility || item.isAbstract || item.readonly
+      {isStatic || accessibility || isAbstract
         ? (
-          <span class={tw`${getStyle("keyword")}`}>
-            {item.isStatic ? "static " : undefined}
-            {item.accessibility && `${item.accessibility} `}
-            {item.isAbstract ? "abstract " : ""}
-            {item.readonly ? "readonly " : ""}
+          <span class={keyword}>
+            {isStatic ? "static " : undefined}
+            {accessibility && `${accessibility} `}
+            {isAbstract ? "abstract " : undefined}
           </span>
         )
         : undefined}
-      <span>{item.name}</span>
-      {item.optional ? "?" : ""}
-      {item.tsType
+      {isAsync || isGenerator || kind === "getter" || kind === "setter"
+        ? (
+          <span class={keyword}>
+            {isAsync ? "async " : undefined}
+            {kind === "getter"
+              ? "get "
+              : kind === "setter"
+              ? "set "
+              : undefined}
+            {isGenerator ? "*" : undefined}
+          </span>
+        )
+        : undefined}
+      <span
+        class={kind === "method" && !name.startsWith("[")
+          ? gtw("classMethod", so) : undefined}
+      >
+        {name}
+      </span>
+      {optional ? "?" : ""}
+      <TypeParams>{typeParams}</TypeParams>(<Params>{params}
+      </Params>){returnType && (
+        <span>
+          : <TypeDef inline>{returnType}</TypeDef>
+        </span>
+      )};
+    </div>
+  );
+}
+
+function ClassMethodDoc(
+  { children }: { children: Child<ClassMethodDef[]> },
+) {
+  const methods = take(children, true);
+  const target = methods[0].name.replaceAll(TARGET_RE, "_");
+  return (
+    <div class={gtw("docItem")} id={target}>
+      <Anchor>{target}</Anchor>
+      {methods.map((
+        {
+          location,
+          name,
+          jsDoc,
+          functionDef: { typeParams, params, returnType },
+        },
+      ) => (
+        <div class={gtw("docEntry")}>
+          <SourceLink>{location}</SourceLink>
+          {name}
+          <TypeParams>{typeParams}</TypeParams>(<Params inline>{params}
+          </Params>){returnType && (
+            <span>
+              : <TypeDef>{returnType}</TypeDef>
+            </span>
+          )}
+          <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ClassProperty(
+  { children }: { children: Child<ClassPropertyDef> },
+) {
+  const {
+    isStatic,
+    accessibility,
+    isAbstract,
+    readonly,
+    name,
+    optional,
+    tsType,
+  } = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  return (
+    <div>
+      {isStatic || accessibility || isAbstract || readonly
+        ? (
+          <span class={gtw("keyword", so)}>
+            {isStatic ? "static " : undefined}
+            {accessibility && `${accessibility} `}
+            {isAbstract ? "abstract " : undefined}
+            {readonly ? "readonly " : undefined}
+          </span>
+        )
+        : undefined}
+      <span>{name}</span>
+      {optional ? "?" : ""}
+      {tsType
         ? (
           <span>
-            : <TypeDef def={item.tsType} terminate />
+            : <TypeDef terminate>{tsType}</TypeDef>
           </span>
         )
         : ";"}
@@ -210,248 +408,94 @@ function ClassProperty({ item }: { item: ClassPropertyDef }) {
   );
 }
 
-function ClassPropertyDoc({ item }: { item: ClassPropertyDef }) {
-  const target = item.name.replaceAll(TARGET_RE, "_");
+function ClassPropertyDoc(
+  { children }: { children: Child<ClassPropertyDef> },
+) {
+  const { location, name, tsType, jsDoc } = take(children);
+  const target = name.replaceAll(TARGET_RE, "_");
   return (
-    <div class={tw`${docItem}`} id={target}>
-      <Anchor name={target} />
-      {item.name}
-      {item.tsType && (
-        <span>
-          : <TypeDef def={item.tsType} inline />
-        </span>
-      )}
-      <Markdown jsDoc={item.jsDoc} style={largeMarkdown} />
+    <div class={gtw("docItem")} id={target}>
+      <Anchor>{target}</Anchor>
+      <div class={gtw("docEntry")}>
+        <SourceLink>{location}</SourceLink>
+        {name}
+        {tsType && (
+          <span>
+            : <TypeDef inline>{tsType}</TypeDef>
+          </span>
+        )}
+        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      </div>
     </div>
   );
 }
 
-function ClassMethod({ item }: { item: ClassMethodDef }) {
-  return (
+function Constructors(
+  { children }: { children: Child<ClassConstructorDef[]> },
+) {
+  const ctors = take(children, true);
+  if (!ctors.length) {
+    return;
+  }
+  const so = getState(STYLE_OVERRIDE);
+  const items = ctors.map(({ accessibility, name, params }) => (
     <div>
-      {item.isStatic || item.accessibility || item.isAbstract
-        ? (
-          <span class={tw`${getStyle("keyword")}`}>
-            {item.isStatic ? "static " : undefined}
-            {item.accessibility && `${item.accessibility} `}
-            {item.isAbstract ? "abstract " : ""}
-          </span>
-        )
-        : undefined}
-      {item.functionDef.isAsync || item.functionDef.isGenerator ||
-          item.kind === "getter" || item.kind === "setter"
-        ? (
-          <span class={tw`${getStyle("keyword")}`}>
-            {item.functionDef.isAsync ? "async " : ""}
-            {item.kind === "getter"
-              ? "get "
-              : item.kind === "setter"
-              ? "set "
-              : undefined}
-            {item.functionDef.isGenerator ? "*" : ""}
-          </span>
-        )
-        : undefined}
-      <span
-        class={item.kind === "method" && !item.name.startsWith("[")
-          ? tw`text-green-500`
-          : undefined}
-      >
-        {item.name}
-      </span>
-      {item.optional ? "?" : ""}
-      <TypeParams params={item.functionDef.typeParams} />(<Params
-        params={item.functionDef.params}
-      />){item.functionDef.returnType && (
-        <span>
-          : <TypeDef def={item.functionDef.returnType} inline />
-        </span>
-      )};
+      <Accessibility>{accessibility}</Accessibility>
+      <span class={gtw("keyword", so)}>{name}</span>(<Params>{params}</Params>);
     </div>
-  );
+  ));
 }
 
-function ClassAccessorDoc(
-  { get, set }: { get?: ClassGetterDef; set?: ClassSetterDef },
+function ConstructorsDoc(
+  { children, name }: {
+    children: ClassConstructorDef[] | [ClassConstructorDef[]];
+    name: string;
+  },
 ) {
-  const target = (get ?? set)?.name.replaceAll(TARGET_RE, "_");
-  const tsType = get?.functionDef.returnType ??
-    (set?.functionDef.params[0])?.tsType;
-  const jsDoc = get?.jsDoc ?? set?.jsDoc;
-  return (
-    <div class={tw`${docItem}`} id={target!}>
-      <Anchor name={target!} />
-      {(get ?? set)?.name}
-      {tsType && (
-        <span>
-          : <TypeDef def={tsType} inline />
-        </span>
-      )}
-      <Markdown jsDoc={jsDoc} style={largeMarkdown} />
-    </div>
-  );
-}
-
-function ClassMethodDoc({ items }: { items: ClassMethodDef[] }) {
-  const target = items[0].name.replaceAll(TARGET_RE, "_");
-  return (
-    <div class={tw`${docItem}`} id={target}>
-      <Anchor name={target} />
-      {items.map((m) => (
-        <div>
-          {m.name}
-          <TypeParams params={m.functionDef.typeParams} />(<Params
-            params={m.functionDef.params}
-          />){m.functionDef.returnType && (
-            <span>
-              : <TypeDef def={m.functionDef.returnType} inline />
-            </span>
-          )}
-          <Markdown jsDoc={m.jsDoc} style={largeMarkdown} />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ClassItems(
-  { items }: { items: (ClassMethodDef | ClassPropertyDef)[] },
-) {
-  if (!items.length) {
+  const ctors = take<ClassConstructorDef[]>(children, true);
+  if (!ctors.length) {
     return;
   }
-  const children = [];
-  let prev: ClassItemType | undefined;
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    const curr = getClassItemType(item);
-    if (prev && prev !== curr) {
-      children.push(<div>&nbsp;</div>);
-    }
-    prev = curr;
-    if (isClassMethod(item) || isClassAccessor(item)) {
-      children.push(<ClassMethod item={item} />);
-    } else {
-      assert(isClassProperty(item));
-      children.push(<ClassProperty item={item} />);
-    }
-  }
-  return <div class={tw`ml-4`}>{children}</div>;
-}
-
-function ClassItemsDoc(
-  { items }: { items: (ClassMethodDef | ClassPropertyDef)[] },
-) {
-  if (!items.length) {
-    return;
-  }
-  //
-  const children = [];
-  let prev: ClassItemType | undefined;
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    const curr = getClassItemType(item);
-    if (curr !== prev) {
-      children.push(<Section>{getClassItemLabel(curr)}</Section>);
-    }
-    prev = curr;
-    if (isClassGetter(item)) {
-      const next = items[i + 1];
-      if (next && isClassSetter(next) && item.name === next.name) {
-        i++;
-        children.push(<ClassAccessorDoc get={item} set={next} />);
-      } else {
-        children.push(<ClassAccessorDoc get={item} />);
-      }
-    } else if (isClassSetter(item)) {
-      console.log("setter", item.name);
-      children.push(<ClassAccessorDoc set={item} />);
-    } else if (isClassMethod(item)) {
-      const methods = [item];
-      let next;
-      while (
-        (next = items[i + 1]) && next && isClassMethod(next) &&
-        item.name === next.name
-      ) {
-        i++;
-        methods.push(next);
-      }
-      children.push(<ClassMethodDoc items={methods} />);
-    } else {
-      assert(isClassProperty(item));
-      children.push(<ClassPropertyDoc item={item} />);
-    }
-  }
-  return children;
-}
-
-class ClassNode extends Node<DocNodeClass> {
-  render() {
-    const { node, path } = this.props;
-    return (
-      <li>
-        <h3 class={tw`text-green-600 mx-2`}>
-          <NodeLink node={node} path={path} />
-        </h3>
-        <Markdown jsDoc={node.jsDoc} />
-      </li>
-    );
-  }
-}
-
-export function Classes({ nodes, path }: NodesProps<DocNodeClass>) {
-  const items = nodes.sort(byName).map((node) => (
-    <ClassNode node={node} path={path} />
+  const items = ctors.map(({ location, params, jsDoc }) => (
+    <div class={gtw("docEntry")}>
+      <SourceLink>{location}</SourceLink>
+      <span class={gtw("bold")}>new{" "}</span>
+      {name}(<Params inline>{params}</Params>);
+      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+    </div>
   ));
   return (
     <div>
-      <Section>Classes</Section>
-      <ul>{items}</ul>
+      <SectionTitle>Constructors</SectionTitle>
+      {items}
     </div>
   );
 }
 
-function ClassCodeBlock(
-  { node, items }: NodeItemsProps<
-    DocNodeClass,
-    ClassPropertyDef | ClassMethodDef
-  >,
-) {
-  const hasElements = !!(node.classDef.constructors.length ||
-    node.classDef.indexSignatures.length || items.length);
-  const prev = getState(PRINT_THEME);
-  setState(PRINT_THEME, codeBlockPrintTheme);
-  const codeBlock = (
-    <div class={tw`${code}`}>
-      <span class={tw`${codeBlockPrintTheme.keyword}`}>
-        {node.classDef.isAbstract ? "abstract " : ""}class
-      </span>{" "}
-      {node.name}
-      <TypeParams params={node.classDef.typeParams} />
-      {node.classDef.extends && (
-        <span>
-          {" "}extends {node.classDef.extends}
-          <TypeArguments args={node.classDef.superTypeParams} />
-        </span>
-      )}
-      <Implements types={node.classDef.implements} /> &#123;
-      {hasElements
-        ? (
-          <div class={tw`flex flex-col space-y-4`}>
-            <Constructors items={node.classDef.constructors} />
-            <IndexSignatures items={node.classDef.indexSignatures} />
-            <ClassItems items={items} />
-          </div>
-        )
-        : " "}
-      &#125;
-    </div>
+function Implements({ children }: { children: Child<TsTypeDef[]> }) {
+  const types = take(children, true);
+  const so = getState(STYLE_OVERRIDE);
+  if (!types.length) {
+    return;
+  }
+  const items = [];
+  for (let i = 0; i < types.length; i++) {
+    items.push(<TypeDef>{types[i]}</TypeDef>);
+    if (i < types.length - 1) {
+      items.push(<span>,{" "}</span>);
+    }
+  }
+  return (
+    <span>
+      {" "}
+      <span class={gtw("keyword", so)}>implements{" "}</span>
+      {items}
+    </span>
   );
-  setState(PRINT_THEME, prev);
-  return codeBlock;
 }
 
-export function ClassEntry({ node, path }: NodeProps<DocNodeClass>) {
+export function ClassDoc({ children, path }: DocProps<DocNodeClass>) {
+  const node = take(children);
   const items = [...node.classDef.properties, ...node.classDef.methods].sort(
     (a, b) => {
       if (a.isStatic !== b.isStatic) {
@@ -475,14 +519,16 @@ export function ClassEntry({ node, path }: NodeProps<DocNodeClass>) {
     },
   );
   return (
-    <div class={tw`${getStyle("mainBox")}`}>
-      <EntryTitle>{getName(node, path)}</EntryTitle>
-      <Markdown jsDoc={node.jsDoc} style={getStyle("largeMarkdown")} />
-      <ClassCodeBlock node={node} items={items} />
-      <div class={tw`mt-4`}>
-        <ConstructorsDoc items={node.classDef.constructors} name={node.name} />
-        <IndexSignaturesDoc items={node.classDef.indexSignatures} />
-        <ClassItemsDoc items={items} />
+    <div class={gtw("mainBox")}>
+      <DocTitle path={path}>{node}</DocTitle>
+      <Markdown style={largeMarkdownStyles}>{node.jsDoc}</Markdown>
+      <ClassCodeBlock items={items}>{node}</ClassCodeBlock>
+      <div class={gtw("docItems")}>
+        <ConstructorsDoc name={node.name}>
+          {node.classDef.constructors}
+        </ConstructorsDoc>
+        <IndexSignaturesDoc>{node.classDef.indexSignatures}</IndexSignaturesDoc>
+        <ClassItemsDoc>{items}</ClassItemsDoc>
       </div>
     </div>
   );
