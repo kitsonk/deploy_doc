@@ -14,7 +14,7 @@ export function NamespaceDoc(
   const collection = asCollection(elements);
   const currentPath = [...path, name];
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       {collection.namespace && (
@@ -52,6 +52,6 @@ export function NamespaceDoc(
           {collection.typeAlias}
         </Section>
       )}
-    </div>
+    </article>
   );
 }

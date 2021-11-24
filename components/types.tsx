@@ -513,12 +513,12 @@ export function TypeAliasDoc({ children, path }: DocProps<DocNodeTypeAlias>) {
   const node = take(children);
   const { jsDoc } = node;
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       <TypeAliasCodeBlock>{node}</TypeAliasCodeBlock>
       <div class={gtw("docItems")}></div>
-    </div>
+    </article>
   );
 }
 

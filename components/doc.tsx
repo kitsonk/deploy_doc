@@ -5,7 +5,8 @@ import { store, StoreState } from "../shared.ts";
 import { assert, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassDoc } from "./classes.tsx";
-import { asCollection, Markdown, Section } from "./common.tsx";
+import { asCollection, Markdown, Section, TARGET_RE } from "./common.tsx";
+import type { DocNodeCollection } from "./common.tsx";
 import { EnumDoc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
 import { FnDoc } from "./functions.tsx";
@@ -24,11 +25,33 @@ function assertAll<N extends DocNode>(
   }
 }
 
-export function DocNodes(
-  { children }: { children: Child<DocNode[]> },
-) {
-  const items = take(children, true);
-  const collection = asCollection(items);
+function TocLink({ children }: { children: Child<string> }) {
+  const name = take(children);
+  const id = name.replaceAll(TARGET_RE, "_");
+  return (
+    <li>
+      <a href={`#${id}`}>{name}</a>
+    </li>
+  );
+}
+
+function ModuleToc({ children }: { children: Child<DocNodeCollection> }) {
+  const collection = take(children);
+  return (
+    <ul>
+      {collection.namespace && <TocLink>Namespaces</TocLink>}
+      {collection.class && <TocLink>Classes</TocLink>}
+      {collection.enum && <TocLink>Enums</TocLink>}
+      {collection.variable && <TocLink>Variables</TocLink>}
+      {collection.function && <TocLink>Functions</TocLink>}
+      {collection.interface && <TocLink>Interfaces</TocLink>}
+      {collection.typeAlias && <TocLink>Types</TocLink>}
+    </ul>
+  );
+}
+
+function DocNodes({ children }: { children: Child<DocNodeCollection> }) {
+  const collection = take(children);
   return (
     <div class={gtw("mainBox")}>
       {collection.moduleDoc && (
@@ -37,7 +60,7 @@ export function DocNodes(
         </Markdown>
       )}
       {collection.namespace && (
-        <Section title="Namespace" style="nodeNamespace">
+        <Section title="Namespaces" style="nodeNamespace">
           {collection.namespace}
         </Section>
       )}
@@ -75,7 +98,7 @@ export function DocNodes(
   );
 }
 
-export function DocEntry({ children }: { children: Child<string> }) {
+function DocEntry({ children }: { children: Child<string> }) {
   const item = take(children);
   const path = item.split(".");
   const name = path.pop()!;
@@ -131,25 +154,32 @@ export function DocEntry({ children }: { children: Child<string> }) {
 }
 
 export function DocPage(
-  { children, title }: { children: unknown; title?: string },
+  { children }: { children: Child<string | null | undefined> },
 ) {
+  const item = take(children);
+  const { entries } = store.state as StoreState;
+  const collection = asCollection(entries);
   return (
     <div
       class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}
     >
-      <SideBar title={title} />
-      {children}
+      <SideBar item={item}>{collection}</SideBar>
+      {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{collection}</DocNodes>}
     </div>
   );
 }
 
 function SideBar(
-  { children, title }: { children?: unknown; title?: string },
+  { children, item }: {
+    children: Child<DocNodeCollection>;
+    item?: string | null;
+  },
 ) {
+  const collection = take(children);
   return (
     <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
-      <h2 class={tw`text-gray-900 text-2xl font-bold`}>{title}</h2>
-      {children}
+      <h2 class={tw`text-gray-900 text-2xl font-bold`}>{item ?? "Deno Doc"}</h2>
+      {item ?? <ModuleToc>{collection}</ModuleToc>}
     </nav>
   );
 }

@@ -21,7 +21,7 @@ import type { StoreState } from "../shared.ts";
 import { gtw } from "./styles.ts";
 import type { BaseStyles, StyleOverride } from "./styles.ts";
 
-interface DocNodeCollection {
+export interface DocNodeCollection {
   moduleDoc?: DocNodeModuleDoc[];
   import?: DocNodeImport[];
   namespace?: DocNodeNamespace[];

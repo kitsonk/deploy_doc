@@ -190,11 +190,11 @@ export function InterfaceDoc({ children, path }: DocProps<DocNodeInterface>) {
   const node = take(children);
   const { jsDoc } = node;
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       <InterfaceCodeBlock>{node}</InterfaceCodeBlock>
       <div class={gtw("docItems")}></div>
-    </div>
+    </article>
   );
 }

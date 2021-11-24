@@ -1,6 +1,6 @@
 /** @jsx h */
 import { Body } from "../components/body.tsx";
-import { DocEntry, DocNodes, DocPage } from "../components/doc.tsx";
+import { DocPage } from "../components/doc.tsx";
 import { colors, doc, getStyleTag, h, renderSSR, Status, tw } from "../deps.ts";
 import type {
   DocNode,
@@ -170,9 +170,7 @@ async function process<R extends string>(
   ctx.response.body = getBody(
     renderSSR(
       <Body>
-        <DocPage title="Deno Doc">
-          {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{entries}</DocNodes>}
-        </DocPage>
+        <DocPage>{item}</DocPage>
       </Body>,
     ),
     getStyleTag(sheet),

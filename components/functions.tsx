@@ -45,10 +45,10 @@ export function FnDoc(
 ) {
   const nodes = take(children);
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{nodes[0]}</DocTitle>
       <FnCodeBlock>{nodes}</FnCodeBlock>
       <div class={gtw("docItems")}></div>
-    </div>
+    </article>
   );
 }

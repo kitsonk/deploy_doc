@@ -32,11 +32,11 @@ export function EnumDoc({ children, path }: DocProps<DocNodeEnum>) {
   const node = take(children);
   const { jsDoc } = node;
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       <EnumCodeBlock>{node}</EnumCodeBlock>
       <div class={gtw("docItems")}></div>
-    </div>
+    </article>
   );
 }

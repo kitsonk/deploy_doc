@@ -37,11 +37,11 @@ export function VariableDoc({ children, path }: DocProps<DocNodeVariable>) {
   const node = take(children);
   const { jsDoc } = node;
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       <VariableCodeBlock>{node}</VariableCodeBlock>
       <div class={gtw("docItems")}></div>
-    </div>
+    </article>
   );
 }
