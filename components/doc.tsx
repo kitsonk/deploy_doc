@@ -2,7 +2,7 @@
 import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
 import { store, StoreState } from "../shared.ts";
-import { assert, take } from "../util.ts";
+import { assert, parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassDoc } from "./classes.tsx";
 import { asCollection, Markdown, Section, TARGET_RE } from "./common.tsx";
@@ -38,7 +38,7 @@ function TocLink({ children }: { children: Child<string> }) {
 function ModuleToc({ children }: { children: Child<DocNodeCollection> }) {
   const collection = take(children);
   return (
-    <ul>
+    <ul class={tw`mt-2.5`}>
       {collection.namespace && <TocLink>Namespaces</TocLink>}
       {collection.class && <TocLink>Classes</TocLink>}
       {collection.enum && <TocLink>Enums</TocLink>}
@@ -157,28 +157,82 @@ export function DocPage(
   { children }: { children: Child<string | null | undefined> },
 ) {
   const item = take(children);
-  const { entries } = store.state as StoreState;
+  const { entries, url } = store.state as StoreState;
   const collection = asCollection(entries);
   return (
     <div
       class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}
     >
-      <SideBar item={item}>{collection}</SideBar>
+      <SideBar item={item} url={url}>{collection}</SideBar>
       {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{collection}</DocNodes>}
     </div>
   );
 }
 
 function SideBar(
-  { children, item }: {
+  { children, item, url }: {
     children: Child<DocNodeCollection>;
     item?: string | null;
+    url: string;
   },
 ) {
   const collection = take(children);
+  const parsed = parseURL(url);
+  const href = `/${url.replace("://", "/")}`;
+  let name;
+  if (parsed) {
+    if (parsed.module) {
+      if (parsed.package) {
+        name = `${parsed.package} / ${parsed.module}`;
+      } else if (parsed.registry === "deno.land/std") {
+        name = `std / ${parsed.module}`;
+      } else {
+        name = parsed.module;
+      }
+    } else {
+      name = parsed.package;
+    }
+  }
   return (
     <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
-      <h2 class={tw`text-gray-900 text-2xl font-bold`}>{item ?? "Deno Doc"}</h2>
+      {parsed
+        ? (
+          <div>
+            <h2 class={tw`text-gray-900 text-2xl font-bold`}>
+              <a href={href} class={tw`hover:underline`}>{name}</a>
+            </h2>
+            <table class={tw`w-full text-left border-collapse`}>
+              <tbody>
+                <tr>
+                  <td>Registry</td>
+                  <td>{parsed.registry}</td>
+                </tr>
+                {parsed.org && (
+                  <tr>
+                    <td>Organization</td>
+                    <td>{parsed.org}</td>
+                  </tr>
+                )}
+                {parsed.package && (
+                  <tr>
+                    <td>Package</td>
+                    <td>
+                      {parsed.package}
+                      {parsed.version && `@${parsed.version}`}
+                    </td>
+                  </tr>
+                )}
+                {parsed.module && (
+                  <tr>
+                    <td>Module</td>
+                    <td>{parsed.module}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )
+        : <a href={href}>{escape(url)}</a>}
       {item ?? <ModuleToc>{collection}</ModuleToc>}
     </nav>
   );

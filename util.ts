@@ -78,3 +78,42 @@ export function take<T>(value: Child<T>, itemIsArray = false): T {
     return Array.isArray(value) ? value[0] : value;
   }
 }
+
+const patterns = {
+  "deno.land/x": new URLPattern(
+    "https://deno.land/x/:pkg([^@/]+){@}?:ver?/:mod*",
+  ),
+  "deno.land/std": new URLPattern("https://deno.land/std{@}?:ver?/:mod*"),
+  "nest.land": new URLPattern("https://x.nest.land/:pkg([^@/]+)@:ver/:mod*"),
+  "github.com": new URLPattern(
+    "https://raw.githubusercontent.com/:org/:pkg/:ver/:mod*",
+  ),
+  "esm.sh": new URLPattern("https://esm.sh/:pkg([^@/]+){@}?:ver?/:mod?"),
+  "skypack.dev": new URLPattern(
+    "https://cdn.skypack.dev/:pkg([^@/]+){@}?:ver?/:mod?",
+  ),
+} as const;
+
+interface ParsedURL {
+  registry: string;
+  org?: string;
+  package?: string;
+  version?: string;
+  module?: string;
+}
+
+export function parseURL(url: string): ParsedURL | undefined {
+  for (const [registry, pattern] of Object.entries(patterns)) {
+    const match = pattern.exec(url);
+    if (match) {
+      const { pathname: { groups: { org, pkg, ver, mod } } } = match;
+      return {
+        registry,
+        org: org ? org : undefined,
+        package: pkg ? pkg : undefined,
+        version: ver ? ver : undefined,
+        module: mod ? mod : undefined,
+      };
+    }
+  }
+}
