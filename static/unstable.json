@@ -7,6 +7,7 @@
       "line": 6,
       "col": 0
     },
+    "declarationKind": "declare",
     "namespaceDef": {
       "elements": [
         {
@@ -17,6 +18,7 @@
             "line": 22,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.  This API is under consideration to\ndetermine if permissions are required to call it.\n\nRetrieve the process umask.  If `mask` is provided, sets the process umask.\nThis call always returns what the umask was before the call.\n\n```ts\nconsole.log(Deno.umask());  // e.g. 18 (0o022)\nconst prevUmaskValue = Deno.umask(0o077);  // e.g. 18 (0o022)\nconsole.log(Deno.umask());  // e.g. 63 (0o077)\n```\n\nNOTE:  This API is not implemented on Windows"
           },
@@ -51,6 +53,7 @@
             "line": 32,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.\n\nGets the size of the console as columns/rows.\n\n```ts\nconst { columns, rows } = Deno.consoleSize(Deno.stdout.rid);\n```"
           },
@@ -115,6 +118,7 @@
             "line": 54,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**Unstable**  There are questions around which permission this needs. And\nmaybe should be renamed (loadAverage?)\n\nReturns an array containing the 1, 5, and 15 minute load averages. The\nload average is a measure of CPU and IO utilization of the last one, five,\nand 15 minute periods expressed as a fractional number.  Zero means there\nis no load. On Windows, the three values are always the same and represent\nthe current load, not the 1, 5 and 15 minute load averages.\n\n```ts\nconsole.log(Deno.loadavg());  // e.g. [ 0.71, 0.44, 0.44 ]\n```\n\nRequires `allow-env` permission."
           },
@@ -142,6 +146,7 @@
             "line": 68,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**Unstable** new API. yet to be vetted. Under consideration to possibly move to\nDeno.build or Deno.versions and if it should depend sys-info, which may not\nbe desireable.\n\nReturns the release version of the Operating System.\n\n```ts\nconsole.log(Deno.osRelease());\n```\n\nRequires `allow-env` permission."
           },
@@ -165,6 +170,7 @@
             "line": 83,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**Unstable** new API. yet to be vetted.\n\nDisplays the total amount of free and used physical and swap memory in the\nsystem, as well as the buffers and caches used by the kernel.\n\nThis is similar to the `free` command in Linux\n\n```ts\nconsole.log(Deno.systemMemoryInfo());\n```\n\nRequires `allow-env` permission."
           },
@@ -191,6 +197,7 @@
             "line": 85,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -349,6 +356,7 @@
             "line": 107,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "All possible types for interfacing with foreign functions"
           },
@@ -474,6 +482,7 @@
             "line": 123,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A foreign function as defined by its parameter and result types"
           },
@@ -577,6 +586,7 @@
             "line": 131,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A dynamic library resource"
           },
@@ -714,6 +724,7 @@
             "line": 142,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API\n\nOpens a dynamic library and registers symbols"
           },
@@ -813,22 +824,55 @@
             "line": 148,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The log category for a diagnostic message."
           },
           "enumDef": {
             "members": [
               {
-                "name": "Warning"
+                "name": "Warning",
+                "init": {
+                  "repr": "0",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 0
+                  }
+                }
               },
               {
-                "name": "Error"
+                "name": "Error",
+                "init": {
+                  "repr": "1",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 1
+                  }
+                }
               },
               {
-                "name": "Suggestion"
+                "name": "Suggestion",
+                "init": {
+                  "repr": "2",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 2
+                  }
+                }
               },
               {
-                "name": "Message"
+                "name": "Message",
+                "init": {
+                  "repr": "3",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 3
+                  }
+                }
               }
             ]
           }
@@ -841,6 +885,7 @@
             "line": 155,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -937,6 +982,7 @@
             "line": 162,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -1225,6 +1271,7 @@
             "line": 206,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nFormat an array of diagnostic items and return them as a single string in a\nuser friendly format. If there are no diagnostics then it will return an\nempty string.\n\n```ts\nconst { diagnostics } = await Deno.emit(\"file_with_compile_issues.ts\");\nconsole.table(diagnostics);  // Prints raw diagnostic data\nconsole.log(Deno.formatDiagnostics(diagnostics));  // User friendly output of diagnostics\nconsole.log(Deno.formatDiagnostics([]));  // An empty string\n```\n",
             "tags": [
@@ -1273,6 +1320,7 @@
             "line": 212,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nA specific subset TypeScript compiler options that can be supported by the\nDeno TypeScript compiler."
           },
@@ -2744,6 +2792,7 @@
             "line": 451,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nThe options for `Deno.emit()` API."
           },
@@ -2922,6 +2971,7 @@
             "line": 489,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nThe result of `Deno.emit()` API."
           },
@@ -3068,6 +3118,7 @@
             "line": 528,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nSimilar to the command line functionality of `deno run` or `deno cache`,\n`Deno.emit()` provides a way to provide Deno arbitrary JavaScript\nor TypeScript and have it return JavaScript based on the options and\nsettings provided. The source code can either be provided or the modules\ncan be fetched and resolved in line with the behavior of the command line.\n\nRequires `allow-read` and/or `allow-net` if sources are not provided.\n",
             "tags": [
@@ -3157,6 +3208,7 @@
             "line": 570,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nGiven a current location in a module, lookup the source location and return\nit.\n\nWhen Deno transpiles code, it keep source maps of the transpiled code. This\nfunction can be used to lookup the original location. This is\nautomatically done when accessing the `.stack` of an error, or when an\nuncaught error is logged. This function can be used to perform the lookup\nfor creating better error handling.\n\n**Note:** `lineNumber` and `columnNumber` are 1 indexed, which matches display\nexpectations, but is not typical of most index numbers in Deno.\n\nAn example:\n\n```ts\nconst origin = Deno.applySourceMap({\n  fileName: \"file://my/module.ts\",\n  lineNumber: 5,\n  columnNumber: 15\n});\n\nconsole.log(`${origin.fileName}:${origin.lineNumber}:${origin.columnNumber}`);\n```"
           },
@@ -3197,6 +3249,7 @@
             "line": 584,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nRegisters the given function as a listener of the given signal event.\n\n```ts\nDeno.addSignalListener(\"SIGTERM\", () => {\n  console.log(\"SIGTERM!\")\n});\n```\n\nNOTE: This functionality is not yet implemented on Windows."
           },
@@ -3253,6 +3306,7 @@
             "line": 601,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nRemoves the given signal listener that has been registered with\nDeno.addSignalListener.\n\n```ts\nconst listener = () => {\n  console.log(\"SIGTERM!\")\n};\nDeno.addSignalListener(\"SIGTERM\", listener);\nDeno.removeSignalListener(\"SIGTERM\", listener);\n```\n\nNOTE: This functionality is not yet implemented on Windows."
           },
@@ -3309,6 +3363,7 @@
             "line": 606,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -3344,6 +3399,7 @@
             "line": 626,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted\n\nSet TTY to be under raw mode or not. In raw mode, characters are read and\nreturned as is, without being processed. All special processing of\ncharacters by the terminal is disabled, including echoing input characters.\nReading from a TTY device in raw mode is faster than reading from a TTY\ndevice in canonical mode.\n\nThe `cbreak` option can be used to indicate that characters that correspond\nto a signal should still be generated. When disabling raw mode, this option\nis ignored. This functionality currently only works on Linux and Mac OS.\n\n```ts\nDeno.setRaw(Deno.stdin.rid, true, { cbreak: true });\n```"
           },
@@ -3401,6 +3457,7 @@
             "line": 643,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: needs investigation into high precision time.\n\nSynchronously changes the access (`atime`) and modification (`mtime`) times\nof a file system object referenced by `path`. Given times are either in\nseconds (UNIX epoch time) or as `Date` objects.\n\n```ts\nDeno.utimeSync(\"myfile.txt\", 1556495550, new Date());\n```\n\nRequires `allow-write` permission."
           },
@@ -3497,6 +3554,7 @@
             "line": 660,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: needs investigation into high precision time.\n\nChanges the access (`atime`) and modification (`mtime`) times of a file\nsystem object referenced by `path`. Given times are either in seconds\n(UNIX epoch time) or as `Date` objects.\n\n```ts\nawait Deno.utime(\"myfile.txt\", 1556495550, new Date());\n```\n\nRequires `allow-write` permission."
           },
@@ -3602,6 +3660,7 @@
             "line": 666,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -3774,6 +3833,7 @@
             "line": 689,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.  Additional consideration is still\nnecessary around the permissions required.\n\nGet the `hostname` of the machine the Deno process is running on.\n\n```ts\nconsole.log(Deno.hostname());\n```\n\n Requires `allow-env` permission."
           },
@@ -3797,6 +3857,7 @@
             "line": 700,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.\nA custom HttpClient for use with `fetch`.\n\n```ts\nconst caCert = await Deno.readTextFile(\"./ca.pem\");\nconst client = Deno.createHttpClient({ caCerts: [ caCert ] });\nconst req = await fetch(\"https://myserver.com\", { client });\n```"
           },
@@ -3864,6 +3925,7 @@
             "line": 708,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.\nThe options used when creating a [HttpClient]."
           },
@@ -3972,6 +4034,7 @@
             "line": 722,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -4027,6 +4090,7 @@
             "line": 727,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -4079,6 +4143,7 @@
             "line": 746,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API, yet to be vetted.\nCreate a custom HttpClient for to use with `fetch`.\n\n```ts\nconst caCert = await Deno.readTextFile(\"./ca.pem\");\nconst client = Deno.createHttpClient({ caCerts: [ caCert ] });\nconst response = await fetch(\"https://myserver.com\", { client });\n```\n\n```ts\nconst client = Deno.createHttpClient({ proxy: { url: \"http://myproxy.com:8080\" } });\nconst response = await fetch(\"https://myserver.com\", { client });\n```"
           },
@@ -4119,6 +4184,7 @@
             "line": 761,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: needs investigation into high precision time.\n\nSynchronously changes the access (`atime`) and modification (`mtime`) times\nof a file stream resource referenced by `rid`. Given times are either in\nseconds (UNIX epoch time) or as `Date` objects.\n\n```ts\nconst file = Deno.openSync(\"file.txt\", { create: true, write: true });\nDeno.futimeSync(file.rid, 1556495550, new Date());\n```"
           },
@@ -4201,6 +4267,7 @@
             "line": 778,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: needs investigation into high precision time.\n\nChanges the access (`atime`) and modification (`mtime`) times of a file\nstream resource referenced by `rid`. Given times are either in seconds\n(UNIX epoch time) or as `Date` objects.\n\n```ts\nconst file = await Deno.open(\"file.txt\", { create: true, write: true });\nawait Deno.futime(file.rid, 1556495550, new Date());\n```"
           },
@@ -4292,6 +4359,7 @@
             "line": 793,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "*UNSTABLE**: new API, yet to be vetted.\n\nSleepSync puts the main thread to sleep synchronously for a given amount of\ntime in milliseconds.\n\n```ts\nDeno.sleepSync(10);\n```"
           },
@@ -4326,6 +4394,7 @@
             "line": 796,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New option, yet to be vetted."
           },
@@ -4483,6 +4552,7 @@
             "line": 816,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New option, yet to be vetted."
           },
@@ -4658,6 +4728,7 @@
             "line": 835,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nA generic transport listener for message-oriented protocols."
           },
@@ -4914,6 +4985,7 @@
             "line": 854,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -4952,6 +5024,7 @@
             "line": 868,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nListen announces on the local transport address.\n\n```ts\nconst listener = Deno.listen({ path: \"/foo/bar.sock\", transport: \"unix\" })\n```\n\nRequires `allow-read` and `allow-write` permission."
           },
@@ -5024,6 +5097,7 @@
             "line": 889,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted\n\nListen announces on the local transport address.\n\n```ts\nconst listener1 = Deno.listenDatagram({\n  port: 80,\n  transport: \"udp\"\n});\nconst listener2 = Deno.listenDatagram({\n  hostname: \"golang.org\",\n  port: 80,\n  transport: \"udp\"\n});\n```\n\nRequires `allow-net` permission."
           },
@@ -5096,6 +5170,7 @@
             "line": 905,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: new API, yet to be vetted\n\nListen announces on the local transport address.\n\n```ts\nconst listener = Deno.listenDatagram({\n  path: \"/foo/bar.sock\",\n  transport: \"unixpacket\"\n});\n```\n\nRequires `allow-read` and `allow-write` permission."
           },
@@ -5168,6 +5243,7 @@
             "line": 909,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -5223,6 +5299,7 @@
             "line": 929,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**:  The unix socket transport is unstable as a new API yet to\nbe vetted.  The TCP transport is considered stable.\n\nConnects to the hostname (default is \"127.0.0.1\") and port on the named\ntransport (default is \"tcp\"), and resolves to the connection (`Conn`).\n\n```ts\nconst conn1 = await Deno.connect({ port: 80 });\nconst conn2 = await Deno.connect({ hostname: \"192.0.2.1\", port: 80 });\nconst conn3 = await Deno.connect({ hostname: \"[2001:db8::1]\", port: 80 });\nconst conn4 = await Deno.connect({ hostname: \"golang.org\", port: 80, transport: \"tcp\" });\nconst conn5 = await Deno.connect({ path: \"/foo/bar.sock\", transport: \"unix\" });\n```\n\nRequires `allow-net` permission for \"tcp\" and `allow-read` for \"unix\"."
           },
@@ -5286,6 +5363,7 @@
             "line": 933,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -5344,6 +5422,7 @@
             "line": 955,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE** New API, yet to be vetted.\n\nCreate a TLS connection with an attached client certificate.\n\n```ts\nconst conn = await Deno.connectTls({\n  hostname: \"deno.land\",\n  port: 443,\n  certChain: \"---- BEGIN CERTIFICATE ----\\n ...\",\n  privateKey: \"---- BEGIN PRIVATE KEY ----\\n ...\",\n});\n```\n\nRequires `allow-net` permission."
           },
@@ -5393,6 +5472,7 @@
             "line": 957,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -5435,6 +5515,7 @@
             "line": 972,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API should be tested first.\n\nAcquire an advisory file-system lock for the provided file. `exclusive`\ndefaults to `false`."
           },
@@ -5488,6 +5569,7 @@
             "line": 979,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API should be tested first.\n\nAcquire an advisory file-system lock for the provided file. `exclusive`\ndefaults to `false`."
           },
@@ -5532,6 +5614,7 @@
             "line": 985,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API should be tested first.\n\nRelease an advisory file-system lock for the provided file."
           },
@@ -5575,6 +5658,7 @@
             "line": 991,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New API should be tested first.\n\nRelease an advisory file-system lock for the provided file."
           },
@@ -5612,6 +5696,7 @@
       "line": 994,
       "col": 0
     },
+    "declarationKind": "declare",
     "functionDef": {
       "params": [
         {
@@ -5722,6 +5807,7 @@
       "line": 999,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -6141,6 +6227,7 @@
       "line": 1053,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -6200,6 +6287,7 @@
       "line": 1058,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -6332,6 +6420,7 @@
       "line": 1065,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -6384,6 +6473,7 @@
       "line": 1070,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [

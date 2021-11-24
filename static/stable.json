@@ -7,6 +7,7 @@
       "line": 10,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Deno provides extra properties on `import.meta`.  These are included here\nto ensure that these are still available when using the Deno namespace in\nconjunction with other type libs, like `dom`."
     },
@@ -68,6 +69,7 @@
       "line": 30,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Deno supports user timing Level 3 (see: https://w3c.github.io/user-timing)\nwhich is not widely supported yet in other runtimes.  These types are here\nso that these features are still available when using the Deno namespace\nin conjunction with other type libs, like `dom`."
     },
@@ -183,6 +185,7 @@
       "line": 42,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -241,6 +244,7 @@
       "line": 51,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -361,6 +365,7 @@
       "line": 67,
       "col": 0
     },
+    "declarationKind": "declare",
     "namespaceDef": {
       "elements": [
         {
@@ -371,6 +376,7 @@
             "line": 69,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A set of error constructors that are raised by Deno APIs."
           },
@@ -384,6 +390,7 @@
                   "line": 70,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -404,6 +411,7 @@
                   "line": 71,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -424,6 +432,7 @@
                   "line": 72,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -444,6 +453,7 @@
                   "line": 73,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -464,6 +474,7 @@
                   "line": 74,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -484,6 +495,7 @@
                   "line": 75,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -504,6 +516,7 @@
                   "line": 76,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -524,6 +537,7 @@
                   "line": 77,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -544,6 +558,7 @@
                   "line": 78,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -564,6 +579,7 @@
                   "line": 79,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -584,6 +600,7 @@
                   "line": 80,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -604,6 +621,7 @@
                   "line": 81,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -624,6 +642,7 @@
                   "line": 82,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -644,6 +663,7 @@
                   "line": 83,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -664,6 +684,7 @@
                   "line": 84,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -684,6 +705,7 @@
                   "line": 85,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -704,6 +726,7 @@
                   "line": 86,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -724,6 +747,7 @@
                   "line": 87,
                   "col": 4
                 },
+                "declarationKind": "export",
                 "classDef": {
                   "isAbstract": false,
                   "constructors": [],
@@ -747,6 +771,7 @@
             "line": 91,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The current process id of the runtime."
           },
@@ -767,6 +792,7 @@
             "line": 96,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The pid of the current process's parent."
           },
@@ -787,6 +813,7 @@
             "line": 98,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -873,6 +900,7 @@
             "line": 109,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns an object describing the memory usage of the Deno process measured\nin bytes."
           },
@@ -899,6 +927,7 @@
             "line": 114,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Reflects the `NO_COLOR` environment variable at program start.\n\nSee: https://no-color.org/"
           },
@@ -919,6 +948,7 @@
             "line": 117,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "**UNSTABLE**: New option, yet to be vetted."
           },
@@ -939,6 +969,7 @@
             "line": 120,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -1491,6 +1522,7 @@
             "line": 309,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Register a test which will be run when `deno test` is used on the command\nline and the containing module looks like a test module.\n`fn` can be async if required.\n```ts\nimport {assert, fail, assertEquals} from \"https://deno.land/std/testing/asserts.ts\";\n\nDeno.test({\n  name: \"example test\",\n  fn(): void {\n    assertEquals(\"world\", \"world\");\n  },\n});\n\nDeno.test({\n  name: \"example ignored test\",\n  ignore: Deno.build.os === \"windows\",\n  fn(): void {\n    // This test is ignored only on Windows machines\n  },\n});\n\nDeno.test({\n  name: \"example async test\",\n  async fn() {\n    const decoder = new TextDecoder(\"utf-8\");\n    const data = await Deno.readFile(\"hello_world.txt\");\n    assertEquals(decoder.decode(data), \"Hello world\");\n  }\n});\n```"
           },
@@ -1528,6 +1560,7 @@
             "line": 329,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Register a test which will be run when `deno test` is used on the command\nline and the containing module looks like a test module.\n`fn` can be async if required.\n\n```ts\nimport {assert, fail, assertEquals} from \"https://deno.land/std/testing/asserts.ts\";\n\nDeno.test(\"My test description\", ():void => {\n  assertEquals(\"hello\", \"hello\");\n});\n\nDeno.test(\"My async test description\", async ():Promise<void> => {\n  const decoder = new TextDecoder(\"utf-8\");\n  const data = await Deno.readFile(\"hello_world.txt\");\n  assertEquals(decoder.decode(data), \"Hello world\");\n});\n```"
           },
@@ -1615,6 +1648,7 @@
             "line": 341,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Exit the Deno process with optional exit code. If no exit code is supplied\nthen Deno will exit with return code of 0.\n\n```ts\nDeno.exit(5);\n```"
           },
@@ -1649,6 +1683,7 @@
             "line": 343,
             "col": 2
           },
+          "declarationKind": "export",
           "variableDef": {
             "tsType": {
               "repr": "",
@@ -1796,6 +1831,7 @@
             "line": 397,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns the path to the current deno executable.\n\n```ts\nconsole.log(Deno.execPath());  // e.g. \"/home/alice/.local/bin/deno\"\n```\n\nRequires `allow-read` permission."
           },
@@ -1819,6 +1855,7 @@
             "line": 414,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Change the current working directory to the specified path.\n\n```ts\nDeno.chdir(\"/home/userA\");\nDeno.chdir(\"../userB\");\nDeno.chdir(\"C:\\\\Program Files (x86)\\\\Java\");\n```\n\nThrows `Deno.errors.NotFound` if directory not found.\nThrows `Deno.errors.PermissionDenied` if the user does not have access\nrights\n\nRequires --allow-read."
           },
@@ -1867,6 +1904,7 @@
             "line": 430,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Return a string representing the current working directory.\n\nIf the current directory can be reached via multiple paths (due to symbolic\nlinks), `cwd()` may return any one of them.\n\n```ts\nconst currentWorkingDirectory = Deno.cwd();\n```\n\nThrows `Deno.errors.NotFound` if directory not available.\n\nRequires --allow-read"
           },
@@ -1890,6 +1928,7 @@
             "line": 440,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously creates `newpath` as a hard link to `oldpath`.\n\n```ts\nDeno.linkSync(\"old/name\", \"new/name\");\n```\n\nRequires `allow-read` and `allow-write` permissions."
           },
@@ -1934,6 +1973,7 @@
             "line": 450,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates `newpath` as a hard link to `oldpath`.\n\n```ts\nawait Deno.link(\"old/name\", \"new/name\");\n```\n\nRequires `allow-read` and `allow-write` permissions."
           },
@@ -1987,16 +2027,41 @@
             "line": 452,
             "col": 2
           },
+          "declarationKind": "export",
           "enumDef": {
             "members": [
               {
-                "name": "Start"
+                "name": "Start",
+                "init": {
+                  "repr": "0",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 0
+                  }
+                }
               },
               {
-                "name": "Current"
+                "name": "Current",
+                "init": {
+                  "repr": "1",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 1
+                  }
+                }
               },
               {
-                "name": "End"
+                "name": "End",
+                "init": {
+                  "repr": "2",
+                  "kind": "literal",
+                  "literal": {
+                    "kind": "number",
+                    "number": 2
+                  }
+                }
               }
             ]
           }
@@ -2009,6 +2074,7 @@
             "line": 458,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2081,6 +2147,7 @@
             "line": 484,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2144,6 +2211,7 @@
             "line": 509,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2205,6 +2273,7 @@
             "line": 522,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2257,6 +2326,7 @@
             "line": 535,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2292,6 +2362,7 @@
             "line": 539,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2363,6 +2434,7 @@
             "line": 554,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -2425,6 +2497,7 @@
             "line": 586,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -2532,6 +2605,7 @@
             "line": 628,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -2614,6 +2688,7 @@
             "line": 669,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -2696,6 +2771,7 @@
             "line": 689,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously open a file and return an instance of `Deno.File`.  The\nfile does not need to previously exist if using the `create` or `createNew`\nopen options.  It is the callers responsibility to close the file when finished\nwith it.\n\n```ts\nconst file = Deno.openSync(\"/foo/bar.txt\", { read: true, write: true });\n// Do work with file\nDeno.close(file.rid);\n```\n\nRequires `allow-read` and/or `allow-write` permissions depending on options."
           },
@@ -2760,6 +2836,7 @@
             "line": 704,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Open a file and resolve to an instance of `Deno.File`.  The\nfile does not need to previously exist if using the `create` or `createNew`\nopen options.  It is the callers responsibility to close the file when finished\nwith it.\n\n```ts\nconst file = await Deno.open(\"/foo/bar.txt\", { read: true, write: true });\n// Do work with file\nDeno.close(file.rid);\n```\n\nRequires `allow-read` and/or `allow-write` permissions depending on options."
           },
@@ -2833,6 +2910,7 @@
             "line": 718,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates a file if none exists or truncates an existing file and returns\n an instance of `Deno.File`.\n\n```ts\nconst file = Deno.createSync(\"/foo/bar.txt\");\n```\n\nRequires `allow-read` and `allow-write` permissions."
           },
@@ -2884,6 +2962,7 @@
             "line": 729,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates a file if none exists or truncates an existing file and resolves to\n an instance of `Deno.File`.\n\n```ts\nconst file = await Deno.create(\"/foo/bar.txt\");\n```\n\nRequires `allow-read` and `allow-write` permissions."
           },
@@ -2944,6 +3023,7 @@
             "line": 753,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously read from a resource ID (`rid`) into an array buffer (`buffer`).\n\nReturns either the number of bytes read during the operation or EOF\n(`null`) if there was nothing more to read.\n\nIt is possible for a read to successfully return with `0` bytes. This does\nnot indicate EOF.\n\nThis function is one of the lowest level APIs and most users should not\nwork with this directly, but rather use Deno.readAllSync() instead.\n\n**It is not guaranteed that the full buffer will be read in a single call.**\n\n```ts\n// if \"/foo/bar.txt\" contains the text \"hello world\":\nconst file = Deno.openSync(\"/foo/bar.txt\");\nconst buf = new Uint8Array(100);\nconst numberOfBytesRead = Deno.readSync(file.rid, buf); // 11 bytes\nconst text = new TextDecoder().decode(buf);  // \"hello world\"\nDeno.close(file.rid);\n```"
           },
@@ -3002,6 +3082,7 @@
             "line": 777,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Read from a resource ID (`rid`) into an array buffer (`buffer`).\n\nResolves to either the number of bytes read during the operation or EOF\n(`null`) if there was nothing more to read.\n\nIt is possible for a read to successfully return with `0` bytes. This does\nnot indicate EOF.\n\nThis function is one of the lowest level APIs and most users should not\nwork with this directly, but rather use Deno.readAll() instead.\n\n**It is not guaranteed that the full buffer will be read in a single call.**\n\n```ts\n// if \"/foo/bar.txt\" contains the text \"hello world\":\nconst file = await Deno.open(\"/foo/bar.txt\");\nconst buf = new Uint8Array(100);\nconst numberOfBytesRead = await Deno.read(file.rid, buf); // 11 bytes\nconst text = new TextDecoder().decode(buf);  // \"hello world\"\nDeno.close(file.rid);\n```"
           },
@@ -3069,6 +3150,7 @@
             "line": 797,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously write to the resource ID (`rid`) the contents of the array\nbuffer (`data`).\n\nReturns the number of bytes written.  This function is one of the lowest\nlevel APIs and most users should not work with this directly, but rather use\nDeno.writeAllSync() instead.\n\n**It is not guaranteed that the full buffer will be written in a single\ncall.**\n\n```ts\nconst encoder = new TextEncoder();\nconst data = encoder.encode(\"Hello world\");\nconst file = Deno.openSync(\"/foo/bar.txt\", {write: true});\nconst bytesWritten = Deno.writeSync(file.rid, data); // 11\nDeno.close(file.rid);\n```"
           },
@@ -3116,6 +3198,7 @@
             "line": 816,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Write to the resource ID (`rid`) the contents of the array buffer (`data`).\n\nResolves to the number of bytes written.  This function is one of the lowest\nlevel APIs and most users should not work with this directly, but rather use\nDeno.writeAll() instead.\n\n**It is not guaranteed that the full buffer will be written in a single\ncall.**\n\n```ts\nconst encoder = new TextEncoder();\nconst data = encoder.encode(\"Hello world\");\nconst file = await Deno.open(\"/foo/bar.txt\", { write: true });\nconst bytesWritten = await Deno.write(file.rid, data); // 11\nDeno.close(file.rid);\n```"
           },
@@ -3172,6 +3255,7 @@
             "line": 849,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously seek a resource ID (`rid`) to the given `offset` under mode\ngiven by `whence`.  The new position within the resource (bytes from the\nstart) is returned.\n\n```ts\nconst file = Deno.openSync('hello.txt', {read: true, write: true, truncate: true, create: true});\nDeno.writeSync(file.rid, new TextEncoder().encode(\"Hello world\"));\n\n// advance cursor 6 bytes\nconst cursorPosition = Deno.seekSync(file.rid, 6, Deno.SeekMode.Start);\nconsole.log(cursorPosition);  // 6\nconst buf = new Uint8Array(100);\nfile.readSync(buf);\nconsole.log(new TextDecoder().decode(buf)); // \"world\"\n```\n\nThe seek modes work as follows:\n\n```ts\n// Given file.rid pointing to file with \"Hello world\", which is 11 bytes long:\nconst file = Deno.openSync('hello.txt', {read: true, write: true, truncate: true, create: true});\nDeno.writeSync(file.rid, new TextEncoder().encode(\"Hello world\"));\n\n// Seek 6 bytes from the start of the file\nconsole.log(Deno.seekSync(file.rid, 6, Deno.SeekMode.Start)); // \"6\"\n// Seek 2 more bytes from the current position\nconsole.log(Deno.seekSync(file.rid, 2, Deno.SeekMode.Current)); // \"8\"\n// Seek backwards 2 bytes from the end of the file\nconsole.log(Deno.seekSync(file.rid, -2, Deno.SeekMode.End)); // \"9\" (e.g. 11-2)\n```"
           },
@@ -3229,6 +3313,7 @@
             "line": 886,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Seek a resource ID (`rid`) to the given `offset` under mode given by `whence`.\nThe call resolves to the new position within the resource (bytes from the start).\n\n```ts\n// Given file.rid pointing to file with \"Hello world\", which is 11 bytes long:\nconst file = await Deno.open('hello.txt', {read: true, write: true, truncate: true, create: true});\nawait Deno.write(file.rid, new TextEncoder().encode(\"Hello world\"));\n\n// advance cursor 6 bytes\nconst cursorPosition = await Deno.seek(file.rid, 6, Deno.SeekMode.Start);\nconsole.log(cursorPosition);  // 6\nconst buf = new Uint8Array(100);\nawait file.read(buf);\nconsole.log(new TextDecoder().decode(buf)); // \"world\"\n```\n\nThe seek modes work as follows:\n\n```ts\n// Given file.rid pointing to file with \"Hello world\", which is 11 bytes long:\nconst file = await Deno.open('hello.txt', {read: true, write: true, truncate: true, create: true});\nawait Deno.write(file.rid, new TextEncoder().encode(\"Hello world\"));\n\n// Seek 6 bytes from the start of the file\nconsole.log(await Deno.seek(file.rid, 6, Deno.SeekMode.Start)); // \"6\"\n// Seek 2 more bytes from the current position\nconsole.log(await Deno.seek(file.rid, 2, Deno.SeekMode.Current)); // \"8\"\n// Seek backwards 2 bytes from the end of the file\nconsole.log(await Deno.seek(file.rid, -2, Deno.SeekMode.End)); // \"9\" (e.g. 11-2)\n```"
           },
@@ -3295,6 +3380,7 @@
             "line": 902,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously flushes any pending data and metadata operations of the given file stream to disk.\n ```ts\nconst file = Deno.openSync(\"my_file.txt\", { read: true, write: true, create: true });\nDeno.writeSync(file.rid, new TextEncoder().encode(\"Hello World\"));\nDeno.ftruncateSync(file.rid, 1);\nDeno.fsyncSync(file.rid);\nconsole.log(new TextDecoder().decode(Deno.readFileSync(\"my_file.txt\"))); // H\n```"
           },
@@ -3329,6 +3415,7 @@
             "line": 914,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Flushes any pending data and metadata operations of the given file stream to disk.\n ```ts\nconst file = await Deno.open(\"my_file.txt\", { read: true, write: true, create: true });\nawait Deno.write(file.rid, new TextEncoder().encode(\"Hello World\"));\nawait Deno.ftruncate(file.rid, 1);\nawait Deno.fsync(file.rid);\nconsole.log(new TextDecoder().decode(await Deno.readFile(\"my_file.txt\"))); // H\n```"
           },
@@ -3372,6 +3459,7 @@
             "line": 925,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -3403,6 +3491,7 @@
             "line": 936,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Flushes any pending data operations of the given file stream to disk.\n ```ts\nconst file = await Deno.open(\"my_file.txt\", { read: true, write: true, create: true });\nawait Deno.write(file.rid, new TextEncoder().encode(\"Hello World\"));\nawait Deno.fdatasync(file.rid);\nconsole.log(new TextDecoder().decode(await Deno.readFile(\"my_file.txt\"))); // Hello World\n```"
           },
@@ -3446,6 +3535,7 @@
             "line": 948,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Close the given resource ID (rid) which has been previously opened, such\nas via opening or creating a file.  Closing a file when you are finished\nwith it is important to avoid leaking resources.\n\n```ts\nconst file = await Deno.open(\"my_file.txt\");\n// do work with \"file\" object\nDeno.close(file.rid);\n````"
           },
@@ -3480,6 +3570,7 @@
             "line": 951,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The Deno abstraction for reading and writing files."
           },
@@ -4065,6 +4156,7 @@
             "line": 976,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A handle for `stdin`."
           },
@@ -4133,6 +4225,7 @@
             "line": 978,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A handle for `stdout`."
           },
@@ -4201,6 +4294,7 @@
             "line": 980,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A handle for `stderr`."
           },
@@ -4269,6 +4363,7 @@
             "line": 982,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -4427,6 +4522,7 @@
             "line": 1016,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -4468,6 +4564,7 @@
             "line": 1038,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Check if a given resource id (`rid`) is a TTY.\n\n```ts\n// This example is system and context specific\nconst nonTTYRid = Deno.openSync(\"my_file.txt\").rid;\nconst ttyRid = Deno.openSync(\"/dev/tty6\").rid;\nconsole.log(Deno.isatty(nonTTYRid)); // false\nconsole.log(Deno.isatty(ttyRid)); // true\nDeno.close(nonTTYRid);\nDeno.close(ttyRid);\n```"
           },
@@ -4502,6 +4599,7 @@
             "line": 1057,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -5120,6 +5218,7 @@
             "line": 1146,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -5174,6 +5273,7 @@
             "line": 1172,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -5219,6 +5319,7 @@
             "line": 1202,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -5283,6 +5384,7 @@
             "line": 1234,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -5338,6 +5440,7 @@
             "line": 1236,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -5396,6 +5499,7 @@
             "line": 1261,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously creates a new directory with the specified path.\n\n```ts\nDeno.mkdirSync(\"new_dir\");\nDeno.mkdirSync(\"nested/directories\", { recursive: true });\nDeno.mkdirSync(\"restricted_access_dir\", { mode: 0o700 });\n```\n\nDefaults to throwing error if the directory already exists.\n\nRequires `allow-write` permission."
           },
@@ -5457,6 +5561,7 @@
             "line": 1274,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates a new directory with the specified path.\n\n```ts\nawait Deno.mkdir(\"new_dir\");\nawait Deno.mkdir(\"nested/directories\", { recursive: true });\nawait Deno.mkdir(\"restricted_access_dir\", { mode: 0o700 });\n```\n\nDefaults to throwing error if the directory already exists.\n\nRequires `allow-write` permission."
           },
@@ -5527,6 +5632,7 @@
             "line": 1279,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -5605,6 +5711,7 @@
             "line": 1313,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously creates a new temporary directory in the default directory\nfor temporary files, unless `dir` is specified. Other optional options\ninclude prefixing and suffixing the directory name with `prefix` and\n`suffix` respectively.\n\nThe full path to the newly created directory is returned.\n\nMultiple programs calling this function simultaneously will create different\ndirectories. It is the caller's responsibility to remove the directory when\nno longer needed.\n\n```ts\nconst tempDirName0 = Deno.makeTempDirSync();  // e.g. /tmp/2894ea76\nconst tempDirName1 = Deno.makeTempDirSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp339c944d\n```\n\nRequires `allow-write` permission."
           },
@@ -5642,6 +5749,7 @@
             "line": 1333,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates a new temporary directory in the default directory for temporary\nfiles, unless `dir` is specified. Other optional options include\nprefixing and suffixing the directory name with `prefix` and `suffix`\nrespectively.\n\nThis call resolves to the full path to the newly created directory.\n\nMultiple programs calling this function simultaneously will create different\ndirectories. It is the caller's responsibility to remove the directory when\nno longer needed.\n\n```ts\nconst tempDirName0 = await Deno.makeTempDir();  // e.g. /tmp/2894ea76\nconst tempDirName1 = await Deno.makeTempDir({ prefix: 'my_temp' }); // e.g. /tmp/my_temp339c944d\n```\n\nRequires `allow-write` permission."
           },
@@ -5688,6 +5796,7 @@
             "line": 1352,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously creates a new temporary file in the default directory for\ntemporary files, unless `dir` is specified.\nOther optional options include prefixing and suffixing the directory name\nwith `prefix` and `suffix` respectively.\n\nThe full path to the newly created file is returned.\n\nMultiple programs calling this function simultaneously will create different\nfiles. It is the caller's responsibility to remove the file when no longer\nneeded.\n\n```ts\nconst tempFileName0 = Deno.makeTempFileSync(); // e.g. /tmp/419e0bf2\nconst tempFileName1 = Deno.makeTempFileSync({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098\n```\n\nRequires `allow-write` permission."
           },
@@ -5725,6 +5834,7 @@
             "line": 1371,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates a new temporary file in the default directory for temporary\nfiles, unless `dir` is specified.  Other\noptional options include prefixing and suffixing the directory name with\n`prefix` and `suffix` respectively.\n\nThis call resolves to the full path to the newly created file.\n\nMultiple programs calling this function simultaneously will create different\nfiles. It is the caller's responsibility to remove the file when no longer\nneeded.\n\n```ts\nconst tmpFileName0 = await Deno.makeTempFile();  // e.g. /tmp/419e0bf2\nconst tmpFileName1 = await Deno.makeTempFile({ prefix: 'my_temp' });  // e.g. /tmp/my_temp754d3098\n```\n\nRequires `allow-write` permission."
           },
@@ -5771,6 +5881,7 @@
             "line": 1385,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously changes the permission of a specific file/directory of\nspecified path.  Ignores the process's umask.\n\n```ts\nDeno.chmodSync(\"/path/to/file\", 0o666);\n```\n\nFor a full description, see [chmod](#Deno.chmod)\n\nNOTE: This API currently throws on Windows\n\nRequires `allow-write` permission."
           },
@@ -5829,6 +5940,7 @@
             "line": 1415,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Changes the permission of a specific file/directory of specified path.\nIgnores the process's umask.\n\n```ts\nawait Deno.chmod(\"/path/to/file\", 0o666);\n```\n\nThe mode is a sequence of 3 octal numbers.  The first/left-most number\nspecifies the permissions for the owner.  The second number specifies the\npermissions for the group. The last/right-most number specifies the\npermissions for others.  For example, with a mode of 0o764, the owner (7) can\nread/write/execute, the group (6) can read/write and everyone else (4) can\nread only.\n\n| Number | Description |\n| ------ | ----------- |\n| 7      | read, write, and execute |\n| 6      | read and write |\n| 5      | read and execute |\n| 4      | read only |\n| 3      | write and execute |\n| 2      | write only |\n| 1      | execute only |\n| 0      | no permission |\n\nNOTE: This API currently throws on Windows\n\nRequires `allow-write` permission."
           },
@@ -5896,6 +6008,7 @@
             "line": 1432,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously change owner of a regular file or directory. This functionality\nis not available on Windows.\n\n```ts\nDeno.chownSync(\"myFile.txt\", 1000, 1002);\n```\n\nRequires `allow-write` permission.\n\nThrows Error (not implemented) if executed on Windows\n",
             "tags": [
@@ -6003,6 +6116,7 @@
             "line": 1453,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Change owner of a regular file or directory. This functionality\nis not available on Windows.\n\n```ts\nawait Deno.chown(\"myFile.txt\", 1000, 1002);\n```\n\nRequires `allow-write` permission.\n\nThrows Error (not implemented) if executed on Windows\n",
             "tags": [
@@ -6119,6 +6233,7 @@
             "line": 1459,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -6157,6 +6272,7 @@
             "line": 1476,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously removes the named file or directory.\n\n```ts\nDeno.removeSync(\"/path/to/empty_dir/or/file\");\nDeno.removeSync(\"/path/to/populated_dir/or/file\", { recursive: true });\n```\n\nThrows error if permission denied, path not found, or path is a non-empty\ndirectory and the `recursive` option isn't set to `true`.\n\nRequires `allow-write` permission."
           },
@@ -6218,6 +6334,7 @@
             "line": 1489,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Removes the named file or directory.\n\n```ts\nawait Deno.remove(\"/path/to/empty_dir/or/file\");\nawait Deno.remove(\"/path/to/populated_dir/or/file\", { recursive: true });\n```\n\nThrows error if permission denied, path not found, or path is a non-empty\ndirectory and the `recursive` option isn't set to `true`.\n\nRequires `allow-write` permission."
           },
@@ -6288,6 +6405,7 @@
             "line": 1509,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously renames (moves) `oldpath` to `newpath`. Paths may be files or\ndirectories.  If `newpath` already exists and is not a directory,\n`renameSync()` replaces it. OS-specific restrictions may apply when\n`oldpath` and `newpath` are in different directories.\n\n```ts\nDeno.renameSync(\"old/path\", \"new/path\");\n```\n\nOn Unix, this operation does not follow symlinks at either path.\n\nIt varies between platforms when the operation throws errors, and if so what\nthey are. It's always an error to rename anything to a non-empty directory.\n\nRequires `allow-read` and `allow-write` permissions."
           },
@@ -6360,6 +6478,7 @@
             "line": 1529,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Renames (moves) `oldpath` to `newpath`.  Paths may be files or directories.\nIf `newpath` already exists and is not a directory, `rename()` replaces it.\nOS-specific restrictions may apply when `oldpath` and `newpath` are in\ndifferent directories.\n\n```ts\nawait Deno.rename(\"old/path\", \"new/path\");\n```\n\nOn Unix, this operation does not follow symlinks at either path.\n\nIt varies between platforms when the operation throws errors, and if so what\nthey are. It's always an error to rename anything to a non-empty directory.\n\nRequires `allow-read` and `allow-write` permission."
           },
@@ -6441,6 +6560,7 @@
             "line": 1543,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously reads and returns the entire contents of a file as utf8\n encoded string. Reading a directory throws an error.\n\n```ts\nconst data = Deno.readTextFileSync(\"hello.txt\");\nconsole.log(data);\n```\n\nRequires `allow-read` permission."
           },
@@ -6489,6 +6609,7 @@
             "line": 1554,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Asynchronously reads and returns the entire contents of a file as utf8\n encoded string. Reading a directory throws an error.\n\n```ts\nconst data = await Deno.readTextFile(\"hello.txt\");\nconsole.log(data);\n```\n\nRequires `allow-read` permission."
           },
@@ -6559,6 +6680,7 @@
             "line": 1570,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously reads and returns the entire contents of a file as an array\nof bytes. `TextDecoder` can be used to transform the bytes to string if\nrequired.  Reading a directory returns an empty data array.\n\n```ts\nconst decoder = new TextDecoder(\"utf-8\");\nconst data = Deno.readFileSync(\"hello.txt\");\nconsole.log(decoder.decode(data));\n```\n\nRequires `allow-read` permission."
           },
@@ -6610,6 +6732,7 @@
             "line": 1583,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Reads and resolves to the entire contents of a file as an array of bytes.\n`TextDecoder` can be used to transform the bytes to string if required.\nReading a directory returns an empty data array.\n\n```ts\nconst decoder = new TextDecoder(\"utf-8\");\nconst data = await Deno.readFile(\"hello.txt\");\nconsole.log(decoder.decode(data));\n```\n\nRequires `allow-read` permission."
           },
@@ -6683,6 +6806,7 @@
             "line": 1590,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A FileInfo describes a file and is returned by `stat`, `lstat`,\n`statSync`, `lstatSync`."
           },
@@ -7165,6 +7289,7 @@
             "line": 1667,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns absolute normalized path, with symbolic links resolved.\n\n```ts\n// e.g. given /home/alice/file.txt and current directory /home/alice\nDeno.symlinkSync(\"file.txt\", \"symlink_file.txt\");\nconst realPath = Deno.realPathSync(\"./file.txt\");\nconst realSymLinkPath = Deno.realPathSync(\"./symlink_file.txt\");\nconsole.log(realPath);  // outputs \"/home/alice/file.txt\"\nconsole.log(realSymLinkPath);  // outputs \"/home/alice/file.txt\"\n```\n\nRequires `allow-read` permission for the target path.\nAlso requires `allow-read` permission for the CWD if the target path is\nrelative."
           },
@@ -7213,6 +7338,7 @@
             "line": 1683,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Resolves to the absolute normalized path, with symbolic links resolved.\n\n```ts\n// e.g. given /home/alice/file.txt and current directory /home/alice\nawait Deno.symlink(\"file.txt\", \"symlink_file.txt\");\nconst realPath = await Deno.realPath(\"./file.txt\");\nconst realSymLinkPath = await Deno.realPath(\"./symlink_file.txt\");\nconsole.log(realPath);  // outputs \"/home/alice/file.txt\"\nconsole.log(realSymLinkPath);  // outputs \"/home/alice/file.txt\"\n```\n\nRequires `allow-read` permission for the target path.\nAlso requires `allow-read` permission for the CWD if the target path is\nrelative."
           },
@@ -7270,6 +7396,7 @@
             "line": 1685,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -7356,6 +7483,7 @@
             "line": 1704,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously reads the directory given by `path` and returns an iterable\nof `Deno.DirEntry`.\n\n```ts\nfor (const dirEntry of Deno.readDirSync(\"/\")) {\n  console.log(dirEntry.name);\n}\n```\n\nThrows error if `path` is not a directory.\n\nRequires `allow-read` permission."
           },
@@ -7416,6 +7544,7 @@
             "line": 1718,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Reads the directory given by `path` and returns an async iterable of\n`Deno.DirEntry`.\n\n```ts\nfor await (const dirEntry of Deno.readDir(\"/\")) {\n  console.log(dirEntry.name);\n}\n```\n\nThrows error if `path` is not a directory.\n\nRequires `allow-read` permission."
           },
@@ -7476,6 +7605,7 @@
             "line": 1730,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously copies the contents and permissions of one file to another\nspecified path, by default creating a new file if needed, else overwriting.\nFails if target path is a directory or is unwritable.\n\n```ts\nDeno.copyFileSync(\"from.txt\", \"to.txt\");\n```\n\nRequires `allow-read` permission on fromPath.\nRequires `allow-write` permission on toPath."
           },
@@ -7548,6 +7678,7 @@
             "line": 1745,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Copies the contents and permissions of one file to another specified path,\nby default creating a new file if needed, else overwriting. Fails if target\npath is a directory or is unwritable.\n\n```ts\nawait Deno.copyFile(\"from.txt\", \"to.txt\");\n```\n\nRequires `allow-read` permission on fromPath.\nRequires `allow-write` permission on toPath."
           },
@@ -7629,6 +7760,7 @@
             "line": 1760,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns the full path destination of the named symbolic link.\n\n```ts\nDeno.symlinkSync(\"./test.txt\", \"./test_link.txt\");\nconst target = Deno.readLinkSync(\"./test_link.txt\"); // full path of ./test.txt\n```\n\nThrows TypeError if called with a hard link\n\nRequires `allow-read` permission."
           },
@@ -7677,6 +7809,7 @@
             "line": 1772,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Resolves to the full path destination of the named symbolic link.\n\n```ts\nawait Deno.symlink(\"./test.txt\", \"./test_link.txt\");\nconst target = await Deno.readLink(\"./test_link.txt\"); // full path of ./test.txt\n```\n\nThrows TypeError if called with a hard link\n\nRequires `allow-read` permission."
           },
@@ -7734,6 +7867,7 @@
             "line": 1785,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Resolves to a `Deno.FileInfo` for the specified `path`. If `path` is a\nsymlink, information for the symlink will be returned instead of what it\npoints to.\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst fileInfo = await Deno.lstat(\"hello.txt\");\nassert(fileInfo.isFile);\n```\n\nRequires `allow-read` permission."
           },
@@ -7794,6 +7928,7 @@
             "line": 1798,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously returns a `Deno.FileInfo` for the specified `path`. If\n`path` is a symlink, information for the symlink will be returned instead of\nwhat it points to..\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst fileInfo = Deno.lstatSync(\"hello.txt\");\nassert(fileInfo.isFile);\n```\n\nRequires `allow-read` permission."
           },
@@ -7845,6 +7980,7 @@
             "line": 1810,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Resolves to a `Deno.FileInfo` for the specified `path`. Will always\nfollow symlinks.\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst fileInfo = await Deno.stat(\"hello.txt\");\nassert(fileInfo.isFile);\n```\n\nRequires `allow-read` permission."
           },
@@ -7905,6 +8041,7 @@
             "line": 1822,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously returns a `Deno.FileInfo` for the specified `path`. Will\nalways follow symlinks.\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst fileInfo = Deno.statSync(\"hello.txt\");\nassert(fileInfo.isFile);\n```\n\nRequires `allow-read` permission."
           },
@@ -7956,6 +8093,7 @@
             "line": 1825,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Options for writing to a file."
           },
@@ -8060,6 +8198,7 @@
             "line": 1857,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously write `data` to the given `path`, by default creating a new\nfile if needed, else overwriting.\n\n```ts\nconst encoder = new TextEncoder();\nconst data = encoder.encode(\"Hello world\\n\");\nDeno.writeFileSync(\"hello1.txt\", data);  // overwrite \"hello1.txt\" or create it\nDeno.writeFileSync(\"hello2.txt\", data, {create: false});  // only works if \"hello2.txt\" exists\nDeno.writeFileSync(\"hello3.txt\", data, {mode: 0o777});  // set permissions on new file\nDeno.writeFileSync(\"hello4.txt\", data, {append: true});  // add data to the end of the file\n```\n\nRequires `allow-write` permission, and `allow-read` if `options.create` is\n`false`."
           },
@@ -8134,6 +8273,7 @@
             "line": 1877,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Write `data` to the given `path`, by default creating a new file if needed,\nelse overwriting.\n\n```ts\nconst encoder = new TextEncoder();\nconst data = encoder.encode(\"Hello world\\n\");\nawait Deno.writeFile(\"hello1.txt\", data);  // overwrite \"hello1.txt\" or create it\nawait Deno.writeFile(\"hello2.txt\", data, {create: false});  // only works if \"hello2.txt\" exists\nawait Deno.writeFile(\"hello3.txt\", data, {mode: 0o777});  // set permissions on new file\nawait Deno.writeFile(\"hello4.txt\", data, {append: true});  // add data to the end of the file\n```\n\nRequires `allow-write` permission, and `allow-read` if `options.create` is `false`."
           },
@@ -8217,6 +8357,7 @@
             "line": 1892,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously write string `data` to the given `path`, by default creating a new file if needed,\nelse overwriting.\n\n```ts\nDeno.writeTextFileSync(\"hello1.txt\", \"Hello world\\n\");  // overwrite \"hello1.txt\" or create it\n```\n\nRequires `allow-write` permission, and `allow-read` if `options.create` is `false`."
           },
@@ -8288,6 +8429,7 @@
             "line": 1907,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Asynchronously write string `data` to the given `path`, by default creating a new file if needed,\nelse overwriting.\n\n```ts\nawait Deno.writeTextFile(\"hello1.txt\", \"Hello world\\n\");  // overwrite \"hello1.txt\" or create it\n```\n\nRequires `allow-write` permission, and `allow-read` if `options.create` is `false`."
           },
@@ -8368,6 +8510,7 @@
             "line": 1930,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously truncates or extends the specified file, to reach the\nspecified `len`.  If `len` is not specified then the entire file contents\nare truncated.\n\n```ts\n// truncate the entire file\nDeno.truncateSync(\"my_file.txt\");\n\n// truncate part of the file\nconst file = Deno.makeTempFileSync();\nDeno.writeFileSync(file, new TextEncoder().encode(\"Hello World\"));\nDeno.truncateSync(file, 7);\nconst data = Deno.readFileSync(file);\nconsole.log(new TextDecoder().decode(data));\n```\n\nRequires `allow-write` permission."
           },
@@ -8412,6 +8555,7 @@
             "line": 1948,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Truncates or extends the specified file, to reach the specified `len`. If\n`len` is not specified then the entire file contents are truncated.\n\n```ts\n// truncate the entire file\nawait Deno.truncate(\"my_file.txt\");\n\n// truncate part of the file\nconst file = await Deno.makeTempFile();\nawait Deno.writeFile(file, new TextEncoder().encode(\"Hello World\"));\nawait Deno.truncate(file, 7);\nconst data = await Deno.readFile(file);\nconsole.log(new TextDecoder().decode(data));  // \"Hello W\"\n```\n\nRequires `allow-write` permission."
           },
@@ -8465,6 +8609,7 @@
             "line": 1950,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -8670,6 +8815,7 @@
             "line": 1964,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [
               {
@@ -8731,6 +8877,7 @@
             "line": 1989,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Receive metrics from the privileged side of Deno. This is primarily used\nin the development of Deno. 'Ops', also called 'bindings', are the go-between\nbetween Deno JavaScript and Deno Rust.\n\n     > console.table(Deno.metrics())\n     ┌─────────────────────────┬────────┐\n     │         (index)         │ Values │\n     ├─────────────────────────┼────────┤\n     │      opsDispatched      │   3    │\n     │    opsDispatchedSync    │   2    │\n     │   opsDispatchedAsync    │   1    │\n     │ opsDispatchedAsyncUnref │   0    │\n     │      opsCompleted       │   3    │\n     │    opsCompletedSync     │   2    │\n     │    opsCompletedAsync    │   1    │\n     │ opsCompletedAsyncUnref  │   0    │\n     │    bytesSentControl     │   73   │\n     │      bytesSentData      │   0    │\n     │      bytesReceived      │  375   │\n     └─────────────────────────┴────────┘"
           },
@@ -8757,6 +8904,7 @@
             "line": 2008,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns a map of open resource ids (rid) along with their string\nrepresentations. This is an internal API and as such resource\nrepresentation has `any` type; that means it can change any time.\n\n```ts\nconsole.log(Deno.resources());\n// { 0: \"stdin\", 1: \"stdout\", 2: \"stderr\" }\nDeno.openSync('../test.file');\nconsole.log(Deno.resources());\n// { 0: \"stdin\", 1: \"stdout\", 2: \"stderr\", 3: \"fsFile\" }\n```"
           },
@@ -8783,6 +8931,7 @@
             "line": 2010,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -8880,6 +9029,7 @@
             "line": 2021,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "FsWatcher is returned by `Deno.watchFs` function when you start watching\nthe file system. You can iterate over this interface to get the file\nsystem events, and also you can stop watching the file system by calling\n`.close()` method."
           },
@@ -9046,6 +9196,7 @@
             "line": 2066,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Watch for file system events against one or more `paths`, which can be files\nor directories.  These paths must exist already.  One user action (e.g.\n`touch test.file`) can  generate multiple file system events.  Likewise,\none user action can result in multiple file paths in one event (e.g. `mv\nold_name.txt new_name.txt`).  Recursive option is `true` by default and,\nfor directories, will watch the specified directory and all sub directories.\nNote that the exact ordering of the events can vary between operating systems.\n\n```ts\nconst watcher = Deno.watchFs(\"/\");\nfor await (const event of watcher) {\n   console.log(\">>>> event\", event);\n   // { kind: \"create\", paths: [ \"/foo.txt\" ] }\n}\n```\n\nRequires `allow-read` permission.\n\nCall `watcher.close()` to stop watching.\n\n```ts\nconst watcher = Deno.watchFs(\"/\");\n\nsetTimeout(() => {\n  watcher.close();\n}, 5000);\n\nfor await (const event of watcher) {\n   console.log(\">>>> event\", event);\n}\n```"
           },
@@ -9126,6 +9277,7 @@
             "line": 2071,
             "col": 2
           },
+          "declarationKind": "export",
           "classDef": {
             "isAbstract": false,
             "constructors": [],
@@ -9713,6 +9865,7 @@
             "line": 2129,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -9995,6 +10148,7 @@
             "line": 2164,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -10116,6 +10270,7 @@
             "line": 2176,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -10392,6 +10547,7 @@
             "line": 2231,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Spawns new subprocess.  RunOptions must contain at a minimum the `opt.cmd`,\nan array of program arguments, the first of which is the binary.\n\n```ts\nconst p = Deno.run({\n  cmd: [\"echo\", \"hello\"],\n});\n```\n\nSubprocess uses same working directory as parent process unless `opt.cwd`\nis specified.\n\nEnvironmental variables from parent process can be cleared using `opt.clearEnv`.\nDoesn't guarantee that only `opt.env` variables are present,\nas the OS may set environmental variables for processes.\n\nEnvironmental variables for subprocess can be specified using `opt.env`\nmapping.\n\n`opt.uid` sets the child process’s user ID. This translates to a setuid call\nin the child process. Failure in the setuid call will cause the spawn to fail.\n\n`opt.gid` is similar to `opt.uid`, but sets the group ID of the child process.\nThis has the same semantics as the uid field.\n\nBy default subprocess inherits stdio of parent process. To change that\n`opt.stdout`, `opt.stderr` and `opt.stdin` can be specified independently -\nthey can be set to either an rid of open file or set to \"inherit\" \"piped\"\nor \"null\":\n\n`\"inherit\"` The default if unspecified. The child inherits from the\ncorresponding parent descriptor.\n\n`\"piped\"` A new pipe should be arranged to connect the parent and child\nsub-processes.\n\n`\"null\"` This stream will be ignored. This is the equivalent of attaching\nthe stream to `/dev/null`.\n\nDetails of the spawned process are returned.\n\nRequires `allow-run` permission."
           },
@@ -10461,6 +10617,7 @@
             "line": 2233,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -10659,6 +10816,7 @@
             "line": 2289,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Converts the input into a string that has the same format as printed by\n`console.log()`.\n\n```ts\nconst obj = {\n  a: 10,\n  b: \"hello\",\n};\nconst objAsString = Deno.inspect(obj); // { a: 10, b: \"hello\" }\nconsole.log(obj);  // prints same value as objAsString, e.g. { a: 10, b: \"hello\" }\n```\n\nYou can also register custom inspect functions, via the symbol `Symbol.for(\"Deno.customInspect\")`,\non objects, to control and customize the output.\n\n```ts\nclass A {\n  x = 10;\n  y = \"hello\";\n  [Symbol.for(\"Deno.customInspect\")](): string {\n    return \"x=\" + this.x + \", y=\" + this.y;\n  }\n}\n\nconst inStringFormat = Deno.inspect(new A()); // \"x=10, y=hello\"\nconsole.log(inStringFormat);  // prints \"x=10, y=hello\"\n```\n\nFinally, you can also specify the depth to which it will format.\n\n```ts\nDeno.inspect({a: {b: {c: {d: 'hello'}}}}, {depth: 2}); // { a: { b: [Object] } }\n```"
           },
@@ -10706,6 +10864,7 @@
             "line": 2292,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The name of a \"powerful feature\" which needs permission."
           },
@@ -10783,6 +10942,7 @@
             "line": 2302,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The current status of the permission."
           },
@@ -10828,6 +10988,7 @@
             "line": 2304,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -10897,6 +11058,7 @@
             "line": 2309,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -10966,6 +11128,7 @@
             "line": 2314,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11035,6 +11198,7 @@
             "line": 2319,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11093,6 +11257,7 @@
             "line": 2329,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11148,6 +11313,7 @@
             "line": 2334,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11217,6 +11383,7 @@
             "line": 2339,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11255,6 +11422,7 @@
             "line": 2345,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Permission descriptors which define a permission and can be queried,\nrequested, or revoked."
           },
@@ -11332,6 +11500,7 @@
             "line": 2354,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -11370,6 +11539,7 @@
             "line": 2358,
             "col": 2
           },
+          "declarationKind": "export",
           "classDef": {
             "isAbstract": false,
             "constructors": [],
@@ -11910,6 +12080,7 @@
             "line": 2390,
             "col": 2
           },
+          "declarationKind": "export",
           "classDef": {
             "isAbstract": false,
             "constructors": [],
@@ -12090,6 +12261,7 @@
             "line": 2426,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Deno's permission management API."
           },
@@ -12113,6 +12285,7 @@
             "line": 2429,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Build related information."
           },
@@ -12241,6 +12414,7 @@
             "line": 2443,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Version related information."
           },
@@ -12303,6 +12477,7 @@
             "line": 2461,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns the script arguments to the program. If for example we run a\nprogram:\n\ndeno run --allow-read https://deno.land/std/examples/cat.ts /etc/passwd\n\nThen `Deno.args` will contain:\n\n[ \"/etc/passwd\" ]"
           },
@@ -12327,6 +12502,7 @@
             "line": 2470,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "tags": [
               {
@@ -12359,6 +12535,7 @@
             "line": 2473,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The URL of the entrypoint module entered from the command-line."
           },
@@ -12379,6 +12556,7 @@
             "line": 2475,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -12431,6 +12609,7 @@
             "line": 2490,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates `newpath` as a symbolic link to `oldpath`.\n\nThe options.type parameter can be set to `file` or `dir`. This argument is only\navailable on Windows and ignored on other platforms.\n\n```ts\nDeno.symlinkSync(\"old/name\", \"new/name\");\n```\n\nRequires full `allow-read` and `allow-write` permissions."
           },
@@ -12516,6 +12695,7 @@
             "line": 2507,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Creates `newpath` as a symbolic link to `oldpath`.\n\nThe options.type parameter can be set to `file` or `dir`. This argument is only\navailable on Windows and ignored on other platforms.\n\n```ts\nawait Deno.symlink(\"old/name\", \"new/name\");\n```\n\nRequires full `allow-read` and `allow-write` permissions."
           },
@@ -12610,6 +12790,7 @@
             "line": 2540,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously truncates or extends the specified file stream, to reach the\nspecified `len`.\n\nIf `len` is not specified then the entire file contents are truncated as if len was set to 0.\n\nif the file previously was larger than this new length, the extra  data  is  lost.\n\nif  the  file  previously  was shorter, it is extended, and the extended part reads as null bytes ('\\0').\n\n```ts\n// truncate the entire file\nconst file = Deno.openSync(\"my_file.txt\", { read: true, write: true, truncate: true, create: true });\nDeno.ftruncateSync(file.rid);\n```\n\n```ts\n// truncate part of the file\nconst file = Deno.openSync(\"my_file.txt\", { read: true, write: true, create: true });\nDeno.writeSync(file.rid, new TextEncoder().encode(\"Hello World\"));\nDeno.ftruncateSync(file.rid, 7);\nDeno.seekSync(file.rid, 0, Deno.SeekMode.Start);\nconst data = new Uint8Array(32);\nDeno.readSync(file.rid, data);\nconsole.log(new TextDecoder().decode(data)); // Hello W\n```"
           },
@@ -12654,6 +12835,7 @@
             "line": 2567,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Truncates or extends the specified file stream, to reach the specified `len`.\n\nIf `len` is not specified then the entire file contents are truncated as if len was set to 0.\n\nIf the file previously was larger than this new length, the extra  data  is  lost.\n\nIf  the  file  previously  was shorter, it is extended, and the extended part reads as null bytes ('\\0').\n\n```ts\n// truncate the entire file\nconst file = await Deno.open(\"my_file.txt\", { read: true, write: true, create: true });\nawait Deno.ftruncate(file.rid);\n```\n\n```ts\n// truncate part of the file\nconst file = await Deno.open(\"my_file.txt\", { read: true, write: true, create: true });\nawait Deno.write(file.rid, new TextEncoder().encode(\"Hello World\"));\nawait Deno.ftruncate(file.rid, 7);\nconst data = new Uint8Array(32);\nawait Deno.read(file.rid, data);\nconsole.log(new TextDecoder().decode(data)); // Hello W\n```"
           },
@@ -12707,6 +12889,7 @@
             "line": 2579,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Synchronously returns a `Deno.FileInfo` for the given file stream.\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst file = Deno.openSync(\"file.txt\", { read: true });\nconst fileInfo = Deno.fstatSync(file.rid);\nassert(fileInfo.isFile);\n```"
           },
@@ -12744,6 +12927,7 @@
             "line": 2591,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Returns a `Deno.FileInfo` for the given file stream.\n\n```ts\nimport { assert } from \"https://deno.land/std/testing/asserts.ts\";\nconst file = await Deno.open(\"file.txt\", { read: true });\nconst fileInfo = await Deno.fstat(file.rid);\nassert(fileInfo.isFile);\n```"
           },
@@ -12790,6 +12974,7 @@
             "line": 2593,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [
@@ -12892,6 +13077,7 @@
             "line": 2598,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [
               {
@@ -13003,6 +13189,7 @@
             "line": 2634,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Services HTTP requests given a TCP or TLS socket.\n\n```ts\nconst conn = await Deno.listen({ port: 80 });\nconst httpConn = Deno.serveHttp(await conn.accept());\nconst e = await httpConn.nextRequest();\nif (e) {\n  e.respondWith(new Response(\"Hello World\"));\n}\n```\n\nIf `httpConn.nextRequest()` encounters an error or returns `null`\nthen the underlying HttpConn resource is closed automatically.\n\nAlternatively, you can also use the Async Iterator approach:\n\n```ts\nasync function handleHttp(conn: Deno.Conn) {\n  for await (const e of Deno.serveHttp(conn)) {\n    e.respondWith(new Response(\"Hello World\"));\n  }\n}\n\nfor await (const conn of Deno.listen({ port: 80 })) {\n  handleHttp(conn);\n}\n```"
           },
@@ -13043,6 +13230,7 @@
             "line": 2636,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -13101,6 +13289,7 @@
             "line": 2641,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -13136,6 +13325,7 @@
             "line": 2677,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Used to upgrade an incoming HTTP request to a WebSocket.\n\nGiven a request, returns a pair of WebSocket and Response. The original\nrequest must be responded to with the returned response for the websocket\nupgrade to be successful.\n\n```ts\nconst conn = await Deno.listen({ port: 80 });\nconst httpConn = Deno.serveHttp(await conn.accept());\nconst e = await httpConn.nextRequest();\nif (e) {\n  const { socket, response } = Deno.upgradeWebSocket(e.request);\n  socket.onopen = () => {\n    socket.send(\"Hello World!\");\n  };\n  socket.onmessage = (e) => {\n    console.log(e.data);\n    socket.close();\n  };\n  socket.onclose = () => console.log(\"WebSocket has been closed.\");\n  socket.onerror = (e) => console.error(\"WebSocket error:\", e);\n  e.respondWith(response);\n}\n```\n\nIf the request body is disturbed (read from) before the upgrade is\ncompleted, upgrading fails.\n\nThis operation does not yet consume the request or open the websocket. This\nonly happens once the returned response has been passed to `respondWith`."
           },
@@ -13189,6 +13379,7 @@
             "line": 2694,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Send a signal to process under given `pid`.\n\nIf `pid` is negative, the signal will be sent to the process group\nidentified by `pid`.\n\n     const p = Deno.run({\n       cmd: [\"sleep\", \"10000\"]\n     });\n\n     Deno.kill(p.pid, \"SIGINT\");\n\nRequires `allow-run` permission."
           },
@@ -13236,6 +13427,7 @@
             "line": 2698,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The type of the resource record.\nOnly the listed types are supported currently."
           },
@@ -13321,6 +13513,7 @@
             "line": 2708,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -13389,6 +13582,7 @@
             "line": 2721,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "If `resolveDns` is called with \"MX\" record type specified, it will return an array of this interface."
           },
@@ -13444,6 +13638,7 @@
             "line": 2727,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "If `resolveDns` is called with \"SRV\" record type specified, it will return an array of this interface."
           },
@@ -13533,6 +13728,7 @@
             "line": 2734,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -13641,6 +13837,7 @@
             "line": 2740,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -13714,6 +13911,7 @@
             "line": 2746,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -13787,6 +13985,7 @@
             "line": 2752,
             "col": 2
           },
+          "declarationKind": "export",
           "functionDef": {
             "params": [
               {
@@ -13861,6 +14060,7 @@
             "line": 2775,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Performs DNS resolution against the given query, returning resolved records.\nFails in the cases such as:\n- the query is in invalid format\n- the options have an invalid parameter, e.g. `nameServer.port` is beyond the range of 16-bit unsigned integer\n- timed out\n\n```ts\nconst a = await Deno.resolveDns(\"example.com\", \"A\");\n\nconst aaaa = await Deno.resolveDns(\"example.com\", \"AAAA\", {\n  nameServer: { ipAddr: \"8.8.8.8\", port: 53 },\n});\n```\n\nRequires `allow-net` permission."
           },
@@ -13980,6 +14180,7 @@
       "line": 2789,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [
@@ -14640,6 +14841,7 @@
       "line": 2818,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -15324,6 +15526,7 @@
       "line": 2965,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "The URL interface represents an object providing static methods used for creating object URLs."
     },
@@ -15735,6 +15938,7 @@
       "line": 2986,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -15906,6 +16110,7 @@
       "line": 2998,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -15937,6 +16142,7 @@
       "line": 3000,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -16003,6 +16209,7 @@
       "line": 3006,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "`URLPatternResult` is the object returned from `URLPattern.exec`."
     },
@@ -16262,6 +16469,7 @@
       "line": 3056,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "The URLPattern API provides a web platform primitive for matching URLs based\non a convenient pattern syntax.\n\nThe syntax is based on path-to-regexp. Wildcards, named capture groups,\nregular groups, and group modifiers are all supported.\n\n```ts\n// Specify the pattern as structured data.\nconst pattern = new URLPattern({ pathname: \"/users/:user\" });\nconst match = pattern.exec(\"/users/joe\");\nconsole.log(match.pathname.groups.user); // joe\n```\n\n```ts\n// Specify a fully qualified string pattern.\nconst pattern = new URLPattern(\"https://example.com/books/:id\");\nconsole.log(pattern.test(\"https://example.com/books/123\")); // true\nconsole.log(pattern.test(\"https://deno.land/books/123\")); // false\n```\n\n```ts\n// Specify a relative string pattern with a base URL.\nconst pattern = new URLPattern(\"/:article\", \"https://blog.example.com\");\nconsole.log(pattern.test(\"https://blog.example.com/article\")); // true\nconsole.log(pattern.test(\"https://blog.example.com/article/123\")); // false\n```"
     },
@@ -16606,6 +16814,7 @@
       "line": 3129,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -16713,6 +16922,7 @@
       "line": 3143,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "An event which takes place in the DOM."
     },
@@ -17288,6 +17498,7 @@
       "line": 3209,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "EventTarget is a DOM interface implemented by objects that can receive events\nand may have listeners for them."
     },
@@ -17525,6 +17736,7 @@
       "line": 3259,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -17559,6 +17771,7 @@
       "line": 3281,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Events measuring progress of an underlying process, like an HTTP request\n(for an XMLHttpRequest, or the loading of the underlying resource of an\n<img>, <audio>, <video>, <style> or <link>)."
     },
@@ -17724,6 +17937,7 @@
       "line": 3293,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Decodes a string of data which has been encoded using base-64 encoding.\n\n    console.log(atob(\"aGVsbG8gd29ybGQ=\")); // outputs 'hello world'"
     },
@@ -17758,6 +17972,7 @@
       "line": 3299,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Creates a base-64 ASCII encoded string from the input string.\n\n    console.log(btoa(\"hello world\"));  // outputs \"aGVsbG8gd29ybGQ=\""
     },
@@ -17792,6 +18007,7 @@
       "line": 3301,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -17844,6 +18060,7 @@
       "line": 3306,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -17879,6 +18096,7 @@
       "line": 3322,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -17917,6 +18135,7 @@
       "line": 3327,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -17969,6 +18188,7 @@
       "line": 3340,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18007,6 +18227,7 @@
       "line": 3357,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18045,6 +18266,7 @@
       "line": 3370,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18083,6 +18305,7 @@
       "line": 3377,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "A controller object that allows you to abort one or more DOM requests as and\nwhen desired."
     },
@@ -18170,6 +18393,7 @@
       "line": 3419,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18234,6 +18458,7 @@
       "line": 3477,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18308,6 +18533,7 @@
       "line": 3493,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system."
     },
@@ -18574,6 +18800,7 @@
       "line": 3510,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Provides information about files and allows JavaScript in a web page to\naccess their content."
     },
@@ -18686,6 +18913,7 @@
       "line": 3571,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18724,6 +18952,7 @@
       "line": 3582,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18762,6 +18991,7 @@
       "line": 3629,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18800,6 +19030,7 @@
       "line": 3642,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18838,6 +19069,7 @@
       "line": 3670,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18876,6 +19108,7 @@
       "line": 3680,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18914,6 +19147,7 @@
       "line": 3707,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18952,6 +19186,7 @@
       "line": 3748,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -18990,6 +19225,7 @@
       "line": 3765,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "WritableStreamDefaultController",
@@ -19010,6 +19246,7 @@
       "line": 3781,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -19048,6 +19285,7 @@
       "line": 3791,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -19086,6 +19324,7 @@
       "line": 3807,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "TransformStreamDefaultController",
@@ -19106,6 +19345,7 @@
       "line": 3834,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -19249,6 +19489,7 @@
       "line": 3867,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "The MessageChannel interface of the Channel Messaging API allows us to\ncreate a new message channel and send data through it via its two MessagePort\nproperties."
     },
@@ -19326,6 +19567,7 @@
       "line": 3881,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "The MessagePort interface of the Channel Messaging API represents one of the\ntwo ports of a MessageChannel, allowing messages to be sent from one port and\nlistening out for them arriving at the other."
     },
@@ -20074,6 +20316,7 @@
       "line": 3925,
       "col": 0
     },
+    "declarationKind": "declare",
     "functionDef": {
       "params": [
         {
@@ -20118,6 +20361,7 @@
       "line": 3971,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -20156,6 +20400,7 @@
       "line": 4026,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -20694,6 +20939,7 @@
       "line": 4183,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "This Fetch API interface represents a resource request."
     },
@@ -21386,6 +21632,7 @@
       "line": 4313,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "This Fetch API interface represents the response to a request."
     },
@@ -21987,6 +22234,7 @@
       "line": 4364,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Fetch a resource from the network. It returns a Promise that resolves to the\nResponse to that request, whether it is successful or not.\n\n    const response = await fetch(\"http://my.json.host/data.json\");\n    console.log(response.status);  // e.g. 200\n    console.log(response.statusText); // e.g. \"OK\"\n    const jsonData = await response.json();"
     },
@@ -22068,6 +22316,7 @@
       "line": 4382,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -22103,6 +22352,7 @@
       "line": 4386,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -22592,6 +22842,7 @@
       "line": 4415,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -22931,6 +23182,7 @@
       "line": 4435,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -23013,6 +23265,7 @@
       "line": 4441,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -23068,6 +23321,7 @@
       "line": 4446,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -23102,6 +23356,7 @@
       "line": 4448,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -23252,6 +23507,7 @@
       "line": 4457,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -23334,6 +23590,7 @@
       "line": 4462,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -23520,6 +23777,7 @@
       "line": 4486,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -24463,6 +24721,7 @@
       "line": 4538,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -24686,6 +24945,7 @@
       "line": 4552,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -24767,6 +25027,7 @@
       "line": 4558,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "number",
@@ -24784,6 +25045,7 @@
       "line": 4559,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -25015,6 +25277,7 @@
       "line": 4572,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "number",
@@ -25032,6 +25295,7 @@
       "line": 4573,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -25095,6 +25359,7 @@
       "line": 4578,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -25220,6 +25485,7 @@
       "line": 4585,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -25361,6 +25627,7 @@
       "line": 4594,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -25403,6 +25670,7 @@
       "line": 4596,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "number",
@@ -25420,6 +25688,7 @@
       "line": 4597,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -25546,6 +25815,7 @@
       "line": 4605,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -25605,6 +25875,7 @@
       "line": 4609,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -25760,6 +26031,7 @@
       "line": 4619,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -25826,6 +26098,7 @@
       "line": 4627,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -25868,6 +26141,7 @@
       "line": 4629,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -26342,6 +26616,7 @@
       "line": 4688,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -26401,6 +26676,7 @@
       "line": 4692,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -26619,6 +26895,7 @@
       "line": 4705,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -26661,6 +26938,7 @@
       "line": 4707,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -26695,6 +26973,7 @@
       "line": 4709,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -26777,6 +27056,7 @@
       "line": 4719,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -26836,6 +27116,7 @@
       "line": 4723,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -26887,6 +27168,7 @@
       "line": 4727,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27022,6 +27304,7 @@
       "line": 4737,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "number",
@@ -27039,6 +27322,7 @@
       "line": 4738,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -27123,6 +27407,7 @@
       "line": 4744,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27195,6 +27480,7 @@
       "line": 4750,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -27237,6 +27523,7 @@
       "line": 4752,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27275,6 +27562,7 @@
       "line": 4756,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -27317,6 +27605,7 @@
       "line": 4761,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27392,6 +27681,7 @@
       "line": 4767,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -27450,6 +27740,7 @@
       "line": 4774,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "write-only",
@@ -27470,6 +27761,7 @@
       "line": 4776,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27548,6 +27840,7 @@
       "line": 4782,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -27607,6 +27900,7 @@
       "line": 4786,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -27678,6 +27972,7 @@
       "line": 4791,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -27720,6 +28015,7 @@
       "line": 4796,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27775,6 +28071,7 @@
       "line": 4801,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -27847,6 +28144,7 @@
       "line": 4807,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -27906,6 +28204,7 @@
       "line": 4811,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -27957,6 +28256,7 @@
       "line": 4815,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -27999,6 +28299,7 @@
       "line": 4817,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -28088,6 +28389,7 @@
       "line": 4824,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -28135,6 +28437,7 @@
       "line": 4828,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -28231,6 +28534,7 @@
       "line": 4834,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -28292,6 +28596,7 @@
       "line": 4839,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -28339,6 +28644,7 @@
       "line": 4843,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [
@@ -28388,6 +28694,7 @@
       "line": 4847,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -28443,6 +28750,7 @@
       "line": 4852,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -28549,6 +28857,7 @@
       "line": 4858,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -28596,6 +28905,7 @@
       "line": 4863,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -28702,6 +29012,7 @@
       "line": 4869,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -28829,6 +29140,7 @@
       "line": 4878,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -28887,6 +29199,7 @@
       "line": 4885,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29002,6 +29315,7 @@
       "line": 4893,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -29036,6 +29350,7 @@
       "line": 4895,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -29078,6 +29393,7 @@
       "line": 4897,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29147,6 +29463,7 @@
       "line": 4903,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -29198,6 +29515,7 @@
       "line": 4907,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29276,6 +29594,7 @@
       "line": 4914,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29334,6 +29653,7 @@
       "line": 4919,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "number",
@@ -29351,6 +29671,7 @@
       "line": 4920,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -29477,6 +29798,7 @@
       "line": 4928,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29555,6 +29877,7 @@
       "line": 4934,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -29677,6 +30000,7 @@
       "line": 4949,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -29735,6 +30059,7 @@
       "line": 4956,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -29935,6 +30260,7 @@
       "line": 4973,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -30033,6 +30359,7 @@
       "line": 4980,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -30115,6 +30442,7 @@
       "line": 4990,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -30149,6 +30477,7 @@
       "line": 4992,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -30407,6 +30736,7 @@
       "line": 5023,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -30441,6 +30771,7 @@
       "line": 5025,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -30507,6 +30838,7 @@
       "line": 5029,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -30586,6 +30918,7 @@
       "line": 5035,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -30658,6 +30991,7 @@
       "line": 5042,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -30744,6 +31078,7 @@
       "line": 5048,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -30770,6 +31105,7 @@
       "line": 5050,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -31449,6 +31785,7 @@
       "line": 5101,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -31493,6 +31830,7 @@
       "line": 5105,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -31562,6 +31900,7 @@
       "line": 5111,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -31609,6 +31948,7 @@
       "line": 5115,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -31704,6 +32044,7 @@
       "line": 5142,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -32294,6 +32635,7 @@
       "line": 5178,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -32320,6 +32662,7 @@
       "line": 5217,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -33514,6 +33857,7 @@
       "line": 5301,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -33605,6 +33949,7 @@
       "line": 5307,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -33717,6 +34062,7 @@
       "line": 5315,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -33891,6 +34237,7 @@
       "line": 5327,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "load",
@@ -33911,6 +34258,7 @@
       "line": 5329,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -33945,6 +34293,7 @@
       "line": 5331,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -34004,6 +34353,7 @@
       "line": 5335,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -34030,6 +34380,7 @@
       "line": 5337,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -34797,6 +35148,7 @@
       "line": 5390,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -34885,6 +35237,7 @@
       "line": 5396,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -34946,6 +35299,7 @@
       "line": 5401,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -35239,6 +35593,7 @@
       "line": 5424,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -35323,6 +35678,7 @@
       "line": 5430,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -35411,6 +35767,7 @@
       "line": 5436,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -35453,6 +35810,7 @@
       "line": 5438,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -35511,6 +35869,7 @@
       "line": 5445,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "destroyed",
@@ -35531,6 +35890,7 @@
       "line": 5447,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -35597,6 +35957,7 @@
       "line": 5452,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -35631,6 +35992,7 @@
       "line": 5454,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -35662,6 +36024,7 @@
       "line": 5458,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -35723,6 +36086,7 @@
       "line": 5463,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -35757,6 +36121,7 @@
       "line": 5465,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -35834,6 +36199,7 @@
       "line": 5473,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -35881,6 +36247,7 @@
       "line": 5477,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -35967,6 +36334,7 @@
       "line": 5484,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -36002,6 +36370,7 @@
       "line": 5486,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -36071,6 +36440,7 @@
       "line": 5492,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -36106,6 +36476,7 @@
       "line": 5494,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -36175,6 +36546,7 @@
       "line": 5500,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -36210,6 +36582,7 @@
       "line": 5515,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -36329,6 +36702,7 @@
       "line": 5539,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection."
     },
@@ -37508,6 +37882,7 @@
       "line": 5653,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -37546,6 +37921,7 @@
       "line": 5663,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Crypto",
@@ -37566,6 +37942,7 @@
       "line": 5813,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -37604,6 +37981,7 @@
       "line": 5824,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -37642,6 +38020,7 @@
       "line": 5919,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [
@@ -37827,6 +38206,7 @@
       "line": 5940,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -37865,6 +38245,7 @@
       "line": 5996,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -37903,6 +38284,7 @@
       "line": 6006,
       "col": 0
     },
+    "declarationKind": "declare",
     "namespaceDef": {
       "elements": [
         {
@@ -37913,6 +38295,7 @@
             "line": 6007,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -37999,6 +38382,7 @@
             "line": 6013,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -38068,6 +38452,7 @@
             "line": 6018,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -38102,6 +38487,7 @@
             "line": 6021,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A generic network listener for stream-oriented protocols."
           },
@@ -38266,6 +38652,7 @@
             "line": 6037,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Specialized listener that accepts TLS connections."
           },
@@ -38374,6 +38761,7 @@
             "line": 6043,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [
               {
@@ -38513,6 +38901,7 @@
             "line": 6055,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [
               {
@@ -38569,6 +38958,7 @@
             "line": 6062,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -38627,6 +39017,7 @@
             "line": 6085,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Listen announces on the local transport address.\n\n```ts\nconst listener1 = Deno.listen({ port: 80 })\nconst listener2 = Deno.listen({ hostname: \"192.0.2.1\", port: 80 })\nconst listener3 = Deno.listen({ hostname: \"[2001:db8::1]\", port: 80 });\nconst listener4 = Deno.listen({ hostname: \"golang.org\", port: 80, transport: \"tcp\" });\n```\n\nRequires `allow-net` permission."
           },
@@ -38699,6 +39090,7 @@
             "line": 6089,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [
               {
@@ -38786,6 +39178,7 @@
             "line": 6107,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Listen announces on the local transport address over TLS (transport layer\nsecurity).\n\n```ts\nconst lstnr = Deno.listenTls({ port: 443, certFile: \"./server.crt\", keyFile: \"./server.key\" });\n```\n\nRequires `allow-net` permission."
           },
@@ -38826,6 +39219,7 @@
             "line": 6109,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -38904,6 +39298,7 @@
             "line": 6130,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Connects to the hostname (default is \"127.0.0.1\") and port on the named\ntransport (default is \"tcp\"), and resolves to the connection (`Conn`).\n\n```ts\nconst conn1 = await Deno.connect({ port: 80 });\nconst conn2 = await Deno.connect({ hostname: \"192.0.2.1\", port: 80 });\nconst conn3 = await Deno.connect({ hostname: \"[2001:db8::1]\", port: 80 });\nconst conn4 = await Deno.connect({ hostname: \"golang.org\", port: 80, transport: \"tcp\" });\n```\n\nRequires `allow-net` permission for \"tcp\"."
           },
@@ -38953,6 +39348,7 @@
             "line": 6132,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -39060,6 +39456,7 @@
             "line": 6167,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Establishes a secure connection over TLS (transport layer security) using\nan optional cert file, hostname (default is \"127.0.0.1\") and port.  The\ncert file is optional and if not included Mozilla's root certificates will\nbe used (see also https://github.com/ctz/webpki-roots for specifics)\n\n```ts\nconst caCert = await Deno.readTextFile(\"./certs/my_custom_root_CA.pem\");\nconst conn1 = await Deno.connectTls({ port: 80 });\nconst conn2 = await Deno.connectTls({ caCerts: [caCert], hostname: \"192.0.2.1\", port: 80 });\nconst conn3 = await Deno.connectTls({ hostname: \"[2001:db8::1]\", port: 80 });\nconst conn4 = await Deno.connectTls({ caCerts: [caCert], hostname: \"golang.org\", port: 80});\n```\n\nRequires `allow-net` permission."
           },
@@ -39109,6 +39506,7 @@
             "line": 6169,
             "col": 2
           },
+          "declarationKind": "export",
           "interfaceDef": {
             "extends": [],
             "methods": [],
@@ -39171,6 +39569,7 @@
             "line": 6194,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Start TLS handshake from an existing connection using an optional list of\nCA certificates, and hostname (default is \"127.0.0.1\"). Specifying CA certs\nis optional. By default the configured root certificates are used. Using\nthis function requires that the other end of the connection is prepared for\na TLS handshake.\n\n```ts\nconst conn = await Deno.connect({ port: 80, hostname: \"127.0.0.1\" });\nconst caCert = await Deno.readTextFile(\"./certs/my_custom_root_CA.pem\");\nconst tlsConn = await Deno.startTls(conn, { caCerts: [caCert], hostname: \"localhost\" });\n```\n\nRequires `allow-net` permission."
           },
@@ -39233,6 +39632,7 @@
             "line": 6209,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "Shutdown socket send operations.\n\nMatches behavior of POSIX shutdown(3).\n\n```ts\nconst listener = Deno.listen({ port: 80 });\nconst conn = await listener.accept();\nDeno.shutdown(conn.rid);\n```"
           },
@@ -39279,6 +39679,7 @@
       "line": 6227,
       "col": 0
     },
+    "declarationKind": "declare",
     "namespaceDef": {
       "elements": [
         {
@@ -39289,6 +39690,7 @@
             "line": 6233,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.CompileError` object indicates an error during WebAssembly decoding or validation.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/CompileError)"
           },
@@ -39326,6 +39728,7 @@
             "line": 6245,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A `WebAssembly.Global` object represents a global variable instance, accessible from\nboth JavaScript and importable/exportable across one or more `WebAssembly.Module`\ninstances. This allows dynamic linking of multiple modules.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Global)"
           },
@@ -39437,6 +39840,7 @@
             "line": 6266,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A `WebAssembly.Instance` object is a stateful, executable instance of a `WebAssembly.Module`.\nInstance objects contain all the Exported WebAssembly functions that allow calling into\nWebAssembly code from JavaScript.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance)"
           },
@@ -39526,6 +39930,7 @@
             "line": 6284,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.LinkError` object indicates an error during module instantiation\n(besides traps from the start function).\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/LinkError)"
           },
@@ -39563,6 +39968,7 @@
             "line": 6298,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.Memory` object is a resizable `ArrayBuffer` or `SharedArrayBuffer` that\nholds the raw bytes of memory accessed by a WebAssembly Instance.\n\nA memory created by JavaScript or in WebAssembly code will be accessible and mutable\nfrom both JavaScript and WebAssembly.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory)"
           },
@@ -39692,6 +40098,7 @@
             "line": 6318,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A `WebAssembly.Module` object contains stateless WebAssembly code that has already been compiled\nby the browser — this can be efficiently shared with Workers, and instantiated multiple times.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module)"
           },
@@ -39898,6 +40305,7 @@
             "line": 6344,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.RuntimeError` object is the error type that is thrown whenever WebAssembly\nspecifies a trap.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/RuntimeError)"
           },
@@ -39935,6 +40343,7 @@
             "line": 6357,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.Table()` object is a JavaScript wrapper object — an array-like structure\nrepresenting a WebAssembly Table, which stores function references. A table created by\nJavaScript or in WebAssembly code will be accessible and mutable from both JavaScript\nand WebAssembly.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table)"
           },
@@ -40161,6 +40570,7 @@
             "line": 6375,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `GlobalDescriptor` describes the options you can pass to `new WebAssembly.Global()`."
           },
@@ -40219,6 +40629,7 @@
             "line": 6381,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `MemoryDescriptor` describes the options you can pass to `new WebAssembly.Memory()`."
           },
@@ -40291,6 +40702,7 @@
             "line": 6388,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A `ModuleExportDescriptor` is the description of a declared export in a `WebAssembly.Module`."
           },
@@ -40349,6 +40761,7 @@
             "line": 6394,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "A `ModuleImportDescriptor` is the description of a declared import in a `WebAssembly.Module`."
           },
@@ -40424,6 +40837,7 @@
             "line": 6401,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `TableDescriptor` describes the options you can pass to `new WebAssembly.Table()`."
           },
@@ -40499,6 +40913,7 @@
             "line": 6408,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The value returned from `WebAssembly.instantiate`."
           },
@@ -40563,6 +40978,7 @@
             "line": 6419,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -40613,6 +41029,7 @@
             "line": 6420,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "anyfunc",
@@ -40633,6 +41050,7 @@
             "line": 6421,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -40683,6 +41101,7 @@
             "line": 6422,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -40733,6 +41152,7 @@
             "line": 6423,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "Record",
@@ -40767,6 +41187,7 @@
             "line": 6424,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "",
@@ -40798,6 +41219,7 @@
             "line": 6425,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "Record",
@@ -40832,6 +41254,7 @@
             "line": 6426,
             "col": 2
           },
+          "declarationKind": "export",
           "typeAliasDef": {
             "tsType": {
               "repr": "Record",
@@ -40866,6 +41289,7 @@
             "line": 6436,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.compile()` function compiles WebAssembly binary code into a\n`WebAssembly.Module` object. This function is useful if it is necessary to compile\na module before it can be instantiated (otherwise, the `WebAssembly.instantiate()`\nfunction should be used).\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/compile)"
           },
@@ -40915,6 +41339,7 @@
             "line": 6446,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.compileStreaming()` function compiles a `WebAssembly.Module`\ndirectly from a streamed underlying source. This function is useful if it is\nnecessary to a compile a module before it can be instantiated (otherwise, the\n`WebAssembly.instantiateStreaming()` function should be used).\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/compileStreaming)"
           },
@@ -40987,6 +41412,7 @@
             "line": 6461,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The WebAssembly.instantiate() function allows you to compile and instantiate\nWebAssembly code.\n\nThis overload takes the WebAssembly binary code, in the form of a typed\narray or ArrayBuffer, and performs both compilation and instantiation in one step.\nThe returned Promise resolves to both a compiled WebAssembly.Module and its first\nWebAssembly.Instance.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiate)"
           },
@@ -41049,6 +41475,7 @@
             "line": 6476,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The WebAssembly.instantiate() function allows you to compile and instantiate\nWebAssembly code.\n\nThis overload takes an already-compiled WebAssembly.Module and returns\na Promise that resolves to an Instance of that Module. This overload is useful\nif the Module has already been compiled.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiate)"
           },
@@ -41111,6 +41538,7 @@
             "line": 6488,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.instantiateStreaming()` function compiles and instantiates a\nWebAssembly module directly from a streamed underlying source. This is the most\nefficient, optimized way to load wasm code.\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiateStreaming)"
           },
@@ -41196,6 +41624,7 @@
             "line": 6500,
             "col": 2
           },
+          "declarationKind": "export",
           "jsDoc": {
             "doc": "The `WebAssembly.validate()` function validates a given typed array of\nWebAssembly binary code, returning whether the bytes form a valid wasm\nmodule (`true`) or not (`false`).\n\n[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/validate)"
           },
@@ -41236,6 +41665,7 @@
       "line": 6508,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Sets a timer which executes a function once after the timer expires. Returns\nan id which may be used to cancel the timeout.\n\n    setTimeout(() => { console.log('hello'); }, 500);"
     },
@@ -41326,6 +41756,7 @@
       "line": 6522,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Repeatedly calls a function , with a fixed time delay between each call.\n\n    // Outputs 'hello' to the console every 500ms\n    setInterval(() => { console.log('hello'); }, 500);"
     },
@@ -41416,6 +41847,7 @@
       "line": 6538,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Cancels a timed, repeating action which was previously started by a call\nto `setInterval()`\n\n    const id = setInterval(() => {console.log('hello');}, 500);\n    ...\n    clearInterval(id);"
     },
@@ -41450,6 +41882,7 @@
       "line": 6546,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Cancels a scheduled action initiated by `setTimeout()`\n\n    const id = setTimeout(() => {console.log('hello');}, 500);\n    ...\n    clearTimeout(id);"
     },
@@ -41484,6 +41917,7 @@
       "line": 6560,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "A microtask is a short function which is executed after the function or\nmodule which created it exits and only if the JavaScript execution stack is\nempty, but before returning control to the event loop being used to drive the\nscript's execution environment. This event loop may be either the main event\nloop or the event loop driving a web worker.\n\n    queueMicrotask(() => { console.log('This event loop stack is complete'); });"
     },
@@ -41521,6 +41955,7 @@
       "line": 6569,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Dispatches an event in the global scope, synchronously invoking any\nregistered event listeners for this event in the appropriate order. Returns\nfalse if event is cancelable and at least one of the event handlers which\nhandled this event called Event.preventDefault(). Otherwise it returns true.\n\n    dispatchEvent(new Event('unload'));"
     },
@@ -41558,6 +41993,7 @@
       "line": 6583,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Console",
@@ -41578,6 +42014,7 @@
       "line": 6593,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -41724,6 +42161,7 @@
       "line": 6616,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -42470,6 +42908,7 @@
       "line": 6649,
       "col": 0
     },
+    "declarationKind": "declare",
     "typeAliasDef": {
       "tsType": {
         "repr": "",
@@ -42494,6 +42933,7 @@
       "line": 6651,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -42911,6 +43351,7 @@
       "line": 6693,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Performance",
@@ -42931,6 +43372,7 @@
       "line": 6695,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -42989,6 +43431,7 @@
       "line": 6703,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [],
       "methods": [],
@@ -43109,6 +43552,7 @@
       "line": 6722,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Encapsulates a single performance metric that is part of the performance\ntimeline. A performance entry can be directly created by making a performance\nmark or measure (for example by calling the `.mark()` method) at an explicit\npoint in an application."
     },
@@ -43230,6 +43674,7 @@
       "line": 6734,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "`PerformanceMark` is an abstract interface for `PerformanceEntry` objects\nwith an entryType of `\"mark\"`. Entries of this type are created by calling\n`performance.mark()` to add a named `DOMHighResTimeStamp` (the mark) to the\nperformance timeline."
     },
@@ -43328,6 +43773,7 @@
       "line": 6744,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "`PerformanceMeasure` is an abstract interface for `PerformanceEntry` objects\nwith an entryType of `\"measure\"`. Entries of this type are created by calling\n`performance.measure()` to add a named `DOMHighResTimeStamp` (the measure)\nbetween two marks to the performance timeline."
     },
@@ -43391,6 +43837,7 @@
       "line": 6749,
       "col": 0
     },
+    "declarationKind": "declare",
     "interfaceDef": {
       "extends": [
         {
@@ -43447,6 +43894,7 @@
       "line": 6753,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -43545,6 +43993,7 @@
       "line": 6776,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [],
@@ -44114,6 +44563,7 @@
       "line": 6796,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -44145,6 +44595,7 @@
       "line": 6797,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -44176,6 +44627,7 @@
       "line": 6798,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -44244,6 +44696,7 @@
       "line": 6799,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "",
@@ -44312,6 +44765,7 @@
       "line": 6800,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Storage",
@@ -44332,6 +44786,7 @@
       "line": 6801,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Storage",
@@ -44352,6 +44807,7 @@
       "line": 6803,
       "col": 0
     },
+    "declarationKind": "declare",
     "classDef": {
       "isAbstract": false,
       "constructors": [
@@ -44423,6 +44879,7 @@
       "line": 6809,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Navigator",
@@ -44443,6 +44900,7 @@
       "line": 6816,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Shows the given message and waits for the enter key pressed.\nIf the stdin is not interactive, it does nothing.",
       "tags": [
@@ -44483,6 +44941,7 @@
       "line": 6824,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Shows the given message and waits for the answer. Returns the user's answer as boolean.\nOnly `y` and `Y` are considered as true.\nIf the stdin is not interactive, it returns false.",
       "tags": [
@@ -44523,6 +44982,7 @@
       "line": 6835,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Shows the given message and waits for the user's input. Returns the user's input as string.\nIf the default value is given and the user inputs the empty string, then it returns the given\ndefault value.\nIf the default value is not given and the user inputs the empty string, it returns null.\nIf the stdin is not interactive, it returns null.",
       "tags": [
@@ -44588,6 +45048,7 @@
       "line": 6844,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Registers an event listener in the global scope, which will be called\nsynchronously whenever the event `type` is dispatched.\n\n    addEventListener('unload', () => { console.log('All finished!'); });\n    ...\n    dispatchEvent(new Event('unload'));"
     },
@@ -44675,6 +45136,7 @@
       "line": 6856,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "Remove a previously registered event listener from the global scope\n\n    const lstnr = () => { console.log('hello'); };\n    addEventListener('load', lstnr);\n    removeEventListener('load', lstnr);"
     },
@@ -44762,6 +45224,7 @@
       "line": 6867,
       "col": 0
     },
+    "declarationKind": "declare",
     "jsDoc": {
       "doc": "The location (URL) of the object it is linked to. Changes done on it are\nreflected on the object it relates to. Accessible via\n`globalThis.location`."
     },
@@ -45180,6 +45643,7 @@
       "line": 6932,
       "col": 0
     },
+    "declarationKind": "declare",
     "variableDef": {
       "tsType": {
         "repr": "Location",

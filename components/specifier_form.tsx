@@ -86,7 +86,7 @@ export function SpecifierForm() {
             and you can{" "}
             <a
               class={tw
-                `bg-white text-sm text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-4 inline-flex items-center focus:outline-none focus:ring-2 focus:ring-green-800 focus:ring-opacity-50`}
+                `transition focus-visible:ring-2 focus-visible:ring-black focus:outline-none my-1 py-2 px-2.5 text-base text-gray-600 border border-gray-300 rounded-xl hover:shadow hidden lg:inline h-full`}
               href={`https://dash.deno.com/new?url=${
                 encodeURIComponent(
                   "https://raw.githubusercontent.com/kitsonk/deploy_doc/main/main.ts",
@@ -94,7 +94,7 @@ export function SpecifierForm() {
               }`}
               target="_blank"
             >
-              Deploy It!
+              Deploy It...
             </a>{" "}
             yourself if you wish.
           </p>

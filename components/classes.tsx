@@ -519,7 +519,7 @@ export function ClassDoc({ children, path }: DocProps<DocNodeClass>) {
     },
   );
   return (
-    <div class={gtw("mainBox")}>
+    <article class={gtw("mainBox")}>
       <DocTitle path={path}>{node}</DocTitle>
       <Markdown style={largeMarkdownStyles}>{node.jsDoc}</Markdown>
       <ClassCodeBlock items={items}>{node}</ClassCodeBlock>
@@ -530,6 +530,6 @@ export function ClassDoc({ children, path }: DocProps<DocNodeClass>) {
         <IndexSignaturesDoc>{node.classDef.indexSignatures}</IndexSignaturesDoc>
         <ClassItemsDoc>{items}</ClassItemsDoc>
       </div>
-    </div>
+    </article>
   );
 }

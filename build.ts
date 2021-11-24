@@ -86,6 +86,7 @@ const libEsnextPromises = [
 ].map((lib) =>
   doc(
     `https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.${lib}.d.ts`,
+    { includeAll: true },
   )
 );
 const esnextDoc = (await Promise.all(libEsnextPromises)).flat();
@@ -101,6 +102,7 @@ console.log(`${colors.bold(colors.green("Documenting"))} lib dom...`);
 const domPromises = ["dom", "dom.iterable", "dom.asynciterable"].map((lib) =>
   doc(
     `https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.${lib}.d.ts`,
+    { includeAll: true },
   )
 );
 console.log(`${colors.bold(colors.green("Saving"))} lib dom...`);

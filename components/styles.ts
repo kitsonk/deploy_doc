@@ -13,13 +13,19 @@ const anchor = css({
   "padding-right": "0.5em",
 });
 
-const markdown = css({
-  ":not(pre) > code": apply`text-sm p-1 rounded text-white bg-gray-700`,
-  pre: apply`text-sm m-2 p-2 rounded text-white bg-gray-700`,
+const code = css({
+  ":not(pre) > code": apply
+    `font-mono text-sm py-1 px-1.5 rounded text-black bg-gray-100`,
+  pre: apply`font-mono text-sm p-2.5 rounded-lg text-black bg-gray-100`,
+});
+
+const smallCode = css({
+  ":not(pre) > code": apply`font-mono text-xs py-0.5 px-1 rounded bg-gray-100`,
+  pre: apply`font-mono text-xs p-2 my-2 rounded-lg bg-gray-100`,
 });
 
 export const largeMarkdown = apply
-  `mt-4 mb-8 mx-2 flex flex-col space-y-4 ${markdown}`;
+  `mt-4 mb-8 mx-2 flex flex-col space-y-4 ${code}`;
 
 const applyNone = apply``;
 
@@ -30,11 +36,11 @@ const baseStyles = {
   boolean: applyNone,
   classBody: apply`flex flex-col space-y-4`,
   classMethod: applyNone,
-  code: apply`font-mono p-2 bg-gray-900 rounded text-white`,
+  code: apply`font-mono p-3 rounded-lg bg-gray-50`,
   docEntry: apply`relative px-2`,
   docItem: apply`group relative`,
   docItems: apply`mt-4`,
-  docTitle: apply`text-3xl border-b border-gray-800 p-2 mt-2 mb-4`,
+  docTitle: apply`text-4xl text-gray-900 font-bold mb-3`,
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
   fnName: applyNone,
   keyword: applyNone,
@@ -43,9 +49,9 @@ const baseStyles = {
   list: apply`list-disc list-inside ml-4`,
   logo: apply`h-16 mr-4 float-left`,
   main: apply`max-w-full md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto p-6`,
-  mainBox: apply`w-full bg-gray-50 rounded-lg px-8 pt-4 pb-8`,
+  mainBox: apply`p-6 md:col-span-3 md:p-12`,
   mainHeader: apply`clear-both mb-12`,
-  markdown: apply`ml-4 mr-2 py-2 text-sm`,
+  markdown: apply`ml-4 mr-2 py-2 text-sm ${smallCode}`,
   numberLiteral: applyNone,
   nodeClass: apply`text-green-600 mx-2`,
   nodeEnum: apply`text-green-400 mx-2`,
@@ -67,14 +73,14 @@ const baseStyles = {
 } as const;
 
 export const codeBlockStyles = {
-  boolean: apply`text-cyan-500`,
-  classMethod: apply`text-green-500`,
-  fnName: apply`text-green-500`,
-  keyword: apply`text-purple-500`,
-  numberLiteral: apply`text-indigo-500`,
-  stringLiteral: apply`text-yellow-200`,
-  typeKeyword: apply`text-cyan-400 italic`,
-  typeParam: apply`text-blue-400`,
+  boolean: apply`text-cyan-600`,
+  classMethod: apply`text-green-700`,
+  fnName: apply`text-green-700`,
+  keyword: apply`text-purple-800`,
+  numberLiteral: apply`text-indigo-600`,
+  stringLiteral: apply`text-yellow-400`,
+  typeKeyword: apply`text-cyan-600 italic`,
+  typeParam: apply`text-blue-600`,
 } as const;
 
 export const largeMarkdownStyles = {

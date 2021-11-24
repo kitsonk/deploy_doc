@@ -62,11 +62,11 @@ import type {} from "./types.d.ts";
 
 export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
 
-export { doc } from "https://deno.land/x/deno_doc@v0.21.0/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://deno.land/x/deno_doc@v0.21.0/mod.ts";
+} from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -123,4 +123,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://deno.land/x/deno_doc@v0.21.0/lib/types.d.ts";
+} from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/lib/types.d.ts";

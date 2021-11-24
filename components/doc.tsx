@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h } from "../deps.ts";
+import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
 import { store, StoreState } from "../shared.ts";
 import { assert, take } from "../util.ts";
@@ -128,4 +128,28 @@ export function DocEntry({ children }: { children: Child<string> }) {
         </ErrorMessage>
       );
   }
+}
+
+export function DocPage(
+  { children, title }: { children: unknown; title?: string },
+) {
+  return (
+    <div
+      class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}
+    >
+      <SideBar title={title} />
+      {children}
+    </div>
+  );
+}
+
+function SideBar(
+  { children, title }: { children?: unknown; title?: string },
+) {
+  return (
+    <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
+      <h2 class={tw`text-gray-900 text-2xl font-bold`}>{title}</h2>
+      {children}
+    </nav>
+  );
 }
