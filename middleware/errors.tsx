@@ -17,7 +17,7 @@ import { ErrorMessage } from "../components/error.tsx";
 function htmlErrorBody(status: Status, msg: string) {
   return getBody(
     renderSSR(
-      <Body title="Deno Graph" subtitle="">
+      <Body>
         <ErrorMessage title={STATUS_TEXT.get(status) ?? "Internal Error"}>
           {msg}
         </ErrorMessage>

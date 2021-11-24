@@ -105,18 +105,31 @@ function Entry<Node extends DocNode>(
 
 export function Markdown({ children, style }: MarkdownProps) {
   const jsDoc = take(children);
-  if (!jsDoc || !jsDoc.doc) {
+  if (!jsDoc) {
     return;
   }
-  const text = comrak.markdownToHTML(jsDoc.doc, {
-    extension: {
-      autolink: true,
-      descriptionLists: true,
-      strikethrough: true,
-      table: true,
-      tagfilter: true,
-    },
-  });
+  const text = jsDoc.doc
+    ? comrak.markdownToHTML(jsDoc.doc, {
+      extension: {
+        autolink: true,
+        descriptionLists: true,
+        strikethrough: true,
+        table: true,
+        tagfilter: true,
+      },
+    })
+    : undefined;
+  if (!text) {
+    return;
+  }
+  // if (jsDoc.tags) {
+  //   for (const tag of jsDoc.tags) {
+  //     switch (tag.kind) {
+  //       case "callback":
+  //         tag;
+  //     }
+  //   }
+  // }
   return <div class={gtw("markdown", style)}>{text}</div>;
 }
 

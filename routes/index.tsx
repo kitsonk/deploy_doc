@@ -10,7 +10,7 @@ export const indexGet: RouterMiddleware<"/"> = (ctx) => {
   sheet.reset();
   ctx.response.body = getBody(
     renderSSR(
-      <Body title="Deploy Doc" subtitle="">
+      <Body>
         <SpecifierForm />
       </Body>,
     ),

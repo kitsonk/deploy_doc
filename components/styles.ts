@@ -40,7 +40,7 @@ const baseStyles = {
   keyword: applyNone,
   indent: apply`ml-4`,
   link: apply`hover:text-blue-800`,
-  list: apply`text-sm list-disc list-inside ml-4`,
+  list: apply`list-disc list-inside ml-4`,
   logo: apply`h-16 mr-4 float-left`,
   main: apply`max-w-full md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto p-6`,
   mainBox: apply`w-full bg-gray-50 rounded-lg px-8 pt-4 pb-8`,

@@ -169,7 +169,7 @@ async function process<R extends string>(
   sheet.reset();
   ctx.response.body = getBody(
     renderSSR(
-      <Body title="Deploy Doc" subtitle={url}>
+      <Body>
         {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{entries}</DocNodes>}
       </Body>,
     ),
