@@ -5,6 +5,7 @@ import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
 import { DocTitle, Markdown } from "./common.tsx";
 import type { DocProps } from "./common.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
+import { TypeDef } from "./types.tsx";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 
@@ -16,7 +17,16 @@ function EnumCodeBlock({ children }: { children: Child<DocNodeEnum> }) {
   const prev = getState(STYLE_OVERRIDE);
   setState(STYLE_OVERRIDE, codeBlockStyles);
   const keyword = gtw("keyword", codeBlockStyles);
-  const items = members.map(({ name }) => <div>{name},</div>);
+  const items = members.map(({ name, init }) => (
+    <div>
+      {name}
+      {init && (
+        <span>
+          {" "}= <TypeDef>{init}</TypeDef>
+        </span>
+      )},
+    </div>
+  ));
   const codeBlock = (
     <div class={gtw("code")}>
       <span class={keyword}>enum</span> {name} &#123; {items.length

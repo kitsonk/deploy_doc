@@ -10,7 +10,9 @@ console.log(`${colors.bold(colors.green("Building"))} deploy_doc...`);
 console.log(
   `${colors.bold(colors.green("Documenting"))} Deno CLI built-ins...`,
 );
-const builtInDoc = await doc("https://doc-proxy.deno.dev/builtin/stable");
+const builtInDoc = await doc("https://doc-proxy.deno.dev/builtin/stable", {
+  includeAll: true,
+});
 console.log(
   `${colors.bold(colors.green("Saving"))} Deno CLI built-ins...`,
 );
@@ -24,6 +26,7 @@ console.log(
 );
 const unstableDoc = await doc(
   "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+  { includeAll: true },
 );
 console.log(
   `${colors.bold(colors.green("Saving"))} Deno CLI unstable built-ins...`,

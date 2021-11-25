@@ -12,11 +12,13 @@ import type { DocNode } from "./deps.ts";
 export const store = new Store({
   entries: [],
   url: "",
+  includePrivate: false,
 });
 
 export interface StoreState {
   entries: DocNode[];
   url: string;
+  includePrivate: boolean;
 }
 
 export const sheet = virtualSheet();

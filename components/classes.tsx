@@ -14,9 +14,9 @@ import type { Child } from "../util.ts";
 import {
   Anchor,
   DocTitle,
+  DocWithLink,
   Markdown,
   SectionTitle,
-  SourceLink,
   TARGET_RE,
 } from "./common.tsx";
 import type { DocProps } from "./common.tsx";
@@ -145,13 +145,14 @@ function ClassAccessorDoc(
     <div class={gtw("docItem")} id={target}>
       <Anchor>{target}</Anchor>
       <div class={gtw("docEntry")}>
-        <SourceLink>{location}</SourceLink>
-        {name}
-        {tsType && (
-          <span>
-            : <TypeDef inline>{tsType}</TypeDef>
-          </span>
-        )}
+        <DocWithLink location={location}>
+          {name}
+          {tsType && (
+            <span>
+              : <TypeDef inline>{tsType}</TypeDef>
+            </span>
+          )}
+        </DocWithLink>
         <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       </div>
     </div>
@@ -355,14 +356,17 @@ function ClassMethodDoc(
         },
       ) => (
         <div class={gtw("docEntry")}>
-          <SourceLink>{location}</SourceLink>
-          {name}
-          <TypeParams>{typeParams}</TypeParams>(<Params inline>{params}
-          </Params>){returnType && (
-            <span>
-              : <TypeDef>{returnType}</TypeDef>
-            </span>
-          )}
+          <DocWithLink location={location}>
+            {name}
+            <TypeParams>{typeParams}</TypeParams>(<Params inline>
+              {params}
+            </Params>)
+            {returnType && (
+              <span>
+                : <TypeDef>{returnType}</TypeDef>
+              </span>
+            )}
+          </DocWithLink>
           <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
         </div>
       ))}
@@ -417,13 +421,14 @@ function ClassPropertyDoc(
     <div class={gtw("docItem")} id={target}>
       <Anchor>{target}</Anchor>
       <div class={gtw("docEntry")}>
-        <SourceLink>{location}</SourceLink>
-        {name}
-        {tsType && (
-          <span>
-            : <TypeDef inline>{tsType}</TypeDef>
-          </span>
-        )}
+        <DocWithLink location={location}>
+          {name}
+          {tsType && (
+            <span>
+              : <TypeDef inline>{tsType}</TypeDef>
+            </span>
+          )}
+        </DocWithLink>
         <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
       </div>
     </div>
@@ -458,9 +463,10 @@ function ConstructorsDoc(
   }
   const items = ctors.map(({ location, params, jsDoc }) => (
     <div class={gtw("docEntry")}>
-      <SourceLink>{location}</SourceLink>
-      <span class={gtw("bold")}>new{" "}</span>
-      {name}(<Params inline>{params}</Params>);
+      <DocWithLink location={location}>
+        <span class={gtw("bold")}>new{" "}</span>
+        {name}(<Params inline>{params}</Params>);
+      </DocWithLink>
       <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
     </div>
   ));

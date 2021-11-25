@@ -5,7 +5,13 @@ import { store, StoreState } from "../shared.ts";
 import { assert, parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassDoc } from "./classes.tsx";
-import { asCollection, Markdown, Section, TARGET_RE } from "./common.tsx";
+import {
+  asCollection,
+  IconLink,
+  Markdown,
+  Section,
+  TocLink,
+} from "./common.tsx";
 import type { DocNodeCollection } from "./common.tsx";
 import { EnumDoc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
@@ -25,28 +31,40 @@ function assertAll<N extends DocNode>(
   }
 }
 
-function TocLink({ children }: { children: Child<string> }) {
-  const name = take(children);
-  const id = name.replaceAll(TARGET_RE, "_");
-  return (
-    <li>
-      <a href={`#${id}`}>{name}</a>
-    </li>
-  );
-}
-
-function ModuleToc({ children }: { children: Child<DocNodeCollection> }) {
+function ModuleToc(
+  { children, library = false }: {
+    children: Child<DocNodeCollection>;
+    library?: boolean;
+  },
+) {
   const collection = take(children);
+  const imports = collection.import
+    ? collection.import.map((imp) => <li>{imp.importDef.src}</li>)
+    : undefined;
   return (
-    <ul class={tw`mt-2.5`}>
-      {collection.namespace && <TocLink>Namespaces</TocLink>}
-      {collection.class && <TocLink>Classes</TocLink>}
-      {collection.enum && <TocLink>Enums</TocLink>}
-      {collection.variable && <TocLink>Variables</TocLink>}
-      {collection.function && <TocLink>Functions</TocLink>}
-      {collection.interface && <TocLink>Interfaces</TocLink>}
-      {collection.typeAlias && <TocLink>Types</TocLink>}
-    </ul>
+    <div>
+      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
+        This {library ? "Library" : "Module"}
+      </h3>
+      <ul>
+        {collection.namespace && <TocLink>Namespaces</TocLink>}
+        {collection.class && <TocLink>Classes</TocLink>}
+        {collection.enum && <TocLink>Enums</TocLink>}
+        {collection.variable && <TocLink>Variables</TocLink>}
+        {collection.function && <TocLink>Functions</TocLink>}
+        {collection.interface && <TocLink>Interfaces</TocLink>}
+        {collection.typeAlias && <TocLink>Types</TocLink>}
+      </ul>
+      {imports &&
+        (
+          <div>
+            <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
+              Imports
+            </h3>
+            <ul>{imports}</ul>
+          </div>
+        )}
+    </div>
   );
 }
 
@@ -157,8 +175,8 @@ export function DocPage(
   { children }: { children: Child<string | null | undefined> },
 ) {
   const item = take(children);
-  const { entries, url } = store.state as StoreState;
-  const collection = asCollection(entries);
+  const { entries, url, includePrivate } = store.state as StoreState;
+  const collection = asCollection(entries, includePrivate);
   return (
     <div
       class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}
@@ -169,6 +187,99 @@ export function DocPage(
   );
 }
 
+function SideBarHeader({ children }: { children: Child<string> }) {
+  const url = take(children);
+  const parsed = parseURL(url);
+  const href = `/${url.replace("://", "/")}`;
+  if (parsed) {
+    const module = parsed.module
+      ? parsed.module.replaceAll("/", "&#8203;/")
+      : undefined;
+    let title = module;
+    let subtitle;
+    if (parsed.org) {
+      if (module) {
+        subtitle = `${parsed.org}/${parsed.package}`;
+      } else {
+        title = `${parsed.org}/${parsed.package}`;
+      }
+    } else if (parsed.package) {
+      if (module) {
+        subtitle = parsed.package;
+      } else {
+        title = parsed.package;
+      }
+    } else if (parsed.registry === "deno.land/std") {
+      subtitle = "std";
+    }
+    return (
+      <div>
+        <h2 class={tw`text-gray-900 text-2xl font-bold`}>
+          <a href={href} class={tw`hover:underline`}>
+            {title}
+          </a>
+        </h2>
+        {subtitle && (
+          <h3 class={tw`text-gray-900 text-xl font-bold`}>{subtitle}</h3>
+        )}
+        <h3 class={tw`text-gray-600 text-sm mt-2`}>Registry</h3>
+        <p class={tw`truncate`}>{parsed.registry}</p>
+        {parsed.org && (
+          <div>
+            <h3 class={tw`text-gray-600 text-sm mt-2`}>Organization</h3>
+            <p class={tw`truncate`}>{parsed.org}</p>
+          </div>
+        )}
+        {parsed.package && (
+          <div>
+            <h3 class={tw`text-gray-600 text-sm mt-2`}>Package</h3>
+            <p class={tw`truncate`}>{parsed.package}</p>
+          </div>
+        )}
+        {module && (
+          <div>
+            <h3 class={tw`text-gray-600 text-sm mt-2`}>Module</h3>
+            <p class={tw`truncate`}>{module}</p>
+          </div>
+        )}
+        <div>
+          <h3 class={tw`text-gray-600 text-sm mt-2`}>Source</h3>
+          <p class={tw`truncate`}>
+            <a href={url} target="_blank" class={tw`truncate`}>
+              <IconLink />
+              {url}
+            </a>
+          </p>
+        </div>
+      </div>
+    );
+  } else {
+    let name;
+    switch (url) {
+      case "deno://stable/":
+        name = "Deno Stable APIs";
+        break;
+      case "deno://unstable/":
+        name = "Deno Unstable APIs";
+        break;
+      case "deno://esnext/":
+        name = "ESNext APIs";
+        break;
+      case "deno://dom/":
+        name = "DOM APIs";
+        break;
+      default:
+        // strip the protocol and insert zws so paths break
+        name = url.replace(/^\S+:\/{2}/, "").replaceAll("/", "&#8203;/");
+    }
+    return (
+      <h2 class={tw`text-gray-900 text-2xl font-bold`}>
+        <a href={href} class={tw`hover:underline`}>{name}</a>
+      </h2>
+    );
+  }
+}
+
 function SideBar(
   { children, item, url }: {
     children: Child<DocNodeCollection>;
@@ -177,63 +288,11 @@ function SideBar(
   },
 ) {
   const collection = take(children);
-  const parsed = parseURL(url);
-  const href = `/${url.replace("://", "/")}`;
-  let name;
-  if (parsed) {
-    if (parsed.module) {
-      if (parsed.package) {
-        name = `${parsed.package} / ${parsed.module}`;
-      } else if (parsed.registry === "deno.land/std") {
-        name = `std / ${parsed.module}`;
-      } else {
-        name = parsed.module;
-      }
-    } else {
-      name = parsed.package;
-    }
-  }
+  const library = url.startsWith("deno:");
   return (
     <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
-      {parsed
-        ? (
-          <div>
-            <h2 class={tw`text-gray-900 text-2xl font-bold`}>
-              <a href={href} class={tw`hover:underline`}>{name}</a>
-            </h2>
-            <table class={tw`w-full text-left border-collapse`}>
-              <tbody>
-                <tr>
-                  <td>Registry</td>
-                  <td>{parsed.registry}</td>
-                </tr>
-                {parsed.org && (
-                  <tr>
-                    <td>Organization</td>
-                    <td>{parsed.org}</td>
-                  </tr>
-                )}
-                {parsed.package && (
-                  <tr>
-                    <td>Package</td>
-                    <td>
-                      {parsed.package}
-                      {parsed.version && `@${parsed.version}`}
-                    </td>
-                  </tr>
-                )}
-                {parsed.module && (
-                  <tr>
-                    <td>Module</td>
-                    <td>{parsed.module}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        )
-        : <a href={href}>{escape(url)}</a>}
-      {item ?? <ModuleToc>{collection}</ModuleToc>}
+      <SideBarHeader>{url}</SideBarHeader>
+      {item ?? <ModuleToc library={library}>{collection}</ModuleToc>}
     </nav>
   );
 }

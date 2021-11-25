@@ -88,6 +88,9 @@ const patterns = {
   "github.com": new URLPattern(
     "https://raw.githubusercontent.com/:org/:pkg/:ver/:mod*",
   ),
+  "gist.github.com": new URLPattern(
+    "https://gist.githubusercontent.com/:org/:pkg/raw/:ver/:mod*",
+  ),
   "esm.sh": new URLPattern("https://esm.sh/:pkg([^@/]+){@}?:ver?/:mod?"),
   "skypack.dev": new URLPattern(
     "https://cdn.skypack.dev/:pkg([^@/]+){@}?:ver?/:mod?",
@@ -106,7 +109,11 @@ export function parseURL(url: string): ParsedURL | undefined {
   for (const [registry, pattern] of Object.entries(patterns)) {
     const match = pattern.exec(url);
     if (match) {
-      const { pathname: { groups: { org, pkg, ver, mod } } } = match;
+      let { pathname: { groups: { org, pkg, ver, mod } } } = match;
+      if (registry === "gist.github.com") {
+        pkg = pkg.substr(0, 7);
+        ver = ver.substr(0, 7);
+      }
       return {
         registry,
         org: org ? org : undefined,

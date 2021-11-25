@@ -2786,6 +2786,101 @@
         },
         {
           "kind": "interface",
+          "name": "ImportMap",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 441,
+            "col": 2
+          },
+          "declarationKind": "private",
+          "interfaceDef": {
+            "extends": [],
+            "methods": [],
+            "properties": [
+              {
+                "name": "imports",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 442,
+                  "col": 4
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "Record",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      },
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      }
+                    ],
+                    "typeName": "Record"
+                  }
+                },
+                "typeParams": []
+              },
+              {
+                "name": "scopes",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 443,
+                  "col": 4
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "Record",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "string",
+                        "kind": "keyword",
+                        "keyword": "string"
+                      },
+                      {
+                        "repr": "Record",
+                        "kind": "typeRef",
+                        "typeRef": {
+                          "typeParams": [
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            },
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            }
+                          ],
+                          "typeName": "Record"
+                        }
+                      }
+                    ],
+                    "typeName": "Record"
+                  }
+                },
+                "typeParams": []
+              }
+            ],
+            "callSignatures": [],
+            "indexSignatures": [],
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "interface",
           "name": "EmitOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
@@ -3197,6 +3292,88 @@
             },
             "isAsync": false,
             "isGenerator": false,
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "interface",
+          "name": "Location",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 534,
+            "col": 2
+          },
+          "declarationKind": "private",
+          "jsDoc": {
+            "doc": "**UNSTABLE**: Should not have same name as `window.location` type."
+          },
+          "interfaceDef": {
+            "extends": [],
+            "methods": [],
+            "properties": [
+              {
+                "name": "fileName",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 537,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "The full url for the module, e.g. `file://some/file.ts` or\n`https://some/file.ts`."
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "string",
+                  "kind": "keyword",
+                  "keyword": "string"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "lineNumber",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 539,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "The line number in the file. It is assumed to be 1-indexed."
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                },
+                "typeParams": []
+              },
+              {
+                "name": "columnNumber",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 541,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "The column number in the file. It is assumed to be 1-indexed."
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "number",
+                  "kind": "keyword",
+                  "keyword": "number"
+                },
+                "typeParams": []
+              }
+            ],
+            "callSignatures": [],
+            "indexSignatures": [],
             "typeParams": []
           }
         },

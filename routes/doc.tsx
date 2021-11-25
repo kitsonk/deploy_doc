@@ -30,6 +30,11 @@ function checkCache() {
         break;
       }
     }
+    console.log(
+      ` ${colors.yellow("evicting")}: ${
+        colors.bold(`${toEvict.length} specifiers`)
+      } from cache`,
+    );
     for (const evict of toEvict) {
       cachedResources.delete(evict);
       cachedSpecifiers.delete(evict);
@@ -132,6 +137,7 @@ function mergeEntries(entries: DocNode[]) {
 async function process<R extends string>(
   ctx: RouterContext<R>,
   url: string,
+  includePrivate: boolean,
   item?: string | null,
 ) {
   let entries: DocNode[];
@@ -165,7 +171,7 @@ async function process<R extends string>(
     }
   }
 
-  store.setState({ entries, url });
+  store.setState({ entries, url, includePrivate });
   sheet.reset();
   ctx.response.body = getBody(
     renderSSR(
@@ -193,12 +199,12 @@ export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
       cachedEntries.set(url, mergeEntries(await res.json()));
     }
   }
-  return process(ctx, url, item);
+  return process(ctx, url, ctx.params.proto === "deno", item);
 };
 
 export const docGet = (ctx: RouterContext<"/doc">) => {
   const url = ctx.request.url.searchParams.get("url");
   ctx.assert(url, Status.BadRequest, "The query property `url` is missing.");
   const item = ctx.request.url.searchParams.get("item");
-  return process(ctx, url, item);
+  return process(ctx, url, false, item);
 };
