@@ -1,11 +1,12 @@
 /** @jsx h */
-import { h } from "../deps.ts";
+import { h, tw } from "../deps.ts";
 import type {
   Accessibility as AccessibilityType,
   ClassConstructorDef,
   ClassMethodDef,
   ClassPropertyDef,
   DocNodeClass,
+  Location,
   TsTypeDef,
 } from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
@@ -13,17 +14,17 @@ import { assert, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import {
   Anchor,
-  DocTitle,
   DocWithLink,
   Markdown,
   SectionTitle,
   TARGET_RE,
+  TocLink,
 } from "./common.tsx";
 import type { DocProps } from "./common.tsx";
 import { IndexSignatures, IndexSignaturesDoc } from "./interfaces.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
-import { TypeArguments, TypeDef, TypeParams } from "./types.tsx";
+import { TypeArguments, TypeDef, TypeParams, TypeParamsDoc } from "./types.tsx";
 
 type ClassAccessorDef = ClassMethodDef & { kind: "getter" | "setter" };
 type ClassGetterDef = ClassMethodDef & { kind: "getter" };
@@ -110,13 +111,13 @@ function getClassItemType(
 function getClassItemLabel(type: ClassItemType) {
   switch (type) {
     case "method":
-      return "Instance methods";
+      return "Instance Methods";
     case "prop":
-      return "Instance properties";
+      return "Instance Properties";
     case "static_method":
-      return "Static methods";
+      return "Static Methods";
     case "static_prop":
-      return "Static properties";
+      return "Static Properties";
   }
 }
 
@@ -159,12 +160,10 @@ function ClassAccessorDoc(
   );
 }
 
-function ClassCodeBlock(
-  { children, items }: {
-    children: Child<DocNodeClass>;
-    items: (ClassPropertyDef | ClassMethodDef)[];
-  },
+export function ClassCodeBlock(
+  { children }: { children: Child<DocNodeClass> },
 ) {
+  const node = take(children);
   const {
     name,
     classDef: {
@@ -176,7 +175,8 @@ function ClassCodeBlock(
       constructors,
       indexSignatures,
     },
-  } = take(children);
+  } = node;
+  const items = getClassItems(node);
   const hasElements =
     !!(constructors.length || indexSignatures.length || items.length);
   const prev = getState(STYLE_OVERRIDE);
@@ -269,7 +269,7 @@ function ClassItemsDoc(
       const methods = [def];
       let next;
       while (
-        (next = items[i + 1]) && next && isClassMethod(next) &&
+        (next = defs[i + 1]) && next && isClassMethod(next) &&
         def.name === next.name
       ) {
         i++;
@@ -449,6 +449,7 @@ function Constructors(
       <span class={gtw("keyword", so)}>{name}</span>(<Params>{params}</Params>);
     </div>
   ));
+  return <div>{items}</div>;
 }
 
 function ConstructorsDoc(
@@ -461,13 +462,16 @@ function ConstructorsDoc(
   if (!ctors.length) {
     return;
   }
-  const items = ctors.map(({ location, params, jsDoc }) => (
-    <div class={gtw("docEntry")}>
-      <DocWithLink location={location}>
-        <span class={gtw("bold")}>new{" "}</span>
-        {name}(<Params inline>{params}</Params>);
-      </DocWithLink>
-      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+  const items = ctors.map(({ location, params, jsDoc }, i) => (
+    <div class={gtw("docItem")} id={`ctor_${i}`}>
+      <Anchor>{`ctor_${i}`}</Anchor>
+      <div class={gtw("docEntry")}>
+        <DocWithLink location={location}>
+          <span class={gtw("bold")}>new{" "}</span>
+          {name}(<Params inline>{params}</Params>);
+        </DocWithLink>
+        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      </div>
     </div>
   ));
   return (
@@ -500,42 +504,146 @@ function Implements({ children }: { children: Child<TsTypeDef[]> }) {
   );
 }
 
-export function ClassDoc({ children, path }: DocProps<DocNodeClass>) {
-  const node = take(children);
-  const items = [...node.classDef.properties, ...node.classDef.methods].sort(
-    (a, b) => {
-      if (a.isStatic !== b.isStatic) {
-        return a.isStatic ? 1 : -1;
-      }
-      if (
-        (isClassProperty(a) && isClassProperty(b)) ||
-        (isClassProperty(a) && isClassAccessor(b)) ||
-        (isClassAccessor(a) && isClassProperty(b)) ||
-        (isClassMethod(a) && isClassMethod(b))
-      ) {
-        return compareAccessibility(a, b);
-      }
-      if (isClassAccessor(a) && !isClassAccessor(b)) {
-        return -1;
-      }
-      if (isClassAccessor(b)) {
-        return 1;
-      }
-      return isClassProperty(a) ? -1 : 1;
-    },
-  );
+function getClassItems(
+  { classDef: { properties, methods } }: DocNodeClass,
+) {
+  return [...properties, ...methods].sort((a, b) => {
+    if (a.isStatic !== b.isStatic) {
+      return a.isStatic ? 1 : -1;
+    }
+    if (
+      (isClassProperty(a) && isClassProperty(b)) ||
+      (isClassProperty(a) && isClassAccessor(b)) ||
+      (isClassAccessor(a) && isClassProperty(b)) ||
+      (isClassMethod(a) && isClassMethod(b))
+    ) {
+      return compareAccessibility(a, b);
+    }
+    if (isClassAccessor(a) && !isClassAccessor(b)) {
+      return -1;
+    }
+    if (isClassAccessor(b)) {
+      return 1;
+    }
+    return isClassProperty(a) ? -1 : 1;
+  });
+}
+
+function ExtendsDoc(
+  { children, typeArgs, location }: {
+    children: Child<string | undefined>;
+    typeArgs: TsTypeDef[];
+    location: Location;
+  },
+) {
+  const ext = take(children);
+  if (!ext) {
+    return;
+  }
+  const id = `extends_${ext}`.replaceAll(TARGET_RE, "_");
   return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{node}</DocTitle>
-      <Markdown style={largeMarkdownStyles}>{node.jsDoc}</Markdown>
-      <ClassCodeBlock items={items}>{node}</ClassCodeBlock>
-      <div class={gtw("docItems")}>
-        <ConstructorsDoc name={node.name}>
-          {node.classDef.constructors}
-        </ConstructorsDoc>
-        <IndexSignaturesDoc>{node.classDef.indexSignatures}</IndexSignaturesDoc>
-        <ClassItemsDoc>{items}</ClassItemsDoc>
+    <div>
+      <SectionTitle>Extends</SectionTitle>
+      <div class={gtw("docItem")} id={id}>
+        <Anchor>{id}</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            {ext}
+            <TypeArguments>{typeArgs}</TypeArguments>
+          </DocWithLink>
+        </div>
       </div>
-    </article>
+    </div>
+  );
+}
+
+function ImplementsDoc(
+  { children, location }: { children: Child<TsTypeDef[]>; location: Location },
+) {
+  const impls = take(children);
+  if (!impls.length) {
+    return;
+  }
+  const items = impls.map((impl, i) => {
+    const id = `i_${i}`;
+    return (
+      <div class={gtw("docItem")} id={id}>
+        <Anchor>{id}</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            <TypeDef>{impl}</TypeDef>
+          </DocWithLink>
+        </div>
+      </div>
+    );
+  });
+  return (
+    <div>
+      <SectionTitle>Implements</SectionTitle>
+      {items}
+    </div>
+  );
+}
+
+export function ClassDoc({ children }: { children: Child<DocNodeClass> }) {
+  const node = take(children);
+  const {
+    name,
+    classDef: {
+      constructors,
+      indexSignatures,
+      extends: ext,
+      implements: impl,
+      typeParams,
+      superTypeParams,
+    },
+    location,
+  } = node;
+  const items = getClassItems(node);
+  return (
+    <div class={gtw("docItems")}>
+      <TypeParamsDoc location={location}>{typeParams}</TypeParamsDoc>
+      <ExtendsDoc typeArgs={superTypeParams} location={location}>
+        {ext}
+      </ExtendsDoc>
+      <ImplementsDoc location={location}>{impl}</ImplementsDoc>
+      <ConstructorsDoc name={name}>{constructors}</ConstructorsDoc>
+      <IndexSignaturesDoc>{indexSignatures}</IndexSignaturesDoc>
+      <ClassItemsDoc>{items}</ClassItemsDoc>
+    </div>
+  );
+}
+
+export function ClassToc({ children }: { children: Child<DocNodeClass> }) {
+  const node = take(children);
+  const {
+    name,
+    classDef: {
+      constructors,
+      indexSignatures,
+      typeParams,
+      extends: ext,
+      implements: impl,
+    },
+  } = node;
+  const items = getClassItems(node);
+  const links = [...items.reduce(
+    (set, item) => set.add(getClassItemLabel(getClassItemType(item))),
+    new Set<string>(),
+  )].map((label) => <TocLink>{label}</TocLink>);
+  return (
+    <div>
+      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>{name}</h3>
+      <ul>
+        {typeParams.length ? <TocLink>Type Parameters</TocLink> : undefined}
+        {ext && <TocLink>Extends</TocLink>}
+        {impl.length ? <TocLink>Implements</TocLink> : undefined}
+        {constructors.length ? <TocLink>Constructors</TocLink> : undefined}
+        {indexSignatures.length
+          ? <TocLink>Index Signatures</TocLink>
+          : undefined}
+        {links}
+      </ul>
+    </div>
   );
 }

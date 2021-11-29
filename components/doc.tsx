@@ -2,9 +2,9 @@
 import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
 import { store, StoreState } from "../shared.ts";
-import { assert, parseURL, take } from "../util.ts";
+import { parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
-import { ClassDoc } from "./classes.tsx";
+import { ClassCodeBlock, ClassDoc, ClassToc } from "./classes.tsx";
 import {
   asCollection,
   IconLink,
@@ -13,11 +13,15 @@ import {
   TocLink,
 } from "./common.tsx";
 import type { DocNodeCollection } from "./common.tsx";
-import { EnumDoc } from "./enums.tsx";
+import { EnumCodeBlock, EnumDoc, EnumToc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
-import { FnDoc } from "./functions.tsx";
-import { InterfaceDoc } from "./interfaces.tsx";
-import { NamespaceDoc } from "./namespaces.tsx";
+import { FnCodeBlock, FnDoc, FnToc } from "./functions.tsx";
+import {
+  InterfaceCodeBlock,
+  InterfaceDoc,
+  InterfaceToc,
+} from "./interfaces.tsx";
+import { NamespaceDoc, NamespaceToc } from "./namespaces.tsx";
 import { gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeAliasDoc } from "./types.tsx";
 import { VariableDoc } from "./variables.tsx";
@@ -53,7 +57,7 @@ function ModuleToc(
         {collection.variable && <TocLink>Variables</TocLink>}
         {collection.function && <TocLink>Functions</TocLink>}
         {collection.interface && <TocLink>Interfaces</TocLink>}
-        {collection.typeAlias && <TocLink>Types</TocLink>}
+        {collection.typeAlias && <TocLink>Type Aliases</TocLink>}
       </ul>
       {imports &&
         (
@@ -108,7 +112,7 @@ function DocNodes({ children }: { children: Child<DocNodeCollection> }) {
         </Section>
       )}
       {collection.typeAlias && (
-        <Section title="Types" style="nodeTypeAlias">
+        <Section title="Type Aliases" style="nodeTypeAlias">
           {collection.typeAlias}
         </Section>
       )}
@@ -116,75 +120,189 @@ function DocNodes({ children }: { children: Child<DocNodeCollection> }) {
   );
 }
 
-function DocEntry({ children }: { children: Child<string> }) {
-  const item = take(children);
-  const path = item.split(".");
-  const name = path.pop()!;
-  let { entries, url } = store.state as StoreState;
-  if (path && path.length) {
-    for (const name of path) {
-      const namespace = entries.find((n) =>
-        n.kind === "namespace" && n.name === name
-      ) as DocNodeNamespace | undefined;
-      if (namespace) {
-        entries = namespace.namespaceDef.elements;
-      }
+// function DocEntry(
+//   { children, path, name, url }: {
+//     children: Child<DocNode[]>;
+//     path: string[];
+//     name: string;
+//     url: string;
+//   },
+// ) {
+//   const nodes = take(children);
+//   if (!nodes.length) {
+//     return (
+//       <ErrorMessage title="Entry not found">
+//         The document entry named "{path ? [...path, name].join(".") : name}" was
+//         not found in specifier "{url}".
+//       </ErrorMessage>
+//     );
+//   }
+//   switch (nodes[0].kind) {
+//     case "class":
+//       assert(nodes.length === 1);
+//       return <ClassDoc path={path}>{nodes[0]}</ClassDoc>;
+//     case "enum":
+//       assert(nodes.length === 1);
+//       return <EnumDoc path={path}>{nodes[0]}</EnumDoc>;
+//     case "function":
+//       assertAll<DocNodeFunction>(nodes, "function");
+//       return <FnDoc path={path}>{nodes}</FnDoc>;
+//     case "interface":
+//       assert(nodes.length === 1);
+//       return <InterfaceDoc path={path}>{nodes[0]}</InterfaceDoc>;
+//     case "namespace":
+//       assert(nodes.length === 1);
+//       return <NamespaceDoc path={path}>{nodes[0]}</NamespaceDoc>;
+//     case "typeAlias":
+//       assert(nodes.length === 1);
+//       return <TypeAliasDoc path={path}>{nodes[0]}</TypeAliasDoc>;
+//     case "variable":
+//       assert(nodes.length === 1);
+//       return <VariableDoc path={path}>{nodes[0]}</VariableDoc>;
+//     default:
+//       return (
+//         <ErrorMessage title="Not Supported">
+//           The kind of "{nodes[0].kind}" is currently not supported.
+//         </ErrorMessage>
+//       );
+//   }
+// }
+
+function CodeBlock({ children }: { children: Child<DocNode[]> }) {
+  const nodes = take(children);
+  if (nodes[0].kind === "function") {
+    assertAll<DocNodeFunction>(nodes, "function");
+    return <FnCodeBlock>{nodes}</FnCodeBlock>;
+  }
+  const elements = [];
+  for (const node of nodes) {
+    switch (node.kind) {
+      case "class":
+        elements.push(<ClassCodeBlock>{node}</ClassCodeBlock>);
+        break;
+      case "enum":
+        elements.push(<EnumCodeBlock>{node}</EnumCodeBlock>);
+        break;
+      case "interface":
+        elements.push(<InterfaceCodeBlock>{node}</InterfaceCodeBlock>);
+        break;
     }
   }
-  const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
-  if (!nodes.length) {
-    return (
-      <ErrorMessage title="Entry not found">
-        The document entry named "{path ? [...path, name].join(".") : name}" was
-        not found in specifier "{url}".
-      </ErrorMessage>
-    );
+  return elements;
+}
+
+function Doc(
+  { children, path }: { children: Child<DocNode[]>; path: string[] },
+) {
+  const nodes = take(children);
+  if (nodes[0].kind === "function") {
+    assertAll<DocNodeFunction>(nodes, "function");
+    return <FnDoc>{nodes}</FnDoc>;
+  }
+  const elements = [];
+  for (const node of nodes) {
+    switch (node.kind) {
+      case "class":
+        elements.push(<ClassDoc>{node}</ClassDoc>);
+        break;
+      case "enum":
+        elements.push(<EnumDoc>{node}</EnumDoc>);
+        break;
+      case "interface":
+        elements.push(<InterfaceDoc>{node}</InterfaceDoc>);
+        break;
+      case "namespace":
+        elements.push(<NamespaceDoc path={path}>{node}</NamespaceDoc>);
+        break;
+    }
+  }
+  return elements;
+}
+
+function DocToc({ children }: { children: Child<DocNode[]> }) {
+  const nodes = take(children);
+  if (nodes.length !== 1) {
+    console.log(nodes.map((n) => n.kind));
+    return;
   }
   switch (nodes[0].kind) {
     case "class":
-      assert(nodes.length === 1);
-      return <ClassDoc path={path}>{nodes[0]}</ClassDoc>;
+      return <ClassToc>{nodes[0]}</ClassToc>;
     case "enum":
-      assert(nodes.length === 1);
-      return <EnumDoc path={path}>{nodes[0]}</EnumDoc>;
+      return <EnumToc>{nodes[0]}</EnumToc>;
     case "function":
       assertAll<DocNodeFunction>(nodes, "function");
-      return <FnDoc path={path}>{nodes}</FnDoc>;
+      return <FnToc>{nodes}</FnToc>;
     case "interface":
-      assert(nodes.length === 1);
-      return <InterfaceDoc path={path}>{nodes[0]}</InterfaceDoc>;
+      return <InterfaceToc>{nodes[0]}</InterfaceToc>;
     case "namespace":
-      assert(nodes.length === 1);
-      return <NamespaceDoc path={path}>{nodes[0]}</NamespaceDoc>;
-    case "typeAlias":
-      assert(nodes.length === 1);
-      return <TypeAliasDoc path={path}>{nodes[0]}</TypeAliasDoc>;
-    case "variable":
-      assert(nodes.length === 1);
-      return <VariableDoc path={path}>{nodes[0]}</VariableDoc>;
+      return <NamespaceToc>{nodes[0]}</NamespaceToc>;
     default:
-      return (
-        <ErrorMessage title="Not Supported">
-          The kind of "{nodes[0].kind}" is currently not supported.
-        </ErrorMessage>
-      );
+      return <div>TODO</div>;
   }
 }
 
 export function DocPage(
   { children }: { children: Child<string | null | undefined> },
 ) {
-  const item = take(children);
   const { entries, url, includePrivate } = store.state as StoreState;
   const collection = asCollection(entries, includePrivate);
-  return (
-    <div
-      class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}
-    >
-      <SideBar item={item} url={url}>{collection}</SideBar>
-      {item ? <DocEntry>{item}</DocEntry> : <DocNodes>{collection}</DocNodes>}
-    </div>
-  );
+  const library = url.startsWith("deno:");
+  const item = take(children);
+  if (item) {
+    const path = item.split(".");
+    const name = path.pop()!;
+    let { entries, url } = store.state as StoreState;
+    if (path && path.length) {
+      for (const name of path) {
+        const namespace = entries.find((n) =>
+          n.kind === "namespace" && n.name === name
+        ) as DocNodeNamespace | undefined;
+        if (namespace) {
+          entries = namespace.namespaceDef.elements;
+        }
+      }
+    }
+    const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
+    if (!nodes.length) {
+      return (
+        <ErrorMessage title="Entry not found">
+          The document entry named "{item}" was not found in specifier "{url}".
+        </ErrorMessage>
+      );
+    }
+    let jsDoc;
+    for (const node of nodes) {
+      if (node.jsDoc) {
+        jsDoc = node.jsDoc;
+        break;
+      }
+    }
+    return (
+      <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
+        <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
+          <SideBarHeader>{url}</SideBarHeader>
+          <DocToc>{nodes}</DocToc>
+        </nav>
+        <article class={gtw("mainBox")}>
+          <h1 class={gtw("docTitle")}>{item}</h1>
+          <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+          <CodeBlock>{nodes}</CodeBlock>
+          <Doc path={path}>{nodes}</Doc>
+        </article>
+      </div>
+    );
+  } else {
+    return (
+      <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
+        <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
+          <SideBarHeader>{url}</SideBarHeader>
+          <ModuleToc library={library}>{collection}</ModuleToc>
+        </nav>
+        <DocNodes>{collection}</DocNodes>
+      </div>
+    );
+  }
 }
 
 function SideBarHeader({ children }: { children: Child<string> }) {

@@ -181,30 +181,35 @@ export function Section<Node extends DocNode>(
 }
 
 export function DocWithLink(
-  { children, location: { filename, line } }: {
+  { children, location }: {
     children: unknown;
-    location: Location;
+    location?: Location;
   },
 ) {
   let href;
-  try {
-    const url = new URL(filename);
-    url.hash = `L${line}`;
-    href = url.toString();
-  } catch {
-    return;
+  if (location) {
+    try {
+      const url = new URL(location.filename);
+      url.hash = `L${location.line}`;
+      href = url.toString();
+    } catch {
+      // we just swallow here
+    }
   }
   return (
     <div class={tw`flex justify-between`}>
       <div class={tw`overflow-auto font-mono break-words`}>{children}</div>
-      <a
-        href={href}
-        target="_blank"
-        class={tw
-          `pl-2 break-words text-gray-600 hover:text-gray-800 hover:underline`}
-      >
-        [src]
-      </a>
+      {href &&
+        (
+          <a
+            href={href}
+            target="_blank"
+            class={tw
+              `pl-2 break-words text-gray-600 hover:text-gray-800 hover:underline`}
+          >
+            [src]
+          </a>
+        )}
     </div>
   );
 }
@@ -247,12 +252,14 @@ export function IconLink() {
   );
 }
 
-export function TocLink({ children }: { children: Child<string> }) {
+export function TocLink(
+  { children, id }: { children: Child<string>; id?: string },
+) {
   const name = take(children);
-  const id = name.replaceAll(TARGET_RE, "_");
+  const href = (id ?? name).replaceAll(TARGET_RE, "_");
   return (
     <li>
-      <a href={`#${id}`}>{name}</a>
+      <a href={`#${href}`} class={tw`truncate`}>{name}</a>
     </li>
   );
 }

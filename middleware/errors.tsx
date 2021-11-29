@@ -2,6 +2,7 @@
 import {
   getStyleTag,
   h,
+  Helmet,
   HttpError,
   renderSSR,
   Status,
@@ -11,18 +12,19 @@ import type { Context, Middleware } from "../deps.ts";
 import { sheet } from "../shared.ts";
 import { getBody } from "../util.ts";
 
-import { Body } from "../components/body.tsx";
+import { App } from "../components/app.tsx";
 import { ErrorMessage } from "../components/error.tsx";
 
 function htmlErrorBody(status: Status, msg: string) {
+  const page = renderSSR(
+    <App>
+      <ErrorMessage title={STATUS_TEXT.get(status) ?? "Internal Error"}>
+        {msg}
+      </ErrorMessage>
+    </App>,
+  );
   return getBody(
-    renderSSR(
-      <Body>
-        <ErrorMessage title={STATUS_TEXT.get(status) ?? "Internal Error"}>
-          {msg}
-        </ErrorMessage>
-      </Body>,
-    ),
+    Helmet.SSR(page),
     getStyleTag(sheet),
   );
 }

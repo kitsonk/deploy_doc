@@ -34,30 +34,32 @@ export function humanSize(bytes: number, si = true, dp = 1) {
 }
 
 export function getBody(
-  body: string,
+  { body, head, footer }: {
+    body: string;
+    head: HTMLElement[];
+    footer: HTMLElement[];
+  },
   styles: string,
-  pageTitle?: string,
-  includeMeta = false,
 ): string {
-  const meta = includeMeta
-    ? `
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@denoland" />
-  <meta name="twitter:creator" content="@kitsonk" />
-  <meta name="twitter:image:alt" content="Deploy Doc logo" />
-  <meta property="og:title" content="Deploy Doc" />
-  <meta property="og:description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
-  <meta name="description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
-  `
-    : "";
+  // const meta = `
+  // <meta name="twitter:card" content="summary" />
+  // <meta name="twitter:site" content="@denoland" />
+  // <meta name="twitter:creator" content="@kitsonk" />
+  // <meta name="twitter:image:alt" content="Deploy Doc logo" />
+  // <meta property="og:title" content="Deploy Doc" />
+  // <meta property="og:description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
+  // <meta name="description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
+  // `;
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
-      <title>Deploy Doc${pageTitle ? ` – ${pageTitle}` : ""}</title>
       ${styles}
-      ${meta}
+      ${head.join("\n")}
     </head>
-    ${body}
+    <body>
+      ${body}
+      ${footer.join("\n")}
+    </body>
   </html>`;
 }
 
@@ -79,23 +81,31 @@ export function take<T>(value: Child<T>, itemIsArray = false): T {
   }
 }
 
+/** Patterns of "registries" which will be parsed to be displayed in a more
+ * human readable way. */
 const patterns = {
   "deno.land/x": new URLPattern(
     "https://deno.land/x/:pkg([^@/]+){@}?:ver?/:mod*",
   ),
   "deno.land/std": new URLPattern("https://deno.land/std{@}?:ver?/:mod*"),
   "nest.land": new URLPattern("https://x.nest.land/:pkg([^@/]+)@:ver/:mod*"),
+  "crux.land": new URLPattern("https://crux.land/:pkg([^@/]+)@:ver"),
   "github.com": new URLPattern(
     "https://raw.githubusercontent.com/:org/:pkg/:ver/:mod*",
   ),
   "gist.github.com": new URLPattern(
     "https://gist.githubusercontent.com/:org/:pkg/raw/:ver/:mod*",
   ),
-  "esm.sh": new URLPattern("https://esm.sh/:pkg([^@/]+){@}?:ver?/:mod?"),
-  "skypack.dev": new URLPattern(
-    "https://cdn.skypack.dev/:pkg([^@/]+){@}?:ver?/:mod?",
+  "esm.sh": new URLPattern(
+    "http{s}?://esm.sh/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
   ),
-} as const;
+  "skypack.dev": new URLPattern(
+    "https://cdn.skypack.dev/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
+  ),
+  "unpkg.com": new URLPattern(
+    "https://unpkg.com/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
+  ),
+};
 
 interface ParsedURL {
   registry: string;
@@ -105,6 +115,8 @@ interface ParsedURL {
   module?: string;
 }
 
+/** Take a string URL and attempt to pattern match it against a known registry
+ * and returned the parsed structure. */
 export function parseURL(url: string): ParsedURL | undefined {
   for (const [registry, pattern] of Object.entries(patterns)) {
     const match = pattern.exec(url);

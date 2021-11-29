@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h, Helmet, tw } from "../deps.ts";
 import { gtw } from "./styles.ts";
 
 function DenoLogo() {
@@ -89,17 +89,15 @@ function Header() {
   );
 }
 
-export function Body({ children }: { children?: unknown }) {
+export function App({ children }: { children?: unknown }) {
   return (
-    <body>
-      <div
-        class={tw`min-h-screen grid grid-cols-1`}
-        style="grid-template-rows: auto 1fr auto;"
-      >
-        <Header />
-        <div>{children}</div>
-        <Footer />
-      </div>
-    </body>
+    <div
+      class={tw`min-h-screen grid grid-cols-1`}
+      style="grid-template-rows: auto 1fr auto;"
+    >
+      <Header />
+      <div>{children}</div>
+      <Footer />
+    </div>
   );
 }

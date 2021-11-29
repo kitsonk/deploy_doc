@@ -24,8 +24,7 @@ const smallCode = css({
   pre: apply`font-mono text-xs p-2 my-2 rounded-lg bg-gray-100`,
 });
 
-export const largeMarkdown = apply
-  `mt-4 mb-8 mx-2 flex flex-col space-y-4 ${code}`;
+export const largeMarkdown = apply`p-4 flex flex-col space-y-4 ${code}`;
 
 const applyNone = apply``;
 
@@ -36,9 +35,9 @@ const baseStyles = {
   boolean: applyNone,
   classBody: apply`flex flex-col space-y-4`,
   classMethod: applyNone,
-  code: apply`font-mono p-3 rounded-lg bg-gray-50`,
+  code: apply`font-mono my-4 p-3 rounded-lg bg-gray-50`,
   docEntry: apply`relative px-2`,
-  docItem: apply`group relative`,
+  docItem: apply`group relative py-2 px-1`,
   docItems: apply`mt-4`,
   docTitle: apply`text-4xl text-gray-900 font-bold mb-3`,
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
@@ -60,9 +59,9 @@ const baseStyles = {
   nodeTypeAlias: apply`text-yellow-600 mx-2`,
   nodeVariable: apply`text-blue-600 mx-2`,
   nodeNamespace: apply`text-yellow-700 mx-2`,
-  section: apply
-    `group relative text-2xl border-b border-gray-400 p-2 mt-1 mb-3`,
+  section: apply`text-2xl border-b border-gray-400 p-2 mt-1 mb-3`,
   sourceLink: apply`absolute top-0 right-0`,
+  subSection: apply`text-xl p-2 mx-2.5 mt-1 mb-2.5`,
   stringLiteral: applyNone,
   subtitle: apply`h-6 text-xl font-semibold`,
   title: apply`h-10 text-3xl font-bold`,

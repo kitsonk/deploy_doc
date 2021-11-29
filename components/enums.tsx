@@ -1,15 +1,21 @@
 /** @jsx h */
-import { h } from "../deps.ts";
-import type { DocNodeEnum } from "../deps.ts";
+import { h, tw } from "../deps.ts";
+import type { DocNodeEnum, EnumMemberDef, Location } from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
-import { DocTitle, Markdown } from "./common.tsx";
-import type { DocProps } from "./common.tsx";
+import {
+  Anchor,
+  DocWithLink,
+  Markdown,
+  SectionTitle,
+  TARGET_RE,
+  TocLink,
+} from "./common.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 
-function EnumCodeBlock({ children }: { children: Child<DocNodeEnum> }) {
+export function EnumCodeBlock({ children }: { children: Child<DocNodeEnum> }) {
   const {
     name,
     enumDef: { members },
@@ -38,15 +44,63 @@ function EnumCodeBlock({ children }: { children: Child<DocNodeEnum> }) {
   return codeBlock;
 }
 
-export function EnumDoc({ children, path }: DocProps<DocNodeEnum>) {
-  const node = take(children);
-  const { jsDoc } = node;
+function Member(
+  { children, name: enumName, location }: {
+    children: Child<EnumMemberDef>;
+    name: string;
+    location: Location;
+  },
+) {
+  const { name, init, jsDoc } = take(children);
+  const id = name.replaceAll(TARGET_RE, "_");
   return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{node}</DocTitle>
-      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
-      <EnumCodeBlock>{node}</EnumCodeBlock>
-      <div class={gtw("docItems")}></div>
-    </article>
+    <div class={gtw("docItem")} id={id}>
+      <Anchor>{id}</Anchor>
+      <div class={gtw("docEntry")}>
+        <DocWithLink location={location}>
+          {`${enumName}.${name}`}
+          {init && (
+            <span>
+              {" "} = <TypeDef>{init}</TypeDef>
+            </span>
+          )}
+        </DocWithLink>
+        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+      </div>
+    </div>
+  );
+}
+
+function byName(a: EnumMemberDef, b: EnumMemberDef): number {
+  return a.name.localeCompare(b.name);
+}
+
+export function EnumDoc({ children }: { children: Child<DocNodeEnum> }) {
+  const { name, enumDef: { members }, location } = take(children);
+  const items = [...members].sort(byName).map((member) => (
+    <Member name={name} location={location}>
+      {member}
+    </Member>
+  ));
+  return (
+    <div class={gtw("docItems")}>
+      <SectionTitle>Members</SectionTitle>
+      {items}
+    </div>
+  );
+}
+
+export function EnumToc({ children }: { children: Child<DocNodeEnum> }) {
+  const { name: enumName, enumDef: { members } } = take(children);
+  const items = [...members].sort(byName).map(({ name }) => (
+    <TocLink id={name}>{`${enumName}.${name}`}</TocLink>
+  ));
+  return (
+    <div>
+      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>Members</h3>
+      <ul>
+        {items}
+      </ul>
+    </div>
   );
 }

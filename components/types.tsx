@@ -3,6 +3,7 @@
 import { Fragment, h, htmlEntities } from "../deps.ts";
 import type {
   DocNodeTypeAlias,
+  Location,
   TsTypeArrayDef,
   TsTypeConditionalDef,
   TsTypeDef,
@@ -27,7 +28,13 @@ import { getState, setState, store, STYLE_OVERRIDE } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
-import { DocTitle, Markdown } from "./common.tsx";
+import {
+  Anchor,
+  DocTitle,
+  DocWithLink,
+  Markdown,
+  SectionTitle,
+} from "./common.tsx";
 import type { DocProps } from "./common.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
@@ -537,4 +544,34 @@ export function TypeParams(
     }
   }
   return <span>&lt;{items}&gt;</span>;
+}
+
+export function TypeParamsDoc(
+  { children, location }: {
+    children: Child<TsTypeParamDef[]>;
+    location: Location;
+  },
+) {
+  const params = take(children, true);
+  if (!params.length) {
+    return;
+  }
+  const items = params.map((param) => {
+    return (
+      <div class={gtw("docItem")} id={param.name}>
+        <Anchor>{param.name}</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            <TypeParam>{param}</TypeParam>
+          </DocWithLink>
+        </div>
+      </div>
+    );
+  });
+  return (
+    <div>
+      <SectionTitle>Type Parameters</SectionTitle>
+      {items}
+    </div>
+  );
 }

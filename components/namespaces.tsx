@@ -5,28 +5,19 @@ import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
-import {
-  asCollection,
-  DocTitle,
-  Markdown,
-  Section,
-  TocLink,
-} from "./common.tsx";
+import { asCollection, Section, TocLink } from "./common.tsx";
 import type { DocProps } from "./common.tsx";
-import { gtw, largeMarkdownStyles } from "./styles.ts";
 
 export function NamespaceDoc(
   { children, path = [] }: DocProps<DocNodeNamespace>,
 ) {
   const node = take(children);
-  const { name, jsDoc, namespaceDef: { elements } } = node;
+  const { name, namespaceDef: { elements } } = node;
   const { includePrivate } = store.state as StoreState;
   const collection = asCollection(elements, includePrivate);
   const currentPath = [...path, name];
   return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{node}</DocTitle>
-      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+    <div>
       {collection.namespace && (
         <Section title="Namespace" style="nodeNamespace" path={currentPath}>
           {collection.namespace}
@@ -58,24 +49,24 @@ export function NamespaceDoc(
         </Section>
       )}
       {collection.typeAlias && (
-        <Section title="Types" style="nodeTypeAlias" path={currentPath}>
+        <Section title="Type Aliases" style="nodeTypeAlias" path={currentPath}>
           {collection.typeAlias}
         </Section>
       )}
-    </article>
+    </div>
   );
 }
 
 export function NamespaceToc(
   { children }: { children: Child<DocNodeNamespace> },
 ) {
-  const { namespaceDef: { elements } } = take(children);
+  const { name, namespaceDef: { elements } } = take(children);
   const { includePrivate } = store.state as StoreState;
   const collection = asCollection(elements, includePrivate);
   return (
     <div>
       <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
-        This Namespace
+        {name}
       </h3>
       <ul>
         {collection.namespace && <TocLink>Namespaces</TocLink>}
@@ -84,7 +75,7 @@ export function NamespaceToc(
         {collection.variable && <TocLink>Variables</TocLink>}
         {collection.function && <TocLink>Functions</TocLink>}
         {collection.interface && <TocLink>Interfaces</TocLink>}
-        {collection.typeAlias && <TocLink>Types</TocLink>}
+        {collection.typeAlias && <TocLink>Type Aliases</TocLink>}
       </ul>
     </div>
   );

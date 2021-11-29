@@ -47,7 +47,7 @@ export {
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/colors/colors.d.ts
 export * as twColors from "https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=imports/optimized/twind/colors.js";
 
-export { Component } from "https://deno.land/x/nano_jsx@v0.0.21/component.ts";
+export { Helmet } from "https://deno.land/x/nano_jsx@v0.0.21/components/helmet.ts";
 export { h } from "https://deno.land/x/nano_jsx@v0.0.21/core.ts";
 export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.21/fragment.ts";
 export { renderSSR } from "https://deno.land/x/nano_jsx@v0.0.21/ssr.ts";
@@ -62,11 +62,11 @@ import type {} from "./types.d.ts";
 
 export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/mod.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -84,6 +84,7 @@ export type {
   DocNodeNamespace,
   DocNodeTypeAlias,
   DocNodeVariable,
+  EnumMemberDef,
   InterfaceCallSignatureDef,
   InterfaceIndexSignatureDef,
   InterfaceMethodDef,
@@ -123,4 +124,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://raw.githubusercontent.com/denoland/deno_doc/e4ceb9444fd77d468c33fcb0fccf5ac8d45e8379/lib/types.d.ts";
+} from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/lib/types.d.ts";

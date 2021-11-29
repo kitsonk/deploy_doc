@@ -1,7 +1,16 @@
 /** @jsx h */
-import { Body } from "../components/body.tsx";
+import { App } from "../components/app.tsx";
 import { DocPage } from "../components/doc.tsx";
-import { colors, doc, getStyleTag, h, renderSSR, Status, tw } from "../deps.ts";
+import {
+  colors,
+  doc,
+  getStyleTag,
+  h,
+  Helmet,
+  renderSSR,
+  Status,
+  tw,
+} from "../deps.ts";
 import type {
   DocNode,
   DocNodeInterface,
@@ -134,6 +143,10 @@ function mergeEntries(entries: DocNode[]) {
   return merged;
 }
 
+function Title({ item, url }: { item?: string | null; url: string }) {
+  return <title>Deno Doc - {item ? `${url} — ${item}` : url}</title>;
+}
+
 async function process<R extends string>(
   ctx: RouterContext<R>,
   url: string,
@@ -173,14 +186,17 @@ async function process<R extends string>(
 
   store.setState({ entries, url, includePrivate });
   sheet.reset();
+  const page = renderSSR(
+    <App>
+      <Helmet>
+        <Title item={item} url={url} />
+      </Helmet>
+      <DocPage>{item}</DocPage>
+    </App>,
+  );
   ctx.response.body = getBody(
-    renderSSR(
-      <Body>
-        <DocPage>{item}</DocPage>
-      </Body>,
-    ),
+    Helmet.SSR(page),
     getStyleTag(sheet),
-    item ? `${url} — ${item}` : url,
   );
   ctx.response.type = "html";
 }

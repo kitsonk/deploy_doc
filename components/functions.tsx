@@ -2,14 +2,16 @@
 import { h } from "../deps.ts";
 import type { DocNodeFunction } from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
-import { DocTitle } from "./common.tsx";
+import { Anchor, DocWithLink, Markdown, TARGET_RE } from "./common.tsx";
 import { Params } from "./params.tsx";
-import { codeBlockStyles, gtw } from "./styles.ts";
+import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef, TypeParams } from "./types.tsx";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 
-function FnCodeBlock({ children }: { children: Child<DocNodeFunction[]> }) {
+export function FnCodeBlock(
+  { children }: { children: Child<DocNodeFunction[]> },
+) {
   const fns = take(children);
   const prev = getState(STYLE_OVERRIDE);
   setState(STYLE_OVERRIDE, codeBlockStyles);
@@ -40,15 +42,80 @@ function FnCodeBlock({ children }: { children: Child<DocNodeFunction[]> }) {
   return codeBlock;
 }
 
-export function FnDoc(
-  { children, path }: { children: Child<DocNodeFunction[]>; path?: string[] },
+function SubSectionTitle(
+  { children, id }: { children: Child<string>; id: string },
 ) {
-  const nodes = take(children);
+  const name = take(children);
+  const target = `${name.replaceAll(TARGET_RE, "_")}_${id}`;
   return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{nodes[0]}</DocTitle>
-      <FnCodeBlock>{nodes}</FnCodeBlock>
-      <div class={gtw("docItems")}></div>
-    </article>
+    <h3 class={gtw("subSection")} id={target}>
+      <Anchor>{target}</Anchor>
+      {name}
+    </h3>
   );
+}
+
+export function FnDoc(
+  { children }: { children: Child<DocNodeFunction[]> },
+) {
+  const fns = take(children);
+  const isSingle = fns.length === 1;
+  const items = fns.map(
+    (
+      {
+        location,
+        name,
+        jsDoc,
+        functionDef: { typeParams, params, returnType },
+      },
+      i,
+    ) => {
+      const id = i.toString();
+      return (
+        <div class={gtw("docItem")} id={id}>
+          <Anchor>{id}</Anchor>
+          <div class={gtw("docEntry")}>
+            <DocWithLink location={location}>
+              {name}
+              <TypeParams>{typeParams}</TypeParams>(<Params inline>
+                {params}
+              </Params>)
+              {returnType && (
+                <span>
+                  : <TypeDef>{returnType}</TypeDef>
+                </span>
+              )}
+            </DocWithLink>
+            {!isSingle
+              ? <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+              : undefined}
+          </div>
+          {typeParams.length
+            ? (
+              <div>
+                <SubSectionTitle id={id}>Type Parameters</SubSectionTitle>
+              </div>
+            )
+            : undefined}
+          {params.length
+            ? (
+              <div>
+                <SubSectionTitle id={id}>Parameters</SubSectionTitle>
+              </div>
+            )
+            : undefined}
+          {returnType && (
+            <div>
+              <SubSectionTitle id={id}>Return Type</SubSectionTitle>
+            </div>
+          )}
+        </div>
+      );
+    },
+  );
+  return <div class={gtw("docItems")}>{items}</div>;
+}
+
+export function FnToc({ children }: { children: Child<DocNodeFunction[]> }) {
+  return;
 }

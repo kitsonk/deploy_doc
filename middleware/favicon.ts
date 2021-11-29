@@ -16,5 +16,9 @@ export function createFaviconMW(url: string): Middleware {
     }
     ctx.response.body = icon;
     ctx.response.type = "image/x-icon";
+    ctx.response.headers.set(
+      "expires",
+      new Date(Date.now() + 31_436_000_000).toUTCString(),
+    );
   };
 }
