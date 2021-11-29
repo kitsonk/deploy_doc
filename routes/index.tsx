@@ -14,7 +14,7 @@ function Meta() {
       <meta name="twitter:creator" content="@kitsonk" />
       <meta
         name="twitter:image"
-        content={new URL("/img/banner", import.meta.url).toString()}
+        content="https://deno-doc.deno.dev/img/banner"
       />
       <meta name="twitter:image:alt" content="Deno Doc logo" />
       <meta property="og:title" content="Deploy Doc" />
