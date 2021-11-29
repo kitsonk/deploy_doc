@@ -2,14 +2,14 @@
 import { h } from "../deps.ts";
 import type { DocNodeVariable } from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
-import { DocTitle, Markdown } from "./common.tsx";
-import type { DocProps } from "./common.tsx";
-import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
+import { codeBlockStyles, gtw } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 
-function VariableCodeBlock({ children }: { children: Child<DocNodeVariable> }) {
+export function VariableCodeBlock(
+  { children }: { children: Child<DocNodeVariable> },
+) {
   const {
     name,
     variableDef: { kind, tsType },
@@ -31,17 +31,4 @@ function VariableCodeBlock({ children }: { children: Child<DocNodeVariable> }) {
   );
   setState(STYLE_OVERRIDE, prev);
   return codeBlock;
-}
-
-export function VariableDoc({ children, path }: DocProps<DocNodeVariable>) {
-  const node = take(children);
-  const { jsDoc } = node;
-  return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{node}</DocTitle>
-      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
-      <VariableCodeBlock>{node}</VariableCodeBlock>
-      <div class={gtw("docItems")}></div>
-    </article>
-  );
 }

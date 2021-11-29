@@ -1,6 +1,7 @@
 /** @jsx h */
 import { h } from "../deps.ts";
 import type {
+  Location,
   ObjectPatPropAssignDef,
   ObjectPatPropDef,
   ObjectPatPropKeyValueDef,
@@ -14,6 +15,7 @@ import type {
 } from "../deps.ts";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
+import { Anchor, DocWithLink, SubSectionTitle } from "./common.tsx";
 import { gtw } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 
@@ -193,4 +195,37 @@ export function Params({ children, inline }: ParamsProps) {
       <Param inline={inline}>{param}</Param>,
     </div>
   ));
+}
+
+export function ParamsSubDoc(
+  { children, location, id }: {
+    children: Child<ParamDef[]>;
+    location: Location;
+    id: string;
+  },
+) {
+  const params = take(children, true);
+  if (!params.length) {
+    return;
+  }
+  const items = params.map((param, i) => {
+    const itemId = `${id}_param_${i}`;
+    return (
+      <div class={gtw("docSubItem")} id={itemId}>
+        <Anchor>{itemId}</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            <Param inline>{param}</Param>
+          </DocWithLink>
+        </div>
+      </div>
+    );
+  });
+
+  return (
+    <div>
+      <SubSectionTitle id={id}>Parameters</SubSectionTitle>
+      {items}
+    </div>
+  );
 }

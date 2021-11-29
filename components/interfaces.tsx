@@ -7,10 +7,6 @@ import type {
   InterfaceIndexSignatureDef,
   InterfaceMethodDef,
   InterfacePropertyDef,
-  LiteralCallSignatureDef,
-  LiteralIndexSignatureDef,
-  LiteralMethodDef,
-  LiteralPropertyDef,
   Location,
   TsTypeDef,
 } from "../deps.ts";
@@ -28,15 +24,13 @@ import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef, TypeParams, TypeParamsDoc } from "./types.tsx";
 
-type CallSignatureDef = LiteralCallSignatureDef | InterfaceCallSignatureDef;
 type IndexSignatureDef =
   | ClassIndexSignatureDef
-  | InterfaceIndexSignatureDef
-  | LiteralIndexSignatureDef;
-type MethodDef = LiteralMethodDef | InterfaceMethodDef;
-type PropertyDef = LiteralPropertyDef | InterfacePropertyDef;
+  | InterfaceIndexSignatureDef;
 
-function CallSignatures({ children }: { children: Child<CallSignatureDef[]> }) {
+function CallSignatures(
+  { children }: { children: Child<InterfaceCallSignatureDef[]> },
+) {
   const items = take(children, true);
   const so = getState(STYLE_OVERRIDE);
   return items.map(({ typeParams, params, tsType }) => (
@@ -46,7 +40,7 @@ function CallSignatures({ children }: { children: Child<CallSignatureDef[]> }) {
           <span>
             : <TypeDef inline>{tsType}</TypeDef>
           </span>
-        )}
+        )};
     </div>
   ));
 }
@@ -224,7 +218,7 @@ export function InterfaceCodeBlock(
   return codeBlock;
 }
 
-function Methods({ children }: { children: Child<MethodDef[]> }) {
+function Methods({ children }: { children: Child<InterfaceMethodDef[]> }) {
   const methods = take(children, true);
   const so = getState(STYLE_OVERRIDE);
   return methods.map((
@@ -243,11 +237,13 @@ function Methods({ children }: { children: Child<MethodDef[]> }) {
       {optional ? "?" : undefined}
       <TypeParams>{typeParams}</TypeParams>(<Params>
         {params}
-      </Params>){returnType && (
-        <span>
-          : <TypeDef>{returnType}</TypeDef>
-        </span>
-      )}
+      </Params>){returnType
+        ? (
+          <span>
+            : <TypeDef terminate>{returnType}</TypeDef>
+          </span>
+        )
+        : ";"}
     </div>
   ));
 }
@@ -312,7 +308,7 @@ function MethodsDoc(
   );
 }
 
-function Properties({ children }: { children: Child<PropertyDef[]> }) {
+function Properties({ children }: { children: Child<InterfacePropertyDef[]> }) {
   const props = take(children, true);
   const so = getState(STYLE_OVERRIDE);
   return props.map(({ name, readonly, computed, optional, tsType }) => (

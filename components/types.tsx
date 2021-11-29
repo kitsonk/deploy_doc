@@ -1,8 +1,12 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, htmlEntities } from "../deps.ts";
+import { Fragment, h, htmlEntities, tw } from "../deps.ts";
 import type {
   DocNodeTypeAlias,
+  LiteralCallSignatureDef,
+  LiteralIndexSignatureDef,
+  LiteralMethodDef,
+  LiteralPropertyDef,
   Location,
   TsTypeArrayDef,
   TsTypeConditionalDef,
@@ -30,12 +34,11 @@ import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import {
   Anchor,
-  DocTitle,
   DocWithLink,
-  Markdown,
   SectionTitle,
+  SubSectionTitle,
+  TocLink,
 } from "./common.tsx";
-import type { DocProps } from "./common.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 
@@ -410,12 +413,148 @@ function TypeDefTuple({ children, inline }: TypeDefProps<TsTypeTupleDef>) {
   );
 }
 
-function TypeDefTypeLiteral({ children }: TypeDefProps<TsTypeTypeLiteralDef>) {
+function LiteralIndexSignatures(
+  { children, inline }: {
+    children: Child<LiteralIndexSignatureDef[]>;
+    inline?: boolean;
+  },
+) {
+  const signatures = take(children, true);
+  if (!signatures.length) {
+    return;
+  }
+  const so = getState(STYLE_OVERRIDE);
+  const items = signatures.map(({ params, readonly, tsType }) => {
+    const item = (
+      <span>
+        {readonly
+          ? <span class={gtw("keyword", so)}>readonly{" "}</span>
+          : undefined}[<Params>{params}</Params>]{tsType && (
+          <span>
+            : <TypeDef inline>{tsType}</TypeDef>
+          </span>
+        )};{" "}
+      </span>
+    );
+    return inline ? item : <div>{item}</div>;
+  });
+  return inline ? items : <div class={gtw("indent", so)}>{items}</div>;
+}
+
+function LiteralCallSignatures(
+  { children, inline }: {
+    children: Child<LiteralCallSignatureDef[]>;
+    inline?: boolean;
+  },
+) {
+  const items = take(children, true);
+  const so = getState(STYLE_OVERRIDE);
+  return items.map(({ typeParams, params, tsType }) => {
+    const item = (
+      <span>
+        <TypeParams>{typeParams}</TypeParams>(<Params>
+          {params}
+        </Params>){tsType &&
+          (
+            <span>
+              : <TypeDef inline>{tsType}</TypeDef>
+            </span>
+          )};{" "}
+      </span>
+    );
+    return inline ? item : <div class={gtw("indent", so)}>{item}</div>;
+  });
+}
+
+function LiteralProperties(
+  { children, inline }: {
+    children: Child<LiteralPropertyDef[]>;
+    inline?: boolean;
+  },
+) {
+  const props = take(children, true);
+  const so = getState(STYLE_OVERRIDE);
+  return props.map(({ name, readonly, computed, optional, tsType }) => {
+    const item = (
+      <span>
+        {readonly
+          ? <span class={gtw("keyword", so)}>readonly{" "}</span>
+          : undefined}
+        {computed ? `[${name}]` : name}
+        {optional ? "?" : undefined}
+        {tsType
+          ? (
+            <span>
+              : <TypeDef terminate>{tsType}</TypeDef>
+              {" "}
+            </span>
+          )
+          : "; "}
+      </span>
+    );
+    return inline ? item : <div class={gtw("indent", so)}>{item}</div>;
+  });
+}
+
+function LiteralMethods(
+  { children, inline }: {
+    children: Child<LiteralMethodDef[]>;
+    inline?: boolean;
+  },
+) {
+  const methods = take(children, true);
+  const so = getState(STYLE_OVERRIDE);
+  return methods.map((
+    { name, kind, optional, computed, returnType, typeParams, params },
+  ) => {
+    const item = (
+      <span>
+        {kind === "getter"
+          ? <span class={gtw("keyword", so)}>get{" "}</span>
+          : kind === "setter"
+          ? <span class={gtw("keyword", so)}>set{" "}</span>
+          : undefined}
+        {name === "new"
+          ? <span class={gtw("keyword", so)}>{name}{" "}</span>
+          : computed
+          ? `[${name}]`
+          : name}
+        {optional ? "?" : undefined}
+        <TypeParams>{typeParams}</TypeParams>(<Params>
+          {params}
+        </Params>){returnType
+          ? (
+            <span>
+              : <TypeDef terminate>{returnType}</TypeDef>
+              {" "}
+            </span>
+          )
+          : "; "}
+      </span>
+    );
+    return inline ? item : <div class={gtw("indent", so)}>{item}</div>;
+  });
+}
+
+function TypeDefTypeLiteral(
+  { children, inline, terminate }: TypeDefProps<TsTypeTypeLiteralDef>,
+) {
+  const {
+    typeLiteral: { indexSignatures, callSignatures, properties, methods },
+  } = take(children);
   return (
     <span>
       &#123;
-      {/* todo */}
+      <LiteralIndexSignatures inline={inline}>
+        {indexSignatures}
+      </LiteralIndexSignatures>
+      <LiteralCallSignatures inline={inline}>
+        {callSignatures}
+      </LiteralCallSignatures>
+      <LiteralProperties inline={inline}>{properties}</LiteralProperties>
+      <LiteralMethods inline={inline}>{methods}</LiteralMethods>
       &#125;
+      {terminate ? ";" : undefined}
     </span>
   );
 }
@@ -499,7 +638,7 @@ function TypeParam(
   );
 }
 
-function TypeAliasCodeBlock(
+export function TypeAliasCodeBlock(
   { children }: { children: Child<DocNodeTypeAlias> },
 ) {
   const { name, typeAliasDef: { typeParams, tsType } } = take(children);
@@ -516,16 +655,30 @@ function TypeAliasCodeBlock(
   return codeBlock;
 }
 
-export function TypeAliasDoc({ children, path }: DocProps<DocNodeTypeAlias>) {
-  const node = take(children);
-  const { jsDoc } = node;
+export function TypeAliasDoc(
+  { children }: { children: Child<DocNodeTypeAlias> },
+) {
+  const { typeAliasDef: { tsType, typeParams }, location } = take(children);
   return (
-    <article class={gtw("mainBox")}>
-      <DocTitle path={path}>{node}</DocTitle>
-      <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
-      <TypeAliasCodeBlock>{node}</TypeAliasCodeBlock>
-      <div class={gtw("docItems")}></div>
-    </article>
+    <div class={gtw("docItems")}>
+      <TypeParamsDoc location={location}>{typeParams}</TypeParamsDoc>
+      <TypeDefDoc location={location}>{tsType}</TypeDefDoc>
+    </div>
+  );
+}
+
+export function TypeAliasToc(
+  { children }: { children: Child<DocNodeTypeAlias> },
+) {
+  const { name, typeAliasDef: { typeParams } } = take(children);
+  return (
+    <div>
+      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>{name}</h3>
+      <ul>
+        {typeParams.length ? <TocLink>Type Parameters</TocLink> : undefined}
+        <TocLink>Type</TocLink>
+      </ul>
+    </div>
   );
 }
 
@@ -571,6 +724,57 @@ export function TypeParamsDoc(
   return (
     <div>
       <SectionTitle>Type Parameters</SectionTitle>
+      {items}
+    </div>
+  );
+}
+
+export function TypeDefDoc(
+  { children, location }: { children: Child<TsTypeDef>; location: Location },
+) {
+  const def = take(children);
+  return (
+    <div>
+      <SectionTitle>Type</SectionTitle>
+      <div class={gtw("docItem")} id="typedef">
+        <Anchor>typedef</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            <TypeDef inline>{def}</TypeDef>
+          </DocWithLink>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TypeParamsSubDoc(
+  { children, location, id }: {
+    children: Child<TsTypeParamDef[]>;
+    location: Location;
+    id: string;
+  },
+) {
+  const params = take(children, true);
+  if (!params.length) {
+    return;
+  }
+  const items = params.map((param) => {
+    const itemId = `${id}_${param.name}`;
+    return (
+      <div class={gtw("docSubItem")} id={itemId}>
+        <Anchor>{itemId}</Anchor>
+        <div class={gtw("docEntry")}>
+          <DocWithLink location={location}>
+            <TypeParam>{param}</TypeParam>
+          </DocWithLink>
+        </div>
+      </div>
+    );
+  });
+  return (
+    <div>
+      <SubSectionTitle id={id}>Type Parameters</SubSectionTitle>
       {items}
     </div>
   );

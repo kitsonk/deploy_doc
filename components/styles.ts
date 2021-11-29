@@ -39,6 +39,7 @@ const baseStyles = {
   docEntry: apply`relative px-2`,
   docItem: apply`group relative py-2 px-1`,
   docItems: apply`mt-4`,
+  docSubItem: apply`group relative py-2 px-1 ml-2.5`,
   docTitle: apply`text-4xl text-gray-900 font-bold mb-3`,
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
   fnName: applyNone,

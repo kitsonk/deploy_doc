@@ -15,7 +15,7 @@ import {
 import type { DocNodeCollection } from "./common.tsx";
 import { EnumCodeBlock, EnumDoc, EnumToc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
-import { FnCodeBlock, FnDoc, FnToc } from "./functions.tsx";
+import { FnCodeBlock, FnDoc } from "./functions.tsx";
 import {
   InterfaceCodeBlock,
   InterfaceDoc,
@@ -23,8 +23,8 @@ import {
 } from "./interfaces.tsx";
 import { NamespaceDoc, NamespaceToc } from "./namespaces.tsx";
 import { gtw, largeMarkdownStyles } from "./styles.ts";
-import { TypeAliasDoc } from "./types.tsx";
-import { VariableDoc } from "./variables.tsx";
+import { TypeAliasCodeBlock, TypeAliasDoc, TypeAliasToc } from "./types.tsx";
+import { VariableCodeBlock } from "./variables.tsx";
 
 function assertAll<N extends DocNode>(
   nodes: DocNode[],
@@ -186,6 +186,11 @@ function CodeBlock({ children }: { children: Child<DocNode[]> }) {
       case "interface":
         elements.push(<InterfaceCodeBlock>{node}</InterfaceCodeBlock>);
         break;
+      case "typeAlias":
+        elements.push(<TypeAliasCodeBlock>{node}</TypeAliasCodeBlock>);
+        break;
+      case "variable":
+        elements.push(<VariableCodeBlock>{node}</VariableCodeBlock>);
     }
   }
   return elements;
@@ -214,6 +219,9 @@ function Doc(
       case "namespace":
         elements.push(<NamespaceDoc path={path}>{node}</NamespaceDoc>);
         break;
+      case "typeAlias":
+        elements.push(<TypeAliasDoc>{node}</TypeAliasDoc>);
+        break;
     }
   }
   return elements;
@@ -221,24 +229,39 @@ function Doc(
 
 function DocToc({ children }: { children: Child<DocNode[]> }) {
   const nodes = take(children);
-  if (nodes.length !== 1) {
-    console.log(nodes.map((n) => n.kind));
+  if (!nodes.length) {
     return;
   }
-  switch (nodes[0].kind) {
+  let node;
+  if (nodes.length > 1) {
+    // we have a "tuple" of an interface with likely a variable, so we will
+    // display the toc for the interface
+    if (nodes.length === 2) {
+      const maybeNode = nodes.find((n) => n.kind === "interface");
+      if (maybeNode) {
+        node = maybeNode;
+      } else {
+        return;
+      }
+    } else {
+      return;
+    }
+  } else {
+    node = nodes[0];
+  }
+  switch (node.kind) {
     case "class":
-      return <ClassToc>{nodes[0]}</ClassToc>;
+      return <ClassToc>{node}</ClassToc>;
     case "enum":
-      return <EnumToc>{nodes[0]}</EnumToc>;
-    case "function":
-      assertAll<DocNodeFunction>(nodes, "function");
-      return <FnToc>{nodes}</FnToc>;
+      return <EnumToc>{node}</EnumToc>;
     case "interface":
-      return <InterfaceToc>{nodes[0]}</InterfaceToc>;
+      return <InterfaceToc>{node}</InterfaceToc>;
     case "namespace":
-      return <NamespaceToc>{nodes[0]}</NamespaceToc>;
+      return <NamespaceToc>{node}</NamespaceToc>;
+    case "typeAlias":
+      return <TypeAliasToc>{node}</TypeAliasToc>;
     default:
-      return <div>TODO</div>;
+      return undefined;
   }
 }
 

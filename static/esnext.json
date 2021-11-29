@@ -1058,7 +1058,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Object",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Object"
+            }
+          },
           "typeParams": []
         },
         {
@@ -1978,6 +1985,7 @@
             "doc": "A reference to the prototype for a class of objects."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -2336,6 +2344,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -2439,7 +2448,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Function",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Function"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -2452,6 +2468,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -6550,6 +6567,7 @@
             "doc": "Returns the length of a String object."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -6619,7 +6637,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "String",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "String"
+            }
+          },
           "typeParams": []
         },
         {
@@ -6668,6 +6693,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -6808,7 +6834,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Boolean",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Boolean"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -6821,6 +6854,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7117,7 +7151,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Number",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Number"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -7130,6 +7171,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7153,6 +7195,7 @@
             "doc": "The largest number that can be represented in JavaScript. Equal to approximately 1.79E+308."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7173,6 +7216,7 @@
             "doc": "The closest number to zero that can be represented in JavaScript. Equal to approximately 5.00E-324."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7193,6 +7237,7 @@
             "doc": "A value that is not a number.\nIn equality comparisons, NaN does not equal any value, including itself. To test whether a value is equivalent to NaN, use the isNaN function."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7213,6 +7258,7 @@
             "doc": "A value that is less than the largest negative number that can be represented in JavaScript.\nJavaScript displays NEGATIVE_INFINITY values as -infinity."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7233,6 +7279,7 @@
             "doc": "A value greater than the largest number that can be represented in JavaScript.\nJavaScript displays POSITIVE_INFINITY values as infinity."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -7334,6 +7381,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8118,6 +8166,7 @@
             "doc": "The mathematical constant e. This is Euler's number, the base of natural logarithms."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8138,6 +8187,7 @@
             "doc": "The natural logarithm of 10."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8158,6 +8208,7 @@
             "doc": "The natural logarithm of 2."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8178,6 +8229,7 @@
             "doc": "The base-2 logarithm of e."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8198,6 +8250,7 @@
             "doc": "The base-10 logarithm of e."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8218,6 +8271,7 @@
             "doc": "Pi. This is the ratio of the circumference of a circle to its diameter."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8238,6 +8292,7 @@
             "doc": "The square root of 0.5, or, equivalently, one divided by the square root of 2."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -8258,6 +8313,7 @@
             "doc": "The square root of 2."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -9752,7 +9808,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Date",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Date"
+            }
+          },
           "typeParams": []
         },
         {
@@ -9787,7 +9850,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Date",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Date"
+            }
+          },
           "typeParams": []
         },
         {
@@ -9871,7 +9941,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Date",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Date"
+            }
+          },
           "typeParams": []
         },
         {
@@ -10067,6 +10144,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10389,6 +10467,7 @@
             "doc": "Returns a copy of the text of the regular expression pattern. Read-only. The regExp argument is a Regular expression object. It can be a variable name or a literal."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10409,6 +10488,7 @@
             "doc": "Returns a Boolean value indicating the state of the global flag (g) used with a regular expression. Default is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10429,6 +10509,7 @@
             "doc": "Returns a Boolean value indicating the state of the ignoreCase flag (i) used with a regular expression. Default is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10449,6 +10530,7 @@
             "doc": "Returns a Boolean value indicating the state of the multiline flag (m) used with a regular expression. Default is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10528,7 +10610,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "RegExp",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "RegExp"
+            }
+          },
           "typeParams": []
         },
         {
@@ -10562,7 +10651,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "RegExp",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "RegExp"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -10575,6 +10671,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -10968,7 +11065,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Error",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Error"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -10981,6 +11085,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11118,7 +11223,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "EvalError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "EvalError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11131,6 +11243,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11268,7 +11381,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "RangeError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "RangeError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11281,6 +11401,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11418,7 +11539,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "ReferenceError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "ReferenceError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11431,6 +11559,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11568,7 +11697,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "SyntaxError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "SyntaxError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11581,6 +11717,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11718,7 +11855,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "TypeError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "TypeError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11731,6 +11875,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -11868,7 +12013,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "URIError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "URIError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -11881,6 +12033,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -14354,6 +14507,7 @@
             "doc": "Gets the length of the array. This is a number one higher than the highest element defined in an array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -14492,6 +14646,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -16975,7 +17130,15 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "any",
+              "kind": "keyword",
+              "keyword": "any"
+            }
+          },
           "typeParams": []
         },
         {
@@ -16999,7 +17162,18 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "T",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": null,
+                "typeName": "T"
+              }
+            }
+          },
           "typeParams": [
             {
               "name": "T"
@@ -17038,7 +17212,18 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "",
+            "kind": "array",
+            "array": {
+              "repr": "T",
+              "kind": "typeRef",
+              "typeRef": {
+                "typeParams": null,
+                "typeName": "T"
+              }
+            }
+          },
           "typeParams": [
             {
               "name": "T"
@@ -17098,6 +17283,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -18565,6 +18751,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -19866,6 +20053,7 @@
             "doc": "Read-only. The length of the ArrayBuffer (in bytes)."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -19999,7 +20187,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "ArrayBuffer",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "ArrayBuffer"
+            }
+          },
           "typeParams": []
         },
         {
@@ -20054,6 +20249,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -21075,6 +21271,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -21095,6 +21292,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -21112,6 +21310,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -21183,7 +21382,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "DataView",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "DataView"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -21196,6 +21402,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23178,6 +23385,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23198,6 +23406,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23221,6 +23430,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23241,6 +23451,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23261,6 +23472,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23330,7 +23542,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -23377,7 +23596,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -23424,7 +23650,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -23656,6 +23889,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -23679,6 +23913,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25658,6 +25893,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25678,6 +25914,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25701,6 +25938,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25721,6 +25959,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25741,6 +25980,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -25810,7 +26050,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -25857,7 +26104,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -25904,7 +26158,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -26136,6 +26397,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -26159,6 +26421,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28138,6 +28401,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28158,6 +28422,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28181,6 +28446,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28201,6 +28467,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28221,6 +28488,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28290,7 +28558,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8ClampedArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8ClampedArray"
+            }
+          },
           "typeParams": []
         },
         {
@@ -28337,7 +28612,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8ClampedArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8ClampedArray"
+            }
+          },
           "typeParams": []
         },
         {
@@ -28384,7 +28666,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8ClampedArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8ClampedArray"
+            }
+          },
           "typeParams": []
         },
         {
@@ -28616,6 +28905,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -28639,6 +28929,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30618,6 +30909,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30638,6 +30930,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30661,6 +30954,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30681,6 +30975,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30701,6 +30996,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -30770,7 +31066,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -30817,7 +31120,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -30864,7 +31174,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -31096,6 +31413,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -31119,6 +31437,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33098,6 +33417,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33118,6 +33438,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33141,6 +33462,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33161,6 +33483,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33181,6 +33504,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33250,7 +33574,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -33297,7 +33628,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -33344,7 +33682,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -33576,6 +33921,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -33599,6 +33945,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35578,6 +35925,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35598,6 +35946,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35621,6 +35970,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35641,6 +35991,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35661,6 +36012,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -35730,7 +36082,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -35777,7 +36136,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -35824,7 +36190,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -36056,6 +36429,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -36079,6 +36453,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38058,6 +38433,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38078,6 +38454,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38101,6 +38478,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38121,6 +38499,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38141,6 +38520,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38210,7 +38590,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -38257,7 +38644,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -38304,7 +38698,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -38536,6 +38937,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -38559,6 +38961,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40538,6 +40941,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40558,6 +40962,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40581,6 +40986,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40601,6 +41007,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40621,6 +41028,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -40690,7 +41098,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -40737,7 +41152,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -40784,7 +41206,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -41016,6 +41445,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -41039,6 +41469,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -42995,6 +43426,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43015,6 +43447,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43038,6 +43471,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43058,6 +43492,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43078,6 +43513,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43147,7 +43583,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -43194,7 +43637,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -43241,7 +43691,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -43473,6 +43930,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43496,6 +43954,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -43895,7 +44354,62 @@
               "typeLiteral": {
                 "methods": [
                   {
+                    "name": "new",
+                    "kind": "method",
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "locales",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            },
+                            {
+                              "repr": "",
+                              "kind": "array",
+                              "array": {
+                                "repr": "string",
+                                "kind": "keyword",
+                                "keyword": "string"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "kind": "identifier",
+                        "name": "options",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "CollatorOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "CollatorOptions"
+                          }
+                        }
+                      }
+                    ],
+                    "optional": false,
+                    "returnType": {
+                      "repr": "Collator",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "Collator"
+                      }
+                    },
+                    "typeParams": []
+                  },
+                  {
                     "name": "supportedLocalesOf",
+                    "kind": "method",
                     "params": [
                       {
                         "kind": "identifier",
@@ -44504,7 +45018,62 @@
               "typeLiteral": {
                 "methods": [
                   {
+                    "name": "new",
+                    "kind": "method",
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "locales",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            },
+                            {
+                              "repr": "",
+                              "kind": "array",
+                              "array": {
+                                "repr": "string",
+                                "kind": "keyword",
+                                "keyword": "string"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "kind": "identifier",
+                        "name": "options",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "NumberFormatOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "NumberFormatOptions"
+                          }
+                        }
+                      }
+                    ],
+                    "optional": false,
+                    "returnType": {
+                      "repr": "NumberFormat",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "NumberFormat"
+                      }
+                    },
+                    "typeParams": []
+                  },
+                  {
                     "name": "supportedLocalesOf",
+                    "kind": "method",
                     "params": [
                       {
                         "kind": "identifier",
@@ -45439,7 +46008,62 @@
               "typeLiteral": {
                 "methods": [
                   {
+                    "name": "new",
+                    "kind": "method",
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "locales",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            },
+                            {
+                              "repr": "",
+                              "kind": "array",
+                              "array": {
+                                "repr": "string",
+                                "kind": "keyword",
+                                "keyword": "string"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "kind": "identifier",
+                        "name": "options",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "DateTimeFormatOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "DateTimeFormatOptions"
+                          }
+                        }
+                      }
+                    ],
+                    "optional": false,
+                    "returnType": {
+                      "repr": "DateTimeFormat",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "DateTimeFormat"
+                      }
+                    },
+                    "typeParams": []
+                  },
+                  {
                     "name": "supportedLocalesOf",
+                    "kind": "method",
                     "params": [
                       {
                         "kind": "identifier",
@@ -46277,6 +46901,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -46321,7 +46946,25 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Map",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "any",
+                  "kind": "keyword",
+                  "keyword": "any"
+                },
+                {
+                  "repr": "any",
+                  "kind": "keyword",
+                  "keyword": "any"
+                }
+              ],
+              "typeName": "Map"
+            }
+          },
           "typeParams": []
         },
         {
@@ -46395,7 +47038,31 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Map",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "K",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "K"
+                  }
+                },
+                {
+                  "repr": "V",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "V"
+                  }
+                }
+              ],
+              "typeName": "Map"
+            }
+          },
           "typeParams": [
             {
               "name": "K"
@@ -46415,6 +47082,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -46667,6 +47335,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -46943,7 +47612,31 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakMap",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "K",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "K"
+                  }
+                },
+                {
+                  "repr": "V",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "V"
+                  }
+                }
+              ],
+              "typeName": "WeakMap"
+            }
+          },
           "typeParams": [
             {
               "name": "K",
@@ -46978,6 +47671,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -47256,6 +47950,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -47333,7 +48028,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Set",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "Set"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -47355,6 +48066,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -47549,6 +48261,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -47747,7 +48460,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakSet",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "WeakSet"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -47774,6 +48503,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -48661,7 +49391,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Date",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Date"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -48695,6 +49432,7 @@
             "doc": "Returns the name of the function. Function names are read-only and can not be changed."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -49666,6 +50404,7 @@
             "doc": "The value of Number.EPSILON is the difference between 1 and the smallest value greater than 1\nthat is representable as a Number value, which is approximately:\n2.2204460492503130808472633361816 x 10‍−‍16."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -49686,6 +50425,7 @@
             "doc": "The value of the largest integer n such that n and n + 1 are both exactly representable as\na Number value.\nThe value of Number.MAX_SAFE_INTEGER is 9007199254740991 2^53 − 1."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -49706,6 +50446,7 @@
             "doc": "The value of the smallest integer n such that n and n − 1 are both exactly representable as\na Number value.\nThe value of Number.MIN_SAFE_INTEGER is −9007199254740991 (−(2^53 − 1))."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -50769,6 +51510,7 @@
             "doc": "Returns a string indicating the flags of the regular expression in question. This field is read-only.\nThe characters in this string are sequenced and concatenated in the following order:\n\n   - \"g\" for global\n   - \"i\" for ignoreCase\n   - \"m\" for multiline\n   - \"u\" for unicode\n   - \"y\" for sticky\n\nIf no flags are set, the value is the empty string."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -50789,6 +51531,7 @@
             "doc": "Returns a Boolean value indicating the state of the sticky flag (y) used with a regular\nexpression. Default is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -50809,6 +51552,7 @@
             "doc": "Returns a Boolean value indicating the state of the Unicode flag (u) used with a regular\nexpression. Default is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -50881,7 +51625,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "RegExp",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "RegExp"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -52021,6 +52772,7 @@
             "line": 28,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -52141,7 +52893,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Generator",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Generator"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -52157,6 +52916,7 @@
             "doc": "The length of the arguments."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52177,6 +52937,7 @@
             "doc": "Returns the name of the function."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52197,6 +52958,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52313,7 +53075,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "GeneratorFunction",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "GeneratorFunction"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -52329,6 +53098,7 @@
             "doc": "The length of the arguments."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52349,6 +53119,7 @@
             "doc": "Returns the name of the function."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52369,6 +53140,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52458,6 +53230,7 @@
             "doc": "A method that returns the default iterator for an object. Called by the semantics of the\nfor-of statement."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -52901,6 +53674,7 @@
             "line": 51,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -52971,6 +53745,7 @@
             "line": 55,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -53026,6 +53801,7 @@
           "jsDoc": {
             "doc": "Iterator"
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -53441,6 +54217,7 @@
           "jsDoc": {
             "doc": "Iterator of values in the array."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -53600,6 +54377,7 @@
           "jsDoc": {
             "doc": "Iterator"
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -53648,6 +54426,7 @@
           "jsDoc": {
             "doc": "Returns an iterable of entries in the map."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -53830,6 +54609,7 @@
           "jsDoc": {
             "doc": "Returns an iterable of entries in the map."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -54055,7 +54835,31 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Map",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "K",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "K"
+                  }
+                },
+                {
+                  "repr": "V",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "V"
+                  }
+                }
+              ],
+              "typeName": "Map"
+            }
+          },
           "typeParams": [
             {
               "name": "K"
@@ -54168,7 +54972,31 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakMap",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "K",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "K"
+                  }
+                },
+                {
+                  "repr": "V",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "V"
+                  }
+                }
+              ],
+              "typeName": "WeakMap"
+            }
+          },
           "typeParams": [
             {
               "name": "K",
@@ -54213,6 +55041,7 @@
           "jsDoc": {
             "doc": "Iterates over values in the set."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -54378,6 +55207,7 @@
           "jsDoc": {
             "doc": "Iterates over values in the set."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -54576,7 +55406,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Set",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "Set"
+            }
+          },
           "typeParams": [
             {
               "name": "T"
@@ -54662,7 +55508,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakSet",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "WeakSet"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -55050,6 +55912,7 @@
           "jsDoc": {
             "doc": "Iterator"
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -55095,6 +55958,7 @@
             "line": 251,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -55260,7 +56124,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -55400,6 +56271,7 @@
             "line": 279,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -55565,7 +56437,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -55705,6 +56584,7 @@
             "line": 307,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -55870,7 +56750,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8ClampedArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8ClampedArray"
+            }
+          },
           "typeParams": []
         },
         {
@@ -56010,6 +56897,7 @@
             "line": 338,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -56175,7 +57063,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -56315,6 +57210,7 @@
             "line": 368,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -56480,7 +57376,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint16Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -56620,6 +57523,7 @@
             "line": 396,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -56785,7 +57689,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -56925,6 +57836,7 @@
             "line": 424,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -57090,7 +58002,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -57230,6 +58149,7 @@
             "line": 452,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -57395,7 +58315,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float32Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -57535,6 +58462,7 @@
             "line": 480,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -57700,7 +58628,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -57959,7 +58894,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Promise",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "Promise"
+            }
+          },
           "typeParams": [
             {
               "name": "T"
@@ -61193,6 +62144,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -62117,7 +63069,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "T",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "T"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -63160,6 +64119,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63270,6 +64230,7 @@
             "doc": "A method that determines if a constructor object recognizes an object as one of the\nconstructor’s instances. Called by the semantics of the instanceof operator."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63297,6 +64258,7 @@
             "doc": "A Boolean value that if true indicates that an object should flatten to its array elements\nby Array.prototype.concat."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63324,6 +64286,7 @@
             "doc": "A regular expression method that matches the regular expression against a string. Called\nby the String.prototype.match method."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63351,6 +64314,7 @@
             "doc": "A regular expression method that replaces matched substrings of a string. Called by the\nString.prototype.replace method."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63378,6 +64342,7 @@
             "doc": "A regular expression method that returns the index within a string that matches the\nregular expression. Called by the String.prototype.search method."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63405,6 +64370,7 @@
             "doc": "A function valued property that is the constructor function that is used to create\nderived objects."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63432,6 +64398,7 @@
             "doc": "A regular expression method that splits a string at the indices that match the regular\nexpression. Called by the String.prototype.split method."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63459,6 +64426,7 @@
             "doc": "A method that converts an object to a corresponding primitive value.\nCalled by the ToPrimitive abstract operation."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63486,6 +64454,7 @@
             "doc": "A String value that is used in the creation of the default string description of an object.\nCalled by the built-in method Object.prototype.toString."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63513,6 +64482,7 @@
             "doc": "An Object whose own property names are property names that are excluded from the 'with'\nenvironment bindings of the associated objects."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -63558,6 +64528,7 @@
           "jsDoc": {
             "doc": "Converts a Symbol object to a symbol."
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -63588,6 +64559,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -63626,6 +64598,7 @@
           "jsDoc": {
             "doc": "Returns an object whose properties have the value 'true'\nwhen they will be absent when used in a 'with' statement."
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -63759,6 +64732,7 @@
           "jsDoc": {
             "doc": "Converts a Date object to a string."
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -63793,6 +64767,7 @@
           "jsDoc": {
             "doc": "Converts a Date object to a string."
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -63827,6 +64802,7 @@
           "jsDoc": {
             "doc": "Converts a Date object to a number."
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -63876,6 +64852,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -63935,6 +64912,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -63978,6 +64956,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64026,6 +65005,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64066,6 +65046,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64111,6 +65092,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64149,6 +65131,7 @@
           "jsDoc": {
             "doc": "Determines whether the given value inherits from this function if this function was used\nas a constructor function.\n\nA constructor function can control which objects are recognized as its instances by\n'instanceof' by overriding this method."
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64197,6 +65180,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64233,6 +65217,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64269,6 +65254,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64309,6 +65295,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64357,6 +65344,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64414,6 +65402,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64467,6 +65456,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64553,6 +65543,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64596,6 +65587,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -64658,6 +65650,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -64719,6 +65712,7 @@
                   "methods": [
                     {
                       "name": "[Symbol.match]",
+                      "kind": "method",
                       "params": [
                         {
                           "kind": "identifier",
@@ -64731,6 +65725,7 @@
                           }
                         }
                       ],
+                      "computed": true,
                       "optional": false,
                       "returnType": {
                         "repr": "",
@@ -64818,6 +65813,7 @@
                   "methods": [
                     {
                       "name": "[Symbol.replace]",
+                      "kind": "method",
                       "params": [
                         {
                           "kind": "identifier",
@@ -64840,6 +65836,7 @@
                           }
                         }
                       ],
+                      "computed": true,
                       "optional": false,
                       "returnType": {
                         "repr": "string",
@@ -64909,6 +65906,7 @@
                   "methods": [
                     {
                       "name": "[Symbol.replace]",
+                      "kind": "method",
                       "params": [
                         {
                           "kind": "identifier",
@@ -64969,6 +65967,7 @@
                           }
                         }
                       ],
+                      "computed": true,
                       "optional": false,
                       "returnType": {
                         "repr": "string",
@@ -65071,6 +66070,7 @@
                   "methods": [
                     {
                       "name": "[Symbol.search]",
+                      "kind": "method",
                       "params": [
                         {
                           "kind": "identifier",
@@ -65083,6 +66083,7 @@
                           }
                         }
                       ],
+                      "computed": true,
                       "optional": false,
                       "returnType": {
                         "repr": "number",
@@ -65142,6 +66143,7 @@
                   "methods": [
                     {
                       "name": "[Symbol.split]",
+                      "kind": "method",
                       "params": [
                         {
                           "kind": "identifier",
@@ -65164,6 +66166,7 @@
                           }
                         }
                       ],
+                      "computed": true,
                       "optional": false,
                       "returnType": {
                         "repr": "",
@@ -65233,6 +66236,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65269,6 +66273,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65305,6 +66310,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65344,6 +66350,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65383,6 +66390,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65422,6 +66430,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65461,6 +66470,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65500,6 +66510,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65539,6 +66550,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65578,6 +66590,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65617,6 +66630,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65656,6 +66670,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65695,6 +66710,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65734,6 +66750,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -65773,6 +66790,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -67384,6 +68402,7 @@
             "doc": "Read-only. The length of the ArrayBuffer (in bytes)."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -67401,6 +68420,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -67421,6 +68441,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -67472,7 +68493,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "SharedArrayBuffer",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "SharedArrayBuffer"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -67485,6 +68513,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -68676,6 +69705,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -68862,7 +69892,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int8Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -68894,7 +69931,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -68926,7 +69970,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint8ClampedArray",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint8ClampedArray"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -68958,7 +70009,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int16Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -68990,7 +70048,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint16Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint16Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69022,7 +70087,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Int32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Int32Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69054,7 +70126,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Uint32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Uint32Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69086,7 +70165,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float32Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float32Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69118,7 +70204,14 @@
           },
           "optional": false,
           "params": [],
-          "returnType": null,
+          "returnType": {
+            "repr": "Float64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Float64Array"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69403,6 +70496,7 @@
             "line": 28,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -69523,7 +70617,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "AsyncGenerator",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "AsyncGenerator"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69539,6 +70640,7 @@
             "doc": "The length of the arguments."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69559,6 +70661,7 @@
             "doc": "Returns the name of the function."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69579,6 +70682,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69695,7 +70799,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "AsyncGeneratorFunction",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "AsyncGeneratorFunction"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -69711,6 +70822,7 @@
             "doc": "The length of the arguments."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69731,6 +70843,7 @@
             "doc": "Returns the name of the function."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69751,6 +70864,7 @@
             "doc": "A reference to the prototype."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -69840,6 +70954,7 @@
             "doc": "A method that returns the default async iterator for an object. Called by the semantics of\nthe for-await-of statement."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -70142,6 +71257,7 @@
             "line": 40,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -70212,6 +71328,7 @@
             "line": 44,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -70766,7 +71883,62 @@
               "typeLiteral": {
                 "methods": [
                   {
+                    "name": "new",
+                    "kind": "method",
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "locales",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "string",
+                              "kind": "keyword",
+                              "keyword": "string"
+                            },
+                            {
+                              "repr": "",
+                              "kind": "array",
+                              "array": {
+                                "repr": "string",
+                                "kind": "keyword",
+                                "keyword": "string"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "kind": "identifier",
+                        "name": "options",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "PluralRulesOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "PluralRulesOptions"
+                          }
+                        }
+                      }
+                    ],
+                    "optional": false,
+                    "returnType": {
+                      "repr": "PluralRules",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "PluralRules"
+                      }
+                    },
+                    "typeParams": []
+                  },
+                  {
                     "name": "supportedLocalesOf",
+                    "kind": "method",
                     "params": [
                       {
                         "kind": "identifier",
@@ -71140,6 +72312,7 @@
             "doc": "Returns a Boolean value indicating the state of the dotAll flag (s) used with a regular expression.\nDefault is false. Read-only."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -72391,6 +73564,7 @@
             "doc": "Expose the [[Description]] internal slot of a symbol directly."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -73702,6 +74876,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -73848,6 +75023,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75849,6 +77025,7 @@
             "line": 383,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -75880,6 +77057,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75900,6 +77078,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75923,6 +77102,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75943,6 +77123,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75963,6 +77144,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -75980,6 +77162,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -76052,7 +77235,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigInt64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigInt64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -76085,7 +77275,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigInt64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigInt64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -76132,7 +77329,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigInt64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigInt64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -76354,6 +77558,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -76377,6 +77582,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78328,6 +79534,7 @@
             "line": 655,
             "col": 4
           },
+          "computed": true,
           "optional": false,
           "params": [],
           "returnType": {
@@ -78359,6 +79566,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78379,6 +79587,7 @@
             "doc": "The ArrayBuffer instance referenced by the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78402,6 +79611,7 @@
             "doc": "The length in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78422,6 +79632,7 @@
             "doc": "The offset in bytes of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78442,6 +79653,7 @@
             "doc": "The length of the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78459,6 +79671,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -78531,7 +79744,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigUint64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigUint64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -78564,7 +79784,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigUint64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigUint64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -78611,7 +79838,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "BigUint64Array",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "BigUint64Array"
+            }
+          },
           "typeParams": []
         },
         {
@@ -78833,6 +80067,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -78856,6 +80091,7 @@
             "doc": "The size in bytes of each element in the array."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -79998,7 +81234,68 @@
               "typeLiteral": {
                 "methods": [
                   {
+                    "name": "new",
+                    "kind": "method",
+                    "params": [
+                      {
+                        "kind": "identifier",
+                        "name": "locales",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "",
+                          "kind": "union",
+                          "union": [
+                            {
+                              "repr": "UnicodeBCP47LocaleIdentifier",
+                              "kind": "typeRef",
+                              "typeRef": {
+                                "typeParams": null,
+                                "typeName": "UnicodeBCP47LocaleIdentifier"
+                              }
+                            },
+                            {
+                              "repr": "",
+                              "kind": "array",
+                              "array": {
+                                "repr": "UnicodeBCP47LocaleIdentifier",
+                                "kind": "typeRef",
+                                "typeRef": {
+                                  "typeParams": null,
+                                  "typeName": "UnicodeBCP47LocaleIdentifier"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "kind": "identifier",
+                        "name": "options",
+                        "optional": true,
+                        "tsType": {
+                          "repr": "RelativeTimeFormatOptions",
+                          "kind": "typeRef",
+                          "typeRef": {
+                            "typeParams": null,
+                            "typeName": "RelativeTimeFormatOptions"
+                          }
+                        }
+                      }
+                    ],
+                    "optional": false,
+                    "returnType": {
+                      "repr": "RelativeTimeFormat",
+                      "kind": "typeRef",
+                      "typeRef": {
+                        "typeParams": null,
+                        "typeName": "RelativeTimeFormat"
+                      }
+                    },
+                    "typeParams": []
+                  },
+                  {
                     "name": "supportedLocalesOf",
+                    "kind": "method",
                     "params": [
                       {
                         "kind": "identifier",
@@ -81976,6 +83273,7 @@
             "doc": "A regular expression method that matches the regular expression against a string. Called\nby the String.prototype.matchAll method."
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -82028,6 +83326,7 @@
               }
             ]
           },
+          "computed": true,
           "optional": false,
           "params": [
             {
@@ -82168,7 +83467,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "AggregateError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "AggregateError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -82181,6 +83487,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -82675,6 +83982,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -82748,7 +84056,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakRef",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "WeakRef"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -82770,6 +84094,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -82946,6 +84271,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -83034,7 +84360,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "FinalizationRegistry",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "FinalizationRegistry"
+            }
+          },
           "typeParams": [
             {
               "name": "T"
@@ -83051,6 +84393,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -83214,7 +84557,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "Error",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "Error"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -83732,7 +85082,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "AggregateError",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "AggregateError"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -83745,6 +85102,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -84288,6 +85646,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -84361,7 +85720,23 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "WeakRef",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": [
+                {
+                  "repr": "T",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": null,
+                    "typeName": "T"
+                  }
+                }
+              ],
+              "typeName": "WeakRef"
+            }
+          },
           "typeParams": [
             {
               "name": "T",
@@ -84383,6 +85758,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {
@@ -84556,6 +85932,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": true,
           "optional": false,
           "tsType": {
@@ -84637,7 +86014,14 @@
               }
             }
           ],
-          "returnType": null,
+          "returnType": {
+            "repr": "FinalizationRegistry",
+            "kind": "typeRef",
+            "typeRef": {
+              "typeParams": null,
+              "typeName": "FinalizationRegistry"
+            }
+          },
           "typeParams": []
         }
       ],
@@ -84650,6 +86034,7 @@
             "col": 4
           },
           "params": [],
+          "readonly": true,
           "computed": false,
           "optional": false,
           "tsType": {

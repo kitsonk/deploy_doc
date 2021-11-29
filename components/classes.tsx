@@ -111,9 +111,9 @@ function getClassItemType(
 function getClassItemLabel(type: ClassItemType) {
   switch (type) {
     case "method":
-      return "Instance Methods";
+      return "Methods";
     case "prop":
-      return "Instance Properties";
+      return "Properties";
     case "static_method":
       return "Static Methods";
     case "static_prop":

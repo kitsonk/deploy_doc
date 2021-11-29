@@ -5088,6 +5088,7 @@
                   "line": 851,
                   "col": 4
                 },
+                "computed": true,
                 "optional": false,
                 "params": [],
                 "returnType": {
@@ -5136,6 +5137,7 @@
                   "doc": "Return the address of the `UDPConn`."
                 },
                 "params": [],
+                "readonly": true,
                 "computed": false,
                 "optional": false,
                 "tsType": {
@@ -5584,8 +5586,142 @@
                   "keyword": "string"
                 },
                 "typeParams": []
+              },
+              {
+                "name": "alpnProtocols",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 944,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nApplication-Layer Protocol Negotiation (ALPN) protocols supported by\nthe client. If not specified, no ALPN extension will be included in the\nTLS handshake."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "",
+                  "kind": "array",
+                  "array": {
+                    "repr": "string",
+                    "kind": "keyword",
+                    "keyword": "string"
+                  }
+                },
+                "typeParams": []
               }
             ],
+            "callSignatures": [],
+            "indexSignatures": [],
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "interface",
+          "name": "TlsHandshakeInfo",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 947,
+            "col": 2
+          },
+          "declarationKind": "export",
+          "interfaceDef": {
+            "extends": [],
+            "methods": [],
+            "properties": [
+              {
+                "name": "alpnProtocol",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 953,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nContains the ALPN protocol selected during negotiation with the server.\nIf no ALPN protocol selected, returns `null`."
+                },
+                "params": [],
+                "computed": false,
+                "optional": false,
+                "tsType": {
+                  "repr": "",
+                  "kind": "union",
+                  "union": [
+                    {
+                      "repr": "string",
+                      "kind": "keyword",
+                      "keyword": "string"
+                    },
+                    {
+                      "repr": "null",
+                      "kind": "keyword",
+                      "keyword": "null"
+                    }
+                  ]
+                },
+                "typeParams": []
+              }
+            ],
+            "callSignatures": [],
+            "indexSignatures": [],
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "interface",
+          "name": "TlsConn",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 956,
+            "col": 2
+          },
+          "declarationKind": "export",
+          "interfaceDef": {
+            "extends": [
+              {
+                "repr": "Conn",
+                "kind": "typeRef",
+                "typeRef": {
+                  "typeParams": null,
+                  "typeName": "Conn"
+                }
+              }
+            ],
+            "methods": [
+              {
+                "name": "handshake",
+                "kind": "method",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 960,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "Runs the client or server handshake protocol to completion if that has\nnot happened yet. Calling this method is optional; the TLS handshake\nwill be completed automatically as soon as data is sent or received."
+                },
+                "optional": false,
+                "params": [],
+                "returnType": {
+                  "repr": "Promise",
+                  "kind": "typeRef",
+                  "typeRef": {
+                    "typeParams": [
+                      {
+                        "repr": "TlsHandshakeInfo",
+                        "kind": "typeRef",
+                        "typeRef": {
+                          "typeParams": null,
+                          "typeName": "TlsHandshakeInfo"
+                        }
+                      }
+                    ],
+                    "typeName": "Promise"
+                  }
+                },
+                "typeParams": []
+              }
+            ],
+            "properties": [],
             "callSignatures": [],
             "indexSignatures": [],
             "typeParams": []
@@ -5596,7 +5732,7 @@
           "name": "connectTls",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 955,
+            "line": 978,
             "col": 2
           },
           "declarationKind": "export",
@@ -5646,7 +5782,7 @@
           "name": "ListenTlsOptions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 957,
+            "line": 980,
             "col": 2
           },
           "declarationKind": "export",
@@ -5658,7 +5794,50 @@
                 "name": "alpnProtocols",
                 "location": {
                   "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-                  "line": 964,
+                  "line": 987,
+                  "col": 4
+                },
+                "jsDoc": {
+                  "doc": "**UNSTABLE**: new API, yet to be vetted.\n\nApplication-Layer Protocol Negotiation (ALPN) protocols to announce to\nthe client. If not specified, no ALPN extension will be included in the\nTLS handshake."
+                },
+                "params": [],
+                "computed": false,
+                "optional": true,
+                "tsType": {
+                  "repr": "",
+                  "kind": "array",
+                  "array": {
+                    "repr": "string",
+                    "kind": "keyword",
+                    "keyword": "string"
+                  }
+                },
+                "typeParams": []
+              }
+            ],
+            "callSignatures": [],
+            "indexSignatures": [],
+            "typeParams": []
+          }
+        },
+        {
+          "kind": "interface",
+          "name": "StartTlsOptions",
+          "location": {
+            "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+            "line": 990,
+            "col": 2
+          },
+          "declarationKind": "export",
+          "interfaceDef": {
+            "extends": [],
+            "methods": [],
+            "properties": [
+              {
+                "name": "alpnProtocols",
+                "location": {
+                  "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
+                  "line": 997,
                   "col": 4
                 },
                 "jsDoc": {
@@ -5689,7 +5868,7 @@
           "name": "flock",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 972,
+            "line": 1005,
             "col": 2
           },
           "declarationKind": "export",
@@ -5743,7 +5922,7 @@
           "name": "flockSync",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 979,
+            "line": 1012,
             "col": 2
           },
           "declarationKind": "export",
@@ -5788,7 +5967,7 @@
           "name": "funlock",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 985,
+            "line": 1018,
             "col": 2
           },
           "declarationKind": "export",
@@ -5832,7 +6011,7 @@
           "name": "funlockSync",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 991,
+            "line": 1024,
             "col": 2
           },
           "declarationKind": "export",
@@ -5870,7 +6049,7 @@
     "name": "fetch",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 994,
+      "line": 1027,
       "col": 0
     },
     "declarationKind": "declare",
@@ -5981,7 +6160,7 @@
     "name": "WorkerOptions",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 999,
+      "line": 1032,
       "col": 0
     },
     "declarationKind": "declare",
@@ -5993,7 +6172,7 @@
           "name": "deno",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1033,
+            "line": 1066,
             "col": 2
           },
           "jsDoc": {
@@ -6401,7 +6580,7 @@
     "name": "WebSocketStreamOptions",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1053,
+      "line": 1086,
       "col": 0
     },
     "declarationKind": "declare",
@@ -6413,7 +6592,7 @@
           "name": "protocols",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1054,
+            "line": 1087,
             "col": 2
           },
           "params": [],
@@ -6434,7 +6613,7 @@
           "name": "signal",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1055,
+            "line": 1088,
             "col": 2
           },
           "params": [],
@@ -6461,7 +6640,7 @@
     "name": "WebSocketConnection",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1058,
+      "line": 1091,
       "col": 0
     },
     "declarationKind": "declare",
@@ -6473,7 +6652,7 @@
           "name": "readable",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1059,
+            "line": 1092,
             "col": 2
           },
           "params": [],
@@ -6513,7 +6692,7 @@
           "name": "writable",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1060,
+            "line": 1093,
             "col": 2
           },
           "params": [],
@@ -6553,7 +6732,7 @@
           "name": "extensions",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1061,
+            "line": 1094,
             "col": 2
           },
           "params": [],
@@ -6570,7 +6749,7 @@
           "name": "protocol",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1062,
+            "line": 1095,
             "col": 2
           },
           "params": [],
@@ -6594,7 +6773,7 @@
     "name": "WebSocketCloseInfo",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1065,
+      "line": 1098,
       "col": 0
     },
     "declarationKind": "declare",
@@ -6606,7 +6785,7 @@
           "name": "code",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1066,
+            "line": 1099,
             "col": 2
           },
           "params": [],
@@ -6623,7 +6802,7 @@
           "name": "reason",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1067,
+            "line": 1100,
             "col": 2
           },
           "params": [],
@@ -6647,7 +6826,7 @@
     "name": "WebSocketStream",
     "location": {
       "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-      "line": 1070,
+      "line": 1103,
       "col": 0
     },
     "declarationKind": "declare",
@@ -6684,7 +6863,7 @@
           ],
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1071,
+            "line": 1104,
             "col": 2
           }
         }
@@ -6704,7 +6883,7 @@
           "name": "url",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1072,
+            "line": 1105,
             "col": 2
           }
         },
@@ -6734,7 +6913,7 @@
           "name": "connection",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1073,
+            "line": 1106,
             "col": 2
           }
         },
@@ -6764,7 +6943,7 @@
           "name": "closed",
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1074,
+            "line": 1107,
             "col": 2
           }
         }
@@ -6805,7 +6984,7 @@
           },
           "location": {
             "filename": "https://raw.githubusercontent.com/denoland/deno/main/cli/dts/lib.deno.unstable.d.ts",
-            "line": 1075,
+            "line": 1108,
             "col": 2
           }
         }

@@ -167,16 +167,36 @@ export function Section<Node extends DocNode>(
   { children, path, style, title }: NodesProps<Node>,
 ) {
   const nodes = take(children);
-  const items = nodes.sort(byName).map((node) => (
-    <Entry path={path} style={style}>
-      {node}
-    </Entry>
-  ));
+  const displayed = new Set();
+  const items = nodes.sort(byName).map((node) => {
+    if (displayed.has(node.name)) {
+      return;
+    }
+    displayed.add(node.name);
+    return (
+      <Entry path={path} style={style}>
+        {node}
+      </Entry>
+    );
+  });
   return (
     <div>
       <SectionTitle>{title}</SectionTitle>
       <ul>{items}</ul>
     </div>
+  );
+}
+
+export function SubSectionTitle(
+  { children, id }: { children: Child<string>; id: string },
+) {
+  const name = take(children);
+  const target = `${id}_${name.replaceAll(TARGET_RE, "_")}`;
+  return (
+    <h3 class={gtw("subSection")} id={target}>
+      <Anchor>{target}</Anchor>
+      {name}
+    </h3>
   );
 }
 
