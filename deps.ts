@@ -8,7 +8,6 @@
 export {
   Application,
   HttpError,
-  proxy,
   Router,
   Status,
   STATUS_TEXT,
@@ -20,8 +19,6 @@ export type {
   RouterContext,
   RouterMiddleware,
 } from "https://deno.land/x/oak@v10.0.0/mod.ts";
-
-export { lookup } from "https://deno.land/x/media_types@v2.11.0/mod.ts";
 
 export * as colors from "https://deno.land/std@0.114.0/fmt/colors.ts";
 

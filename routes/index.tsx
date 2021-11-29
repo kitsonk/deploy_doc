@@ -12,7 +12,7 @@ function Meta() {
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@denoland" />
       <meta name="twitter:creator" content="@kitsonk" />
-      <meta name="twitter:image" content="/static/banner.svg" />
+      <meta name="twitter:image" content="/img/banner" />
       <meta name="twitter:image:alt" content="Deno Doc logo" />
       <meta property="og:title" content="Deploy Doc" />
       <meta

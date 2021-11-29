@@ -1,13 +1,6 @@
 #!/usr/bin/env -S deno run --allow-read --allow-net
 
-import {
-  Application,
-  colors,
-  HttpError,
-  lookup,
-  proxy,
-  Router,
-} from "./deps.ts";
+import { Application, colors, HttpError, Router } from "./deps.ts";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
