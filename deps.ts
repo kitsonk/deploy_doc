@@ -62,6 +62,8 @@ import type {} from "./types.d.ts";
 
 export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
 
+export { render } from "https://deno.land/x/resvg_wasm@0.1.0/mod.ts";
+
 export { doc } from "https://raw.githubusercontent.com/denoland/deno_doc/main/mod.ts";
 export type {
   DocOptions,
