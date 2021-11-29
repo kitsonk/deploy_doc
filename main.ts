@@ -1,6 +1,13 @@
 #!/usr/bin/env -S deno run --allow-read --allow-net
 
-import { Application, colors, HttpError, Router } from "./deps.ts";
+import {
+  Application,
+  colors,
+  HttpError,
+  lookup,
+  proxy,
+  Router,
+} from "./deps.ts";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
@@ -19,6 +26,17 @@ router.get("/:proto(deno)/:host/~/:item+", pathGetHead);
 router.head("/:proto(deno)/:host", pathGetHead);
 router.head("/:proto(deno)/:host/~/:item+", pathGetHead);
 router.get("/doc", docGet);
+router.get("/img/:path*", async (ctx, next) => {
+  const { render } = await import(
+    "https://deno.land/x/resvg_wasm@0.1.0/mod.ts"
+  );
+  const res = await fetch(
+    new URL(`./static/${ctx.params.path}.svg`, import.meta.url),
+  );
+  ctx.response.body = render(await res.text());
+  ctx.response.type = "png";
+  await next();
+});
 
 const app = new Application();
 

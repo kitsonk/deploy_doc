@@ -8,6 +8,7 @@
 export {
   Application,
   HttpError,
+  proxy,
   Router,
   Status,
   STATUS_TEXT,
@@ -19,6 +20,8 @@ export type {
   RouterContext,
   RouterMiddleware,
 } from "https://deno.land/x/oak@v10.0.0/mod.ts";
+
+export { lookup } from "https://deno.land/x/media_types@v2.11.0/mod.ts";
 
 export * as colors from "https://deno.land/std@0.114.0/fmt/colors.ts";
 
@@ -62,11 +65,11 @@ import type {} from "./types.d.ts";
 
 export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
 
-export { doc } from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/mod.ts";
+export { doc } from "https://raw.githubusercontent.com/denoland/deno_doc/main/mod.ts";
 export type {
   DocOptions,
   LoadResponse,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/mod.ts";
+} from "https://raw.githubusercontent.com/denoland/deno_doc/main/mod.ts";
 export type {
   Accessibility,
   ClassConstructorDef,
@@ -124,4 +127,4 @@ export type {
   TsTypeTypePredicateDef,
   TsTypeTypeRefDef,
   TsTypeUnionDef,
-} from "https://raw.githubusercontent.com/kitsonk/deno_doc/fix_interfaces/lib/types.d.ts";
+} from "https://raw.githubusercontent.com/denoland/deno_doc/main/lib/types.d.ts";
