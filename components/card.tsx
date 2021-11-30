@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h, removeMarkdown } from "../deps.ts";
+import { h, htmlEntities, removeMarkdown } from "../deps.ts";
 import { parseURL } from "../util.ts";
 
 const wrap = (s: string) =>
@@ -39,9 +39,12 @@ function DenoLogo() {
 
 export function ModuleCard({ url, doc }: { url: string; doc: string }) {
   const lines = wrap(
-    removeMarkdown(doc).split("\n\n").map((l) => l.replaceAll("\n", " ")).join(
-      "\n\n",
-    ),
+    htmlEntities.encode(removeMarkdown(doc)).split("\n\n").map((l) =>
+      l.replaceAll("\n", " ")
+    )
+      .join(
+        "\n\n",
+      ),
   ).split("\n").slice(0, 7);
   const parsed = parseURL(url);
   let title;
@@ -168,7 +171,9 @@ export function SymbolCard(
   { url, item, doc }: { url: string; item: string; doc: string },
 ) {
   const lines = wrap(
-    removeMarkdown(doc).split("\n\n").map((l) => l.replaceAll("\n", " ")).join(
+    htmlEntities.encode(removeMarkdown(doc)).split("\n\n").map((l) =>
+      l.replaceAll("\n", " ")
+    ).join(
       "\n\n",
     ),
   ).split("\n").slice(0, 7);

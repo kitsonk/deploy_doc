@@ -229,7 +229,6 @@ export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
     [search, item] = search.split("/~/");
   }
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  console.log(path, search, item);
   const url = `${proto}//${host}/${path ?? ""}${search}`;
   await maybeCacheStatic(url, host);
   return process(ctx, url, proto === "deno", item);
@@ -243,9 +242,13 @@ export const docGet = (ctx: RouterContext<"/doc">) => {
 };
 
 export const imgGet = async <R extends string>(ctx: RouterContext<R>) => {
-  const { proto, host, item, path } = ctx.params;
+  let { proto, host, item, path } = ctx.params;
+  let { search } = ctx.request.url;
+  if (search.includes("/~/")) {
+    [search, item] = search.split("/~/");
+  }
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  const url = `${proto}//${host}/${path ?? ""}`;
+  const url = `${proto}//${host}/${path ?? ""}${search}`;
   await maybeCacheStatic(url, host);
   let entries = await getEntries(ctx, url);
   if (item) {
