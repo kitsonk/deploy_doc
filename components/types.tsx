@@ -602,10 +602,7 @@ function TypeRefLink({ children }: { children: Child<string> }) {
     return name;
   }
   const [link] = links;
-  const ref = (link.kind === "import" ? link.importDef.src : url).replace(
-    "://",
-    "/",
-  );
+  const ref = (link.kind === "import" ? link.importDef.src : url);
   const href = `/${ref}${ref.endsWith("/") ? "" : "/"}~/${link.name}${
     anchor && `#${anchor}`
   }`;
