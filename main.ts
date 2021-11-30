@@ -1,10 +1,17 @@
 #!/usr/bin/env -S deno run --allow-read --allow-net
 
-import { Application, colors, HttpError, render, Router } from "./deps.ts";
+import {
+  Application,
+  colors,
+  HttpError,
+  lookup,
+  proxy,
+  Router,
+} from "./deps.ts";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
-import { docGet, pathGetHead } from "./routes/doc.tsx";
+import { docGet, imgGet, pathGetHead } from "./routes/doc.tsx";
 import { indexGet } from "./routes/index.tsx";
 
 const router = new Router();
@@ -19,14 +26,16 @@ router.get("/:proto(deno)/:host/~/:item+", pathGetHead);
 router.head("/:proto(deno)/:host", pathGetHead);
 router.head("/:proto(deno)/:host/~/:item+", pathGetHead);
 router.get("/doc", docGet);
-router.get("/img/:path*", async (ctx, next) => {
-  const res = await fetch(
-    new URL(`./static/${ctx.params.path}.svg`, import.meta.url),
-  );
-  ctx.response.body = render(await res.text());
-  ctx.response.type = "png";
-  await next();
-});
+router.get(
+  "/static/:path*",
+  proxy(new URL("./", import.meta.url), {
+    contentType(url, contentType) {
+      return lookup(url) ?? contentType;
+    },
+  }),
+);
+router.get("/img/:proto(http|https)/:host/:path*/~/:item+", imgGet);
+router.get("/img/:proto(http|https)/:host/:path*", imgGet);
 
 const app = new Application();
 

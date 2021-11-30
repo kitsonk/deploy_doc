@@ -8,6 +8,7 @@
 export {
   Application,
   HttpError,
+  proxy,
   Router,
   Status,
   STATUS_TEXT,
@@ -61,6 +62,8 @@ export {
 import type {} from "./types.d.ts";
 
 export * as comrak from "https://deno.land/x/comrak@0.1.1/mod.ts";
+
+export { lookup } from "https://deno.land/x/media_types@v2.11.0/mod.ts";
 
 export { render } from "https://deno.land/x/resvg_wasm@0.1.0/mod.ts";
 

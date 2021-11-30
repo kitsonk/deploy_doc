@@ -1,5 +1,6 @@
 /** @jsx h */
 import { App } from "../components/app.tsx";
+import { ModuleCard } from "../components/card.tsx";
 import { DocPage } from "../components/doc.tsx";
 import {
   colors,
@@ -7,9 +8,9 @@ import {
   getStyleTag,
   h,
   Helmet,
+  render,
   renderSSR,
   Status,
-  tw,
 } from "../deps.ts";
 import type {
   DocNode,
@@ -147,16 +148,12 @@ function Title({ item, url }: { item?: string | null; url: string }) {
   return <title>Deno Doc - {item ? `${url} — ${item}` : url}</title>;
 }
 
-async function process<R extends string>(
+async function getEntries<R extends string>(
   ctx: RouterContext<R>,
   url: string,
-  includePrivate: boolean,
-  item?: string | null,
-) {
-  let entries: DocNode[];
-  if (cachedEntries.has(url)) {
-    entries = cachedEntries.get(url)!;
-  } else {
+): Promise<DocNode[]> {
+  let entries = cachedEntries.get(url);
+  if (!entries) {
     try {
       const start = Date.now();
       entries = await doc(url, { load });
@@ -183,7 +180,16 @@ async function process<R extends string>(
       }
     }
   }
+  return entries;
+}
 
+async function process<R extends string>(
+  ctx: RouterContext<R>,
+  url: string,
+  includePrivate: boolean,
+  item?: string | null,
+) {
+  const entries = await getEntries(ctx, url);
   store.setState({ entries, url, includePrivate });
   sheet.reset();
   const page = renderSSR(
@@ -201,21 +207,27 @@ async function process<R extends string>(
   ctx.response.type = "html";
 }
 
-export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
-  const url = `${ctx.params.proto}://${ctx.params.host}/${
-    ctx.params.path ??
-      ""
-  }`;
-  const item = ctx.params.item;
-  if (ctx.params.proto === "deno" && !cachedEntries.has(url)) {
-    const res = await fetch(
-      new URL(`../static/${ctx.params.host}.json`, import.meta.url),
-    );
-    if (res.status === 200) {
-      cachedEntries.set(url, mergeEntries(await res.json()));
+async function maybeCacheStatic(url: string, host: string) {
+  if (url.startsWith("deno") && !cachedEntries.has(url)) {
+    try {
+      const res = await fetch(
+        new URL(`../static/${host}.json`, import.meta.url),
+      );
+      if (res.status === 200) {
+        cachedEntries.set(url, mergeEntries(await res.json()));
+      }
+    } catch {
+      // just swallowing here
     }
   }
-  return process(ctx, url, ctx.params.proto === "deno", item);
+}
+
+export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
+  const { proto, host, item, path } = ctx.params;
+  ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
+  const url = `${proto}://${host}/${path ?? ""}`;
+  await maybeCacheStatic(url, host);
+  return process(ctx, url, proto === "deno", item);
 };
 
 export const docGet = (ctx: RouterContext<"/doc">) => {
@@ -223,4 +235,20 @@ export const docGet = (ctx: RouterContext<"/doc">) => {
   ctx.assert(url, Status.BadRequest, "The query property `url` is missing.");
   const item = ctx.request.url.searchParams.get("item");
   return process(ctx, url, false, item);
+};
+
+export const imgGet = async <R extends string>(ctx: RouterContext<R>) => {
+  const { proto, host, item, path } = ctx.params;
+  ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
+  const url = `${proto}://${host}/${path ?? ""}`;
+  await maybeCacheStatic(url, host);
+  await getEntries(ctx, url);
+  const img = renderSSR(
+    <ModuleCard
+      url={url}
+      doc={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`}
+    />,
+  );
+  ctx.response.body = render(`<?xml version="1.0" encoding="UTF-8"?>${img}`);
+  ctx.response.type = "png";
 };

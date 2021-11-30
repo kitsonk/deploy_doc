@@ -41,15 +41,6 @@ export function getBody(
   },
   styles: string,
 ): string {
-  // const meta = `
-  // <meta name="twitter:card" content="summary" />
-  // <meta name="twitter:site" content="@denoland" />
-  // <meta name="twitter:creator" content="@kitsonk" />
-  // <meta name="twitter:image:alt" content="Deploy Doc logo" />
-  // <meta property="og:title" content="Deploy Doc" />
-  // <meta property="og:description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
-  // <meta name="description" content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation." />
-  // `;
   return `<!DOCTYPE html>
   <html lang="en">
     <head>

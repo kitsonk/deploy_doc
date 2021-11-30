@@ -9,22 +9,26 @@ import { getBody } from "../util.ts";
 function Meta() {
   return (
     <Helmet>
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@denoland" />
-      <meta name="twitter:creator" content="@kitsonk" />
-      <meta
-        name="twitter:image"
-        content="https://deno-doc.deno.dev/img/banner"
-      />
-      <meta name="twitter:image:alt" content="Deno Doc logo" />
+      <meta name="twitter:creator" content="@denoland" />
       <meta property="og:title" content="Deploy Doc" />
       <meta
-        property="og:description"
-        content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation."
+        name="og:image"
+        content="https://deno-doc.deno.dev/static/banner.png"
       />
       <meta
+        name="og:image:alt"
+        content="a logo of a sauropod in the rain with the text Deno Doc Documentation Generator"
+      />
+      <meta
+        property="og:description"
+        content="Dynamically generate documentation for your code. Running on Deno Deploy."
+      />
+      <meta property="og:type" content="website" />
+      <meta
         name="description"
-        content="An example web application using Deno CLI's documentation logic on Deno Deploy to create on demand documentation."
+        content="Dynamically generate documentation for your code. Running on Deno Deploy."
       />
     </Helmet>
   );
