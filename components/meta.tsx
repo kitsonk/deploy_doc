@@ -21,7 +21,7 @@ export function Meta(
 ) {
   const description = removeMarkdown(doc);
   const href = item ? `${url}${url.endsWith("/") ? "" : "/"}~/${item}` : url;
-  const imageUrl = `https://deno-doc.deno.dev/${href}`;
+  const imageUrl = `https://deno-doc.deno.dev/img/${href}`;
   const title = item
     ? `Deno Doc - ${getLabel(url)} - ${item}`
     : `Deno Doc - ${getLabel(url)}`;
