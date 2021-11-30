@@ -17,14 +17,14 @@ import { indexGet } from "./routes/index.tsx";
 const router = new Router();
 
 router.get("/", indexGet);
-router.get("/:proto(http|https)/:host/:path*/~/:item+", pathGetHead);
-router.get("/:proto(http|https)/:host/:path*", pathGetHead);
-router.head("/:proto(http|https)/:host/:path*/~/:item+", pathGetHead);
-router.head("/:proto(http|https)/:host/:path*", pathGetHead);
-router.get("/:proto(deno)/:host", pathGetHead);
-router.get("/:proto(deno)/:host/~/:item+", pathGetHead);
-router.head("/:proto(deno)/:host", pathGetHead);
-router.head("/:proto(deno)/:host/~/:item+", pathGetHead);
+router.get("/:proto(http:|https:)//:host/:path*/~/:item+", pathGetHead);
+router.get("/:proto(http:|https:)//:host/:path*", pathGetHead);
+router.head("/:proto(http:|https:)//:host/:path*/~/:item+", pathGetHead);
+router.head("/:proto(http:|https:)//:host/:path*", pathGetHead);
+router.get("/:proto(deno)//:host", pathGetHead);
+router.get("/:proto(deno)//:host/~/:item+", pathGetHead);
+router.head("/:proto(deno)//:host", pathGetHead);
+router.head("/:proto(deno)//:host/~/:item+", pathGetHead);
 router.get("/doc", docGet);
 router.get(
   "/static/:path*",
@@ -34,8 +34,10 @@ router.get(
     },
   }),
 );
-router.get("/img/:proto(http|https)/:host/:path*/~/:item+", imgGet);
-router.get("/img/:proto(http|https)/:host/:path*", imgGet);
+router.get("/img/:proto(http|https:)//:host/:path*/~/:item+", imgGet);
+router.get("/img/:proto(http|https:)//:host/:path*", imgGet);
+router.get("/img/:proto(deno)//:host", imgGet);
+router.get("/img/:proto(deno)//:host/~/:item+", imgGet);
 
 const app = new Application();
 

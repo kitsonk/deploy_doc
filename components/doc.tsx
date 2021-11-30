@@ -331,7 +331,7 @@ export function DocPage(
 function SideBarHeader({ children }: { children: Child<string> }) {
   const url = take(children);
   const parsed = parseURL(url);
-  const href = `/${url.replace("://", "/")}`;
+  const href = `/${url}`;
   if (parsed) {
     const module = parsed.module
       ? parsed.module.replaceAll("/", "&#8203;/")
@@ -397,16 +397,16 @@ function SideBarHeader({ children }: { children: Child<string> }) {
   } else {
     let name;
     switch (url) {
-      case "deno://stable/":
+      case "deno//stable/":
         name = "Deno Stable APIs";
         break;
-      case "deno://unstable/":
+      case "deno//unstable/":
         name = "Deno Unstable APIs";
         break;
-      case "deno://esnext/":
+      case "deno//esnext/":
         name = "ESNext APIs";
         break;
-      case "deno://dom/":
+      case "deno//dom/":
         name = "DOM APIs";
         break;
       default:

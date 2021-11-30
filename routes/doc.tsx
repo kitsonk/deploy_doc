@@ -1,6 +1,6 @@
 /** @jsx h */
 import { App } from "../components/app.tsx";
-import { ModuleCard } from "../components/card.tsx";
+import { ModuleCard, SymbolCard } from "../components/card.tsx";
 import { DocPage } from "../components/doc.tsx";
 import {
   colors,
@@ -225,7 +225,7 @@ async function maybeCacheStatic(url: string, host: string) {
 export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
   const { proto, host, item, path } = ctx.params;
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  const url = `${proto}://${host}/${path ?? ""}`;
+  const url = `${proto}//${host}/${path ?? ""}`;
   await maybeCacheStatic(url, host);
   return process(ctx, url, proto === "deno", item);
 };
@@ -240,15 +240,42 @@ export const docGet = (ctx: RouterContext<"/doc">) => {
 export const imgGet = async <R extends string>(ctx: RouterContext<R>) => {
   const { proto, host, item, path } = ctx.params;
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  const url = `${proto}://${host}/${path ?? ""}`;
+  const url = `${proto}//${host}/${path ?? ""}`;
   await maybeCacheStatic(url, host);
-  await getEntries(ctx, url);
-  const img = renderSSR(
-    <ModuleCard
-      url={url}
-      doc={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`}
-    />,
-  );
-  ctx.response.body = render(`<?xml version="1.0" encoding="UTF-8"?>${img}`);
-  ctx.response.type = "png";
+  let entries = await getEntries(ctx, url);
+  if (item) {
+    const path = item.split(".");
+    const name = path.pop()!;
+    if (path && path.length) {
+      for (const name of path) {
+        const namespace = entries.find((n) =>
+          n.kind === "namespace" && n.name === name
+        ) as DocNodeNamespace | undefined;
+        if (namespace) {
+          entries = namespace.namespaceDef.elements;
+        }
+      }
+    }
+    const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
+    if (!nodes.length) {
+      return ctx.throw(Status.NotFound);
+    }
+    let jsDoc;
+    for (const node of nodes) {
+      if (node.jsDoc) {
+        jsDoc = node.jsDoc;
+        break;
+      }
+    }
+    const img = renderSSR(
+      <SymbolCard url={url} item={item} doc={jsDoc?.doc ?? ""} />,
+    );
+    ctx.response.body = render(`<?xml version="1.0" encoding="UTF-8"?>${img}`);
+    ctx.response.type = "png";
+  } else {
+    const jsDoc = entries.find(({ kind }) => kind === "moduleDoc")?.jsDoc;
+    const img = renderSSR(<ModuleCard url={url} doc={jsDoc?.doc ?? ""} />);
+    ctx.response.body = render(`<?xml version="1.0" encoding="UTF-8"?>${img}`);
+    ctx.response.type = "png";
+  }
 };

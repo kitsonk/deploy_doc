@@ -146,7 +146,7 @@ interface NodeLinkProps {
 export function NodeLink({ children, path }: NodeLinkProps) {
   const node = take(children);
   const { url } = store.state as StoreState;
-  const href = `/${url.replace("://", "/")}${url.endsWith("/") ? "" : "/"}~/${
+  const href = `/${url}${url.endsWith("/") ? "" : "/"}~/${
     [...path ?? [], node.name].join(".")
   }`;
   return <a href={href}>{node.name}</a>;

@@ -9,7 +9,7 @@ interface DocLinksProps {
 function DocLinks({ children }: DocLinksProps) {
   const links = children.map((child) => (
     <li>
-      <a class={gtw("link")} href={`/${child.replace("://", "/")}`}>
+      <a class={gtw("link")} href={`/${child}`}>
         <code>{child}</code>
       </a>
     </li>
@@ -53,22 +53,22 @@ export function SpecifierForm() {
             for:
             <ul class={gtw("list")}>
               <li>
-                <a class={gtw("link")} href="/deno/stable">
+                <a class={gtw("link")} href="/deno//stable">
                   Deno Built-In Library
                 </a>
               </li>
               <li>
-                <a class={gtw("link")} href="/deno/unstable">
+                <a class={gtw("link")} href="/deno//unstable">
                   Deno Unstable Built-In Library
                 </a>
               </li>
               <li>
-                <a class={gtw("link")} href="/deno/esnext">
+                <a class={gtw("link")} href="/deno//esnext">
                   ESNext Library
                 </a>
               </li>
               <li>
-                <a class={gtw("link")} href="/deno/dom">
+                <a class={gtw("link")} href="/deno//dom">
                   DOM Library
                 </a>
               </li>
