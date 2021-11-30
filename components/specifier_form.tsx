@@ -20,89 +20,41 @@ function DocLinks({ children }: DocLinksProps) {
 export function SpecifierForm() {
   return (
     <main class={tw`max-w-screen-md px-4 pt-16 mx-auto text-gray-900`}>
-      <h1 class={tw`text-5xl font-bold`}>Deno Doc on Deploy</h1>
-      <form
-        action="/doc"
-        method="get"
+      <h1 class={tw`text-5xl font-bold`}>Deno Doc</h1>
+      <div
         class={tw`p-6 md:(col-span-3 p-12)`}
       >
         <div class={tw`space-y-6`}>
           <p>
-            This website utilizes the <code>deno_doc</code>{" "}
-            crate as a Web Assembly library under Deno Deploy. The{" "}
-            <code>deno_doc</code> crate is what is used for the{" "}
-            <code>deno doc</code> subcommand and powers{" "}
-            <code>doc.deno.land</code>.
+            <a href="/deno//stable">
+              <button
+                class="transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg mt-6 w-full"
+                type="button"
+                style="background: linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%);"
+              >
+                Deno CLI APIs (Stable)
+              </button>
+            </a>
           </p>
           <p>
-            You can take it for a test spin by supplying a URL module specifier
-            below, which will be fetched by the Deploy worker and analyzed,
-            returning a documentation to your browser.
-          </p>
-          <p>
-            If you need some inspiration, you can click through to see some
-            examples:
-            <DocLinks>
-              {"https://deno.land/std/fmt/colors.ts"}
-              {"https://deno.land/x/oak/mod.ts"}
-              {"https://deno.land/x/zod/mod.ts"}
-            </DocLinks>
-          </p>
-          <p>
-            There are a few built-in libraries that you can get documentation
-            for:
-            <ul class={gtw("list")}>
-              <li>
-                <a class={gtw("link")} href="/deno//stable">
-                  Deno Built-In Library
-                </a>
-              </li>
-              <li>
-                <a class={gtw("link")} href="/deno//unstable">
-                  Deno Unstable Built-In Library
-                </a>
-              </li>
-              <li>
-                <a class={gtw("link")} href="/deno//esnext">
-                  ESNext Library
-                </a>
-              </li>
-              <li>
-                <a class={gtw("link")} href="/deno//dom">
-                  DOM Library
-                </a>
-              </li>
-            </ul>
-          </p>
-          <p>
-            The source for this web application is available{" "}
-            <a
-              class={gtw("url")}
-              href="https://github.com/kitsonk/deploy_doc"
-              target="_blank"
-            >
-              https://github.com/kitsonk/deploy_doc
-            </a>{" "}
-            and you can{" "}
-            <a
-              class={tw
-                `transition focus-visible:ring-2 focus-visible:ring-black focus:outline-none my-1 py-2 px-2.5 text-base text-gray-600 border border-gray-300 rounded-xl hover:shadow hidden lg:inline h-full`}
-              href={`https://dash.deno.com/new?url=${
-                encodeURIComponent(
-                  "https://raw.githubusercontent.com/kitsonk/deploy_doc/main/main.ts",
-                )
-              }`}
-              target="_blank"
-            >
-              Deploy It...
-            </a>{" "}
-            yourself if you wish.
+            <a href="/deno//unstable">
+              <button
+                class="transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg mt-6 w-full"
+                type="button"
+                style="background: linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%);"
+              >
+                Deno CLI APIs (<code>--unstable</code>)
+              </button>
+            </a>
           </p>
         </div>
-        <div class={tw`grid grid-cols-1 sm:grid-cols-7 mt-4 gap-4`}>
-          <div
+        <div class={tw`text-center my-6`}>or view documentation for</div>
+        <div>
+          <form
             class={tw
               `relative text-gray-500 focus-within:text-gray-700 sm:col-span-6`}
+            action="/doc"
+            method="get"
           >
             <label
               for="url"
@@ -111,7 +63,7 @@ export function SpecifierForm() {
             >
               URL to Document
             </label>
-            <div class={tw`pt-3`}>
+            <div class={tw`pt-3 w-full`}>
               <div
                 class={tw
                   `relative border border-gray-300 focus-within:border-gray-500 rounded-xl overflow-hidden transition flex`}
@@ -136,9 +88,50 @@ export function SpecifierForm() {
                 Document
               </button>
             </div>
-          </div>
+          </form>
         </div>
-      </form>
+        <div class={tw`space-y-6 mt-8`}>
+          <p>
+            Some samples of documentation:
+            <DocLinks>
+              {"https://deno.land/std/fs/mod.ts"}
+              {"https://deno.land/x/oak/mod.ts"}
+              {"https://deno.land/x/redis/mod.ts"}
+              {"https://deno.land/x/amqp/mod.ts"}
+              {"https://cdn.skypack.dev/@firebase/firestore?dts"}
+              {"https://esm.sh/preact"}
+              {"https://deno.land/std/archive/tar.ts"}
+              {"https://deno.land/std/node/http.ts"}
+            </DocLinks>
+          </p>
+          <p>
+            The source for this web application is available at{" "}
+            <a
+              class={gtw("url")}
+              href="https://github.com/kitsonk/deploy_doc"
+              target="_blank"
+            >
+              github.com/kitsonk/deploy_doc
+            </a>.
+          </p>
+          <p>
+            It can also be{" "}
+            <a
+              class={tw
+                `transition focus-visible:ring-2 focus-visible:ring-black focus:outline-none my-1 py-2 px-2.5 text-base text-gray-600 border border-gray-300 rounded-xl hover:shadow hidden lg:inline h-full`}
+              href={`https://dash.deno.com/new?url=${
+                encodeURIComponent(
+                  "https://raw.githubusercontent.com/kitsonk/deploy_doc/main/main.ts",
+                )
+              }`}
+              target="_blank"
+            >
+              Deployed...
+            </a>{" "}
+            into its own deployment as well.
+          </p>
+        </div>
+      </div>
     </main>
   );
 }

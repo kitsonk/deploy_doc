@@ -69,7 +69,7 @@ const baseStyles = {
   typeKeyword: applyNone,
   typeLink: apply`underline`,
   typeParam: applyNone,
-  url: apply`hover:text-blue-800`,
+  url: apply`hover:text-blue-800 underline`,
 } as const;
 
 export const codeBlockStyles = {

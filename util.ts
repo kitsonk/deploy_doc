@@ -1,3 +1,5 @@
+import { removeMarkdown } from "./deps.ts";
+
 export function assert(cond: unknown, msg = "Assertion failed"): asserts cond {
   if (!cond) {
     throw new Error(msg);
@@ -90,9 +92,12 @@ const patterns = {
   "esm.sh": new URLPattern(
     "http{s}?://esm.sh/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
   ),
-  "skypack.dev": new URLPattern(
-    "https://cdn.skypack.dev/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
-  ),
+  "skypack.dev": new URLPattern({
+    protocol: "https",
+    hostname: "cdn.skypack.dev",
+    pathname: "/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
+    search: "*",
+  }),
   "unpkg.com": new URLPattern(
     "https://unpkg.com/:org(@[^/]+)?/:pkg([^@/]+){@}?:ver?/:mod?",
   ),
@@ -126,4 +131,12 @@ export function parseURL(url: string): ParsedURL | undefined {
       };
     }
   }
+}
+
+/** Clean up markdown text, converting it into something that can be displayed
+ * just as "normal" text. */
+export function cleanMarkdown(markdown: string): string {
+  return removeMarkdown(markdown).split("\n\n").map((l) =>
+    l.replaceAll("\n", " ")
+  ).join("\n\n");
 }

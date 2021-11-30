@@ -1,5 +1,6 @@
 /** @jsx h */
 import { h, Helmet, removeMarkdown } from "../deps.ts";
+import { cleanMarkdown } from "../util.ts";
 
 function getLabel(url: string) {
   switch (url) {
@@ -19,7 +20,7 @@ function getLabel(url: string) {
 export function Meta(
   { url, doc, item }: { url: string; doc: string; item?: string },
 ) {
-  const description = removeMarkdown(doc);
+  const description = cleanMarkdown(doc);
   const href = item ? `${url}${url.endsWith("/") ? "" : "/"}~/${item}` : url;
   const imageUrl = `https://deno-doc.deno.dev/img/${href}`;
   const title = item

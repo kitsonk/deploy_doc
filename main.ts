@@ -39,6 +39,9 @@ router.get("/img/:proto(http|https:)//:host/:path*", imgGet);
 router.get("/img/:proto(deno)//:host", imgGet);
 router.get("/img/:proto(deno)//:host/~/:item+", imgGet);
 
+// redirects from legacy doc website
+router.get("/builtin/stable", (ctx) => ctx.response.redirect("/deno//stable"));
+
 const app = new Application();
 
 app.use(logging);
