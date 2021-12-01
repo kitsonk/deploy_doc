@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read --allow-net
+#!/usr/bin/env -S deno run --allow-read --allow-net --allow-env
 
 import {
   Application,
@@ -87,6 +87,6 @@ app.addEventListener("error", (evt) => {
 
 // we only listen if this is the main module, which allows use to facilitate
 // testing by lazily listening within the test harness
-if (Deno.mainModule === import.meta.url) {
+if (Deno.env.get("DENO_DEPLOYMENT_ID") || Deno.mainModule === import.meta.url) {
   app.listen({ port: 8080 });
 }
