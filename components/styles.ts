@@ -24,12 +24,22 @@ const smallCode = css({
   pre: apply`font-mono text-xs p-2 my-2 rounded-lg bg-gray-100`,
 });
 
+const app = css({
+  "grid-template-rows": "auto 1fr auto",
+});
+
+const buttonGradient = css({
+  "background":
+    "linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%)",
+});
+
 export const largeMarkdown = apply`p-4 flex flex-col space-y-4 ${code}`;
 
 const applyNone = apply``;
 
 const baseStyles = {
   anchor: apply`opacity-0 group-hover:opacity-100 absolute ${anchor}`,
+  app: apply`min-h-screen grid grid-cols-1 ${app}`,
   body: apply`bg-gray-300`,
   bold: apply`font-bold`,
   boolean: applyNone,
@@ -42,9 +52,13 @@ const baseStyles = {
   docSubItem: apply`group relative py-2 px-1 ml-2.5`,
   docTitle: apply`text-4xl text-gray-900 font-bold mb-3`,
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
+  formButton: apply
+    `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg w-full ${buttonGradient}`,
   fnName: applyNone,
   keyword: applyNone,
   indent: apply`ml-4`,
+  insideButton: apply
+    `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg ${buttonGradient}`,
   link: apply`hover:text-blue-800`,
   list: apply`list-disc list-inside ml-4`,
   logo: apply`h-16 mr-4 float-left`,
@@ -53,13 +67,13 @@ const baseStyles = {
   mainHeader: apply`clear-both mb-12`,
   markdown: apply`ml-4 mr-2 py-2 text-sm ${smallCode}`,
   numberLiteral: applyNone,
-  nodeClass: apply`text-green-600 mx-2`,
-  nodeEnum: apply`text-green-400 mx-2`,
-  nodeFunction: apply`text-green-700 mx-2`,
-  nodeInterface: apply`text-green-500 mx-2`,
-  nodeTypeAlias: apply`text-yellow-600 mx-2`,
-  nodeVariable: apply`text-blue-600 mx-2`,
-  nodeNamespace: apply`text-yellow-700 mx-2`,
+  nodeClass: apply`text-green-800 mx-2`,
+  nodeEnum: apply`text-green-700 mx-2`,
+  nodeFunction: apply`text-cyan-800 mx-2`,
+  nodeInterface: apply`text-cyan-900 mx-2`,
+  nodeTypeAlias: apply`text-yellow-700 mx-2`,
+  nodeVariable: apply`text-blue-700 mx-2`,
+  nodeNamespace: apply`text-yellow-800 mx-2`,
   section: apply`text-2xl border-b border-gray-400 p-2 mt-1 mb-3`,
   sourceLink: apply`absolute top-0 right-0`,
   subSection: apply`text-xl p-2 mx-2.5 mt-1 mb-2.5`,

@@ -1,8 +1,57 @@
 /** @jsx h */
-import { h, Helmet, tw } from "../deps.ts";
+import { h, tw } from "../deps.ts";
 import { gtw } from "./styles.ts";
 
-function DenoLogo() {
+export function App({ children }: { children?: unknown }) {
+  return (
+    <div class={gtw("app")}>
+      <Header />
+      <div>{children}</div>
+      <Footer />
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer class={tw`flex justify-between items-end p-8 pt-32`}>
+      <div class={tw`flex align-center`}>
+        <Logo />
+        <p class={tw`ml-4 font-bold text-xl`}>Deno</p>
+      </div>
+      <div class={tw`flex flex-col lg:flex-row gap-x-8 gap-y-6 text-right`}>
+        <FooterLink href="https://deno.com/deploy">Deploy</FooterLink>
+        <FooterLink href="https://deno.land/manual">Manual</FooterLink>
+        <FooterLink href="/deno//stable">Runtime API</FooterLink>
+        <FooterLink href="https://deno.land/std">Standard Library</FooterLink>
+        <FooterLink href="https://deno.land/x">Third Party Modules</FooterLink>
+        <FooterLink href="https://deno.com/blog">Blog</FooterLink>
+        <FooterLink href="https://deno.com/company">Company</FooterLink>
+      </div>
+    </footer>
+  );
+}
+
+function Header() {
+  return (
+    <header
+      class={tw
+        `px(3 lg:14) h(12 lg:20) text-gray-500 flex justify-between items-center`}
+    >
+      <a class={tw`flex items-center flex-shrink-0`} href="/">
+        <Logo />
+        <span class={tw`ml-4 text(2xl gray-900) font-bold`}>Deno</span>
+      </a>
+      <div class={tw`flex items-center gap-6`}>
+        <NavLink href="https://deno.land/">CLI</NavLink>
+        <NavLink href="https://deno.com/blog">Blog</NavLink>
+        <NavLink href="https://deno.com/deploy">Deploy</NavLink>
+      </div>
+    </header>
+  );
+}
+
+function Logo() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,68 +85,10 @@ function DenoLogo() {
   );
 }
 
-function NavLink(
+const NavLink = (
   { children, href }: { children?: unknown; href: string },
-) {
-  return <a href={href} class={tw`hover:underline`}>{children}</a>;
-}
+) => <a href={href} class={tw`hover:underline`}>{children}</a>;
 
-function FooterLink({ children, href }: { children?: unknown; href: string }) {
-  return (
-    <a href={href} class={tw`text-gray-500 hover:underline`}>
-      {children}
-    </a>
-  );
-}
-
-function Footer() {
-  return (
-    <footer class={tw`flex justify-between items-end p-8 pt-32`}>
-      <div class={tw`flex align-center`}>
-        <DenoLogo />
-        <p class={tw`ml-4 font-bold text-xl`}>Deno</p>
-      </div>
-      <div class={tw`flex flex-col lg:flex-row gap-x-8 gap-y-6 text-right`}>
-        <FooterLink href="https://deno.com/deploy">Deploy</FooterLink>
-        <FooterLink href="https://deno.land/manual">Manual</FooterLink>
-        <FooterLink href="/deno//stable">Runtime API</FooterLink>
-        <FooterLink href="https://deno.land/std">Standard Library</FooterLink>
-        <FooterLink href="https://deno.land/x">Third Party Modules</FooterLink>
-        <FooterLink href="https://deno.com/blog">Blog</FooterLink>
-        <FooterLink href="https://deno.com/company">Company</FooterLink>
-      </div>
-    </footer>
-  );
-}
-
-function Header() {
-  return (
-    <header
-      class={tw
-        `px(3 lg:14) h(12 lg:20) text-gray-500 flex justify-between items-center`}
-    >
-      <a class={tw`flex items-center flex-shrink-0`} href="/">
-        <DenoLogo />
-        <span class={tw`ml-4 text(2xl gray-900) font-bold`}>Deno</span>
-      </a>
-      <div class={tw`flex items-center gap-6`}>
-        <NavLink href="https://deno.land/">CLI</NavLink>
-        <NavLink href="https://deno.com/blog">Blog</NavLink>
-        <NavLink href="https://deno.com/deploy">Deploy</NavLink>
-      </div>
-    </header>
-  );
-}
-
-export function App({ children }: { children?: unknown }) {
-  return (
-    <div
-      class={tw`min-h-screen grid grid-cols-1`}
-      style="grid-template-rows: auto 1fr auto;"
-    >
-      <Header />
-      <div>{children}</div>
-      <Footer />
-    </div>
-  );
-}
+const FooterLink = (
+  { children, href }: { children?: unknown; href: string },
+) => <a href={href} class={tw`text-gray-500 hover:underline`}>{children}</a>;

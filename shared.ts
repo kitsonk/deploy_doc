@@ -67,3 +67,17 @@ interface SetState {
 
 export const getState = nanoGetSate as GetState;
 export const setState = nanoSetState as SetState;
+
+/** Labels for known "builtin" library documentation. */
+const BUILTIN_LABELS: Record<string, string> = {
+  "deno//stable/": "Deno CLI APIs (stable)",
+  "deno//unstable/": "Deno CLI APIs (unstable)",
+  "deno//esnext/": "ESNext APIs",
+  "deno//dom/": "DOM APIs",
+};
+
+/** Return a label for a URL, attempting to match the URL to the builtin label,
+ * otherwise returning a string with the protocol stripped from the URL. */
+export function getUrlLabel(url: string) {
+  return BUILTIN_LABELS[url] ?? url.replace(/^\S+\/{2}/, "");
+}

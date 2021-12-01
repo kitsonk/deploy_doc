@@ -1,31 +1,17 @@
 /** @jsx h */
-import { h, Helmet, removeMarkdown } from "../deps.ts";
+import { h, Helmet } from "../deps.ts";
+import { getUrlLabel } from "../shared.ts";
 import { cleanMarkdown } from "../util.ts";
 
-function getLabel(url: string) {
-  switch (url) {
-    case "deno//stable/":
-      return "Deno CLI Stable APIs";
-    case "deno//unstable/":
-      return "Deno Unstable Stable APIs";
-    case "deno//esnext/":
-      return "ESNext APIs";
-    case "deno//dom/":
-      return "DOM APIs";
-    default:
-      return url.replace(/^\S+:\/{2}/, "");
-  }
-}
-
-export function Meta(
+export function DocMeta(
   { url, doc, item }: { url: string; doc: string; item?: string },
 ) {
   const description = cleanMarkdown(doc);
   const href = item ? `${url}${url.endsWith("/") ? "" : "/"}~/${item}` : url;
   const imageUrl = `https://deno-doc.deno.dev/img/${href}`;
   const title = item
-    ? `Deno Doc - ${getLabel(url)} - ${item}`
-    : `Deno Doc - ${getLabel(url)}`;
+    ? `Deno Doc - ${getUrlLabel(url)} - ${item}`
+    : `Deno Doc - ${getUrlLabel(url)}`;
   return (
     <Helmet>
       <meta name="twitter:card" content="summary_large_image" />

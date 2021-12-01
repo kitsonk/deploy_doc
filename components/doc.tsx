@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
-import { store, StoreState } from "../shared.ts";
+import { getUrlLabel, store, StoreState } from "../shared.ts";
 import { parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassCodeBlock, ClassDoc, ClassToc } from "./classes.tsx";
@@ -21,7 +21,7 @@ import {
   InterfaceDoc,
   InterfaceToc,
 } from "./interfaces.tsx";
-import { Meta } from "./meta.tsx";
+import { DocMeta } from "./meta.tsx";
 import { NamespaceDoc, NamespaceToc } from "./namespaces.tsx";
 import { gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeAliasCodeBlock, TypeAliasDoc, TypeAliasToc } from "./types.tsx";
@@ -120,54 +120,6 @@ function DocNodes({ children }: { children: Child<DocNodeCollection> }) {
     </div>
   );
 }
-
-// function DocEntry(
-//   { children, path, name, url }: {
-//     children: Child<DocNode[]>;
-//     path: string[];
-//     name: string;
-//     url: string;
-//   },
-// ) {
-//   const nodes = take(children);
-//   if (!nodes.length) {
-//     return (
-//       <ErrorMessage title="Entry not found">
-//         The document entry named "{path ? [...path, name].join(".") : name}" was
-//         not found in specifier "{url}".
-//       </ErrorMessage>
-//     );
-//   }
-//   switch (nodes[0].kind) {
-//     case "class":
-//       assert(nodes.length === 1);
-//       return <ClassDoc path={path}>{nodes[0]}</ClassDoc>;
-//     case "enum":
-//       assert(nodes.length === 1);
-//       return <EnumDoc path={path}>{nodes[0]}</EnumDoc>;
-//     case "function":
-//       assertAll<DocNodeFunction>(nodes, "function");
-//       return <FnDoc path={path}>{nodes}</FnDoc>;
-//     case "interface":
-//       assert(nodes.length === 1);
-//       return <InterfaceDoc path={path}>{nodes[0]}</InterfaceDoc>;
-//     case "namespace":
-//       assert(nodes.length === 1);
-//       return <NamespaceDoc path={path}>{nodes[0]}</NamespaceDoc>;
-//     case "typeAlias":
-//       assert(nodes.length === 1);
-//       return <TypeAliasDoc path={path}>{nodes[0]}</TypeAliasDoc>;
-//     case "variable":
-//       assert(nodes.length === 1);
-//       return <VariableDoc path={path}>{nodes[0]}</VariableDoc>;
-//     default:
-//       return (
-//         <ErrorMessage title="Not Supported">
-//           The kind of "{nodes[0].kind}" is currently not supported.
-//         </ErrorMessage>
-//       );
-//   }
-// }
 
 function CodeBlock({ children }: { children: Child<DocNode[]> }) {
   const nodes = take(children);
@@ -304,7 +256,7 @@ export function DocPage(
     }
     return (
       <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
-        <Meta url={url} doc={jsDoc?.doc ?? ""} item={item} />
+        <DocMeta url={url} doc={jsDoc?.doc ?? ""} item={item} />
         <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
           <SideBarHeader>{url}</SideBarHeader>
           <DocToc>{nodes}</DocToc>
@@ -321,7 +273,7 @@ export function DocPage(
     const jsDoc = entries.find(({ kind }) => kind === "moduleDoc")?.jsDoc;
     return (
       <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
-        <Meta url={url} doc={jsDoc?.doc ?? ""} />
+        <DocMeta url={url} doc={jsDoc?.doc ?? ""} />
         <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
           <SideBarHeader>{url}</SideBarHeader>
           <ModuleToc library={library}>{collection}</ModuleToc>
@@ -390,7 +342,7 @@ function SideBarHeader({ children }: { children: Child<string> }) {
         <div>
           <h3 class={tw`text-gray-600 text-sm mt-2`}>Source</h3>
           <p class={tw`truncate`}>
-            <a href={url} target="_blank" class={tw`truncate`}>
+            <a href={url} target="_blank" rel="noopener" class={tw`truncate`}>
               <IconLink />
               {url}
             </a>
@@ -399,27 +351,9 @@ function SideBarHeader({ children }: { children: Child<string> }) {
       </div>
     );
   } else {
-    let name;
-    switch (url) {
-      case "deno//stable/":
-        name = "Deno Stable APIs";
-        break;
-      case "deno//unstable/":
-        name = "Deno Unstable APIs";
-        break;
-      case "deno//esnext/":
-        name = "ESNext APIs";
-        break;
-      case "deno//dom/":
-        name = "DOM APIs";
-        break;
-      default:
-        // strip the protocol and insert zws so paths break
-        name = url.replace(/^\S+:\/{2}/, "").replaceAll("/", "&#8203;/");
-    }
     return (
       <h2 class={tw`text-gray-900 text-2xl font-bold`}>
-        <a href={href} class={tw`hover:underline`}>{name}</a>
+        <a href={href} class={tw`hover:underline`}>{getUrlLabel(url)}</a>
       </h2>
     );
   }

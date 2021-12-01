@@ -27,22 +27,14 @@ export function SpecifierForm() {
         <div class={tw`space-y-6`}>
           <p>
             <a href="/deno//stable">
-              <button
-                class="transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg mt-6 w-full"
-                type="button"
-                style="background: linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%);"
-              >
+              <button class={gtw("formButton")} type="button">
                 Deno CLI APIs (Stable)
               </button>
             </a>
           </p>
           <p>
             <a href="/deno//unstable">
-              <button
-                class="transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg mt-6 w-full"
-                type="button"
-                style="background: linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%);"
-              >
+              <button class={gtw("formButton")} type="button">
                 Deno CLI APIs (<code>--unstable</code>)
               </button>
             </a>
@@ -79,12 +71,7 @@ export function SpecifierForm() {
               </div>
             </div>
             <div class={tw`absolute right-2 bottom-2 hidden lg:block`}>
-              <button
-                class={tw
-                  `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg`}
-                style="background: linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%);"
-                type="submit"
-              >
+              <button class={gtw("insideButton")} type="submit">
                 Document
               </button>
             </div>

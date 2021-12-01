@@ -1,6 +1,6 @@
 /** @jsx h */
 import { App } from "../components/app.tsx";
-import { ModuleCard, SymbolCard } from "../components/card.tsx";
+import { ModuleCard, SymbolCard } from "../components/img.tsx";
 import { DocPage } from "../components/doc.tsx";
 import {
   colors,
