@@ -42,7 +42,7 @@ router.get("/img/:proto(deno)//:host/~/:item+", imgGet);
 // redirects from legacy doc website
 router.get("/builtin/stable", (ctx) => ctx.response.redirect("/deno//stable"));
 
-const app = new Application();
+export const app = new Application();
 
 app.use(logging);
 app.use(timing);
@@ -85,4 +85,8 @@ app.addEventListener("error", (evt) => {
   console.error(msg);
 });
 
-app.listen({ port: 8080 });
+// we only listen if this is the main module, which allows use to facilitate
+// testing by lazily listening within the test harness
+if (Deno.mainModule === import.meta.url) {
+  app.listen({ port: 8080 });
+}
