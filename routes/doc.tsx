@@ -210,8 +210,12 @@ async function process<R extends string>(
 async function maybeCacheStatic(url: string, host: string) {
   if (url.startsWith("deno") && !cachedEntries.has(url)) {
     try {
+      const [lib, version] = host.split("@");
       const res = await fetch(
-        new URL(`../static/${host}.json`, import.meta.url),
+        new URL(
+          `../static/${lib}${version ? `_${version}` : ""}.json`,
+          import.meta.url,
+        ),
       );
       if (res.status === 200) {
         cachedEntries.set(url, mergeEntries(await res.json()));

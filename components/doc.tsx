@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
-import { getUrlLabel, store, StoreState } from "../shared.ts";
+import { getLibWithVersion, store, StoreState } from "../shared.ts";
 import { parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassCodeBlock, ClassDoc, ClassToc } from "./classes.tsx";
@@ -351,10 +351,19 @@ function SideBarHeader({ children }: { children: Child<string> }) {
       </div>
     );
   } else {
+    const [label, version] = getLibWithVersion(url);
     return (
-      <h2 class={tw`text-gray-900 text-2xl font-bold`}>
-        <a href={href} class={tw`hover:underline`}>{getUrlLabel(url)}</a>
-      </h2>
+      <div>
+        <h2 class={tw`text-gray-900 text-2xl font-bold`}>
+          <a href={href} class={tw`hover:underline`}>{label}</a>
+        </h2>
+        {version && (
+          <div>
+            <h3 class={tw`text-gray-600 text-sm mt-2`}>Version</h3>
+            <p class={tw`truncate`}>{version}</p>
+          </div>
+        )}
+      </div>
     );
   }
 }

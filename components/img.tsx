@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h, htmlEntities, removeMarkdown } from "../deps.ts";
-import { getUrlLabel } from "../shared.ts";
+import { getLibWithVersion, getUrlLabel } from "../shared.ts";
 import { parseURL } from "../util.ts";
 
 const wrap = (s: string) =>
@@ -67,7 +67,7 @@ export function ModuleCard({ url, doc }: { url: string; doc: string }) {
       subtitle = "std";
     }
   } else {
-    title = getUrlLabel(url);
+    [title, subtitle] = getLibWithVersion(url);
   }
   return (
     <svg
@@ -160,7 +160,11 @@ export function SymbolCard(
       "\n\n",
     ),
   ).split("\n").slice(0, 7);
-  const link = url.startsWith("deno") ? getUrlLabel(url) : url;
+  let link = url;
+  if (url.startsWith("deno")) {
+    const [label, version] = getLibWithVersion(url);
+    link = `${label}${version ? ` @ ${version}` : ""}`;
+  }
   return (
     <svg
       width="1200px"
