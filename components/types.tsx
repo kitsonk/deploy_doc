@@ -3,6 +3,7 @@
 import { Fragment, h, htmlEntities, tw } from "../deps.ts";
 import type {
   DocNodeTypeAlias,
+  JsDoc,
   LiteralCallSignatureDef,
   LiteralIndexSignatureDef,
   LiteralMethodDef,
@@ -39,6 +40,7 @@ import {
   SubSectionTitle,
   TocLink,
 } from "./common.tsx";
+import { getTypeParamDoc, Markdown } from "./jsdoc.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 
@@ -746,25 +748,29 @@ export function TypeDefDoc(
 }
 
 export function TypeParamsSubDoc(
-  { children, location, id }: {
+  { children, location, id, jsDoc }: {
     children: Child<TsTypeParamDef[]>;
     location: Location;
     id: string;
+    jsDoc?: JsDoc;
   },
 ) {
-  const params = take(children, true);
-  if (!params.length) {
+  const typeParams = take(children, true);
+  if (!typeParams.length) {
     return;
   }
-  const items = params.map((param) => {
-    const itemId = `${id}_${param.name}`;
+  const typeParamDoc = getTypeParamDoc(typeParams, jsDoc);
+  const items = typeParams.map((typeParam, i) => {
+    const itemId = `${id}_${typeParam.name}`;
+    const doc = typeParamDoc[i];
     return (
       <div class={gtw("docSubItem")} id={itemId}>
         <Anchor>{itemId}</Anchor>
         <div class={gtw("docEntry")}>
           <DocWithLink location={location}>
-            <TypeParam>{param}</TypeParam>
+            <TypeParam>{typeParam}</TypeParam>
           </DocWithLink>
+          {doc && <Markdown style={largeMarkdownStyles}>{doc}</Markdown>}
         </div>
       </div>
     );

@@ -13,13 +13,8 @@ import type {
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
-import {
-  Anchor,
-  DocWithLink,
-  Markdown,
-  SectionTitle,
-  TocLink,
-} from "./common.tsx";
+import { Anchor, DocWithLink, SectionTitle, TocLink } from "./common.tsx";
+import { JsDoc } from "./jsdoc.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef, TypeParams, TypeParamsDoc } from "./types.tsx";
@@ -70,7 +65,7 @@ function CallSignaturesDoc(
               </span>
             )}
           </DocWithLink>
-          <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+          <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
         </div>
       </div>
     );
@@ -294,7 +289,12 @@ function MethodsDoc(
                 </span>
               )}
             </DocWithLink>
-            <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+            <JsDoc
+              style={largeMarkdownStyles}
+              tags={["param", "return", "template"]}
+            >
+              {jsDoc}
+            </JsDoc>
           </div>
         </div>
       );
@@ -357,7 +357,7 @@ function PropertiesDoc(
                 )
                 : ""}
             </DocWithLink>
-            <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+            <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
           </div>
         </div>
       );

@@ -15,13 +15,12 @@ import type { Child } from "../util.ts";
 import {
   Anchor,
   DocWithLink,
-  Markdown,
   SectionTitle,
   TARGET_RE,
   TocLink,
 } from "./common.tsx";
-import type { DocProps } from "./common.tsx";
 import { IndexSignatures, IndexSignaturesDoc } from "./interfaces.tsx";
+import { JsDoc } from "./jsdoc.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeArguments, TypeDef, TypeParams, TypeParamsDoc } from "./types.tsx";
@@ -154,7 +153,7 @@ function ClassAccessorDoc(
             </span>
           )}
         </DocWithLink>
-        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+        <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>
     </div>
   );
@@ -367,7 +366,12 @@ function ClassMethodDoc(
               </span>
             )}
           </DocWithLink>
-          <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+          <JsDoc
+            style={largeMarkdownStyles}
+            tags={["param", "return", "template"]}
+          >
+            {jsDoc}
+          </JsDoc>
         </div>
       ))}
     </div>
@@ -429,7 +433,7 @@ function ClassPropertyDoc(
             </span>
           )}
         </DocWithLink>
-        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+        <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>
     </div>
   );
@@ -470,7 +474,7 @@ function ConstructorsDoc(
           <span class={gtw("bold")}>new{" "}</span>
           {name}(<Params inline>{params}</Params>);
         </DocWithLink>
-        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+        <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>
     </div>
   ));

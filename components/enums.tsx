@@ -5,11 +5,11 @@ import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
 import {
   Anchor,
   DocWithLink,
-  Markdown,
   SectionTitle,
   TARGET_RE,
   TocLink,
 } from "./common.tsx";
+import { JsDoc } from "./jsdoc.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 import { take } from "../util.ts";
@@ -65,7 +65,7 @@ function Member(
             </span>
           )}
         </DocWithLink>
-        <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+        <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>
     </div>
   );

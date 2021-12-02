@@ -1,5 +1,5 @@
 /** @jsx h */
-import { comrak, h, tw } from "../deps.ts";
+import { h, tw } from "../deps.ts";
 import type {
   DocNode,
   DocNodeClass,
@@ -11,15 +11,15 @@ import type {
   DocNodeNamespace,
   DocNodeTypeAlias,
   DocNodeVariable,
-  JsDoc,
   Location,
 } from "../deps.ts";
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
+import { JsDoc } from "./jsdoc.tsx";
 import { gtw } from "./styles.ts";
-import type { BaseStyles, StyleOverride } from "./styles.ts";
+import type { BaseStyles } from "./styles.ts";
 
 export interface DocNodeCollection {
   moduleDoc?: DocNodeModuleDoc[];
@@ -87,13 +87,6 @@ export function DocTitle(
   return <h1 class={gtw("docTitle")}>{getName(node, path)}</h1>;
 }
 
-await comrak.init();
-
-interface MarkdownProps {
-  children: Child<JsDoc | undefined>;
-  style?: StyleOverride;
-}
-
 function Entry<Node extends DocNode>(
   { children, path, style }: NodeProps<Node>,
 ) {
@@ -103,39 +96,9 @@ function Entry<Node extends DocNode>(
       <h3 class={gtw(style)}>
         <NodeLink path={path}>{node}</NodeLink>
       </h3>
-      <Markdown>{node.jsDoc}</Markdown>
+      <JsDoc>{node.jsDoc}</JsDoc>
     </li>
   );
-}
-
-export function Markdown({ children, style }: MarkdownProps) {
-  const jsDoc = take(children);
-  if (!jsDoc) {
-    return;
-  }
-  const text = jsDoc.doc
-    ? comrak.markdownToHTML(jsDoc.doc, {
-      extension: {
-        autolink: true,
-        descriptionLists: true,
-        strikethrough: true,
-        table: true,
-        tagfilter: true,
-      },
-    })
-    : undefined;
-  if (!text) {
-    return;
-  }
-  // if (jsDoc.tags) {
-  //   for (const tag of jsDoc.tags) {
-  //     switch (tag.kind) {
-  //       case "callback":
-  //         tag;
-  //     }
-  //   }
-  // }
-  return <div class={gtw("markdown", style)}>{text}</div>;
 }
 
 interface NodeLinkProps {

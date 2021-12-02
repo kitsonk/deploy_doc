@@ -1,8 +1,14 @@
 /** @jsx h */
 import { h } from "../deps.ts";
-import type { DocNodeFunction, Location, TsTypeDef } from "../deps.ts";
+import type {
+  DocNodeFunction,
+  JsDoc as JsDocNode,
+  Location,
+  TsTypeDef,
+} from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
-import { Anchor, DocWithLink, Markdown, SubSectionTitle } from "./common.tsx";
+import { Anchor, DocWithLink, SubSectionTitle } from "./common.tsx";
+import { getReturnDoc, JsDoc, Markdown } from "./jsdoc.tsx";
 import { Params, ParamsSubDoc } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef, TypeParams, TypeParamsSubDoc } from "./types.tsx";
@@ -43,10 +49,11 @@ export function FnCodeBlock(
 }
 
 function ReturnTypeSubDoc(
-  { children, location, id }: {
+  { children, location, id, jsDoc }: {
     children: Child<TsTypeDef | undefined>;
     location: Location;
     id: string;
+    jsDoc?: JsDocNode;
   },
 ) {
   const returnType = take(children);
@@ -54,6 +61,7 @@ function ReturnTypeSubDoc(
     return;
   }
   const itemId = `${id}_return_type`;
+  const doc = getReturnDoc(jsDoc);
 
   return (
     <div>
@@ -64,6 +72,7 @@ function ReturnTypeSubDoc(
           <DocWithLink location={location}>
             <TypeDef inline>{returnType}</TypeDef>
           </DocWithLink>
+          {doc && <Markdown style={largeMarkdownStyles}>{doc}</Markdown>}
         </div>
       </div>
     </div>
@@ -102,14 +111,16 @@ export function FnDoc(
               )}
             </DocWithLink>
             {!isSingle
-              ? <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+              ? <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
               : undefined}
           </div>
-          <TypeParamsSubDoc location={location} id={id}>
+          <TypeParamsSubDoc location={location} id={id} jsDoc={jsDoc}>
             {typeParams}
           </TypeParamsSubDoc>
-          <ParamsSubDoc location={location} id={id}>{params}</ParamsSubDoc>
-          <ReturnTypeSubDoc location={location} id={id}>
+          <ParamsSubDoc location={location} id={id} jsDoc={jsDoc}>
+            {params}
+          </ParamsSubDoc>
+          <ReturnTypeSubDoc location={location} id={id} jsDoc={jsDoc}>
             {returnType}
           </ReturnTypeSubDoc>
         </div>

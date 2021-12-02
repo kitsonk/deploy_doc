@@ -1,6 +1,7 @@
 /** @jsx h */
 import { h } from "../deps.ts";
 import type {
+  JsDoc,
   Location,
   ObjectPatPropAssignDef,
   ObjectPatPropDef,
@@ -16,7 +17,8 @@ import type {
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { Anchor, DocWithLink, SubSectionTitle } from "./common.tsx";
-import { gtw } from "./styles.ts";
+import { getParamDoc, Markdown } from "./jsdoc.tsx";
+import { gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 
 interface ObjectPatProps<Pattern extends ObjectPatPropDef> {
@@ -198,18 +200,21 @@ export function Params({ children, inline }: ParamsProps) {
 }
 
 export function ParamsSubDoc(
-  { children, location, id }: {
+  { children, location, id, jsDoc }: {
     children: Child<ParamDef[]>;
     location: Location;
     id: string;
+    jsDoc?: JsDoc;
   },
 ) {
   const params = take(children, true);
   if (!params.length) {
     return;
   }
+  const paramDoc = getParamDoc(params, jsDoc);
   const items = params.map((param, i) => {
     const itemId = `${id}_param_${i}`;
+    const doc = paramDoc[i];
     return (
       <div class={gtw("docSubItem")} id={itemId}>
         <Anchor>{itemId}</Anchor>
@@ -217,6 +222,7 @@ export function ParamsSubDoc(
           <DocWithLink location={location}>
             <Param inline>{param}</Param>
           </DocWithLink>
+          {doc && <Markdown style={largeMarkdownStyles}>{doc}</Markdown>}
         </div>
       </div>
     );

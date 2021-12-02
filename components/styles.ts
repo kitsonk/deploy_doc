@@ -33,7 +33,8 @@ const buttonGradient = css({
     "linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%)",
 });
 
-export const largeMarkdown = apply`p-4 flex flex-col space-y-4 ${code}`;
+const largeMarkdown = apply`p-4 flex flex-col space-y-4 ${code}`;
+const tagMarkdown = apply`p-1.5 mx-2.5 flex flex-col ${smallCode}`;
 
 const applyNone = apply``;
 
@@ -99,6 +100,10 @@ export const codeBlockStyles = {
 
 export const largeMarkdownStyles = {
   markdown: largeMarkdown,
+} as const;
+
+export const tagMarkdownStyles = {
+  markdown: tagMarkdown,
 } as const;
 
 export type BaseStyles = keyof typeof baseStyles;

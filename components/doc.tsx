@@ -5,17 +5,12 @@ import { getLibWithVersion, store, StoreState } from "../shared.ts";
 import { parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassCodeBlock, ClassDoc, ClassToc } from "./classes.tsx";
-import {
-  asCollection,
-  IconLink,
-  Markdown,
-  Section,
-  TocLink,
-} from "./common.tsx";
+import { asCollection, IconLink, Section, TocLink } from "./common.tsx";
 import type { DocNodeCollection } from "./common.tsx";
 import { EnumCodeBlock, EnumDoc, EnumToc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
 import { FnCodeBlock, FnDoc } from "./functions.tsx";
+import { JsDoc } from "./jsdoc.tsx";
 import {
   InterfaceCodeBlock,
   InterfaceDoc,
@@ -78,9 +73,9 @@ function DocNodes({ children }: { children: Child<DocNodeCollection> }) {
   return (
     <div class={gtw("mainBox")}>
       {collection.moduleDoc && (
-        <Markdown style={largeMarkdownStyles}>
+        <JsDoc style={largeMarkdownStyles}>
           {collection.moduleDoc[0].jsDoc}
-        </Markdown>
+        </JsDoc>
       )}
       {collection.namespace && (
         <Section title="Namespaces" style="nodeNamespace">
@@ -263,7 +258,7 @@ export function DocPage(
         </nav>
         <article class={gtw("mainBox")}>
           <h1 class={gtw("docTitle")}>{item}</h1>
-          <Markdown style={largeMarkdownStyles}>{jsDoc}</Markdown>
+          <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
           <CodeBlock>{nodes}</CodeBlock>
           <Doc path={path}>{nodes}</Doc>
         </article>
