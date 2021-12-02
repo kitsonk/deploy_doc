@@ -5,12 +5,18 @@ import { getLibWithVersion, store, StoreState } from "../shared.ts";
 import { parseURL, take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { ClassCodeBlock, ClassDoc, ClassToc } from "./classes.tsx";
-import { asCollection, IconLink, Section, TocLink } from "./common.tsx";
+import {
+  asCollection,
+  IconLink,
+  isAbstract,
+  Section,
+  TocLink,
+} from "./common.tsx";
 import type { DocNodeCollection } from "./common.tsx";
 import { EnumCodeBlock, EnumDoc, EnumToc } from "./enums.tsx";
 import { ErrorMessage } from "./error.tsx";
 import { FnCodeBlock, FnDoc } from "./functions.tsx";
-import { JsDoc } from "./jsdoc.tsx";
+import { isDeprecated, JsDoc, Tag } from "./jsdoc.tsx";
 import {
   InterfaceCodeBlock,
   InterfaceDoc,
@@ -18,7 +24,7 @@ import {
 } from "./interfaces.tsx";
 import { DocMeta } from "./meta.tsx";
 import { NamespaceDoc, NamespaceToc } from "./namespaces.tsx";
-import { gtw, largeMarkdownStyles } from "./styles.ts";
+import { gtw, largeMarkdownStyles, largeTagStyles } from "./styles.ts";
 import { TypeAliasCodeBlock, TypeAliasDoc, TypeAliasToc } from "./types.tsx";
 import { VariableCodeBlock } from "./variables.tsx";
 
@@ -258,6 +264,12 @@ export function DocPage(
         </nav>
         <article class={gtw("mainBox")}>
           <h1 class={gtw("docTitle")}>{item}</h1>
+          {isAbstract(nodes[0])
+            ? <Tag style={largeTagStyles} color="yellow">abstract</Tag>
+            : undefined}
+          {isDeprecated(jsDoc)
+            ? <Tag style={largeTagStyles} color="gray">deprecated</Tag>
+            : undefined}
           <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
           <CodeBlock>{nodes}</CodeBlock>
           <Doc path={path}>{nodes}</Doc>

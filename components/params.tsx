@@ -17,7 +17,7 @@ import type {
 import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { Anchor, DocWithLink, SubSectionTitle } from "./common.tsx";
-import { getParamDoc, Markdown } from "./jsdoc.tsx";
+import { getParamDoc, Markdown, Tag } from "./jsdoc.tsx";
 import { gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeDef } from "./types.tsx";
 
@@ -34,6 +34,18 @@ interface ParamProps<P extends ParamDef> {
 interface ParamsProps {
   children: Child<ParamDef[]>;
   inline?: boolean;
+}
+
+function isOptional(param: ParamDef): boolean {
+  switch (param.kind) {
+    case "array":
+    case "identifier":
+    case "object":
+      return param.optional;
+    case "assign":
+    case "rest":
+      return true;
+  }
 }
 
 function ObjectAssignPat({ children }: ObjectPatProps<ObjectPatPropAssignDef>) {
@@ -221,6 +233,7 @@ export function ParamsSubDoc(
         <div class={gtw("docEntry")}>
           <DocWithLink location={location}>
             <Param inline>{param}</Param>
+            {isOptional(param) ? <Tag color="cyan">optional</Tag> : undefined}
           </DocWithLink>
           {doc && <Markdown style={largeMarkdownStyles}>{doc}</Markdown>}
         </div>

@@ -1,10 +1,10 @@
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type {
-  Accessibility as AccessibilityType,
   ClassConstructorDef,
   ClassMethodDef,
   ClassPropertyDef,
+  DocNode,
   DocNodeClass,
   Location,
   TsTypeDef,
@@ -20,7 +20,7 @@ import {
   TocLink,
 } from "./common.tsx";
 import { IndexSignatures, IndexSignaturesDoc } from "./interfaces.tsx";
-import { JsDoc } from "./jsdoc.tsx";
+import { AccessibilityTag, isDeprecated, JsDoc, Tag } from "./jsdoc.tsx";
 import { Params } from "./params.tsx";
 import { codeBlockStyles, gtw, largeMarkdownStyles } from "./styles.ts";
 import { TypeArguments, TypeDef, TypeParams, TypeParamsDoc } from "./types.tsx";
@@ -31,6 +31,8 @@ type ClassSetterDef = ClassMethodDef & { kind: "setter" };
 type ClassItemType = "prop" | "method" | "static_prop" | "static_method";
 type ClassItemDef = ClassMethodDef | ClassPropertyDef;
 
+/** Compares the accessibility of a property ot method, so that private and
+ * protected methods are listed before public properties or methods. */
 function compareAccessibility(
   a: ClassPropertyDef | ClassMethodDef,
   b: ClassPropertyDef | ClassMethodDef,
@@ -120,16 +122,6 @@ function getClassItemLabel(type: ClassItemType) {
   }
 }
 
-// function Accessibility(
-//   { children }: { children: Child<AccessibilityType | undefined> },
-// ) {
-//   const accessibility = take(children);
-//   const so = getState(STYLE_OVERRIDE);
-//   return accessibility && (
-//     <span class={gtw("keyword", so)}>{accessibility}</span>
-//   );
-// }
-
 function ClassAccessorDoc(
   { get, set }: { get?: ClassGetterDef; set?: ClassSetterDef },
 ) {
@@ -140,6 +132,19 @@ function ClassAccessorDoc(
     (set?.functionDef.params[0])?.tsType;
   const jsDoc = get?.jsDoc ?? set?.jsDoc;
   const location = get?.location ?? set?.location;
+  const accessibility = get?.accessibility ?? set?.accessibility;
+  const isAbstract = get?.isAbstract ?? set?.isAbstract;
+  const tags = [];
+  if (isAbstract) {
+    tags.push(<Tag color="yellow">abstract</Tag>);
+  }
+  tags.push(<AccessibilityTag>{accessibility}</AccessibilityTag>);
+  if (!set) {
+    tags.push(<Tag color="purple">readonly</Tag>);
+  }
+  if (isDeprecated(jsDoc)) {
+    tags.push(<Tag color="gray">deprecated</Tag>);
+  }
   assert(location);
   return (
     <div class={gtw("docItem")} id={target}>
@@ -152,8 +157,9 @@ function ClassAccessorDoc(
               : <TypeDef inline>{tsType}</TypeDef>
             </span>
           )}
+          {tags}
         </DocWithLink>
-        <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
+        <JsDoc style={largeMarkdownStyles} tags={["deprecated"]}>{jsDoc}</JsDoc>
       </div>
     </div>
   );
@@ -351,29 +357,46 @@ function ClassMethodDoc(
           location,
           name,
           jsDoc,
+          accessibility,
+          optional,
+          isAbstract,
           functionDef: { typeParams, params, returnType },
         },
-      ) => (
-        <div class={gtw("docEntry")}>
-          <DocWithLink location={location}>
-            {name}
-            <TypeParams>{typeParams}</TypeParams>(<Params inline>
-              {params}
-            </Params>)
-            {returnType && (
-              <span>
-                : <TypeDef>{returnType}</TypeDef>
-              </span>
-            )}
-          </DocWithLink>
-          <JsDoc
-            style={largeMarkdownStyles}
-            tags={["param", "return", "template"]}
-          >
-            {jsDoc}
-          </JsDoc>
-        </div>
-      ))}
+      ) => {
+        const tags = [];
+        if (isAbstract) {
+          tags.push(<Tag color="yellow">abstract</Tag>);
+        }
+        tags.push(<AccessibilityTag>{accessibility}</AccessibilityTag>);
+        if (optional) {
+          tags.push(<Tag color="cyan">optional</Tag>);
+        }
+        if (isDeprecated(jsDoc)) {
+          tags.push(<Tag color="gray">deprecated</Tag>);
+        }
+        return (
+          <div class={gtw("docEntry")}>
+            <DocWithLink location={location}>
+              {name}
+              <TypeParams>{typeParams}</TypeParams>(<Params inline>
+                {params}
+              </Params>)
+              {returnType && (
+                <span>
+                  : <TypeDef>{returnType}</TypeDef>
+                </span>
+              )}
+              {tags}
+            </DocWithLink>
+            <JsDoc
+              style={largeMarkdownStyles}
+              tags={["param", "return", "template", "deprecated"]}
+            >
+              {jsDoc}
+            </JsDoc>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -419,8 +442,31 @@ function ClassProperty(
 function ClassPropertyDoc(
   { children }: { children: Child<ClassPropertyDef> },
 ) {
-  const { location, name, tsType, jsDoc } = take(children);
+  const {
+    location,
+    name,
+    tsType,
+    jsDoc,
+    accessibility,
+    isAbstract,
+    optional,
+    readonly,
+  } = take(children);
   const target = name.replaceAll(TARGET_RE, "_");
+  const tags = [];
+  if (isAbstract) {
+    tags.push(<Tag color="yellow">abstract</Tag>);
+  }
+  tags.push(<AccessibilityTag>{accessibility}</AccessibilityTag>);
+  if (optional) {
+    tags.push(<Tag color="cyan">optional</Tag>);
+  }
+  if (readonly) {
+    tags.push(<Tag color="purple">readonly</Tag>);
+  }
+  if (isDeprecated(jsDoc)) {
+    tags.push(<Tag color="gray">deprecated</Tag>);
+  }
   return (
     <div class={gtw("docItem")} id={target}>
       <Anchor>{target}</Anchor>
@@ -468,13 +514,15 @@ function ConstructorsDoc(
   if (!ctors.length) {
     return;
   }
-  const items = ctors.map(({ location, params, jsDoc }, i) => (
+  const items = ctors.map(({ location, params, jsDoc, accessibility }, i) => (
     <div class={gtw("docItem")} id={`ctor_${i}`}>
       <Anchor>{`ctor_${i}`}</Anchor>
       <div class={gtw("docEntry")}>
         <DocWithLink location={location}>
           <span class={gtw("bold")}>new{" "}</span>
-          {name}(<Params inline>{params}</Params>)
+          {name}(<Params inline>{params}</Params>)<AccessibilityTag>
+            {accessibility}
+          </AccessibilityTag>
         </DocWithLink>
         <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>

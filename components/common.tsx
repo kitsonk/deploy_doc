@@ -17,7 +17,7 @@ import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
-import { JsDoc } from "./jsdoc.tsx";
+import { isDeprecated, JsDoc, Tag } from "./jsdoc.tsx";
 import { gtw } from "./styles.ts";
 import type { BaseStyles } from "./styles.ts";
 
@@ -52,6 +52,14 @@ interface NodesProps<Node extends DocNode> {
 }
 
 export const TARGET_RE = /(\s|[\[\]])/g;
+
+export function isAbstract(node: DocNode) {
+  if (node.kind === "class") {
+    return node.classDef.isAbstract;
+  } else {
+    return false;
+  }
+}
 
 export function asCollection(
   entries: DocNode[],
@@ -95,6 +103,10 @@ function Entry<Node extends DocNode>(
     <li>
       <h3 class={gtw(style)}>
         <NodeLink path={path}>{node}</NodeLink>
+        {isAbstract(node) ? <Tag color="yellow">abstract</Tag> : undefined}
+        {isDeprecated(node.jsDoc)
+          ? <Tag color="gray">deprecated</Tag>
+          : undefined}
       </h3>
       <JsDoc>{node.jsDoc}</JsDoc>
     </li>
@@ -136,11 +148,7 @@ export function Section<Node extends DocNode>(
       return;
     }
     displayed.add(node.name);
-    return (
-      <Entry path={path} style={style}>
-        {node}
-      </Entry>
-    );
+    return <Entry path={path} style={style}>{node}</Entry>;
   });
   return (
     <div>

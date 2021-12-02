@@ -80,6 +80,8 @@ const baseStyles = {
   subSection: apply`text-xl p-2 mx-2.5 mt-1 mb-2.5`,
   stringLiteral: applyNone,
   subtitle: apply`h-6 text-xl font-semibold`,
+  tag: apply
+    `px-2 inline-flex text-xs leading-5 font-semibold lowercase rounded-full`,
   title: apply`h-10 text-3xl font-bold`,
   typeKeyword: applyNone,
   typeLink: apply`underline`,
@@ -104,6 +106,11 @@ export const largeMarkdownStyles = {
 
 export const tagMarkdownStyles = {
   markdown: tagMarkdown,
+} as const;
+
+export const largeTagStyles = {
+  tag: apply
+    `px-4 py-2 inline-flex leading-5 font-semibold lowercase rounded-full`,
 } as const;
 
 export type BaseStyles = keyof typeof baseStyles;

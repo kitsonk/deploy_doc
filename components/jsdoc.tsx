@@ -1,6 +1,7 @@
 /** @jsx h */
 import { comrak, h, tw } from "../deps.ts";
 import type {
+  Accessibility,
   JsDoc as JsDocNode,
   JsDocTag as JsDocTagNode,
   JsDocTagKind,
@@ -107,6 +108,13 @@ export function getReturnDoc(jsDoc?: JsDocNode): string | undefined {
   }
 }
 
+export function isDeprecated(jsDoc?: JsDocNode): boolean {
+  if (jsDoc && jsDoc.tags) {
+    return !!jsDoc.tags.find(({ kind }) => kind === "deprecated");
+  }
+  return false;
+}
+
 /** A component which renders a JSDoc. */
 export function JsDoc({ children, style, tags }: DocParams) {
   const jsDoc = take(children);
@@ -209,15 +217,30 @@ export function Markdown(
     : undefined;
 }
 
+export function AccessibilityTag(
+  { children }: { children: Child<Accessibility | undefined> },
+) {
+  const accessibility = take(children);
+  if (!accessibility || accessibility === "public") {
+    return;
+  }
+  const color = accessibility === "private" ? "pink" : "indigo";
+  return <Tag color={color}>{accessibility}</Tag>;
+}
+
 export function Tag(
-  { children, color = "gray" }: { children: unknown; color?: Color },
+  { children, color = "gray", style }: {
+    children: unknown;
+    color?: Color;
+    style?: StyleOverride;
+  },
 ) {
   return (
-    <span
-      class={tw
-        `px-2 inline-flex text-xs leading-5 font-semibold lowercase rounded-full bg-${color}-100 text-${color}-800`}
-    >
-      {children}
+    <span>
+      {" "}
+      <span class={tw`bg-${color}-100 text-${color}-800 ${gtw("tag", style)}`}>
+        {children}
+      </span>
     </span>
   );
 }
