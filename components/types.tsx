@@ -9,14 +9,18 @@ import type {
   LiteralMethodDef,
   LiteralPropertyDef,
   Location,
+  TruePlusMinus,
   TsTypeArrayDef,
   TsTypeConditionalDef,
   TsTypeDef,
   TsTypeDefLiteral,
   TsTypeFnOrConstructorDef,
+  TsTypeImportTypeDef,
   TsTypeIndexedAccessDef,
+  TsTypeInferDef,
   TsTypeIntersectionDef,
   TsTypeKeywordDef,
+  TsTypeMappedDef,
   TsTypeOptionalDef,
   TsTypeParamDef,
   TsTypeParenthesizedDef,
@@ -48,6 +52,40 @@ interface TypeDefProps<Def extends TsTypeDef = TsTypeDef> {
   children: Child<Def>;
   inline?: boolean;
   terminate?: boolean;
+}
+
+function MappedReadOnly(
+  { children }: { children: Child<TruePlusMinus | undefined> },
+) {
+  const readonly = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  const keyword = gtw("keyword", so);
+  switch (readonly) {
+    case true:
+      return <span class={keyword}>readonly{" "}</span>;
+    case "+":
+      return <span class={keyword}>+readonly{" "}</span>;
+    case "-":
+      return <span class={keyword}>-readonly{" "}</span>;
+    default:
+      return undefined;
+  }
+}
+
+function MappedOptional(
+  { children }: { children: Child<TruePlusMinus | undefined> },
+) {
+  const optional = take(children);
+  switch (optional) {
+    case true:
+      return <span>?</span>;
+    case "+":
+      return <span>+?</span>;
+    case "-":
+      return <span>-?</span>;
+    default:
+      return undefined;
+  }
 }
 
 export function TypeArguments(
@@ -95,7 +133,12 @@ export function TypeDef({ children, ...props }: TypeDefProps) {
         </>
       );
     case "importType":
-      return <span>TODO</span>;
+      return (
+        <>
+          <TypeDefImport>{def}</TypeDefImport>
+          {terminalChar}
+        </>
+      );
     case "indexedAccess":
       return (
         <>
@@ -104,7 +147,12 @@ export function TypeDef({ children, ...props }: TypeDefProps) {
         </>
       );
     case "infer":
-      return <span>TODO</span>;
+      return (
+        <>
+          <TypeDefInfer>{def}</TypeDefInfer>
+          {terminalChar}
+        </>
+      );
     case "intersection":
       return <TypeDefIntersection {...props}>{def}</TypeDefIntersection>;
     case "keyword":
@@ -122,7 +170,7 @@ export function TypeDef({ children, ...props }: TypeDefProps) {
         </>
       );
     case "mapped":
-      return <span>TODO</span>;
+      return <TypeDefMapped {...props}>{def}</TypeDefMapped>;
     case "optional":
       return (
         <>
@@ -241,6 +289,18 @@ function TypeDefFnOrConstructor(
   );
 }
 
+function TypeDefImport({ children }: TypeDefProps<TsTypeImportTypeDef>) {
+  const { importType: { specifier, qualifier, typeParams } } = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  return (
+    <span>
+      <span class={gtw("keyword", so)}>import</span>("{specifier}"){qualifier &&
+        <span>.{qualifier}</span>}
+      <TypeArguments>{typeParams}</TypeArguments>
+    </span>
+  );
+}
+
 function TypeDefIndexedAccess(
   { children }: TypeDefProps<TsTypeIndexedAccessDef>,
 ) {
@@ -248,6 +308,17 @@ function TypeDefIndexedAccess(
   return (
     <span>
       <TypeDef inline>{objType}</TypeDef>[<TypeDef inline>{indexType}</TypeDef>]
+    </span>
+  );
+}
+
+function TypeDefInfer({ children }: TypeDefProps<TsTypeInferDef>) {
+  const { infer: { typeParam } } = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  return (
+    <span>
+      <span class={gtw("keyword", so)}>infer{" "}</span>
+      <TypeParam>{typeParam}</TypeParam>
     </span>
   );
 }
@@ -316,6 +387,33 @@ function TypeDefOperator({ children }: TypeDefProps<TsTypeTypeOperatorDef>) {
     <span>
       <span class={gtw("typeKeyword", so)}>{operator}</span>{" "}
       <TypeDef>{tsType}</TypeDef>
+    </span>
+  );
+}
+
+function TypeDefMapped(
+  { children, inline, terminate }: TypeDefProps<TsTypeMappedDef>,
+) {
+  const {
+    mapped: { readonly, typeParam, nameType, optional, tsType },
+  } = take(children);
+  const so = getState(STYLE_OVERRIDE);
+  return (
+    <span>
+      <MappedReadOnly>{readonly}</MappedReadOnly>
+      [<TypeParam>{typeParam}</TypeParam>
+      {nameType && (
+        <span>
+          <span class={gtw("keyword", so)}>in keyof{" "}</span>
+          <TypeDef inline={inline}>{nameType}</TypeDef>
+        </span>
+      )}]<MappedOptional>{optional}</MappedOptional>
+      {tsType && (
+        <span>
+          : <TypeDef inline={inline}>{tsType}</TypeDef>
+        </span>
+      )}
+      {terminate ? ";" : undefined}
     </span>
   );
 }
