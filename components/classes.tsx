@@ -120,15 +120,15 @@ function getClassItemLabel(type: ClassItemType) {
   }
 }
 
-function Accessibility(
-  { children }: { children: Child<AccessibilityType | undefined> },
-) {
-  const accessibility = take(children);
-  const so = getState(STYLE_OVERRIDE);
-  return accessibility && (
-    <span class={gtw("keyword", so)}>{accessibility}</span>
-  );
-}
+// function Accessibility(
+//   { children }: { children: Child<AccessibilityType | undefined> },
+// ) {
+//   const accessibility = take(children);
+//   const so = getState(STYLE_OVERRIDE);
+//   return accessibility && (
+//     <span class={gtw("keyword", so)}>{accessibility}</span>
+//   );
+// }
 
 function ClassAccessorDoc(
   { get, set }: { get?: ClassGetterDef; set?: ClassSetterDef },
@@ -449,11 +449,13 @@ function Constructors(
   const so = getState(STYLE_OVERRIDE);
   const items = ctors.map(({ accessibility, name, params }) => (
     <div>
-      <Accessibility>{accessibility}</Accessibility>
+      {accessibility
+        ? <span class={gtw("keyword", so)}>{`${accessibility} `}</span>
+        : undefined}
       <span class={gtw("keyword", so)}>{name}</span>(<Params>{params}</Params>);
     </div>
   ));
-  return <div>{items}</div>;
+  return <div class={gtw("indent", so)}>{items}</div>;
 }
 
 function ConstructorsDoc(
@@ -472,7 +474,7 @@ function ConstructorsDoc(
       <div class={gtw("docEntry")}>
         <DocWithLink location={location}>
           <span class={gtw("bold")}>new{" "}</span>
-          {name}(<Params inline>{params}</Params>);
+          {name}(<Params inline>{params}</Params>)
         </DocWithLink>
         <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
       </div>
