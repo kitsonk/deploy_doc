@@ -60,7 +60,7 @@ To execute the build script, and supported in your shell:
 Or manually on the command line:
 
 ```
-> deno run --config deno.jsonc --allow-read=. --allow-write --allow-net --allow-nev build.ts
+> deno run --config deno.jsonc --allow-read=. --allow-write=./static --allow-net build.ts
 ```
 
 ---

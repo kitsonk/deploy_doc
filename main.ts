@@ -74,14 +74,18 @@ app.use(handleNotFound);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.addEventListener("listen", (evt) => {
-  console.log(
-    `listening on ${
-      evt.secure ? "https" : "http"
-    }://${evt.hostname}:${evt.port}/`,
-  );
-});
+app.addEventListener(
+  "listen",
+  ({ secure, hostname, port }) =>
+    console.log(
+      `${colors.yellow("Listening on")}: ${
+        secure ? "https" : "http"
+      }://${hostname}:${port}/`,
+    ),
+);
 
+// logs out information about oak application errors that were not handled by
+// the middleware
 app.addEventListener("error", (evt) => {
   let msg = `[${colors.red("error")}] `;
   if (evt.error instanceof Error) {

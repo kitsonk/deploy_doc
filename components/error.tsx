@@ -8,6 +8,17 @@ interface ErrorMessageProps {
   children: unknown;
 }
 
+export function ErrorBody(
+  { children, title }: { children: unknown; title: string },
+) {
+  return (
+    <main class={gtw("main")}>
+      <h1 class={gtw("mainHeader")}>Deno Doc</h1>
+      <ErrorMessage title={title}>{children}</ErrorMessage>
+    </main>
+  );
+}
+
 export function ErrorMessage({ children, title }: ErrorMessageProps) {
   return (
     <div class={gtw("error")} role="alert">

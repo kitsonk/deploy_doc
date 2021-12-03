@@ -2,6 +2,9 @@
 import { apply, css, theme, tw } from "../deps.ts";
 import type { CSSRules, Directive } from "../deps.ts";
 
+export type BaseStyles = keyof typeof baseStyles;
+export type StyleOverride = Partial<Record<BaseStyles, Directive<CSSRules>>>;
+
 const anchor = css({
   ":global": {
     ":target, :target > *": {
@@ -12,6 +15,15 @@ const anchor = css({
   "background-color": "transparent",
   "margin-left": "-1em",
   "padding-right": "0.5em",
+});
+
+const app = css({
+  "grid-template-rows": "auto 1fr auto",
+});
+
+const buttonGradient = css({
+  "background":
+    "linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%)",
 });
 
 const code = css({
@@ -25,27 +37,15 @@ const smallCode = css({
   pre: apply`font-mono text-xs p-2 my-2 rounded-lg bg-gray-100`,
 });
 
-const app = css({
-  "grid-template-rows": "auto 1fr auto",
-});
-
-const buttonGradient = css({
-  "background":
-    "linear-gradient(279.56deg, rgb(238, 255, 245) -52.57%, rgb(186, 233, 239) 126.35%)",
-});
-
-const largeMarkdown = apply`p-4 flex flex-col space-y-4 ${code}`;
-const tagMarkdown = apply`p-1.5 mx-2.5 flex flex-col ${smallCode}`;
-
-const applyNone = apply``;
+const none = apply``;
 
 const baseStyles = {
   anchor: apply`opacity-0 group-hover:opacity-100 absolute ${anchor}`,
   app: apply`min-h-screen grid grid-cols-1 ${app}`,
   bold: apply`font-bold`,
-  boolean: applyNone,
+  boolean: none,
   classBody: apply`flex flex-col space-y-4`,
-  classMethod: applyNone,
+  classMethod: none,
   code: apply`font-mono my-4 p-3 rounded-lg bg-gray-50`,
   content: apply`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`,
   docEntry: apply`relative px-2`,
@@ -56,8 +56,8 @@ const baseStyles = {
   error: apply`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-6`,
   formButton: apply
     `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg w-full ${buttonGradient}`,
-  fnName: applyNone,
-  keyword: applyNone,
+  fnName: none,
+  keyword: none,
   indent: apply`ml-4`,
   insideButton: apply
     `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg ${buttonGradient}`,
@@ -67,7 +67,7 @@ const baseStyles = {
   mainBox: apply`p-6 md:col-span-3 md:p-12`,
   mainHeader: apply`text-5xl font-bold`,
   markdown: apply`ml-4 mr-2 py-2 text-sm ${smallCode}`,
-  numberLiteral: applyNone,
+  numberLiteral: none,
   nodeClass: apply`text-green-800 mx-2`,
   nodeEnum: apply`text-green-700 mx-2`,
   nodeFunction: apply`text-cyan-800 mx-2`,
@@ -77,13 +77,13 @@ const baseStyles = {
   nodeNamespace: apply`text-yellow-800 mx-2`,
   section: apply`text-2xl border-b border-gray-400 p-2 mt-1 mb-3`,
   subSection: apply`text-xl p-2 mx-2.5 mt-1 mb-2.5`,
-  stringLiteral: applyNone,
+  stringLiteral: none,
   tag: apply
     `px-2 inline-flex text-xs leading-5 font-semibold lowercase rounded-full`,
   tocHeader: apply`text-gray-900 mt-3 mb-1 text-xl font-bold`,
-  typeKeyword: applyNone,
+  typeKeyword: none,
   typeLink: apply`underline`,
-  typeParam: applyNone,
+  typeParam: none,
   url: apply`hover:text-blue-800 underline`,
 } as const;
 
@@ -99,11 +99,7 @@ export const codeBlockStyles = {
 } as const;
 
 export const largeMarkdownStyles = {
-  markdown: largeMarkdown,
-} as const;
-
-export const tagMarkdownStyles = {
-  markdown: tagMarkdown,
+  markdown: apply`p-4 flex flex-col space-y-4 ${code}`,
 } as const;
 
 export const largeTagStyles = {
@@ -111,10 +107,11 @@ export const largeTagStyles = {
     `px-4 py-2 inline-flex leading-5 font-semibold lowercase rounded-full`,
 } as const;
 
-export type BaseStyles = keyof typeof baseStyles;
-export type StyleOverride = Partial<Record<BaseStyles, Directive<CSSRules>>>;
+export const tagMarkdownStyles = {
+  markdown: apply`p-1.5 mx-2.5 flex flex-col ${smallCode}`,
+} as const;
 
-export function getStyle(
+function getStyle(
   key: BaseStyles,
   ...overrides: (StyleOverride | undefined)[]
 ): Directive<CSSRules> {

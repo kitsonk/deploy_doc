@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --config deno.jsonc --allow-read --allow-write --allow-net --allow-env
+#!/usr/bin/env -S deno run --config deno.jsonc --allow-read=. --allow-write=./static --allow-net
 
 // Copyright 2021 the Deno authors. All rights reserved. MIT license.
 
@@ -8,8 +8,9 @@
 import { default as semver } from "https://cdn.skypack.dev/semver@7.3.5";
 import { colors, doc } from "./deps.ts";
 
-await Deno.permissions.request({ name: "read" });
-await Deno.permissions.request({ name: "write" });
+await Deno.permissions.request({ name: "read", path: "." });
+await Deno.permissions.request({ name: "write", path: "./static" });
+await Deno.permissions.request({ name: "net" });
 
 interface DenoLibRelease {
   tag: string;

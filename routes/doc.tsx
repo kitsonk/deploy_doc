@@ -23,11 +23,14 @@ import type {
 import { sheet, store } from "../shared.ts";
 import { assert, getBody } from "../util.ts";
 
-const MAX_CACHE_SIZE = 25_000_000;
+const MAX_CACHE_SIZE = parseInt(Deno.env.get("MAX_CACHE_SIZE") ?? "", 10) ||
+  25_000_000;
 const cachedSpecifiers = new Set<string>();
 const cachedResources = new Map<string, LoadResponse>();
 const cachedEntries = new Map<string, DocNode[]>();
 let cacheSize = 0;
+
+console.log(`${colors.yellow("MAX_CACHE_SIZE")}: ${MAX_CACHE_SIZE}`);
 
 function checkCache() {
   if (cacheSize > MAX_CACHE_SIZE) {
