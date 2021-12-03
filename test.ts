@@ -1,9 +1,6 @@
 // Copyright 2021 the Deno authors. All rights reserved. MIT license.
 
-import {
-  assertEquals,
-  assertStringIncludes,
-} from "https://deno.land/std@0.116.0/testing/asserts.ts";
+import { assertEquals, assertStringIncludes } from "./deps_test.ts";
 import { app } from "./main.ts";
 
 let start: Promise<string> | undefined;
