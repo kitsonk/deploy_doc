@@ -1,5 +1,6 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type { DocNodeNamespace } from "../deps.ts";
 import { store } from "../shared.ts";
 import type { StoreState } from "../shared.ts";
@@ -7,6 +8,7 @@ import { take } from "../util.ts";
 import type { Child } from "../util.ts";
 import { asCollection, Section, TocLink } from "./common.tsx";
 import type { DocProps } from "./common.tsx";
+import { gtw } from "./styles.ts";
 
 export function NamespaceDoc(
   { children, path = [] }: DocProps<DocNodeNamespace>,
@@ -65,7 +67,7 @@ export function NamespaceToc(
   const collection = asCollection(elements, includePrivate);
   return (
     <div>
-      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
+      <h3 class={gtw("tocHeader")}>
         {name}
       </h3>
       <ul>

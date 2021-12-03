@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import {
   getStyleTag,
@@ -7,6 +8,7 @@ import {
   renderSSR,
   Status,
   STATUS_TEXT,
+  tw,
 } from "../deps.ts";
 import type { Context, Middleware } from "../deps.ts";
 import { sheet } from "../shared.ts";
@@ -14,13 +16,23 @@ import { getBody } from "../util.ts";
 
 import { App } from "../components/app.tsx";
 import { ErrorMessage } from "../components/error.tsx";
+import { gtw } from "../components/styles.ts";
+
+function ErrorBody({ children, title }: { children: unknown; title: string }) {
+  return (
+    <main class={gtw("main")}>
+      <h1 class={gtw("mainHeader")}>Deno Doc</h1>
+      <ErrorMessage title={title}>{children}</ErrorMessage>
+    </main>
+  );
+}
 
 function htmlErrorBody(status: Status, msg: string) {
   const page = renderSSR(
     <App>
-      <ErrorMessage title={STATUS_TEXT.get(status) ?? "Internal Error"}>
+      <ErrorBody title={STATUS_TEXT.get(status) ?? "Internal Error"}>
         {msg}
-      </ErrorMessage>
+      </ErrorBody>
     </App>,
   );
   return getBody(

@@ -1,5 +1,6 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type { DocNodeEnum, EnumMemberDef, Location } from "../deps.ts";
 import { getState, setState, STYLE_OVERRIDE } from "../shared.ts";
 import {
@@ -97,7 +98,7 @@ export function EnumToc({ children }: { children: Child<DocNodeEnum> }) {
   ));
   return (
     <div>
-      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>Members</h3>
+      <h3 class={gtw("tocHeader")}>Members</h3>
       <ul>
         {items}
       </ul>

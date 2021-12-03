@@ -1,4 +1,6 @@
-#!/usr/bin/env -S deno run --allow-read --allow-net --allow-env
+#!/usr/bin/env -S deno run --config deno.jsonc --allow-read=. --allow-net --allow-env
+
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 
 import {
   Application,
@@ -8,6 +10,7 @@ import {
   proxy,
   Router,
 } from "./deps.ts";
+import { handleNotFound } from "./middleware/notFound.tsx";
 import { handleErrors } from "./middleware/errors.tsx";
 import { createFaviconMW } from "./middleware/favicon.ts";
 import { logging, timing } from "./middleware/logging.ts";
@@ -16,38 +19,57 @@ import { indexGet } from "./routes/index.tsx";
 
 const router = new Router();
 
+// The index, renders "specifier_form"
 router.get("/", indexGet);
-router.get("/:proto(http:|https:)//:host/:path*/~/:item+", pathGetHead);
-router.get("/:proto(http:|https:)//:host/:path*", pathGetHead);
-router.head("/:proto(http:|https:)//:host/:path*/~/:item+", pathGetHead);
-router.head("/:proto(http:|https:)//:host/:path*", pathGetHead);
-router.get("/:proto(deno)//:host", pathGetHead);
-router.get("/:proto(deno)//:host/~/:item+", pathGetHead);
-router.head("/:proto(deno)//:host", pathGetHead);
-router.head("/:proto(deno)//:host/~/:item+", pathGetHead);
-router.get("/doc", docGet);
+
+// Servers up the static content
 router.get(
   "/static/:path*",
   proxy(new URL("./", import.meta.url), {
-    contentType(url, contentType) {
-      return lookup(url) ?? contentType;
-    },
+    // when proxying static files, we aren't going to trust the content type, so
+    // we will override it.
+    contentType: (url, contentType) => lookup(url) ?? contentType,
   }),
 );
-router.get("/img/:proto(http|https:)//:host/:path*/~/:item+", imgGet);
-router.get("/img/:proto(http|https:)//:host/:path*", imgGet);
-router.get("/img/:proto(deno)//:host", imgGet);
-router.get("/img/:proto(deno)//:host/~/:item+", imgGet);
 
 // redirects from legacy doc website
-router.get("/builtin/stable", (ctx) => ctx.response.redirect("/deno//stable"));
+router.get("/builtin/stable", (ctx) => ctx.response.redirect("/deno/stable"));
+router.get(
+  "/builtin/stable@:version",
+  (ctx) => ctx.response.redirect(`/deno/stable@${ctx.params.version}`),
+);
+router.get(
+  "/builtin/unstable",
+  (ctx) => ctx.response.redirect("/deno/unstable"),
+);
+
+// The main documentation routes
+router.get("/:proto(http:/|https:/)/:host/:path*/~/:item+", pathGetHead);
+router.get("/:proto(http:/|https:/)/:host/:path*", pathGetHead);
+router.get("/:proto(deno)/:host", pathGetHead);
+router.get("/:proto(deno)/:host/~/:item+", pathGetHead);
+router.head("/:proto(http:/|https:/)/:host/:path*/~/:item+", pathGetHead);
+router.head("/:proto(http:/|https:/)/:host/:path*", pathGetHead);
+router.head("/:proto(deno)/:host", pathGetHead);
+router.head("/:proto(deno)/:host/~/:item+", pathGetHead);
+
+// The server provides the ability to do a query parameter to identify the URL.
+router.get("/doc", docGet);
+
+// "card" image URLs for open graph/twitter
+router.get("/img/:proto(http:/|https:/)/:host/:path*/~/:item+", imgGet);
+router.get("/img/:proto(http:/|https:/)/:host/:path*", imgGet);
+router.get("/img/:proto(deno)/:host", imgGet);
+router.get("/img/:proto(deno)/:host/~/:item+", imgGet);
 
 export const app = new Application();
 
+// Some general processing
 app.use(logging);
 app.use(timing);
 app.use(createFaviconMW("https://deno.land/favicon.ico"));
 app.use(handleErrors);
+app.use(handleNotFound);
 
 app.use(router.routes());
 app.use(router.allowedMethods());

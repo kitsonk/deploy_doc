@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { App } from "../components/app.tsx";
 import { ModuleCard, SymbolCard } from "../components/img.tsx";
@@ -233,7 +234,7 @@ export const pathGetHead = async <R extends string>(ctx: RouterContext<R>) => {
     [search, item] = search.split("/~/");
   }
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  const url = `${proto}//${host}/${path ?? ""}${search}`;
+  const url = `${proto}/${host}/${path ?? ""}${search}`;
   await maybeCacheStatic(url, host);
   return process(ctx, url, proto === "deno", item);
 };
@@ -252,7 +253,7 @@ export const imgGet = async <R extends string>(ctx: RouterContext<R>) => {
     [search, item] = search.split("/~/");
   }
   ctx.assert(proto && host, Status.BadRequest, "Malformed documentation URL");
-  const url = `${proto}//${host}/${path ?? ""}${search}`;
+  const url = `${proto}/${host}/${path ?? ""}${search}`;
   await maybeCacheStatic(url, host);
   let entries = await getEntries(ctx, url);
   if (item) {

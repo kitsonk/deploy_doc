@@ -1,6 +1,7 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 /** @jsxFrag Fragment */
-import { Fragment, h, htmlEntities, tw } from "../deps.ts";
+import { Fragment, h, htmlEntities } from "../deps.ts";
 import type {
   DocNodeTypeAlias,
   JsDoc,
@@ -770,7 +771,7 @@ export function TypeAliasToc(
   const { name, typeAliasDef: { typeParams } } = take(children);
   return (
     <div>
-      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>{name}</h3>
+      <h3 class={gtw("tocHeader")}>{name}</h3>
       <ul>
         {typeParams.length ? <TocLink>Type Parameters</TocLink> : undefined}
         <TocLink>Type</TocLink>

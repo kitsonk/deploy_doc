@@ -1,5 +1,6 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
-import { h, tw } from "../deps.ts";
+import { h } from "../deps.ts";
 import type {
   ClassIndexSignatureDef,
   DocNodeInterface,
@@ -413,7 +414,7 @@ export function InterfaceToc(
   } = take(children);
   return (
     <div>
-      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>{name}</h3>
+      <h3 class={gtw("tocHeader")}>{name}</h3>
       <ul>
         {typeParams.length ? <TocLink>Type Parameters</TocLink> : undefined}
         {ext.length ? <TocLink>Extends</TocLink> : undefined}

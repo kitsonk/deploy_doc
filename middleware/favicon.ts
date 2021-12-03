@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 import type { Middleware } from "../deps.ts";
 
 export function createFaviconMW(url: string): Middleware {

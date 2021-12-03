@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, Helmet } from "../deps.ts";
 import { getUrlLabel } from "../shared.ts";

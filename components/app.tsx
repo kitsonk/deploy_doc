@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import { gtw } from "./styles.ts";
@@ -22,7 +23,7 @@ function Footer() {
       <div class={tw`flex flex-col lg:flex-row gap-x-8 gap-y-6 text-right`}>
         <FooterLink href="https://deno.com/deploy">Deploy</FooterLink>
         <FooterLink href="https://deno.land/manual">Manual</FooterLink>
-        <FooterLink href="/deno//stable">Runtime API</FooterLink>
+        <FooterLink href="/deno/stable">Runtime API</FooterLink>
         <FooterLink href="https://deno.land/std">Standard Library</FooterLink>
         <FooterLink href="https://deno.land/x">Third Party Modules</FooterLink>
         <FooterLink href="https://deno.com/blog">Blog</FooterLink>

@@ -1,4 +1,6 @@
-#!/usr/bin/env -S deno run --allow-read --allow-write --allow-net --allow-env
+#!/usr/bin/env -S deno run --config deno.jsonc --allow-read --allow-write --allow-net --allow-env
+
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 
 // This is the build script for deploy_doc, which generates JSON files in the
 // `/static` directory.

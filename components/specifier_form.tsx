@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import { gtw } from "./styles.ts";
@@ -19,21 +20,21 @@ function DocLinks({ children }: DocLinksProps) {
 
 export function SpecifierForm() {
   return (
-    <main class={tw`max-w-screen-md px-4 pt-16 mx-auto text-gray-900`}>
-      <h1 class={tw`text-5xl font-bold`}>Deno Doc</h1>
+    <main class={gtw("main")}>
+      <h1 class={gtw("mainHeader")}>Deno Doc</h1>
       <div
         class={tw`p-6 md:(col-span-3 p-12)`}
       >
         <div class={tw`space-y-6`}>
           <p>
-            <a href="/deno//stable">
+            <a href="/deno/stable">
               <button class={gtw("formButton")} type="button">
                 Deno CLI APIs (Stable)
               </button>
             </a>
           </p>
           <p>
-            <a href="/deno//unstable">
+            <a href="/deno/unstable">
               <button class={gtw("formButton")} type="button">
                 Deno CLI APIs (<code>--unstable</code>)
               </button>
@@ -91,14 +92,16 @@ export function SpecifierForm() {
               {"https://deno.land/std/node/http.ts"}
             </DocLinks>
           </p>
+          <h2 class={tw`text-3xl font-bold`}>About</h2>
           <p>
             The source for this web application is available at{" "}
             <a
               class={gtw("url")}
-              href="https://github.com/kitsonk/deploy_doc"
+              href="https://github.com/denoland/docland"
               target="_blank"
+              rel="noopener"
             >
-              github.com/kitsonk/deploy_doc
+              github.com/denoland/docland
             </a>.
           </p>
           <p>

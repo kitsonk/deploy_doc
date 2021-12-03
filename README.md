@@ -1,7 +1,7 @@
-# deploy_doc
+# docland
 
-A Deno CLI/Deploy server which generates documentation for arbitrary JavaScript
-and TypeScript modules.
+A Deno CLI/Deploy server application which generates documentation for arbitrary
+JavaScript and TypeScript modules.
 
 ## Overview
 
@@ -25,3 +25,44 @@ When a documentation page is requested, the following occurs at a high level:
 - If the URL matched is a "card" image, this is server side rendered as a
   JSX/TSX SVG which is then rendered as a PNG using
   [resvg_wasm](https://deno.land/x/resvg_wasm).
+
+## Starting
+
+To run the server locally, execute the `main.ts`. If supported in your shell:
+
+```
+> ./main.ts
+```
+
+Or manually on the command line:
+
+```
+> deno run --config deno.jsonc --allow-read=. --allow-net --allow-env main.ts
+```
+
+The server will start listening on port `8080`, which will be logged to the
+console when ready to accept requests.
+
+If you are deploying on Deploy, the `main.ts` should be the module you deploy.
+
+## Building
+
+In order to speed up displaying the _built-in_ documentation, there is a build
+script. This will fetch all the releases from GitHub for the Deno CLI and
+rebuild the latest release, plus build any missing versions.
+
+To execute the build script, and supported in your shell:
+
+```
+> ./build.ts
+```
+
+Or manually on the command line:
+
+```
+> deno run --config deno.jsonc --allow-read=. --allow-write --allow-net --allow-nev build.ts
+```
+
+---
+
+Copyright 2021 the Deno Authors. All rights reserved. MIT License.

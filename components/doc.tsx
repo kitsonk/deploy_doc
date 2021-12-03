@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type { DocNode, DocNodeFunction, DocNodeNamespace } from "../deps.ts";
@@ -49,7 +50,7 @@ function ModuleToc(
     : undefined;
   return (
     <div>
-      <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
+      <h3 class={gtw("tocHeader")}>
         This {library ? "Library" : "Module"}
       </h3>
       <ul>
@@ -64,7 +65,7 @@ function ModuleToc(
       {imports &&
         (
           <div>
-            <h3 class={tw`text-gray-900 mt-3 mb-1 text-xl font-bold`}>
+            <h3 class={gtw("tocHeader")}>
               Imports
             </h3>
             <ul>{imports}</ul>
@@ -243,9 +244,13 @@ export function DocPage(
     const nodes = entries.filter((e) => e.name === name && e.kind !== "import");
     if (!nodes.length) {
       return (
-        <ErrorMessage title="Entry not found">
-          The document entry named "{item}" was not found in specifier "{url}".
-        </ErrorMessage>
+        <main class={gtw("main")}>
+          <h1 class={gtw("mainHeader")}>Deno Doc</h1>
+          <ErrorMessage title="Entry not found">
+            The document entry named "{item}" was not found in specifier
+            "{url}".
+          </ErrorMessage>
+        </main>
       );
     }
     let jsDoc;
@@ -256,7 +261,7 @@ export function DocPage(
       }
     }
     return (
-      <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
+      <div class={gtw("content")}>
         <DocMeta url={url} doc={jsDoc?.doc ?? ""} item={item} />
         <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
           <SideBarHeader>{url}</SideBarHeader>
@@ -270,7 +275,9 @@ export function DocPage(
           {isDeprecated(jsDoc)
             ? <Tag style={largeTagStyles} color="gray">deprecated</Tag>
             : undefined}
-          <JsDoc style={largeMarkdownStyles}>{jsDoc}</JsDoc>
+          <JsDoc style={largeMarkdownStyles} tags={["deprecated"]} tagsWithDoc>
+            {jsDoc}
+          </JsDoc>
           <CodeBlock>{nodes}</CodeBlock>
           <Doc path={path}>{nodes}</Doc>
         </article>
@@ -279,7 +286,7 @@ export function DocPage(
   } else {
     const jsDoc = entries.find(({ kind }) => kind === "moduleDoc")?.jsDoc;
     return (
-      <div class={tw`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`}>
+      <div class={gtw("content")}>
         <DocMeta url={url} doc={jsDoc?.doc ?? ""} />
         <nav class={tw`p-6 sm:py-12 md:border-r md:border-gray-200`}>
           <SideBarHeader>{url}</SideBarHeader>

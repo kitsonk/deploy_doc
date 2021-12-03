@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 import { colors } from "../deps.ts";
 import type { Middleware } from "../deps.ts";
 

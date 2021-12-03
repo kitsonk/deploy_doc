@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 import { apply, css, theme, tw } from "../deps.ts";
 import type { CSSRules, Directive } from "../deps.ts";
 
@@ -41,12 +42,12 @@ const applyNone = apply``;
 const baseStyles = {
   anchor: apply`opacity-0 group-hover:opacity-100 absolute ${anchor}`,
   app: apply`min-h-screen grid grid-cols-1 ${app}`,
-  body: apply`bg-gray-300`,
   bold: apply`font-bold`,
   boolean: applyNone,
   classBody: apply`flex flex-col space-y-4`,
   classMethod: applyNone,
   code: apply`font-mono my-4 p-3 rounded-lg bg-gray-50`,
+  content: apply`max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4`,
   docEntry: apply`relative px-2`,
   docItem: apply`group relative py-2 px-1`,
   docItems: apply`mt-4`,
@@ -62,10 +63,9 @@ const baseStyles = {
     `transition inline-block focus-visible:ring-2 focus-visible:ring-black focus:outline-none py-2.5 px-6 text-base text-gray-600 font-medium rounded-lg hover:shadow-lg ${buttonGradient}`,
   link: apply`hover:text-blue-800`,
   list: apply`list-disc list-inside ml-4`,
-  logo: apply`h-16 mr-4 float-left`,
-  main: apply`max-w-full md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto p-6`,
+  main: apply`max-w-screen-md px-4 pt-16 mx-auto text-gray-900`,
   mainBox: apply`p-6 md:col-span-3 md:p-12`,
-  mainHeader: apply`clear-both mb-12`,
+  mainHeader: apply`text-5xl font-bold`,
   markdown: apply`ml-4 mr-2 py-2 text-sm ${smallCode}`,
   numberLiteral: applyNone,
   nodeClass: apply`text-green-800 mx-2`,
@@ -76,13 +76,11 @@ const baseStyles = {
   nodeVariable: apply`text-blue-700 mx-2`,
   nodeNamespace: apply`text-yellow-800 mx-2`,
   section: apply`text-2xl border-b border-gray-400 p-2 mt-1 mb-3`,
-  sourceLink: apply`absolute top-0 right-0`,
   subSection: apply`text-xl p-2 mx-2.5 mt-1 mb-2.5`,
   stringLiteral: applyNone,
-  subtitle: apply`h-6 text-xl font-semibold`,
   tag: apply
     `px-2 inline-flex text-xs leading-5 font-semibold lowercase rounded-full`,
-  title: apply`h-10 text-3xl font-bold`,
+  tocHeader: apply`text-gray-900 mt-3 mb-1 text-xl font-bold`,
   typeKeyword: applyNone,
   typeLink: apply`underline`,
   typeParam: applyNone,

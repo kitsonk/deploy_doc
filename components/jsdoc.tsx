@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { comrak, h, tw } from "../deps.ts";
 import type {
@@ -37,6 +38,8 @@ interface DocParams {
   /** An optional array of tags that if present in the JSDoc should be
    * rendered. */
   tags?: JsDocTagKind[];
+  /** Only print tags that actually have some doc associated with them. */
+  tagsWithDoc?: boolean;
 }
 
 await comrak.init();
@@ -108,6 +111,25 @@ export function getReturnDoc(jsDoc?: JsDocNode): string | undefined {
   }
 }
 
+function hasDoc(tag: JsDocTagNode) {
+  switch (tag.kind) {
+    case "callback":
+    case "deprecated":
+    case "enum":
+    case "extends":
+    case "param":
+    case "property":
+    case "return":
+    case "template":
+    case "this":
+    case "type":
+    case "typedef":
+      return !!tag.doc;
+    default:
+      return false;
+  }
+}
+
 export function isDeprecated(jsDoc?: JsDocNode): boolean {
   if (jsDoc && jsDoc.tags) {
     return !!jsDoc.tags.find(({ kind }) => kind === "deprecated");
@@ -116,7 +138,7 @@ export function isDeprecated(jsDoc?: JsDocNode): boolean {
 }
 
 /** A component which renders a JSDoc. */
-export function JsDoc({ children, style, tags }: DocParams) {
+export function JsDoc({ children, style, tags, tagsWithDoc }: DocParams) {
   const jsDoc = take(children);
   if (!jsDoc) {
     return;
@@ -124,7 +146,7 @@ export function JsDoc({ children, style, tags }: DocParams) {
   const docTags = [];
   if (jsDoc.tags && tags) {
     for (const tag of jsDoc.tags) {
-      if (tags.includes(tag.kind)) {
+      if (tags.includes(tag.kind) && !(tagsWithDoc && !hasDoc(tag))) {
         docTags.push(<JsDocTag>{tag}</JsDocTag>);
       }
     }
@@ -157,7 +179,6 @@ function JsDocTag({ children }: { children: Child<JsDocTagNode> }) {
         </div>
       );
     case "constructor":
-    case "deprecated":
     case "module":
     case "private":
     case "protected":
@@ -168,6 +189,7 @@ function JsDocTag({ children }: { children: Child<JsDocTagNode> }) {
           <span class={tw`italic`}>@{tag.kind}</span>
         </div>
       );
+    case "deprecated":
     case "enum":
     case "return":
       return (

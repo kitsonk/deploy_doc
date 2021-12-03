@@ -1,3 +1,4 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, tw } from "../deps.ts";
 import type {
@@ -204,23 +205,6 @@ export function DocWithLink(
     </div>
   );
 }
-
-// export function SourceLink({ children }: { children: Child<Location> }) {
-//   const { filename, line } = take(children);
-//   let href;
-//   try {
-//     const url = new URL(filename);
-//     url.hash = `L${line}`;
-//     href = url.toString();
-//   } catch {
-//     return;
-//   }
-//   return (
-//     <div class={gtw("sourceLink")}>
-//       <a href={href} target="_blank">[src]</a>
-//     </div>
-//   );
-// }
 
 export function IconLink() {
   return (

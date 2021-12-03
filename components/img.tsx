@@ -1,6 +1,7 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 /** @jsx h */
 import { h, htmlEntities, removeMarkdown } from "../deps.ts";
-import { getLibWithVersion, getUrlLabel } from "../shared.ts";
+import { getLibWithVersion } from "../shared.ts";
 import { parseURL } from "../util.ts";
 
 const wrap = (s: string) =>

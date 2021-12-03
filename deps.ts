@@ -1,11 +1,8 @@
-/// <reference no-default-lib="true" />
-/// <reference lib="deno.ns" />
-/// <reference lib="deno.unstable" />
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-/// <reference lib="dom.asynciterable" />
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
 
-// Provide more structured JSX types than nano_jsx provides
+// Provide more structured JSX types than nano_jsx provides as well as provide
+// URLPattern which is not currently in the DOM lib for TypeScript but supported
+// by Deno and Deploy.
 import type {} from "./types.d.ts";
 
 // std library colors are used in logging to the console
@@ -93,8 +90,11 @@ export type {
   TsTypeUnionDef,
 } from "https://raw.githubusercontent.com/denoland/deno_doc/main/lib/types.d.ts";
 
+// Used when overriding proxies content types when serving up static content
 export { lookup } from "https://deno.land/x/media_types@v2.11.0/mod.ts";
 
+// Importing the parts of NanoJSX which we are using in the application.
+// TODO(@kitsonk) isolate issues with > 0.0.21 and raise with NanoJSX
 export { Helmet } from "https://deno.land/x/nano_jsx@v0.0.21/components/helmet.ts";
 export { h } from "https://deno.land/x/nano_jsx@v0.0.21/core.ts";
 export { Fragment } from "https://deno.land/x/nano_jsx@v0.0.21/fragment.ts";
@@ -105,6 +105,7 @@ export {
   setState,
 } from "https://deno.land/x/nano_jsx@v0.0.21/hooks/useState.ts";
 
+// The middleware server used to provide the application
 export {
   Application,
   HttpError,
@@ -121,12 +122,18 @@ export type {
   RouterMiddleware,
 } from "https://deno.land/x/oak@v10.0.0/mod.ts";
 
+// resvg WASM bindings that allow conversion of an SVG to a PNG. Open graph and
+// twitter do not support SVGs for card images.
 export { render } from "https://deno.land/x/resvg_wasm@0.1.0/mod.ts";
 
+// Used to sanitize some output, ensuring html entities are encoded.
 export * as htmlEntities from "https://cdn.skypack.dev/html-entities@2.3.2?dts";
 
+// Used to strip markdown when adding to a card image.
 export { default as removeMarkdown } from "https://cdn.skypack.dev/remove-markdown?dts";
 
+// twind provides server side rendered CSS leveraging tailwind functional
+// classes.
 // @deno-types=https://cdn.skypack.dev/-/twind@v0.16.16-LPGqCzM3XVHFUO0IDjyk/dist=es2020,mode=types/twind.d.ts
 export {
   apply,

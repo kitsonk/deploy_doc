@@ -1,3 +1,5 @@
+// Copyright 2021 the Deno authors. All rights reserved. MIT license.
+
 import type { StyleOverride } from "./components/styles.ts";
 import {
   getState as nanoGetSate,
@@ -75,7 +77,7 @@ const BUILTIN_LABELS: Record<string, string> = {
   "esnext": "ESNext APIs",
   "dom": "DOM APIs",
 };
-const BUILTIN_RE = /^deno\/{2}([^@\/]+)(?:@([^\/]+))?\//;
+const BUILTIN_RE = /^deno\/([^@\/]+)(?:@([^\/]+))?\//;
 const VERSIONED_LIBS: string[] = ["stable", "unstable"];
 
 export function getLibWithVersion(url: string): [string, string | undefined] {
