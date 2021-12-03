@@ -215,6 +215,10 @@ async function maybeCacheStatic(url: string, host: string) {
   if (url.startsWith("deno") && !cachedEntries.has(url)) {
     try {
       const [lib, version] = host.split("@");
+      console.log(new URL(
+        `../static/${lib}${version ? `_${version}` : ""}.json`,
+        import.meta.url,
+      ).toString());
       const res = await fetch(
         new URL(
           `../static/${lib}${version ? `_${version}` : ""}.json`,
